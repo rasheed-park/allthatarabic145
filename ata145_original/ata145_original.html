@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>올댓아라빅 1.4.4 — 교재 초안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css" rel="stylesheet">
+<style>
+:root {
+  --bg:           #F2F4F6;
+  --surface:      #ffffff;
+  --gray-area:    #F2F4F6;
+  --gray-pill:    #C7CDD9;
+  --accent:       #1D49FF;
+  --accent-bg:    rgba(29,73,255,0.08);
+  --hl-text:      #4458B5; /* 본문 *...* 글자 강조용 — 파란 계열 유지하되 쨍한 느낌만 살짝 덜어낸 차분한 블루 */
+  --text:         #1a1f29; /* 살짝 부드러운 검정 (#000 대신 미세한 쿨톤) — 본문 가독성 우선 */
+  --sub:          #6E7591; /* 한국어 번역 + 보조 정보 — 본문 텍스트와 구분되는 회색 */
+  --sub-2:        #888FAC; /* italic trans 등 더 약한 톤 */
+  --border:       #D5DAE8;
+  --r-sm: 8px; --r-md: 12px; --r-lg: 18px;
+  --font-kr: 'Spoqa Han Sans Neo','Apple SD Gothic Neo',sans-serif;
+  --font-ar: 'Noto Sans Arabic', serif;
+  --textbook-card-ar-size: 1.18rem;
+  --textbook-card-trans-size: 0.74rem;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-kr);
+  padding: 28px 16px 60px;
+}
+
+/* ── 유닛 픽커 ── */
+.unit-picker {
+  max-width: 920px;
+  margin: 0 auto 22px;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.unit-picker .pl {
+  font-size: 0.7rem; letter-spacing: 2px; color: var(--sub-2);
+  text-transform: uppercase; margin-right: 6px;
+}
+.unit-btn {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 18px;
+  background: var(--surface); color: var(--text); cursor: pointer;
+  font-family: inherit; font-size: 0.78rem; font-weight: 500; transition: all .15s;
+}
+.unit-btn:hover { border-color: var(--accent); color: var(--accent); }
+.unit-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ── 페이지 (실제 B5 사이즈 — 182mm × 257mm) ── */
+.page {
+  width: 182mm;
+  height: 257mm;
+  margin: 0 auto 28px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  box-shadow: 0 14px 44px rgba(18,32,90,0.10), 0 1px 3px rgba(18,32,90,0.04);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── 헤더 (회색) ── */
+.page-head {
+  background: var(--gray-area);
+  padding: 58px 44px 32px;   /* 상단 여백 살짝 더(유닛 박스 아래로) · 헤더→첫 카드 간격 48(=32+body16) */
+  text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 18px;
+}
+.head-category {
+  display: none;   /* 카테고리 라벨(올댓아라빅 표현 등) 미표시 — UNIT 박스로 대체 */
+}
+.head-unit-box {
+  display: inline-flex; align-items: stretch;
+  border-radius: var(--r-md); overflow: hidden;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.08);
+}
+.head-unit-box .ub-l, .head-unit-box .ub-r {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 8px 20px;
+  gap: 8px;
+}
+.head-unit-box .ub-l { background: var(--accent); color: #fff; }
+.head-unit-box .ub-r { background: var(--gray-pill); color: #fff; }
+.head-unit-box .ub-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+.head-unit-box .ub-num {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+/* 표현 페이지 등 우측 박스가 단일 텍스트만 가질 때 — 작게 */
+.head-unit-box .ub-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  line-height: 1;
+}
+/* 유닛 박스 아래 챕터 라벨(All That Arabic N) */
+.head-chapter {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--sub-2);
+}
+
+/* ── 본문 (흰색) ── */
+.page-body {
+  background: var(--gray-area);
+  padding: 16px 44px 18px;
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 0;
+  min-height: 0;
+}
+/* 공통 일러스트 — 위아래 크롭으로 적당히 납작하게.
+   B5에서 표현 카드 5개(긴 설명 2개+) 시나리오에 맞춰 3:1 비율 (~53mm) — 그림 인식 가능 + 공간 절약
+   object-fit:cover + overflow:hidden으로 원본 이미지의 위/아래만 잘리고 가운데가 보임 */
+.illustration {
+  /* B5 표현 페이지 일러스트. 5:2 비율 → 가로 158.7mm 기준 ~63.5mm 높이.
+     위아래 크롭으로 원본의 가운데가 보임. 표현 카드(.exp-card)와 동일한 둥근 모서리. */
+  aspect-ratio: 5 / 2;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: var(--r-md); /* .exp-card와 동일 */
+}
+.illustration img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.body-card {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 28px 48px 28px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 0;
+  min-height: 0;
+}
+/* 본문 카드 내부 자식 간격 — 명시적 margin-top으로 제어 */
+.body-card .pattern-korean { margin-top: 12px; }
+.body-card .pattern-script { margin-top: 18px; }
+.body-arabic-block {
+  display: flex; flex-direction: column;
+  align-items: center;  /* 일반 패턴(css 없음): 아랍어/음가 가운데 정렬 */
+  gap: 6px;
+}
+.pattern-arabic {
+  font-family: var(--font-ar);
+  font-size: 2.3rem;
+  font-weight: 700;
+  direction: rtl;
+  text-align: center;
+  line-height: 1.45;
+  color: var(--text);
+  width: 100%;
+}
+/* baseline 모드: 6칸 고정 그리드 (알파벳 그룹 최대 6개)
+   - 셀 폭은 컨테이너의 1/6로 고정 → 유닛별 글자 크기 일관
+   - 토큰이 6 미만이면 가운데 정렬 (justify-content: center)
+   - 모바일 이식 시에도 동일 비례 유지 */
+.pattern-arabic.baseline {
+  position: relative;
+  display: flex;
+  direction: rtl;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 22px 0 18px;
+  text-align: initial;
+}
+.pattern-arabic.baseline .bl-line {
+  position: absolute;
+  left: 4%; right: 4%;
+  height: 1.5px;
+  background: rgba(29, 73, 255, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+.pattern-arabic.baseline .blch {
+  flex: 0 0 calc(100% / 6); /* 셀 폭 = 컨테이너의 1/6 (6칸 기준) */
+  display: flex; flex-direction: column;
+  align-items: center; gap: 14px;
+  position: relative; z-index: 1;
+  min-width: 0;
+}
+/* 단일 글자 (1행) — 6칸 기준 고정 */
+.pattern-arabic.baseline .blch .l {
+  font-family: var(--font-ar); font-weight: 700;
+  font-size: 2.1rem; line-height: 1;
+}
+/* 3-글자 연결형 (2행) — 레퍼토리 크기 근처, 6칸에 잘 맞게 */
+.pattern-arabic.baseline .blch .l-triple {
+  font-family: var(--font-ar); font-weight: 500;
+  font-size: 0.95rem; line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+  text-align: center;
+}
+/* 음가 라벨 (3행) */
+.pattern-arabic.baseline .blch .lbl {
+  font-family: var(--font-kr);
+  font-size: 0.72rem; font-weight: 400;
+  color: var(--sub-2);
+  direction: ltr; letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* ── c 모드 ──
+   baseline과 동일 그리드 구조이지만:
+   - 기준선(.bl-line) 없음 (DOM에서 미생성)
+   - 음가 라벨(.lbl) 표시 안 함 (DOM에서 미생성)
+   - 셀들을 수직 가운데 정렬 (베이스라인 정렬 대신)
+   → 글자 크기가 다른 토큰들도 시각적으로 가운데 라인에 모임 */
+.pattern-arabic.c {
+  position: relative;
+  display: flex;
+  direction: rtl;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 22px 0 18px;
+  text-align: initial;
+}
+.pattern-arabic.c .blch {
+  flex: 0 0 calc(100% / 6);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  min-width: 0;
+}
+.pattern-arabic.c .blch .l {
+  font-family: var(--font-ar); font-weight: 700;
+  font-size: 2.1rem; line-height: 1;
+}
+.pattern-arabic.c .blch .l-triple {
+  font-family: var(--font-ar); font-weight: 500;
+  font-size: 0.95rem; line-height: 1.2;
+  color: var(--text);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.pattern-arabic .hl-text { color: var(--hl-text); }
+.pattern-trans {
+  font-size: 0.85rem;
+  color: var(--sub);
+  font-style: italic;
+  letter-spacing: 0.3px;
+  direction: rtl;
+  text-align: center;
+  width: 100%;
+}
+.pattern-korean {
+  font-size: 0.85rem;
+  color: var(--text); /* 카드 한국어 번역 — 본문과 동일 검정 */
+  line-height: 1.55;
+  font-weight: 500; /* 600 → 500 한 단계 얇게 */
+  text-align: center;
+}
+.pattern-korean .hl-text { color: var(--hl-text); font-weight: 700; }
+
+/* 스크립트: 단락 + 불릿 — 시맨틱 마크업 */
+.pattern-script {
+  font-size: 0.82rem;
+  color: var(--sub);
+  text-align: left;
+}
+.pattern-script p {
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.pattern-script p:last-child { margin-bottom: 0; }
+.pattern-script ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pattern-script li {
+  position: relative;
+  padding-left: 16px;
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+.pattern-script li:last-child { margin-bottom: 0; }
+.pattern-script li::before {
+  content: '•';
+  position: absolute; left: 0; top: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+/* 아랍어로 시작하는 불릿 → RTL: 점 우측, 본문 우측 정렬 (pattern·exp 공통) */
+.pattern-script li[dir="rtl"],
+.exp-script li[dir="rtl"] {
+  padding-left: 0; padding-right: 16px; text-align: right;
+}
+.pattern-script li[dir="rtl"]::before,
+.exp-script li[dir="rtl"]::before {
+  left: auto; right: 0;
+}
+.pattern-script .ar-tok {
+  font-family: var(--font-ar);
+  /* 색·굵기는 주변 한국어 본문(.pattern-script: var(--sub), 400)과 동일하게 inherit
+     → Noto Sans Arabic 글리프 자체 크기 차이만 남음 */
+  font-size: 0.92em; /* 아랍어 글리프가 시각적으로 약간 더 커 보이는 점 보정 */
+}
+/* 인용 (>) — 부드러운 참고표시용 음영. 박스 최하단에 배치되도록 wrapper(.pattern-quotes / .exp-quotes)로 감쌈. */
+.pattern-quotes,
+.exp-quotes {
+  margin-top: auto;     /* body-card / exp-card가 flex column이면 최하단으로 밀려남 */
+  padding-top: 24px;    /* 본문(스크립트)과의 여백 */
+}
+.pattern-quotes blockquote,
+.exp-quotes blockquote {
+  margin: 0;
+  padding: 10px 14px;
+  background: rgba(29, 73, 255, 0.05);
+  border-left: 3px solid rgba(29, 73, 255, 0.3);
+  border-radius: 0 6px 6px 0;
+  color: var(--sub);
+  font-size: 0.78rem;
+  line-height: 1.75;
+}
+.pattern-quotes blockquote p,
+.exp-quotes blockquote p { margin-bottom: 0; }
+
+/* ── 카드 영역 (회색) — 헤더 좌우 여백과 동일하게 정렬 ── */
+.page-cards {
+  background: var(--gray-area);
+  padding: 18px 44px 22px;
+}
+.card {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+}
+
+/* ── 드릴 페이지 (DrillA → DrillB 위아래 스택) ──
+   .page와 동일하게 B5 고정. 한 유닛의 드릴 콘텐츠가 페이지를 넘으면
+   renderDrillPagesAsync()가 박스 단위로 페이지를 분할하므로 height auto 필요 없음 */
+.page-drill .page-cards {
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 36px;
+}
+.drill-section {
+  display: flex; flex-direction: column;
+  /* gap을 0으로 두고 모든 자식 간 간격은 명시 div(.drill-row-gap, .drill-box-gap)
+     또는 margin으로 제어. flex gap이 자동으로 더해지면
+     .drill-row-gap(2px) 사이에 12px씩 추가되어 의도와 다른 간격이 나옴. */
+  gap: 0;
+}
+/* 같은 섹션 안에서 ref_ptn 그룹별 박스 사이 간격 */
+.drill-box-gap { height: 14px; }
+/* 5열 모드(.drill-five) 박스 사이는 살짝 더 넓게 — 시각적 그룹 분리 강조 */
+.drill-five + .drill-box-gap:has(+ .drill-five) { height: 19px; }
+.drill-instruction {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin-bottom: 28px; /* 안내문↔첫 박스 사이 호흡. 부모 .drill-section의 flex gap이 0이라 이 값이 그대로 전체 간격 */
+  line-height: 1.4;
+}
+.drill-card {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+}
+.drill-arabic-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  gap: 6px;
+}
+.drill-arabic {
+  font-family: var(--font-ar);
+  font-size: var(--textbook-card-ar-size);
+  font-weight: 500;
+  direction: rtl;
+  color: var(--text);
+  line-height: 1.4;
+}
+.drill-arabic .hl-text { color: var(--hl-text); }
+.drill-trans {
+  font-size: var(--textbook-card-trans-size);
+  color: var(--sub-2);
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+.drill-trans .hl-text { color: var(--hl-text); }
+
+/* ── 디폴트 드릴 카드 (css 비어 있을 때) ──
+   한 드릴 항목 = 한 박스. 박스 안: 좌 한국어 (top-align, 나쓰 방식) / 우 아랍어 + 음가.
+   카드끼리는 .drill-row-gap(타이트, 2px)으로 붙어 있어 시각적 그룹감 살림.
+   모바일에서 스크롤 시 행 단위 하이라이트 가능하도록 각 카드는 독립 단위로 식별됨.
+   ref_ptn 그룹 사이는 .drill-box-gap(14px)으로 명확히 분리. */
+.drill-row {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 12px 18px;
+  border: 1px solid rgba(18,32,90,0.06);
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start; /* 한국어를 아랍어 윗부분과 매치 (나쓰 방식) */
+  gap: 16px;
+}
+.drill-row-ko {
+  font-family: var(--font-kr);
+  font-size: 0.82rem; /* .pattern-script 본문과 동일 톤 */
+  color: var(--sub);
+  direction: ltr;
+  text-align: left;
+  line-height: 1.5;
+}
+.drill-row-ar {
+  direction: rtl;
+  text-align: right;
+  line-height: 1.4;
+}
+.drill-row-ar .ar-line { justify-content: flex-end; }
+.drill-row-ar .ar-text {
+  font-family: var(--font-ar);
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.drill-row-ar .hl-text { color: var(--hl-text); }
+.drill-row-ar .drill-trans {
+  display: block;
+  font-family: var(--font-kr);
+  font-size: 0.68rem;
+  color: var(--sub-2);
+  font-style: italic;
+  direction: ltr;
+  text-align: right;
+  margin-top: 2px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+/* 같은 ref_ptn 그룹 안 카드 사이 — 나쓰 카드 사이 간격(12px)과 동일하게 */
+.drill-row-gap { height: 12px; }
+
+/* ── 2열 박스 모드 (`css = 'two'`) ──
+   드릴(`.drill-two`)·래퍼토리(`.repertory.cols-two`) 공용 마커 `.cols-two`.
+   박스가 좌→우 한 행에 2개씩 (LTR). 5열은 좁고 디폴트 카드는 너무 큰 항목용 중간 밀도. */
+.cols-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  direction: ltr;  /* 박스 배치는 좌→우 */
+}
+.cols-two .two-cell {
+  background: #fff;
+  border: 1px solid rgba(18,32,90,0.07);
+  border-radius: var(--r-md);
+  padding: 10px 14px 11px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+.cols-two .two-body { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cols-two .two-cell .ar-line {
+  display: flex;            /* inline-flex → block-flex (셀 폭 채우기) */
+  width: 100%;
+  direction: rtl;
+  justify-content: flex-start;  /* direction:rtl 에서 start = 오른쪽 */
+}
+.cols-two .two-cell .ar-text {
+  font-family: var(--font-ar);
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.cols-two .two-cell .trans {
+  display: block;
+  font-family: var(--font-kr);
+  font-size: 0.68rem;
+  color: var(--sub-2);
+  font-style: italic;
+  direction: ltr;
+  text-align: right;
+  margin-top: 1px;
+  letter-spacing: 0.2px;
+}
+.cols-two .two-cell .ko {
+  font-family: var(--font-kr);
+  font-size: 0.78rem;
+  color: var(--sub);
+  direction: ltr;
+  text-align: left;
+  line-height: 1.45;
+  flex: 0 0 42%;
+}
+/* 드릴 2열 박스 — 외곽 카드(.card 톤) 안에 .cols-two 그리드 */
+.drill-two {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+}
+.drill-two > .cols-two {
+  /* 외곽 카드 안에 그리드 그대로 */
+}
+
+/* 5열 그리드 테이블 (css=five) */
+/* 드릴 5열 박스 — 래퍼토리(.card 안의 .repertory.css-five)와 동일한 박스/셀 사이즈로 통일.
+   외곽 박스(.card 스타일) + 내부 테이블(.repertory 스타일)을 한 셀렉터로 합쳐 둠 */
+.drill-five {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 14px 16px; /* .card와 동일 */
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+}
+.drill-five table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  direction: rtl;
+}
+.drill-five td {
+  padding: 7px 6px; /* .repertory td와 동일 */
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.drill-five tr:last-child td { border-bottom: none; }
+.drill-five td.ar {
+  font-family: var(--font-ar);
+  font-size: 1.08rem; /* .repertory td.ar와 동일 */
+  font-weight: 500;
+  direction: rtl;
+  color: var(--text);
+}
+
+/* ── 5열 모드 (`css = 'five'`) 공통 규칙 ──
+   드릴(`.drill-five`)과 래퍼토리(`.repertory.css-five`) 둘 다 좁은 5열 셀이라
+   기본 14px 깃발이 인라인이면 가로 폭을 잡아먹어 아랍어가 줄바꿈됨.
+   → 5열 모드에서만 깃발을 10px로 축소 + gap 4px (식별성은 약간 양보,
+     공간 효율 우선). 깃발 위치는 인라인 유지(자연스러움). */
+.css-five .ar-line { gap: 4px; }
+.css-five .ar-line .lahja-flag {
+  width: 10px;
+  height: 10px;
+}
+.css-five .ar-line .lahja-flags { gap: 2px; }
+.css-five .ar-line .lahja-flags .lahja-flag {
+  width: 10px;
+  height: 10px;
+}
+.drill-five td.ar .trans {
+  display: block;
+  font-family: var(--font-kr);
+  font-size: 0.68rem;
+  color: var(--sub-2);
+  font-style: italic;
+  direction: ltr;
+  margin-top: 1px; /* .repertory .trans와 동일 */
+  font-weight: 400;
+  letter-spacing: 0.2px; /* .repertory .trans와 동일 */
+}
+/* drillB 빈칸 — 회색 음영 박스. 글자는 보존(셰이핑 유지 + 학생이 위에 연필로 쓸 수 있음)하되
+   color: transparent 로 완전 투명 처리.
+   ⚠️ 같은 rgba 값을 bg와 color에 써도 알파 블렌딩이 더블 적용되어 글자가 더 진해 보임 →
+   transparent로 알파를 0으로 만들어야 깔끔히 안 보임. 채점/해답지에선 color만 var(--text) 등으로 변경.
+   ⚠️ display는 inline 유지 — inline-block은 새 formatting context를 만들어 Arabic shaping을
+   span 경계에서 끊는다. 인라인 span에도 background-color와 padding은 적용됨.
+   ⚠️ bg는 ::before 가상 요소로 이전 — 라인 박스 전체가 아닌 글자 높이 수준만 덮도록 vertical inset.
+   직접 bg를 주면 ascender/descender 영역까지 덮여 박스가 너무 길어 보임. */
+.drill-blank {
+  position: relative;
+  color: transparent;
+  padding: 0 3px;
+}
+.drill-blank::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1em; /* 글자(em) 크기와 동일 */
+  transform: translateY(-50%);
+  background: rgba(18,32,90,0.08);
+  border-radius: 3px;
+  pointer-events: none;
+}
+/* 트랜스(음가) 컨텍스트 — 실제 클래스는 `.trans` (5열 모드) 또는 `.drill-trans` (디폴트 카드 모드).
+   bg만 살짝 더 옅게. */
+.trans .drill-blank::before,
+.drill-trans .drill-blank::before {
+  background: rgba(18,32,90,0.06);
+}
+
+/* ── 나쓰(지문) 페이지 ── */
+/* 나쓰 페이지: 일반 .page와 동일하게 B5 고정 (height 257mm + overflow hidden).
+   교재라 페이지가 늘어나면 안 됨. 콘텐츠가 넘치면 잘리고 콘솔 경고로 알림.
+   향후 콘텐츠가 자주 넘치면 드릴처럼 자동 분할 로직(renderNassPagesAsync) 추가 검토. */
+.page-nass .page-cards {
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 26px;
+}
+.nass-section {
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.nass-instruction {
+  font-size: 0.86rem;
+  color: var(--text);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 16px; /* 안내문과 첫 박스 사이 호흡 확보 (총 간격 ≈ 28px) */
+  line-height: 1.4;
+}
+.nass-card {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 14px 20px;
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+}
+.nass-card-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.nass-card-ko {
+  direction: ltr;
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text); /* 카드 한국어 번역 — 본문과 동일 검정 */
+  font-weight: 400; /* 500 → 400 한 단계 얇게 */
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+}
+/* 깃발: 한국어 칸 하단에 — 아랍어 측 음가 라인과 같은 높이 */
+.nass-card-flag {
+  margin-top: auto;
+  padding-top: 8px;
+}
+.nass-card-ar {
+  direction: rtl;
+  text-align: right;
+}
+.nass-arabic {
+  font-family: var(--font-ar);
+  font-size: var(--textbook-card-ar-size);
+  font-weight: 500;
+  direction: rtl;
+  line-height: 1.85;
+  color: var(--text);
+}
+.nass-arabic .hl-text { color: var(--hl-text); }
+.nass-trans {
+  font-size: var(--textbook-card-trans-size);
+  color: var(--sub-2);
+  font-style: italic;
+  direction: rtl;
+  margin-top: 6px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+/* ── 표현 페이지 ──
+   일반 .page와 동일하게 B5 고정. 교재라 페이지가 늘어나면 안 됨.
+   콘텐츠가 넘치면 잘리고 콘솔 경고로 알림. 향후 자주 넘치면
+   드릴처럼 자동 분할 로직(renderExpressionPagesAsync) 추가 검토. */
+.page-exp .page-cards {
+  flex: 1;
+  display: flex; flex-direction: column;
+  gap: 10px; /* 14 → 10 — 카드 사이 좀 더 타이트 */
+}
+.exp-card {
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 12px 20px; /* 16/22 → 12/20 — 좀 더 컴팩트 */
+  box-shadow: 0 1px 2px rgba(18,32,90,0.04);
+}
+/* 2열 레이아웃: 왼쪽 한국어 LTR, 오른쪽 아랍어 RTL */
+.exp-card-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.exp-card-ko {
+  direction: ltr;
+  text-align: left;
+}
+.exp-card-ar {
+  direction: rtl;
+  text-align: right;
+}
+.exp-arabic-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  direction: rtl;
+  gap: 6px;
+}
+.exp-arabic {
+  font-family: var(--font-ar);
+  font-size: var(--textbook-card-ar-size);
+  font-weight: 500;
+  direction: rtl;
+  line-height: 1.4; /* 1.5 → 1.4 — 조금 타이트 */
+  color: var(--text);
+}
+.exp-arabic .hl-text { color: var(--hl-text); }
+.exp-trans {
+  font-size: var(--textbook-card-trans-size);
+  color: var(--sub-2);
+  font-style: italic;
+  direction: rtl;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+}
+.exp-korean {
+  font-size: 0.92rem;
+  color: var(--text); /* 카드 한국어 번역 — 본문과 동일 검정 (학습 대상 카드의 핵심 정보) */
+  font-weight: 400; /* 500 → 400 한 단계 얇게 */
+  line-height: 1.45;
+}
+.exp-script {
+  margin-top: 10px; /* 14 → 10 */
+  padding-top: 8px; /* 12 → 8 */
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--sub);
+  line-height: 1.6; /* 1.75 → 1.6 */
+  direction: ltr;
+  text-align: left;
+}
+.exp-script + .exp-script { margin-top: 8px; padding-top: 0; border-top: none; }
+
+/* ── 4열 표 (오른쪽부터 시작) ── */
+.repertory {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  direction: rtl; /* 첫 DOM 셀이 시각적으로 오른쪽에 위치 */
+}
+.repertory td {
+  padding: 7px 6px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+/* 아랍어 + 라하 깃발 인라인 묶음 — 같은 높이 */
+.ar-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+/* .ar-text는 inline 유지 — inline-block은 새 formatting context를 만들어
+   Safari가 안에 들어 있는 <span class="hl-text">에서 Arabic shaping을 끊는 원인.
+   inline 으로 유지하면 셰이핑 컨텍스트가 텍스트 전체에서 보존된다. */
+.ar-line .ar-text { display: inline; }
+/* 라하(방언) 국기 — 작은 원형 아이콘 */
+.lahja-flag {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: inline-flex;
+  background: rgba(18,32,90,0.06);
+}
+.lahja-flag img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* 다중 라하 컨테이너 (2개 이상일 때) */
+.lahja-flags {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.repertory tr:last-child td { border-bottom: none; }
+.repertory td.ar {
+  font-family: var(--font-ar);
+  font-size: 1.08rem;
+  font-weight: 500; /* 600 → 500 한 단계 얇게 */
+  direction: rtl;
+  color: var(--text);
+}
+.repertory td.ko {
+  direction: ltr;
+  font-size: 0.84rem;
+  color: var(--text);
+}
+/* 페어 모드일 때 페어 사이 점선 구분 — DOM 2번째 셀 = 페어1 끝 */
+.repertory.pairs td:nth-child(2) {
+  border-left: 1px dashed var(--border);
+}
+.repertory .trans {
+  display: block;
+  font-family: var(--font-kr);
+  font-size: 0.68rem;
+  color: var(--sub-2);
+  font-style: italic;
+  direction: ltr;
+  margin-top: 1px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+.repertory td.empty { background: transparent; }
+
+/* 인라인 강조 */
+.hl-box-inline {
+  display: inline-block;
+  border: 2px solid var(--accent);
+  background: var(--accent-bg);
+  border-radius: 6px;
+  padding: 0 5px; margin: 0 1px;
+  line-height: 1.2;
+}
+/* 색 강조만 적용 — font-weight를 변경하면 Safari/CoreText에서
+   weight 경계로 텍스트 런이 분리되어 Arabic shaping(글자 연결)이 끊긴다.
+   기본 규칙은 부모 weight를 상속(아랍어 셰이핑 보존). 셰이핑 이슈가 없는
+   Latin/Korean 컨텍스트는 아래 별도 규칙에서 bold weight를 추가. */
+.hl-text { color: var(--hl-text); }
+/* Latin 음가 + 한국어 — 셰이핑 영향 없으니 bold로 강조 명확하게 */
+.trans .hl-text,
+.drill-trans .hl-text,
+.exp-trans .hl-text,
+.nass-trans .hl-text,
+.pattern-trans .hl-text { font-weight: 700; }
+/* Arabic 강조는 어디서든 weight 변경 금지 (Safari/CoreText 셰이핑 보존) */
+.hl-text.hl-ar { font-weight: inherit !important; }
+
+/* ── 푸터 (로고 + 회사명 + 저작권 + 페이지번호) ── */
+.page-foot {
+  background: var(--gray-area);
+  margin-top: auto;          /* 항상 페이지 바닥에 고정(콘텐츠 짧으면 위쪽에 여백) */
+  padding: 26px 44px 48px;   /* 하단 여백 넉넉히(출력본에서 바닥에 붙지 않게) — footer 살짝 내림 */
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.7rem;
+  color: var(--sub-2);
+  letter-spacing: 0.3px;
+}
+.page-foot .left {
+  display: flex; align-items: center; gap: 10px;
+}
+.page-foot .brand-logo {
+  height: 14px; width: auto; display: block;
+  opacity: 0.9;
+}
+.page-foot .brand-text {
+  font-weight: 700; color: var(--text);
+}
+.page-foot .copyright {
+  color: var(--sub-2);
+}
+.page-foot .pgnum {
+  font-weight: 500;
+}
+.page-foot .pgnum::before {
+  content: '|'; margin-right: 8px; opacity: 0.5;
+}
+
+.notice {
+  text-align: center; padding: 80px 20px;
+  color: var(--sub-2); font-size: 0.95rem;
+}
+
+/* ── 인쇄용 (B5 PDF 출력 = 화면 미리보기 1:1) ──
+   • @page size로 Chrome이 종이 사이즈를 B5(182×257)로 정확히 잡음 (기본 A4 방지)
+   • margin: 0 으로 헤더/푸터 영역 제거 (URL/날짜/페이지번호 자동 노출 방지)
+   • print-color-adjust: exact 로 회색 배경/카드/박스 색이 인쇄에서도 그대로 유지 */
+@page {
+  size: 182mm 257mm;
+  margin: 0;
+}
+@media print {
+  html, body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .unit-picker { display: none; }
+  .page {
+    width: 182mm;
+    height: 257mm;
+    margin: 0;          /* 페이지 사이 여백 0 (각 .page = 한 종이) */
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-of-type { page-break-after: auto; break-after: auto; }
+}
+
+/* ── 모바일/태블릿 적응형 ─────────────────────────────
+   B5 고정폭 → 화면폭에 맞춰 풀폭 스크롤 흐름. 디자인 토큰/구조는 그대로 유지.
+   ⚠️ `screen and` 한정 — 인쇄(@media print) 시 발동 금지. B5 페이지의 CSS 폭은
+   ~688px라 print 컨텍스트에서도 768px breakpoint에 걸려 모바일 레이아웃으로
+   무너지는 사고 방지. */
+@media screen and (max-width: 768px) {
+  body { padding: 0; background: var(--bg); }
+
+  /* 유닛 픽커: 상단 고정 */
+  .unit-picker {
+    position: sticky; top: 0; z-index: 20;
+    margin: 0; padding: 10px 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    max-width: none;
+  }
+
+  /* 페이지: 풀폭, 자동 높이, 그림자/라운드 제거 */
+  .page {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    aspect-ratio: auto;
+    margin: 0 0 8px;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .page-drill, .page-exp, .page-nass {
+    min-height: auto;
+  }
+
+  /* 헤더: 패딩 축소 */
+  .page-head { padding: 22px 16px 18px; gap: 12px; }
+  .head-category { font-size: 0.7rem; }
+  .head-unit-box { font-size: 1rem; }
+  .head-unit-box .ub-l, .head-unit-box .ub-r { padding: 7px 16px; }
+  .head-unit-box .ub-num { font-size: 1.2rem; }
+  .head-unit-box .ub-text { font-size: 0.78rem; }
+
+  /* 본문 영역: 좌우 패딩 줄임, 카드 살짝 안쪽으로 */
+  .page-body { padding: 12px 12px 14px; }
+  .body-card { padding: 22px 20px 20px; gap: 16px; }
+  .page-cards { padding: 12px 12px 14px; }
+
+  /* 일러스트는 비율 그대로 (16:9) — 모바일에서도 자연스러움 */
+
+  /* 패턴 본문 폰트 축소 */
+  .pattern-arabic { font-size: 1.85rem; line-height: 1.4; }
+  .pattern-korean { font-size: 0.95rem; }
+  .pattern-trans { font-size: 0.78rem; }
+  .pattern-script { font-size: 0.85rem; }
+  .pattern-script p, .pattern-script li { line-height: 1.7; }
+
+  /* baseline은 1/6 비례 그대로 — 모바일 폭에 자동 적응 */
+  .pattern-arabic.baseline { padding: 16px 0 14px; }
+  .pattern-arabic.baseline .blch { gap: 10px; }
+  .pattern-arabic.baseline .blch .l { font-size: 1.6rem; }
+  .pattern-arabic.baseline .blch .l-triple { font-size: 0.74rem; }
+  .pattern-arabic.baseline .blch .lbl { font-size: 0.6rem; }
+
+  /* 표현 카드: 2열 → 1열 스택 */
+  .exp-card { padding: 14px 16px; }
+  .exp-card-cols { grid-template-columns: 1fr; gap: 10px; }
+  .exp-card-ko { text-align: center; order: 2; }
+  .exp-card-ar { text-align: center; order: 1; }
+  .exp-arabic-line { justify-content: center; }
+  .exp-arabic { font-size: 1.25rem; }
+  .exp-trans { text-align: center; }
+
+  /* 나쓰 카드: 2열 → 1열 스택 + 깃발 좌측 정렬 */
+  .nass-card { padding: 14px 18px; }
+  .nass-card-cols { grid-template-columns: 1fr; gap: 8px; align-items: stretch; }
+  .nass-card-ko {
+    text-align: left; line-height: 1.6;
+    display: block; font-size: 0.92rem;
+  }
+  .nass-card-ar { text-align: right; }
+  .nass-arabic { font-size: 1.15rem; line-height: 1.85; }
+  .nass-card-flag { margin-top: 6px; padding-top: 0; }
+
+  /* 드릴 5열 테이블 — 모바일에선 자동 분할 */
+  .drill-five { padding: 10px 12px; }
+  .drill-five td { padding: 8px 4px; }
+  .drill-five td.ar { font-size: 0.95rem; }
+  .drill-five .trans { font-size: 0.62rem; }
+  .drill-instruction { font-size: 0.82rem; }
+
+  /* 레퍼토리 표 — 셀 패딩 축소, 폰트 축소 */
+  .repertory td { padding: 6px 4px; }
+  .repertory td.ar { font-size: 0.98rem; }
+  .repertory td.ko { font-size: 0.78rem; }
+  .repertory .trans { font-size: 0.62rem; }
+
+  /* 푸터: 카피라이트 숨김 (좁아서 줄바꿈 방지) */
+  .page-foot { padding: 10px 14px; font-size: 0.66rem; }
+  .page-foot .copyright { display: none; }
+  .page-foot .brand-text { font-size: 0.72rem; }
+}
+
+/* 가장 좁은 모바일 (≤375px) — iPhone SE 등 */
+@media screen and (max-width: 375px) {
+  .page-head { padding: 18px 12px 14px; }
+  .page-body { padding: 10px 10px 12px; }
+  .body-card { padding: 18px 16px 16px; }
+  .page-cards { padding: 10px 10px 12px; }
+  .pattern-arabic { font-size: 1.65rem; }
+  .pattern-arabic.baseline .blch .l { font-size: 1.45rem; }
+  .pattern-arabic.baseline .blch .l-triple { font-size: 0.65rem; }
+  .pattern-arabic.baseline .blch .lbl { font-size: 0.55rem; }
+  .exp-arabic, .nass-arabic { font-size: 1.1rem; }
+  .drill-five td.ar { font-size: 0.85rem; }
+  .repertory td.ar { font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="unit-picker">
+  <span class="pl">Unit</span>
+  <div id="unit-buttons" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+</div>
+
+<div id="page-area"><div class="notice">데이터 로딩 중…</div></div>
+
+<script>
+const SHEET_ID = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
+
+// dev/prod 판정 — localhost/127.0.0.1/file: 은 dev (draft 노출), 그 외 prod (confirmed만)
+const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+// status 필터: confirmed=항상, draft=dev에서만, 그 외=숨김
+const okStatus = r => {
+  const s = ((r && r.status) || '').trim().toLowerCase();
+  if (s === 'confirmed') return true;
+  if (s === 'draft')     return IS_DEV;
+  return false;
+};
+
+/* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
+   1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
+   - 탭: rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
+   - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
+   - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
+const TAB_145 = {
+  units:'유닛unit', unit:'유닛unit', pattern:'데이터시트sheet',
+  repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
+  exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
+  nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
+};
+const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
+const TYPE_145 = { rep:'repertory', drill:'drilla' };
+function compat145(r) {
+  if (!r || typeof r !== 'object') return r;
+  const t = String(r.type||'').toLowerCase().trim();
+  if (TYPE_145[t]) r.type = TYPE_145[t];
+  const p = String(r.ptn||'').trim();
+  if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
+  return r;
+}
+// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음(임시 규칙). 값 없으면 이미지 없음.
+const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
+// 챕터 라벨(All That Arabic N) — 모든 페이지 head 공통 템플릿. renderUnit에서 _curChapter 세팅.
+let _curChapter = '';
+const chapterLabel = () => _curChapter ? `<div class="head-chapter">All That Arabic ${_curChapter}</div>` : '';
+
+// ── 시트 로더 ──────────────────────────────────────
+const _cache = {};
+function _parseGvizTable(resp, name) {
+  if (!resp?.table) throw new Error('no data: ' + name);
+  const headers = resp.table.cols.map(c => (c.label || '').toLowerCase().trim());
+  return (resp.table.rows || []).map(r => {
+    const o = {};
+    headers.forEach((h, i) => {
+      if (!h) return;
+      const cell = r.c?.[i];
+      const v = (cell && cell.v != null) ? cell.v : '';
+      o[h] = v != null ? String(v).trim() : '';
+    });
+    // 호환: 음가 컬럼명이 transliteration → note로 바뀌었으니 양쪽 키 모두 채움
+    if (o.note && !o.transliteration) o.transliteration = o.note;
+    if (o.transliteration && !o.note) o.note = o.transliteration;
+    // 호환: 유닛 키 컬럼명이 시트마다 u / ref_unit 혼용 → 양쪽 키 모두 채움
+    if (o.u && !o.ref_unit) o.ref_unit = o.u;
+    if (o.ref_unit && !o.u) o.u = o.ref_unit;
+    return compat145(o);
+  }).filter(r => Object.values(r).some(v => v !== ''));
+}
+async function _fetchViaCors(name) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(name)}&headers=1`;
+  const r = await fetch(url, { mode: 'cors' });
+  if (!r.ok) throw new Error('http ' + r.status + ' ' + name);
+  const text = await r.text();
+  const m = text.match(/setResponse\(([\s\S]*)\);?\s*$/);
+  if (!m) throw new Error('parse fail: ' + name);
+  return _parseGvizTable(JSON.parse(m[1]), name);
+}
+function _fetchViaJsonp(name) {
+  return new Promise((resolve, reject) => {
+    const cb = '__gv_' + name.replace(/\W/g, '_') + '_' + Date.now();
+    const t = setTimeout(() => { delete window[cb]; reject(new Error('timeout: ' + name)); }, 15000);
+    window[cb] = resp => {
+      clearTimeout(t); delete window[cb];
+      if (script.parentNode) script.parentNode.removeChild(script);
+      try { resolve(_parseGvizTable(resp, name)); } catch (e) { reject(e); }
+    };
+    const script = document.createElement('script');
+    script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json;responseHandler:${cb}&sheet=${encodeURIComponent(name)}&headers=1`;
+    script.onerror = () => { clearTimeout(t); delete window[cb]; reject(new Error('jsonp fail: ' + name)); };
+    document.head.appendChild(script);
+  });
+}
+async function fetchSheet(name) {
+  const real = resolveTab145(name);            // 논리탭 → 1.4.5 실제 탭
+  if (_cache[real]) return _cache[real];
+  let lastErr;
+  for (const fn of [_fetchViaCors, _fetchViaJsonp]) {
+    try { const rows = await fn(real); _cache[real] = rows; return rows; }
+    catch (e) { lastErr = e; console.warn('[fetchSheet]', fn.name, real, e.message); }
+  }
+  throw lastErr || new Error('fetch failed: ' + real);
+}
+
+// ── 유틸 ──────────────────────────────────────────
+function parseInline(s) {
+  if (!s) return '';
+  return s
+    .replace(/<br\s*\/?>/gi, '<br>')
+    .replace(/_([^_\n]+)_/g, '<span class="hl-box-inline">$1</span>')
+    // *…* 안에 Arabic이 있으면 hl-ar 클래스 추가 → weight 상속(셰이핑 보존)
+    .replace(/\*([^*\n]+)\*/g, (_, m) => {
+      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
+      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
+    })
+    .replace(/\r\n|\r|\n/g, '<br>');
+}
+// 첫 강한 방향 문자로 LTR/RTL 판정 — 마크업(`*_<tag>`) 제거 후 검사.
+// 아랍어 시작 → 'rtl', 라틴/한글 시작 → 'ltr'. (불릿/산문 줄 단위)
+function firstStrongDir(raw) {
+  const t = String(raw || '').replace(/<[^>]+>/g, '').replace(/[*_]/g, '');
+  for (const ch of t) {
+    const c = ch.codePointAt(0);
+    if ((c >= 0x0600 && c <= 0x06FF) || (c >= 0x0750 && c <= 0x077F) ||
+        (c >= 0x08A0 && c <= 0x08FF) || (c >= 0xFB50 && c <= 0xFDFF) ||
+        (c >= 0xFE70 && c <= 0xFEFF)) return 'rtl';
+    if ((c >= 0x41 && c <= 0x5A) || (c >= 0x61 && c <= 0x7A) ||
+        (c >= 0xAC00 && c <= 0xD7A3) || (c >= 0x3130 && c <= 0x318F)) return 'ltr';
+  }
+  return 'ltr';
+}
+// css = 'ab' → 앱 전용. 인쇄 교재에서는 해당 행의 script(설명) 필드를 숨김.
+function isAppOnly(row) {
+  return (row?.css || '').trim().toLowerCase() === 'ab';
+}
+// 레퍼토리 셀 / 음가 공용:
+//   • 박스 마커(_..._) → 제거 (다이아크리틱 클립 문제 회피)
+//   • 색 마커(*...*) → .hl-text 색 강조 유지 (교재에서도 색 적용)
+function plain(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/_([^_\n]+)_/g, '$1')
+    .replace(/\*([^*\n]+)\*/g, (_, m) => {
+      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
+      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
+    });
+}
+const plainTrans = plain;
+function wrapArabicTokens(html) {
+  return html.replace(
+    /([؀-ۿݐ-ݿ][؀-ۿݐ-ݿ\s]*[؀-ۿݐ-ݿ]|[؀-ۿݐ-ݿ])/g,
+    '<span class="ar-tok">$1</span>'
+  );
+}
+// 스크립트(설명) 텍스트를 본문(prose+bullets)과 인용(>)으로 분리해 반환.
+// 인용은 본문 어디에 등장하든 모두 모아 한 블록으로 합쳐, 호출자가 박스 최하단에 배치 가능.
+function renderScript(text) {
+  if (!text) return { main: '', quotes: '' };
+  const lines = text.split(/\n/).map(l => l.trim());
+  let main = '';
+  const allQuotes = [];
+  let prose = [];
+  let bullets = [];
+  const flushProse = () => {
+    if (prose.length) {
+      main += `<p>${prose.map(l => wrapArabicTokens(parseInline(l))).join(' ')}</p>`;
+      prose = [];
+    }
+  };
+  const flushBullets = () => {
+    if (bullets.length) {
+      // 줄 시작 언어로 dir 부여 — 아랍어 시작이면 RTL(점이 오른쪽), 그 외 LTR
+      main += `<ul>${bullets.map(l => `<li dir="${firstStrongDir(l)}">${wrapArabicTokens(parseInline(l))}</li>`).join('')}</ul>`;
+      bullets = [];
+    }
+  };
+  for (const l of lines) {
+    if (!l) { flushProse(); flushBullets(); continue; }
+    if (l.startsWith('>')) {
+      flushProse(); flushBullets();
+      allQuotes.push(l.replace(/^>\s*/, ''));
+      continue;
+    }
+    const m = l.match(/^[-•*]\s+(.+)$/);
+    if (m) { flushProse(); bullets.push(m[1]); }
+    else   { flushBullets(); prose.push(l); }
+  }
+  flushProse(); flushBullets();
+  const quotes = allQuotes.length
+    ? `<blockquote>${allQuotes.map(l => wrapArabicTokens(parseInline(l))).join('<br>')}</blockquote>`
+    : '';
+  return { main, quotes };
+}
+function renderBaseline(arabic, transliteration) {
+  // 데이터에 \n 으로 두 줄 들어 있으면 2-row 모드:
+  //   1줄: 단일 글자 (윗줄, 큼)
+  //   2줄: 3-글자 연결형 또는 위치별 형태 (아랫줄, 살짝 작게)
+  // 한 줄이면 기존 single-row 모드 (모음/수쿤 등)
+  // 토큰 구분자: `|` (한 토큰 안에 공백이나 콤마가 들어가는 경우 대응)
+  const lines = String(arabic || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const labels = String(transliteration || '').trim().split(/\s+/);
+  const splitTokens = (line) => {
+    const sep = line.includes('|') ? /\s*\|\s*/ : /\s+/;
+    return line.split(sep).map(t => t.trim()).filter(Boolean);
+  };
+
+  if (lines.length >= 2) {
+    const top = splitTokens(lines[0]);
+    const bot = splitTokens(lines[1]);
+    const items = top.map((t, i) => `
+      <span class="blch">
+        <span class="l">${t}</span>
+        ${bot[i] ? `<span class="l-triple">${bot[i]}</span>` : ''}
+        ${labels[i] ? `<span class="lbl">${plainTrans(labels[i])}</span>` : ''}
+      </span>`).join('');
+    return `<div class="pattern-arabic baseline has-triple"><div class="bl-line"></div>${items}</div>`;
+  }
+
+  const tokens = lines[0] ? splitTokens(lines[0]) : [];
+  const items = tokens.map((t, i) => `
+    <span class="blch">
+      <span class="l">${t}</span>
+      ${labels[i] ? `<span class="lbl">${plainTrans(labels[i])}</span>` : ''}
+    </span>`).join('');
+  return `<div class="pattern-arabic baseline"><div class="bl-line"></div>${items}</div>`;
+}
+
+// css = 'c' — baseline과 동일 그리드 구조이지만 기준선 없음 + 음가 라벨 미표시 + 수직 가운데 정렬.
+function renderC(arabic) {
+  const lines = String(arabic || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const splitTokens = (line) => {
+    const sep = line.includes('|') ? /\s*\|\s*/ : /\s+/;
+    return line.split(sep).map(t => t.trim()).filter(Boolean);
+  };
+
+  if (lines.length >= 2) {
+    const top = splitTokens(lines[0]);
+    const bot = splitTokens(lines[1]);
+    const items = top.map((t, i) => `
+      <span class="blch">
+        <span class="l">${t}</span>
+        ${bot[i] ? `<span class="l-triple">${bot[i]}</span>` : ''}
+      </span>`).join('');
+    return `<div class="pattern-arabic c has-triple">${items}</div>`;
+  }
+
+  const tokens = lines[0] ? splitTokens(lines[0]) : [];
+  const items = tokens.map(t => `
+    <span class="blch">
+      <span class="l">${t}</span>
+    </span>`).join('');
+  return `<div class="pattern-arabic c">${items}</div>`;
+}
+
+// 앱과 동일하게 첫 글자의 기준선을 측정해서 가로선 위치 조정
+function adjustBaselines() {
+  document.querySelectorAll('.pattern-arabic.baseline').forEach(wrap => {
+    const firstLetter = wrap.querySelector('.l');
+    const line = wrap.querySelector('.bl-line');
+    if (!firstLetter || !line) return;
+    const probe = document.createElement('span');
+    probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline;overflow:hidden;';
+    firstLetter.appendChild(probe);
+    const wrapRect = wrap.getBoundingClientRect();
+    const probeRect = probe.getBoundingClientRect();
+    probe.remove();
+    if (wrapRect.height > 0) {
+      line.style.top = (probeRect.bottom - wrapRect.top) + 'px';
+    }
+  });
+}
+
+// ── 표 ─────────────────────────────────────────────
+// 표 자체에 dir:rtl → 첫 DOM 셀이 시각적으로 가장 오른쪽
+// 모드 결정:
+//   • 항목 중 하나라도 css = 'five' → 5열 아랍어 (korean 무시)
+//   • 한국어가 모두 비어 있음 → 5열 아랍어 (fallback)
+//   • 그 외 → 2 페어 모드 (DOM: ar-ko-ar-ko, 시각적 우→좌)
+function renderRepertory(items, showTrans) {
+  if (!items.length) return '';
+  const cssOf = it => (it.css || '').trim().toLowerCase();
+  const useTwo = items.some(it => cssOf(it) === 'two');
+  const useSix = items.some(it => cssOf(it) === 'six');
+  const useFive = items.some(it => cssOf(it) === 'five');
+  const hasKorean = items.some(d => (d.korean || '').trim());
+  const rows = [];
+
+  // 아랍어 + 라하 깃발 인라인 묶음 (셀 안에서 같은 높이)
+  // dir:rtl 상위에서 시각상 [flag arabic] (좌→우)
+  const arLine = (it, txt) =>
+    `<span class="ar-line"><span class="ar-text">${txt}</span>${lahjaFlag(it?.lahja)}</span>`;
+
+  // 우선순위: two > five > 디폴트(페어/5열-fallback)
+  if (useTwo) {
+    const cells = items.map(it => {
+      const trans = (showTrans && it.transliteration)
+        ? `<span class="trans">${plain(it.transliteration)}</span>` : '';
+      const ko = it.korean ? `<span class="ko">${plain(it.korean)}</span>` : '';
+      return `<div class="two-cell">${ko}<span class="two-body">${arLine(it, plain(it.arabic || ''))}${trans}</span></div>`;
+    }).join('');
+    return `<div class="repertory cols-two">${cells}</div>`;
+  }
+
+  // five/six 공용 — six는 five와 동일 레이아웃에 열만 6칸(table-layout:fixed라 칸만 좁아짐)
+  if (useFive || useSix) {
+    const n = useSix ? 6 : 5;
+    for (let i = 0; i < items.length; i += n) {
+      const cells = [];
+      for (let j = 0; j < n; j++) {
+        const it = items[i + j];
+        if (!it) { cells.push('<td class="ar empty"></td>'); continue; }
+        const trans = (showTrans && it.transliteration)
+          ? `<span class="trans">${plain(it.transliteration)}</span>` : '';
+        cells.push(`<td class="ar">${arLine(it, plain(it.arabic || ''))}${trans}</td>`);
+      }
+      rows.push(`<tr>${cells.join('')}</tr>`);
+    }
+    return `<table class="repertory css-five"><tbody>${rows.join('')}</tbody></table>`;
+  }
+
+  // 페어 모드 — 행당 2 페어. DOM 순: ar1, ko1, ar2, ko2
+  for (let i = 0; i < items.length; i += 2) {
+    const a = items[i], b = items[i + 1];
+    const cellPair = it => {
+      if (!it) return `<td class="ar empty"></td><td class="ko empty"></td>`;
+      const trans = (showTrans && it.transliteration)
+        ? `<span class="trans">${plain(it.transliteration)}</span>` : '';
+      return `<td class="ar">${arLine(it, plain(it.arabic || ''))}${trans}</td>` +
+             `<td class="ko">${plain(it.korean || '')}</td>`;
+    };
+    rows.push(`<tr>${cellPair(a)}${cellPair(b)}</tr>`);
+  }
+  return `<table class="repertory pairs"><tbody>${rows.join('')}</tbody></table>`;
+}
+
+// ── 라하(방언) 코드 → 국기 아이콘 ──
+// 다중 라하 지원: "GLF, LEV" / "GLF LEV" / "glf,lev" 등 콤마/공백 구분 다 인식
+const LAHJA_FLAG = {
+  EGY: '../assets/icons/icon-egypt.png',
+  EGP: '../assets/icons/icon-egypt.png',
+  LEV: '../assets/icons/icon-lebanon.png',
+  GLF: '../assets/icons/icon-saudi.png',
+};
+function lahjaFlag(lahja) {
+  if (!lahja) return '';
+  const codes = String(lahja).split(/[,\s]+/).map(s => s.trim().toUpperCase()).filter(Boolean);
+  const flags = codes.map(code => {
+    const src = LAHJA_FLAG[code];
+    return src ? `<span class="lahja-flag" title="${code}"><img src="${src}" alt="${code}"></span>` : '';
+  }).filter(Boolean);
+  if (!flags.length) return '';
+  return flags.length === 1 ? flags[0] : `<span class="lahja-flags">${flags.join('')}</span>`;
+}
+
+
+
+// ── 페이지 1장 ─────────────────────────────────────
+function renderPatternPage(unit, pattern, drills, opts) {
+  const { patternIdx, pageNo, showTrans } = opts;
+
+  const cssMode = (pattern.css || '').trim().toLowerCase();
+  const isBaseline = cssMode === 'baseline';
+  const isC = cssMode === 'c';
+  // 기본(css 없음) 패턴: 음가는 항상 표시(학생앱과 통일). baseline/c는 자체 렌더.
+  const showLineTrans = pattern.transliteration && !isBaseline && !isC;
+
+  // 유닛 번호 (A01 → 1), 패턴 번호 (ptn001_… → 001)
+  const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
+  const ptnNo = ((pattern['id_ptn(no)'] || '').match(/(\d+)/)?.[1])
+              || String(patternIdx + 1).padStart(3, '0');
+
+  // baseline / c 모드: 가운데 정렬 (별도 wrapper 없이)
+  // 일반 모드: 우측 정렬 wrapper 안에 아랍어 + 음가
+  const arabicSection = isBaseline
+    ? renderBaseline(pattern.arabic, pattern.transliteration)
+    : isC
+    ? renderC(pattern.arabic)
+    : `<div class="body-arabic-block">
+         <div class="pattern-arabic">${parseInline(pattern.arabic || '')}</div>
+         ${showLineTrans ? `<div class="pattern-trans">${plainTrans(pattern.transliteration)}</div>` : ''}
+       </div>`;
+
+  return `
+  <article class="page">
+    <div class="page-head">
+      <div class="head-category">올댓아라빅 패턴</div>
+      ${chapterLabel()}
+      <div class="head-unit-box">
+        <span class="ub-l">
+          <span class="ub-lbl">UNIT</span>
+          <span class="ub-num">${unitNum}</span>
+        </span>
+        <span class="ub-r">
+          <span class="ub-lbl">pattern</span>
+          <span class="ub-num">${ptnNo}</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="page-body">
+      ${(opts.isFirstPattern && hasImg(pattern)) ? `<div class="illustration"><img src="${patternIllustrationUrl(unit.u)}" alt="" onerror="this.parentElement.remove()"></div>` : ''}
+      <div class="body-card">
+        ${arabicSection}
+        ${pattern.korean ? `<div class="pattern-korean">${parseInline(pattern.korean)}</div>` : ''}
+        ${(() => {
+          if (!pattern.script || isAppOnly(pattern)) return '';
+          const { main, quotes } = renderScript(pattern.script);
+          return (main ? `<div class="pattern-script">${main}</div>` : '')
+               + (quotes ? `<div class="pattern-quotes">${quotes}</div>` : '');
+        })()}
+      </div>
+    </div>
+
+    ${drills.length ? `
+    <div class="page-cards">
+      <div class="card">${renderRepertory(drills, showTrans)}</div>
+    </div>
+    ` : ''}
+
+    <div class="page-foot">
+      <div class="left">
+        <img class="brand-logo" src="../assets/ata-logo2.png" alt="">
+        <span class="brand-text">MARKAZARABIC</span>
+        <span class="copyright">© 2026 all rights reserved</span>
+      </div>
+      <div class="pgnum">${String(pageNo).padStart(2, '0')}</div>
+    </div>
+  </article>`;
+}
+
+// ── 빈칸 마스킹 (drillB) — *X* → 회색 음영 박스 + 글자는 그대로 두되 색만 배경에 맞춰 숨김 ──
+// 글자를 보존하면 (1) Arabic shaping(글자 연결)이 끊기지 않음 (2) 박스 폭이 정답 글자만큼 자연스럽게 잡힘
+// (3) 학생이 빈칸 위에 연필로 답을 쓸 수 있음. 정답 표시는 .drill-blank의 color만 풀어 주면 됨.
+// 아랍어인 경우 tatweel(ـ)은 더 이상 필요 없음 — 원래 글자가 그대로 남아 있어 연결이 자연스럽게 유지됨.
+function maskBlanks(s) {
+  if (!s) return '';
+  // 1. HTML escape + _..._ 박스 마커 제거
+  let str = String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/_([^_\n]+)_/g, '$1');
+  // 2. *X* → 글자 그대로 + .drill-blank 박스 (CSS에서 color = bg로 숨김)
+  return str.replace(/\*([^*\n]+)\*/g, (_match, inner) =>
+    `<span class="drill-blank">${inner}</span>`
+  );
+}
+
+// ── 드릴 페이지 빌더 ──
+//   B안 페이지 분할: ref_ptn 박스를 atomic 단위로 묶어서 B5 페이지에 빈 패킹.
+//   - 박스 중간에서 자르지 않음 (atomic)
+//   - 안내문(다음을 듣고 …)은 섹션의 첫 박스와 함께 다님 — 첫 박스가 다음 페이지로 밀리면 안내문도 같이 이동
+//   - 같은 섹션 안에서 페이지가 이어지더라도, 이어지는 페이지에는 안내문 없음 (한 번만)
+//   - DrillA→DrillB 자연 경계가 페이지 경계와 맞으면 거기서 분리
+//   - off-screen 측정으로 실제 박스 높이를 잰 후 페이지 budget으로 패킹
+// 드릴 안내문 — 디폴트 + 챕터별 override.
+// 챕터 0 (알파벳, A01-A06)에서는 학습 단위가 단어가 아니라 글자라서 DrillB 안내문을
+// "말" 대신 "글자"로 변경. 향후 챕터별 변형이 늘면 같은 패턴으로 추가.
+const DRILL_INSTR_A = '다음을 듣고 따라 읽어 보세요';
+const DRILL_INSTR_B_DEFAULT = '다음을 듣고 빈 칸에 들어갈 말을 유추해 보세요';
+const DRILL_INSTR_B_CHAPTER0 = '다음을 듣고 빈 칸에 들어갈 글자를 유추해 보세요';
+function _drillInstrBFor(unitU) {
+  // A01-A06 = 챕터 0 (알파벳)
+  return /^A0[1-6]$/i.test(unitU || '') ? DRILL_INSTR_B_CHAPTER0 : DRILL_INSTR_B_DEFAULT;
+}
+
+// 박스 1개 분량의 HTML 생성 (드릴A/B 공용)
+function _renderDrillBoxHtml(items, isB) {
+  const renderAr = (s) => isB ? maskBlanks(s) : parseInline(s);
+  const renderTr = (s) => isB ? maskBlanks(s) : plain(s);
+  const transOf = (it) => it.transliteration || it.note || '';
+
+  const cssOf = it => (it.css || '').trim().toLowerCase();
+  const useTwo = items.some(it => cssOf(it) === 'two');
+  const useSix = items.some(it => cssOf(it) === 'six');
+  const useFive = items.some(it => cssOf(it) === 'five');
+  // 우선순위: two > five/six > 디폴트
+  if (useTwo) {
+    const cells = items.map(it => {
+      const trv = transOf(it);
+      const tr = trv ? `<span class="trans">${renderTr(trv)}</span>` : '';
+      const ko = it.korean ? `<span class="ko">${plain(it.korean)}</span>` : '';
+      return `<div class="two-cell">${ko}` +
+        `<span class="two-body">` +
+        `<span class="ar-line"><span class="ar-text">${renderAr(it.arabic || '')}</span>${lahjaFlag(it.lahja)}</span>` +
+        `${tr}</span></div>`;
+    }).join('');
+    return `<div class="drill-two"><div class="cols-two">${cells}</div></div>`;
+  }
+  // five/six 공용 — six는 five와 동일 레이아웃에 열만 6칸(table-layout:fixed라 칸만 좁아짐)
+  if (useFive || useSix) {
+    const n = useSix ? 6 : 5;
+    const rows = [];
+    for (let i = 0; i < items.length; i += n) {
+      const cells = [];
+      for (let j = 0; j < n; j++) {
+        const it = items[i + j];
+        if (!it) { cells.push('<td class="ar empty"></td>'); continue; }
+        const trv = transOf(it);
+        const tr = trv ? `<span class="trans">${renderTr(trv)}</span>` : '';
+        cells.push(`<td class="ar"><span class="ar-line"><span class="ar-text">${renderAr(it.arabic || '')}</span>${lahjaFlag(it.lahja)}</span>${tr}</td>`);
+      }
+      rows.push(`<tr>${cells.join('')}</tr>`);
+    }
+    return `<div class="drill-five css-five"><table><tbody>${rows.join('')}</tbody></table></div>`;
+  }
+  // 디폴트(non-five) 모드 — 한 드릴 항목 = 한 박스(.drill-row).
+  // 박스 안: 좌 한국어 (top-align, 나쓰 방식) / 우 아랍어 + 음가
+  // 같은 ref_ptn 그룹의 카드들은 .drill-row-gap(타이트한 간격)으로 묶이고,
+  // 그룹 간은 .drill-box-gap(14px)으로 분리. 모바일에서 행 단위 하이라이트 가능.
+  return items.map(it => {
+    const trv = transOf(it);
+    const tr = trv ? `<div class="drill-trans">${renderTr(trv)}</div>` : '';
+    const koHtml = it.korean ? plain(it.korean) : '';
+    return `<div class="drill-row">
+      <div class="drill-row-ko">${koHtml}</div>
+      <div class="drill-row-ar">
+        <span class="ar-line"><span class="ar-text">${renderAr(it.arabic || '')}</span>${lahjaFlag(it.lahja)}</span>
+        ${tr}
+      </div>
+    </div>`;
+  }).join('<div class="drill-row-gap"></div>');
+}
+
+// 드릴 atom 빌드: 한 섹션을 ref_ptn 그룹별로 쪼개서 atom 배열로 변환
+function _buildDrillAtoms(drills, isB, instruction, sectionId) {
+  if (!drills.length) return [];
+  const groups = new Map();
+  drills.forEach(it => {
+    const ref = (it.ref_ptn || '').trim();
+    const mode = (it.css || '').trim().toLowerCase() === 'two' ? 'two' : 'grid';  // five/two 분리
+    const key = ref + '||' + mode;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(it);
+  });
+  const orderedKeys = [...groups.keys()].sort((a, b) => {
+    const [ra, ma] = a.split('||'), [rb, mb] = b.split('||');
+    if (ra === '' && rb !== '') return 1;
+    if (ra !== '' && rb === '') return -1;
+    if (ra !== rb) return ra.localeCompare(rb);
+    return ma === mb ? 0 : (ma === 'grid' ? -1 : 1);  // grid(five) 먼저, two 뒤
+  });
+  return orderedKeys.map((k, i) => {
+    const mode = k.split('||')[1];
+    // 안내문은 각 css모드(grid/two)의 첫 atom에 붙인다 → five 페이지와 two 페이지 모두 안내문 표시
+    const isFirstOfMode = orderedKeys.findIndex(kk => kk.split('||')[1] === mode) === i;
+    return {
+      section: sectionId,           // 'A' or 'B'
+      isFirstInSection: isFirstOfMode,
+      instruction,
+      boxHtml: _renderDrillBoxHtml(groups.get(k), isB),
+    };
+  });
+}
+
+// 페이지 헤더/푸터 — 드릴 페이지 셸
+function _drillPageShell(unitNum, pageNo, innerHtml) {
+  return `
+  <article class="page page-drill">
+    <div class="page-head">
+      <div class="head-category">올댓아라빅 드릴</div>
+      ${chapterLabel()}
+      <div class="head-unit-box">
+        <span class="ub-l">
+          <span class="ub-lbl">UNIT</span>
+          <span class="ub-num">${unitNum}</span>
+        </span>
+        <span class="ub-r">
+          <span class="ub-text">Drill</span>
+        </span>
+      </div>
+    </div>
+    <div class="page-cards">${innerHtml}</div>
+    <div class="page-foot">
+      <div class="left">
+        <img class="brand-logo" src="../assets/ata-logo2.png" alt="">
+        <span class="brand-text">MARKAZARABIC</span>
+        <span class="copyright">© 2026 all rights reserved</span>
+      </div>
+      <div class="pgnum">${String(pageNo).padStart(2, '0')}</div>
+    </div>
+  </article>`;
+}
+
+// atom 그룹들을 .drill-section 단위로 묶어서 페이지 안 HTML 생성
+function _renderDrillPageInner(atoms) {
+  // 같은 section 연속 atom들을 묶음
+  const groups = [];
+  atoms.forEach(a => {
+    const last = groups[groups.length - 1];
+    if (last && last.section === a.section) last.atoms.push(a);
+    else groups.push({ section: a.section, atoms: [a] });
+  });
+  return groups.map(g => {
+    const inner = g.atoms.map(a => {
+      // 안내문은 첫 atom(isFirstInSection)에만. 이어지는 페이지의 atom들은 instruction 없음.
+      const instr = a.isFirstInSection ? `<div class="drill-instruction">${a.instruction}</div>` : '';
+      return `${instr}${a.boxHtml}`;
+    }).join('<div class="drill-box-gap"></div>');
+    return `<div class="drill-section">${inner}</div>`;
+  }).join('');
+}
+
+// 메인 — 드릴 페이지들을 비동기로 빌드. 측정→빈 패킹→여러 .page 반환.
+async function renderDrillPagesAsync(unit, drillA, drillB, opts) {
+  const { pageNo: startPageNo } = opts;
+  const unitNum = parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1;
+
+  const atomsA = _buildDrillAtoms(drillA, false, DRILL_INSTR_A, 'A');
+  const atomsB = _buildDrillAtoms(drillB, true,  _drillInstrBFor(unit.u), 'B');
+  const allAtoms = [...atomsA, ...atomsB];
+  if (!allAtoms.length) return { html: '', pageCount: 0 };
+
+  // ── 폰트 로딩 대기 (필수) ──
+  // 폰트 로딩 전에 측정하면 fallback 폰트 메트릭으로 잘못 계산되어
+  // Safari에서 박스마다 페이지가 분할되는 등 브라우저별 mismatch 발생.
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch (_) {}
+  }
+
+  // ── 페이지 가용 높이 (B5 고정 기하 기반 하드코딩) ──
+  // .page height: 257mm ≈ 971px (96dpi)
+  // 차감 항목:
+  //   - .page-head ≈ 130px (카테고리 + UNIT 박스 + 패딩 36/28)
+  //   - .page-foot ≈ 50px
+  //   - .page-cards padding: 18px (top) + 22px (bottom) = 40px
+  // 가용 = 971 - 130 - 50 - 40 = 751px → 안전 마진 11px 빼서 740px
+  // (브라우저별 폰트 메트릭 미세 편차 대응)
+  const PAGE_BUDGET = 740;
+
+  // ── off-screen 측정: atom 1개씩 렌더해서 높이 측정 ──
+  // .page flex 의존 제거하고 콘텐츠 폭(.page-cards 내부)만 맞춘 단순 컨테이너 사용.
+  // page-cards 내부 폭 = .page width(182mm) - .page-cards padding(좌우 44px씩 = 88px)
+  const measureRoot = document.createElement('div');
+  measureRoot.style.cssText = `
+    position: absolute; top: -99999px; left: -99999px;
+    width: calc(182mm - 88px);
+    visibility: hidden;
+  `;
+  // .drill-section과 동일한 flex/gap 환경
+  measureRoot.innerHTML = '<div class="drill-section" id="__drillMeasure"></div>';
+  document.body.appendChild(measureRoot);
+  const measureSection = measureRoot.querySelector('#__drillMeasure');
+
+  const heights = allAtoms.map(atom => {
+    const html = atom.isFirstInSection
+      ? `<div class="drill-instruction">${atom.instruction}</div>${atom.boxHtml}`
+      : atom.boxHtml;
+    measureSection.innerHTML = html;
+    return measureSection.getBoundingClientRect().height;
+  });
+  measureRoot.remove();
+
+  // ── 빈 패킹 ──
+  // 같은 페이지 내 atom 사이의 높이 보정:
+  //   - 같은 section 연속 → drill-box-gap 14px 추가
+  //   - 다른 section 전환 → page-cards.gap 36px 추가
+  // 섹션 전환 규칙 (조건부):
+  //   - DrillA + DrillB 가 합쳐서 한 페이지에 다 들어가면 → 한 페이지에 같이 (예: 1과)
+  //   - 합쳐서 페이지를 넘으면 → A → B 전환 시 강제로 새 페이지 시작 (예: 2과)
+  //   학습 흐름상 두 섹션이 페이지 중간에서 끊기는 어색함을 피하면서, 단순 유닛은 한 장에
+  //   유지해 종이 절약.
+  const BOX_GAP = 14;
+  const SECTION_GAP = 36;
+
+  // 모든 atom을 합쳤을 때 한 페이지에 들어가는지 미리 계산
+  const combinedTotalHeight = (() => {
+    let h = 0;
+    let lastSec = null;
+    for (let i = 0; i < allAtoms.length; i++) {
+      if (lastSec !== null) {
+        h += (allAtoms[i].section === lastSec) ? BOX_GAP : SECTION_GAP;
+      }
+      h += heights[i];
+      lastSec = allAtoms[i].section;
+    }
+    return h;
+  })();
+  const allFitsInOnePage = combinedTotalHeight <= PAGE_BUDGET;
+
+  const pages = [];
+  let cur = [];
+  let curHeight = 0;
+  let lastSection = null;
+
+  const flushPage = () => {
+    if (cur.length) {
+      pages.push(cur);
+      cur = [];
+      curHeight = 0;
+      lastSection = null;
+    }
+  };
+
+  allAtoms.forEach((atom, i) => {
+    const h = heights[i];
+    // 한 페이지에 다 들어가지 않을 때만: 섹션 전환(A → B) 시 강제로 페이지 분리
+    if (cur.length && atom.section !== lastSection && !allFitsInOnePage) {
+      flushPage();
+    }
+    let preGap = 0;
+    if (cur.length) preGap = (atom.section === lastSection) ? BOX_GAP : SECTION_GAP;
+    const need = h + preGap;
+    if (curHeight + need > PAGE_BUDGET && cur.length) {
+      // 페이지 높이 초과 → 페이지 마감 후 새 페이지
+      flushPage();
+      cur.push(atom);
+      curHeight = h;
+      lastSection = atom.section;
+    } else {
+      cur.push(atom);
+      curHeight += need;
+      lastSection = atom.section;
+    }
+  });
+  if (cur.length) pages.push(cur);
+
+  // 단일 박스가 BUDGET을 넘는 극단 케이스 경고
+  pages.forEach((pageAtoms, idx) => {
+    if (pageAtoms.length === 1) {
+      const h = heights[allAtoms.indexOf(pageAtoms[0])];
+      if (h > PAGE_BUDGET) {
+        console.warn(`[drill-pagination] 박스 1개가 페이지 가용 높이를 초과합니다: 유닛 ${unit.u}, 페이지 ${startPageNo + idx}, ${Math.round(h)}px > ${Math.round(PAGE_BUDGET)}px. 시트 데이터를 분할하거나 ref_ptn 그룹을 더 잘게 쪼개세요.`);
+      }
+    }
+  });
+
+  // ── 페이지 HTML 합성 ──
+  const pageHtmls = pages.map((atoms, i) =>
+    _drillPageShell(unitNum, startPageNo + i, _renderDrillPageInner(atoms))
+  );
+  return { html: pageHtmls.join(''), pageCount: pageHtmls.length };
+}
+
+// 시트의 빈 type/status 셀을 위에서 아래로 fill-down (drill 탭은 섹션 헤더 행에만 type 명시되어 있음)
+function fillDownDrill(rows) {
+  let lastType = '', lastStatus = '';
+  return rows.map(r => {
+    const t = (r.type || '').trim();
+    const s = (r.status || '').trim();
+    if (t) lastType = t;
+    if (s) lastStatus = s;
+    return { ...r, type: t || lastType, status: s || lastStatus };
+  });
+}
+
+// 일러스트 URL — GCS 컨벤션 (임시 규칙)
+//   - 표현 페이지: img/{유닛U}_exp1.png
+//   - 첫 패턴 페이지: img/{유닛U}_ptn1.png
+//   파일이 GCS 버킷에 없으면 <img> onerror에서 영역 전체 숨김 (placeholder 없음)
+//   '_exp1', '_ptn1' 접미사는 추후 베리에이션을 위한 자리. 지금은 1번만 사용.
+const ILLUSTRATION_BASE = 'https://storage.googleapis.com/all-that-arabic-145/img';
+// 초안 단계: 매 페이지 로드마다 캐시 무력화 (GCS의 max-age=3600 회피)
+const _illVer = () => `?v=${Date.now()}`;
+function illustrationUrl(u) {
+  if (!u) return '';
+  return `${ILLUSTRATION_BASE}/${encodeURIComponent(u)}_exp1.png${_illVer()}`;
+}
+function patternIllustrationUrl(u) {
+  if (!u) return '';
+  return `${ILLUSTRATION_BASE}/${encodeURIComponent(u)}_ptn1.png${_illVer()}`;
+}
+
+// ── 나쓰(지문) 안내문 (nass·nass+ 공통, 1개) ──
+const NASS_INSTR = '다음을 들으면서 소리로 의미를 이해하고 같이 따라 읽어 보세요';
+
+// 나쓰 카드 1장 HTML
+function _nassCardHtml(it, showTrans) {
+  const trans = (showTrans && it.transliteration)
+    ? `<div class="nass-trans">${plain(it.transliteration)}</div>` : '';
+  const korean = it.korean ? parseInline(it.korean) : '';
+  const flag = lahjaFlag(it.lahja);
+  return `<div class="nass-card">
+    <div class="nass-card-cols">
+      <div class="nass-card-ko">
+        <div class="nass-ko-text">${korean}</div>
+        ${flag ? `<div class="nass-card-flag">${flag}</div>` : ''}
+      </div>
+      <div class="nass-card-ar">
+        <div class="nass-arabic">${parseInline(it.arabic || '')}</div>
+        ${trans}
+      </div>
+    </div>
+  </div>`;
+}
+
+// 나쓰 페이지 셸 (page-nass)
+function _nassPageShell(unitNum, pageNo, innerHtml) {
+  return `
+  <article class="page page-nass">
+    <div class="page-head">
+      <div class="head-category">올댓아라빅 지문</div>
+      ${chapterLabel()}
+      <div class="head-unit-box">
+        <span class="ub-l">
+          <span class="ub-lbl">UNIT</span>
+          <span class="ub-num">${unitNum}</span>
+        </span>
+        <span class="ub-r">
+          <span class="ub-text">NASS</span>
+        </span>
+      </div>
+    </div>
+    <div class="page-cards">${innerHtml}</div>
+    <div class="page-foot">
+      <div class="left">
+        <img class="brand-logo" src="../assets/ata-logo2.png" alt="">
+        <span class="brand-text">MARKAZARABIC</span>
+        <span class="copyright">© 2026 all rights reserved</span>
+      </div>
+      <div class="pgnum">${String(pageNo).padStart(2, '0')}</div>
+    </div>
+  </article>`;
+}
+
+// ── 나쓰(지문) 페이지 — nass·nass+ 구분 없이 카드별 B5 자동 분할 ──
+// 카드 1장이 페이지를 넘으면 그 카드부터 다음 페이지로. 드릴 분할 로직과 동일 기하.
+async function renderNassPagesAsync(unit, nassRows, opts) {
+  const { pageNo: startPageNo, showTrans } = opts;
+  const unitNum = parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1;
+
+  // nass·nass+ 시트 순서 그대로 (구분 없음)
+  const cards = nassRows.map(it => _nassCardHtml(it, showTrans));
+  if (!cards.length) return { html: '', pageCount: 0 };
+
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch (_) {}
+  }
+
+  // B5 고정 기하 (드릴과 동일): 가용 ≈ 740px
+  const PAGE_BUDGET = 740;
+  const CARD_GAP = 12;   // .nass-section gap
+
+  // off-screen 측정 (.nass-section 컨텍스트, page-cards 내부 폭)
+  const measureRoot = document.createElement('div');
+  measureRoot.style.cssText = `
+    position: absolute; top: -99999px; left: -99999px;
+    width: calc(182mm - 88px);
+    visibility: hidden;
+  `;
+  measureRoot.innerHTML = '<div class="nass-section" id="__nassMeasure"></div>';
+  document.body.appendChild(measureRoot);
+  const ms = measureRoot.querySelector('#__nassMeasure');
+
+  // 안내문 높이 (첫 페이지에만 차감)
+  ms.innerHTML = `<div class="nass-instruction">${NASS_INSTR}</div>`;
+  const instrH = ms.getBoundingClientRect().height;
+
+  const heights = cards.map(c => { ms.innerHTML = c; return ms.getBoundingClientRect().height; });
+  measureRoot.remove();
+
+  // 빈 패킹 — 첫 페이지는 안내문 높이만큼 budget 차감
+  const pages = [];
+  let cur = [], curH = 0;
+  const budgetFor = () => PAGE_BUDGET - (pages.length === 0 ? instrH : 0);
+
+  cards.forEach((c, i) => {
+    const pre = cur.length ? CARD_GAP : 0;
+    const need = heights[i] + pre;
+    if (cur.length && curH + need > budgetFor()) {
+      pages.push(cur); cur = []; curH = 0;
+      cur.push(i); curH = heights[i];
+    } else {
+      cur.push(i); curH += need;
+    }
+  });
+  if (cur.length) pages.push(cur);
+
+  // 단일 카드가 페이지를 단독 초과하는 극단 케이스 경고
+  pages.forEach((idxs, p) => {
+    if (idxs.length === 1 && heights[idxs[0]] > budgetFor()) {
+      console.warn(`[nass-pagination] 카드 1장이 페이지 가용 높이를 초과합니다: 유닛 ${unit.u}, 페이지 ${startPageNo + p}, ${Math.round(heights[idxs[0]])}px > ${Math.round(PAGE_BUDGET)}px.`);
+    }
+  });
+
+  const pageHtmls = pages.map((idxs, p) => {
+    const inner = idxs.map(i => cards[i]).join('');
+    const instr = p === 0 ? `<div class="nass-instruction">${NASS_INSTR}</div>` : '';
+    return _nassPageShell(unitNum, startPageNo + p, `<div class="nass-section">${instr}${inner}</div>`);
+  });
+  return { html: pageHtmls.join(''), pageCount: pageHtmls.length };
+}
+
+// ── 표현 페이지 1장 (= 한 유닛의 모든 표현 카드) ──
+function renderExpressionPage(unit, expressions, opts) {
+  const { pageNo, showTrans } = opts;
+  const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
+  // img 체크박스가 켜진 표현이 하나라도 있으면 일러스트 표시(없으면 GCS 요청 자체를 안 함)
+  const expHasImg = expressions.some(hasImg);
+
+  const cards = expressions.map(exp => {
+    const trans = (showTrans && exp.transliteration)
+      ? `<div class="exp-trans">${plain(exp.transliteration)}</div>` : '';
+    const korean = exp.korean
+      ? `<div class="exp-korean">${parseInline(exp.korean)}</div>` : '';
+    // 교재에서는 표현(exp)의 script(설명 블록)를 표시하지 않는다 (product-ata145-design 규칙)
+    const script = '';
+    return `<div class="exp-card">
+      <div class="exp-card-cols">
+        <div class="exp-card-ko">${korean}</div>
+        <div class="exp-card-ar">
+          <div class="exp-arabic-line">
+            <span class="exp-arabic">${parseInline(exp.arabic || '')}</span>
+            ${lahjaFlag(exp.lahja)}
+          </div>
+          ${trans}
+        </div>
+      </div>
+      ${script}
+    </div>`;
+  }).join('');
+
+  return `
+  <article class="page page-exp">
+    <div class="page-head">
+      <div class="head-category">올댓아라빅 표현</div>
+      ${chapterLabel()}
+      <div class="head-unit-box">
+        <span class="ub-l">
+          <span class="ub-lbl">UNIT</span>
+          <span class="ub-num">${unitNum}</span>
+        </span>
+        <span class="ub-r">
+          <span class="ub-text">EXPRESSION</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="page-cards">
+      ${expHasImg ? `<div class="illustration">
+        <img src="${illustrationUrl(unit.u)}"
+             alt=""
+             onerror="this.parentElement.remove()">
+      </div>` : ''}
+      ${cards}
+    </div>
+
+    <div class="page-foot">
+      <div class="left">
+        <img class="brand-logo" src="../assets/ata-logo2.png" alt="">
+        <span class="brand-text">MARKAZARABIC</span>
+        <span class="copyright">© 2026 all rights reserved</span>
+      </div>
+      <div class="pgnum">${String(pageNo).padStart(2, '0')}</div>
+    </div>
+  </article>`;
+}
+
+// ── 한 유닛의 페이지 빌드 ──────────────────────────
+async function renderUnit(u) {
+  const [unitRaw, patternRaw, repertoryRaw, expressionRaw, drillRaw, nassRaw] = await Promise.all([
+    fetchSheet('units'),
+    fetchSheet('pattern'),
+    fetchSheet('repertory'),
+    fetchSheet('expression'),
+    fetchSheet('drill'),
+    fetchSheet('nass'),
+  ]);
+
+  // css='aa' → 앱 전용 데이터: 인쇄 교재에서는 행 자체를 완전히 제외 (앱에는 노출됨)
+  const isPrintExcluded = r => (r.css || '').trim().toLowerCase() === 'aa';
+  const ok  = r => okStatus(r) && !isPrintExcluded(r);
+  const inU = r => r.u === u;
+
+  const unit = unitRaw.find(r => inU(r) && ok(r));
+  if (!unit) return `<div class="notice">유닛 ${u} 데이터를 찾을 수 없어요.</div>`;
+  _curChapter = (unit.c || unit.C || '').toString().trim();   // 이 유닛의 챕터(All That Arabic N)
+
+  const patterns = patternRaw.filter(r => inU(r) && ok(r) && (r.type || '').toLowerCase() === 'ptn');
+  const repertoryAll = repertoryRaw.filter(r => inU(r) && ok(r) && (r.type || '').toLowerCase() === 'repertory');
+  const expressions = expressionRaw.filter(r =>
+    inU(r) && ok(r) && (r.type || '').toLowerCase() === 'exp'
+  );
+  // drill 탭은 type/status가 섹션 헤더 행에만 있음 → fill-down
+  const drillsAll = fillDownDrill(drillRaw).filter(r => inU(r) && ok(r));
+  const drillA = drillsAll.filter(r => (r.type || '').toLowerCase() === 'drilla');
+  const drillB = drillsAll.filter(r => (r.type || '').toLowerCase() === 'drillb');
+  // 나쓰: type이 nass / nass+
+  const nassRows = nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || ''));
+
+  const tParam = new URLSearchParams(location.search).get('trans');
+  const isCh0 = /^A/i.test(u);
+  const showTrans = tParam === '1' ? true : tParam === '0' ? false : isCh0;
+
+  // 페이지 순서: 표현 → 패턴들
+  let html = '';
+  let pageNo = 1;
+
+  // 표현 페이지 (있을 때만, 가장 앞)
+  if (expressions.length) {
+    html += renderExpressionPage(unit, expressions, {
+      pageNo,
+      showTrans,
+    });
+    pageNo += 1;
+  }
+
+  // 패턴 페이지 (각 패턴 = 한 페이지). 첫 패턴에만 일러스트 노출.
+  // 매칭 폴백: pattern.id_ptn(no)와 repertory.ref_ptn의 `ptnNNN_...` 형식에서
+  // **번호 prefix(ptnNNN)** 만 추출해서 비교. 시트에서 두 컬럼의 설명 부분이
+  // unsync되어도(예: pattern은 'ptn001_ba-ta-tha' / repertory는 'ptn001_bā tā thā')
+  // 자동 매칭되어 래퍼토리가 안 보이는 사고 방지.
+  const _ptnPrefix = (s) => (s || '').match(/^ptn\d+/i)?.[0]?.toLowerCase() || '';
+  patterns.forEach((pat, idx) => {
+    const refKey = pat['id_ptn(no)'] || '';
+    const refKeyPrefix = _ptnPrefix(refKey);
+    // 1차: strict 매칭 / 2차 폴백: ptn-번호 prefix만 매칭
+    let items = repertoryAll.filter(r => r.ref_ptn === refKey);
+    if (!items.length && refKeyPrefix) {
+      items = repertoryAll.filter(r => _ptnPrefix(r.ref_ptn) === refKeyPrefix);
+    }
+    html += renderPatternPage(unit, pat, items, {
+      patternIdx: idx,
+      pageNo: pageNo + idx,
+      showTrans,
+      isFirstPattern: idx === 0,
+    });
+  });
+  pageNo += patterns.length;
+
+  // 드릴 페이지 — B5 budget 안에 안 들어가면 박스 단위로 자동 분할 (renderDrillPagesAsync)
+  if (drillA.length || drillB.length) {
+    const drillResult = await renderDrillPagesAsync(unit, drillA, drillB, { pageNo });
+    html += drillResult.html;
+    pageNo += drillResult.pageCount;
+  }
+
+  // 나쓰(지문) 페이지 — 카드별 B5 자동 분할 (renderNassPagesAsync)
+  if (nassRows.length) {
+    const nassResult = await renderNassPagesAsync(unit, nassRows, { pageNo, showTrans });
+    html += nassResult.html;
+    pageNo += nassResult.pageCount;
+  }
+
+  return html;
+}
+
+async function setUnit(u) {
+  const sp = new URLSearchParams(location.search);
+  sp.set('unit', u);
+  history.replaceState(null, '', '?' + sp.toString());
+  document.querySelectorAll('.unit-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.u === u)
+  );
+  const area = document.getElementById('page-area');
+  area.innerHTML = '<div class="notice">렌더링 중…</div>';
+  area.innerHTML = await renderUnit(u);
+  // 폰트 로딩 후 기준선 측정
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
+  }
+  adjustBaselines();
+  // B5 페이지 오버플로 감지 — 콘텐츠가 257mm를 넘는지 검사 (잘림 위험 알림)
+  detectPageOverflow();
+}
+
+// 모든 .page 요소에 대해 콘텐츠가 페이지 박스를 넘는지 감지하고 콘솔에 경고
+// .page는 overflow:hidden이라 시각상 잘리지만, scrollHeight는 자식 콘텐츠의 자연 높이를
+// 반환하므로 페이지 height(257mm = 971px)와 비교해서 초과 여부 판단
+function detectPageOverflow() {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => {
+    const pageH = p.clientHeight; // CSS height 257mm
+    const naturalH = p.scrollHeight; // 콘텐츠 자연 높이 (overflow 무시)
+    const overflow = naturalH - pageH;
+    if (overflow > 1) {
+      const pgnum = p.querySelector('.pgnum')?.textContent || '?';
+      const cls = (p.className.match(/page-\w+/) || [''])[0] || 'page';
+      console.warn(`[page-overflow] 페이지 ${pgnum} (${cls}) 콘텐츠가 B5를 ${Math.round(overflow)}px 초과 — 잘릴 수 있음. 시트 데이터를 줄이거나 자동 분할 로직 추가 필요.`);
+    }
+  });
+}
+
+window.addEventListener('resize', () => adjustBaselines());
+
+async function init() {
+  try {
+    const unitRaw = await fetchSheet('units');
+    const units = unitRaw
+      .filter(okStatus)
+      .map(r => r.u || '').filter(Boolean);
+
+    const cont = document.getElementById('unit-buttons');
+    cont.innerHTML = units.map(u => `<button class="unit-btn" data-u="${u}">${u}</button>`).join('');
+    cont.addEventListener('click', e => {
+      const btn = e.target.closest('.unit-btn');
+      if (btn) setUnit(btn.dataset.u);
+    });
+
+    const start = new URLSearchParams(location.search).get('unit') || units[0] || 'A001';
+    await setUnit(start);
+  } catch (e) {
+    document.getElementById('page-area').innerHTML =
+      `<div class="notice">로딩 실패: ${e.message}</div>`;
+    console.error(e);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

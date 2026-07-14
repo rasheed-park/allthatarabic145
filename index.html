@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>올댓아라빅 All That Arabic — 1.4.5</title>
+<style>
+  :root{
+    --accent:#1D49FF; --text:#12205A; --sub:#888FAC;
+    --bg:#F2F4F6; --surface:#fff; --border:#D5DAE8;
+    --font-kr:'Spoqa Han Sans Neo','Apple SD Gothic Neo',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--font-kr); background:var(--bg); color:var(--text);
+    min-height:100dvh; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; padding:40px 20px; gap:30px;
+  }
+  .brand{text-align:center}
+  .brand h1{font-size:1.5rem; letter-spacing:.5px}
+  .brand .ver{color:var(--sub); font-size:.85rem; margin-top:6px; letter-spacing:2px}
+
+  .group{width:100%; max-width:760px}
+  .glabel{
+    display:flex; align-items:baseline; gap:10px; margin:0 4px 12px;
+    font-size:.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  }
+  .glabel .draft{color:var(--sub)}
+  .glabel .live{color:var(--accent)}
+  .glabel .hint{font-weight:400; letter-spacing:0; text-transform:none; font-size:.76rem; color:var(--sub)}
+
+  .cards{display:flex; gap:14px; flex-wrap:wrap}
+  a.card{
+    flex:1 1 200px; min-width:0; text-decoration:none;
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:20px 20px; color:var(--text);
+    box-shadow:0 1px 3px rgba(18,32,90,.06);
+    transition:transform .12s, box-shadow .12s, border-color .12s;
+  }
+  a.card:hover{transform:translateY(-2px); box-shadow:0 6px 20px rgba(29,73,255,.12); border-color:var(--accent)}
+  a.card .tag{
+    display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; color:var(--accent);
+    background:rgba(29,73,255,.08); border-radius:5px; padding:3px 8px; margin-bottom:10px;
+  }
+  a.card .name{font-size:1.05rem; font-weight:700}
+  a.card .desc{font-size:.8rem; color:var(--sub); margin-top:5px; line-height:1.5}
+
+  /* 라이브 그룹 — 연한 강조 */
+  .group.live-group .glabel{border-top:1px solid var(--border); padding-top:22px}
+
+  .foot{color:var(--sub); font-size:.72rem; letter-spacing:.3px; text-align:center}
+</style>
+</head>
+<body>
+  <div class="brand">
+    <h1>올댓아라빅 All That Arabic</h1>
+    <div class="ver">markazarabic · 1.4.5</div>
+  </div>
+
+  <!-- Draft · 로컬 (이 폴더에서 직접 여는 작업본) -->
+  <div class="group">
+    <div class="glabel"><span class="draft">Draft · 로컬</span><span class="hint">작업본 — 이 폴더에서 직접 열기</span></div>
+    <div class="cards">
+      <a class="card" href="ata145_textbook/ata145_textbook.html">
+        <span class="tag">Student</span>
+        <div class="name">학생용</div>
+        <div class="desc">교재형 모바일 복습</div>
+      </a>
+      <a class="card" href="ata145_teacher/ata145_teacher.html">
+        <span class="tag">Teacher</span>
+        <div class="name">선생님용</div>
+        <div class="desc">수업 진행 슬라이드</div>
+      </a>
+      <a class="card" href="ata145_original/ata145_original.html">
+        <span class="tag">Print</span>
+        <div class="name">교재</div>
+        <div class="desc">B5 인쇄 원본</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 라이브 · 깃 (GitHub Pages 배포본) -->
+  <div class="group live-group">
+    <div class="glabel"><span class="live">라이브 · 깃</span><span class="hint">GitHub Pages 배포본</span></div>
+    <div class="cards">
+      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_textbook/ata145_textbook.html">
+        <span class="tag">Student</span>
+        <div class="name">학생용</div>
+        <div class="desc">교재형 모바일 복습</div>
+      </a>
+      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_teacher/ata145_teacher.html">
+        <span class="tag">Teacher</span>
+        <div class="name">선생님용</div>
+        <div class="desc">수업 진행 슬라이드</div>
+      </a>
+      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_original/ata145_original.html">
+        <span class="tag">Print</span>
+        <div class="name">교재</div>
+        <div class="desc">B5 인쇄 원본</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="foot">© 2026 markazarabic · all rights reserved</div>
+</body>
+</html>

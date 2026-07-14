@@ -1,0 +1,29 @@
+# macOS / Google Drive
+.DS_Store
+Icon[$'\r']
+._*
+.Spotlight-V100
+.Trashes
+
+# Google Drive 시트 포인터(실데이터 아님)
+*.gsheet
+
+# 에디터
+.vscode/
+.idea/
+*.swp
+
+# 개발/로컬 전용 (깃·라이브에 올리지 않음)
+index.dev.html
+drafts/
+_site/
+
+# 로컬 환경·비밀·작업파일 (깃에 올리지 않음)
+.claude/
+.mcp.json
+*.psd
+img(draft)/
+img(style)/
+
+# 내부 문서는 리포에 올리지 않음(드라이브·backlog에 보관). 공개 README 필요 시 git add -f
+*.md

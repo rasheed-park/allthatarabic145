@@ -1,0 +1,50 @@
+name: Deploy live (GitHub Pages)
+
+# main 에 push 되면 라이브 사이트로 배포한다.
+# 라이브에는 실제 제품 파일만 올리고, 개발/문서 전용 파일은 제외한다.
+# → 앱은 실도메인(github.io)에서 IS_DEV=false 이므로 시트의 confirmed 데이터만 렌더한다.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build live site (dev 전용 파일 제외)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='drafts' \
+            --exclude='index.dev.html' \
+            --exclude='*.md' \
+            --exclude='*.gsheet' \
+            --exclude='.DS_Store' \
+            --exclude='._*' \
+            ./ _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
