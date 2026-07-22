@@ -664,7 +664,7 @@ body {
 .nass-card-ko {
   direction: ltr;
   text-align: left;
-  font-size: 0.85rem;
+  font-size: 0.78rem;   /* 드릴(two) 한국어와 동일 */
   color: var(--text); /* 카드 한국어 번역 — 본문과 동일 검정 */
   font-weight: 400; /* 500 → 400 한 단계 얇게 */
   line-height: 1.7;
@@ -682,7 +682,7 @@ body {
 }
 .nass-arabic {
   font-family: var(--font-ar);
-  font-size: var(--textbook-card-ar-size);
+  font-size: 1.08rem;   /* 드릴(two) 아랍어와 동일 */
   font-weight: 500;
   direction: rtl;
   line-height: 1.85;
@@ -690,7 +690,7 @@ body {
 }
 .nass-arabic .hl-text { color: var(--hl-text); }
 .nass-trans {
-  font-size: var(--textbook-card-trans-size);
+  font-size: 0.68rem;   /* 드릴(two) 음가와 동일 */
   color: var(--sub-2);
   font-style: italic;
   direction: rtl;
@@ -1012,10 +1012,10 @@ body {
   .nass-card-cols { grid-template-columns: 1fr; gap: 8px; align-items: stretch; }
   .nass-card-ko {
     text-align: left; line-height: 1.6;
-    display: block; font-size: 0.92rem;
+    display: block; font-size: 0.78rem;   /* 드릴 한국어와 동일 */
   }
   .nass-card-ar { text-align: right; }
-  .nass-arabic { font-size: 1.15rem; line-height: 1.85; }
+  .nass-arabic { font-size: 1.08rem; line-height: 1.85; }
   .nass-card-flag { margin-top: 6px; padding-top: 0; }
 
   /* 드릴 5열 테이블 — 모바일에선 자동 분할 */
@@ -1047,7 +1047,8 @@ body {
   .pattern-arabic.baseline .blch .l { font-size: 1.45rem; }
   .pattern-arabic.baseline .blch .l-triple { font-size: 0.65rem; }
   .pattern-arabic.baseline .blch .lbl { font-size: 0.55rem; }
-  .exp-arabic, .nass-arabic { font-size: 1.1rem; }
+  .exp-arabic { font-size: 1.1rem; }
+  .nass-arabic { font-size: 1.08rem; }   /* 드릴 아랍어와 동일 */
   .drill-five td.ar { font-size: 0.85rem; }
   .repertory td.ar { font-size: 0.9rem; }
 }
@@ -1460,7 +1461,7 @@ function renderPatternPage(unit, pattern, drills, opts) {
     </div>
 
     <div class="page-body">
-      ${imageId(pattern) ? `<div class="illustration"><img src="${illustrationUrl(imageId(pattern))}" alt="" onerror="this.parentElement.remove()"></div>` : ''}
+      ${imageId(pattern) ? `<div class="illustration"><img src="${illustrationUrl(imageId(pattern))}" data-local-src="${illustrationLocalUrl(imageId(pattern))}" alt="" onerror="retryLocalIllustration(this)"></div>` : ''}
       <div class="body-card">
         ${arabicSection}
         ${pattern.korean ? `<div class="pattern-korean">${parseInline(pattern.korean)}</div>` : ''}
@@ -1590,8 +1591,16 @@ function _buildDrillAtoms(drills, isB, instruction, sectionId) {
   const groups = new Map();
   drills.forEach(it => {
     const ref = (it.ref_ptn || '').trim();
-    const mode = (it.css || '').trim().toLowerCase() === 'two' ? 'two' : 'grid';  // five/two 분리
-    const key = ref + '||' + mode;
+    const css = (it.css || '').trim().toLowerCase();
+    const mode = css === 'two' ? 'two' : 'grid';  // five/two 분리
+    // A005만: p015 알리프 5개 + p016 함자 5개를 한 10칸으로 표시한다.
+    // 원본 ref_ptn은 그대로 두고 화면 그룹 키에만 명시적 예외를 적용한다.
+    const displayRef = (it.u || '').trim() === 'A005'
+      && css === 'five'
+      && /^ptn01(?:5|6)(?:_|$)/i.test(ref)
+      ? 'ptn015_016_a005_alif_hamza'
+      : ref;
+    const key = displayRef + '||' + mode;
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(it);
   });
@@ -1808,12 +1817,25 @@ function fillDownDrill(rows) {
 }
 
 // 일러스트 URL — img가 체크된 행의 id를 그대로 사용: img/{id}.png
-// 파일이 GCS 버킷에 없으면 <img> onerror에서 영역 전체 숨김 (placeholder 없음).
+// GCS 요청 실패 시 GitHub Pages에 함께 배포된 ../img/{id}.png를 한 번 재시도한다.
 const ILLUSTRATION_BASE = 'https://storage.googleapis.com/all-that-arabic-145/img';
-const ILLUSTRATION_VERSION = '20260722-id';
+const ILLUSTRATION_LOCAL_BASE = '../img';
+const ILLUSTRATION_VERSION = '20260723-a005';
 function illustrationUrl(id) {
   if (!id) return '';
   return `${ILLUSTRATION_BASE}/${encodeURIComponent(id)}.png?v=${ILLUSTRATION_VERSION}`;
+}
+function illustrationLocalUrl(id) {
+  if (!id) return '';
+  return `${ILLUSTRATION_LOCAL_BASE}/${encodeURIComponent(id)}.png?v=${ILLUSTRATION_VERSION}`;
+}
+function retryLocalIllustration(img) {
+  if (!img.dataset.localTried && img.dataset.localSrc) {
+    img.dataset.localTried = '1';
+    img.src = img.dataset.localSrc;
+    return;
+  }
+  img.parentElement?.remove();
 }
 
 // ── 나쓰(지문) 안내문 (nass·nass+ 공통, 1개) ──
@@ -1984,8 +2006,9 @@ function renderExpressionPage(unit, expressions, opts) {
     <div class="page-cards">
       ${expImageId ? `<div class="illustration">
         <img src="${illustrationUrl(expImageId)}"
+             data-local-src="${illustrationLocalUrl(expImageId)}"
              alt=""
-             onerror="this.parentElement.remove()">
+             onerror="retryLocalIllustration(this)">
       </div>` : ''}
       ${cards}
     </div>
