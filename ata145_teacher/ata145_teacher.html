@@ -201,6 +201,26 @@ body {
 }
 #arabic-area { container-type: inline-size; width: 100%; }
 #text-area { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-height: 2rem; }
+.slide-illustration {
+  width: min(100%, 1000px);
+  margin: 0 auto clamp(0.8rem, 2vh, 1.5rem);
+}
+.slide-illustration img {
+  display: block;
+  width: 100%;
+  max-height: 38vh;
+  object-fit: contain;
+}
+.lesson-illustration {
+  padding: 20px 48px 0;
+  background: #fff;
+}
+.lesson-illustration img {
+  display: block;
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+}
 
 /* ── 하이라이트 ── */
 .highlight-box {
@@ -1092,6 +1112,8 @@ body.book-view #book-root { display: flex; }
 // ── 설정 ──────────────────────────────────────────────
 const SHEET_ID   = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 const AUDIO_BASE = 'https://storage.googleapis.com/all-that-arabic-145';
+const IMAGE_BASE = 'https://storage.googleapis.com/all-that-arabic-145/img';
+const IMAGE_VERSION = '20260722-id';
 // 1.4.4 신구조: audio/{유닛}/{id}.{mp3|wav} — getAudioUrls에서 unit별 경로 생성
 
 // 시트 탭명
@@ -1104,7 +1126,8 @@ const TAB_KALIMAT = 'kalimat';
 const TAB_NASS    = 'nass';
 
 // dev/prod 판정 — localhost/127.0.0.1/file: 은 dev (draft 노출), 그 외 prod (confirmed만)
-const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+try{const _dp=new URLSearchParams(location.search).get('dev');if(_dp==='1')localStorage.setItem('ata_dev','1');else if(_dp==='0')localStorage.removeItem('ata_dev');}catch(e){}
+const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:' || (()=>{try{return localStorage.getItem('ata_dev')==='1';}catch(e){return false;}})();
 // status 필터: confirmed=항상, draft=dev에서만, 그 외=숨김
 const okStatus = r => {
   const s = ((r && r.status) || '').trim().toLowerCase();
@@ -1149,9 +1172,23 @@ function normalizeType(t) {
 }
 
 function getRowU(r) { return r.u || ''; }
+// 앱 표시용 유닛 코드: A001 → A01 (문자 유지, 번호 2자리). 시트값은 그대로.
+function fmtU(u) { return String(u || '').replace(/\d+/, m => m.slice(-2).padStart(2, '0')); }
 
 function getRowId(r) {
   return r.id || r.id_unit || r['id_ptn(no)'] || r.id_ptn || r.id_drill || r.id_rep || r.id_repertory || r.id_kalimat || r.id_expression || r.id_nass || '';
+}
+
+// img가 체크된 행만 그 행의 id.png를 요청한다. img 또는 id가 없으면 URL을 만들지 않는다.
+const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
+const imageId = r => hasImg(r) ? String((r && r.id) || '').trim() : '';
+function imageUrl(r) {
+  const id = imageId(r);
+  return id ? `${IMAGE_BASE}/${encodeURIComponent(id)}.png?v=${IMAGE_VERSION}` : '';
+}
+function slideIllustrationHtml(r, className = 'slide-illustration') {
+  const url = imageUrl(r);
+  return url ? `<div class="${className}"><img src="${url}" alt="" onerror="this.parentElement.remove()"></div>` : '';
 }
 
 /* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
@@ -1160,10 +1197,10 @@ function getRowId(r) {
    - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
    - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
-  units:'유닛unit', unit:'유닛unit', pattern:'데이터시트sheet',
+  units:'유닛unit', unit:'유닛unit', pattern:'패턴pattern',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
   exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
-  nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
+  nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
 const TYPE_145 = { rep:'repertory', drill:'drilla' };
@@ -1303,7 +1340,7 @@ async function buildSlides(baseUnit) {
   // 2. 패턴별: 패턴 → 레퍼토리(예문) (drillA는 별도 모음으로 분리)
   patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
     push('ptn', ptn);
-    const ref = ptn['id_ptn(no)'] || ptn.id_ptn || '';
+    const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
     repertoryRaw
       .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'repertory')
       .forEach(r => push('repertory', r));
@@ -1327,7 +1364,7 @@ async function buildSlides(baseUnit) {
   } else {
     // drillA — 패턴별 매칭 먼저, ref_ptn 비어있는 유닛 공통 마지막
     patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
-      const ref = ptn['id_ptn(no)'] || ptn.id_ptn || '';
+      const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
       drillRaw
         .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'drilla')
         .forEach(r => push('drilla', r));
@@ -1344,8 +1381,8 @@ async function buildSlides(baseUnit) {
   expressionRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'exp')
     .forEach(r => push('exp', r));
 
-  // 5. nass (지문)
-  nassRaw.filter(r => inU(r) && ok(r)).forEach(r => push('nass', r));
+  // 5. nass (지문) — nass + nass+ (데이터시트sheet에서 type으로 분리)
+  nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
 
   // 6. kalimat (단어)
   kalimatRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'kalimat')
@@ -1373,8 +1410,8 @@ function renderScriptBlock(text) {
     .map(line => {
       if (line.startsWith('- ')) {
         const raw = line.slice(2).trim();
-        // 아랍어로 시작하는 불릿 → RTL (점·본문 우측으로 자동 정렬)
-        return `<div class="book-script-item" dir="${firstStrongDir(raw)}">${parseText(raw)}</div>`;
+        // 스크립트 불릿은 전부 LTR 고정 — 아랍 토큰은 흐름 안에서 RTL로 임베드(대표 지침 2026-07-21)
+        return `<div class="book-script-item" dir="ltr">${parseText(raw)}</div>`;
       }
       return `<p>${parseText(line)}</p>`;
     })
@@ -1511,13 +1548,13 @@ async function renderUnitBook(baseUnit) {
   const marks = ['أ', 'ب', 'ج', 'د', 'هـ', 'و', 'ز', 'ح'];
   const patterns = patternRaw
     .filter(r => r.u === baseUnit && ok(r) && normalizeType(r.type) === 'ptn')
-    .sort((a, b) => (a['id_ptn(no)'] || a.id_ptn || '').localeCompare(b['id_ptn(no)'] || b.id_ptn || '', undefined, { numeric: true }));
+    .sort((a, b) => (a.id || a['id_ptn(no)'] || a.id_ptn || '').localeCompare(b.id || b['id_ptn(no)'] || b.id_ptn || '', undefined, { numeric: true }));
 
   const pages = patterns.map((ptn, idx) => {
-    const ref = ptn['id_ptn(no)'] || ptn.id_ptn || '';
+    const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
     const reps = repertoryRaw
       .filter(r => r.u === baseUnit && ok(r) && normalizeType(r.type) === 'repertory' && r.ref_ptn === ref);
-    const unitNo = baseUnit.replace(/^[A-Za-z]+0*/, '') || baseUnit;
+    const unitNo = fmtU(baseUnit);
     const mark = marks[idx] || (idx + 1);
     const noteText = ptn.note || ptn.transliteration || '';
     return `
@@ -1533,6 +1570,7 @@ async function renderUnitBook(baseUnit) {
             <div class="lesson-head-ko">${parseText(unit.korean || '')}</div>
           </div>
         </header>
+        ${slideIllustrationHtml(ptn, 'lesson-illustration')}
         <main class="lesson-main">
           <div class="lesson-arabic" dir="rtl">${parseText(ptn.arabic || '')}</div>
           <div class="lesson-trans">${parseText(noteText)}</div>
@@ -1544,7 +1582,7 @@ async function renderUnitBook(baseUnit) {
         </section>
         <footer class="lesson-footer">
           <span><strong>All That Arabic</strong> 1.4.4 B5 draft</span>
-          <span class="lesson-page-number">${parseText(baseUnit)} · ${idx + 1}/${patterns.length}</span>
+          <span class="lesson-page-number">${parseText(unitNo)} · ${idx + 1}/${patterns.length}</span>
         </footer>
       </article>
     `;
@@ -1586,7 +1624,7 @@ function renderSlide() {
   tl.innerHTML =
     `<div style="display:flex;align-items:center;gap:1.4rem;">` +
       `<div>` +
-        `<div style="font-size:clamp(0.45rem,0.7vw,0.6rem);text-transform:uppercase;letter-spacing:2px;color:var(--sub);opacity:0.6;margin-bottom:0.5rem;">${curPgU}</div>` +
+        `<div style="font-size:clamp(0.45rem,0.7vw,0.6rem);text-transform:uppercase;letter-spacing:2px;color:var(--sub);opacity:0.6;margin-bottom:0.5rem;">${fmtU(curPgU)}</div>` +
         `<div style="font-family:'Noto Sans Arabic',serif;direction:rtl;font-size:clamp(0.9rem,1.8vw,1.4rem);font-weight:700;line-height:1.4;margin-bottom:0.35rem;">${tlArabic}</div>` +
         `<div style="font-size:clamp(0.6rem,1vw,0.85rem);color:var(--sub);font-weight:400;line-height:1.5;">${tlKorean}</div>` +
       `</div>` +
@@ -1626,7 +1664,7 @@ function renderSlide() {
   let arHtml = parseAr(d.arabic || '');
   if (isNom) arHtml = applyNomDivider(arHtml);  // 명사문: `|`를 옅은 분리자로
   document.getElementById('arabic-area').innerHTML =
-    `<div class="arabic${isWriting ? ' arabic-writing' : ''}${isSentence ? ' arabic-sentence' : ''}" style="opacity:${arOp};transition:opacity 0.3s;">${arHtml}</div>`;
+    `${slideIllustrationHtml(d)}<div class="arabic${isWriting ? ' arabic-writing' : ''}${isSentence ? ' arabic-sentence' : ''}" style="opacity:${arOp};transition:opacity 0.3s;">${arHtml}</div>`;
 
   const op = meaningVisible ? '1' : '0';
   const noteText = d.note || d.transliteration || '';
@@ -1662,7 +1700,7 @@ function renderBaseline(s, opts = {}) {
   const arOp = arabicVisible ? '1' : '0';
 
   const arabicArea = document.getElementById('arabic-area');
-  arabicArea.innerHTML = '';
+  arabicArea.innerHTML = slideIllustrationHtml(d);
   arabicArea.style.cssText = `opacity:${arOp};transition:opacity 0.3s;`;
 
   const wrap = document.createElement('div');
@@ -1748,7 +1786,7 @@ function renderWrite(s) {
     : [];
 
   const arabicArea = document.getElementById('arabic-area');
-  arabicArea.innerHTML = '';
+  arabicArea.innerHTML = slideIllustrationHtml(d);
 
   const pairRow = document.createElement('div');
   pairRow.className = 'write-pair-row';
@@ -1821,7 +1859,7 @@ function renderNass(s) {
   const promptHtml = `<div class="nass-prompt"></div>`;
 
   document.getElementById('arabic-area').innerHTML =
-    showArabic ? (nassTextHtml + promptHtml) : promptHtml;
+    slideIllustrationHtml(d) + (showArabic ? (nassTextHtml + promptHtml) : promptHtml);
 
   const op = meaningVisible ? '1' : '0';
   document.getElementById('text-area').innerHTML = `
@@ -1882,8 +1920,8 @@ function buildSectionTabs() {
   // 패턴별 동적 탭 — 두 줄: "패턴" + 패턴 번호 (예: ptn001)
   slides.forEach((s, idx) => {
     if (s.pg !== curPg || s.type !== 'ptn') return;
-    const _pm = (s.data['id_ptn(no)'] || '').match(/p(?:tn)?0*(\d+)/i);
-    const ptnNo = _pm ? 'p' + _pm[1].padStart(3, '0') : '';
+    const _pm = (s.data['id_ptn(no)'] || s.data.id || '').match(/p(?:tn)?0*(\d+)/i);
+    const ptnNo = _pm ? _pm[1].padStart(2, '0') : '';
     const btn = document.createElement('button');
     btn.className = 'sec-tab';
     btn.dataset.key = 'ptn_' + idx;
@@ -1944,7 +1982,7 @@ function buildIndex() {
       li.className = 'idx-item';
       li.dataset.u = u;
       li.innerHTML =
-        `<span class="idx-tag">${u}</span>` +
+        `<span class="idx-tag">${fmtU(u)}</span>` +
         `<span class="idx-info">` +
           `<span class="idx-ar">${ar}</span>` +
           `<span class="idx-ko">${ko}</span>` +

@@ -50,6 +50,18 @@
   .group.live-group .glabel{border-top:1px solid var(--border); padding-top:22px}
 
   .foot{color:var(--sub); font-size:.72rem; letter-spacing:.3px; text-align:center}
+
+  /* 데이터 시트 링크 */
+  .datalink{
+    display:inline-flex; align-items:center; gap:7px;
+    text-decoration:none; color:var(--accent);
+    font-size:.82rem; font-weight:700; letter-spacing:.2px;
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:10px 18px; box-shadow:0 1px 3px rgba(18,32,90,.06);
+    transition:transform .12s, box-shadow .12s, border-color .12s;
+  }
+  .datalink:hover{transform:translateY(-2px); box-shadow:0 6px 20px rgba(29,73,255,.12); border-color:var(--accent)}
+  .datalink .dl-tag{font-size:.62rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sub)}
 </style>
 </head>
 <body>
@@ -58,21 +70,21 @@
     <div class="ver">markazarabic · 1.4.5</div>
   </div>
 
-  <!-- Draft · 로컬 (이 폴더에서 직접 여는 작업본) -->
+  <!-- 초안 Draft — ?dev=1 로 미확정(draft) 유닛(3과 이후)까지 노출. 로컬·깃 어디서 열든 동작. -->
   <div class="group">
-    <div class="glabel"><span class="draft">Draft · 로컬</span><span class="hint">작업본 — 이 폴더에서 직접 열기</span></div>
+    <div class="glabel"><span class="draft">초안 · Draft</span><span class="hint">전체 유닛 (미확정 draft 포함) — 검수용</span></div>
     <div class="cards">
-      <a class="card" href="ata145_textbook/ata145_textbook.html">
+      <a class="card" href="ata145_textbook/ata145_textbook.html?dev=1">
         <span class="tag">Student</span>
         <div class="name">학생용</div>
         <div class="desc">교재형 모바일 복습</div>
       </a>
-      <a class="card" href="ata145_teacher/ata145_teacher.html">
+      <a class="card" href="ata145_teacher/ata145_teacher.html?dev=1">
         <span class="tag">Teacher</span>
         <div class="name">선생님용</div>
         <div class="desc">수업 진행 슬라이드</div>
       </a>
-      <a class="card" href="ata145_original/ata145_original.html">
+      <a class="card" href="ata145_original/ata145_original.html?dev=1">
         <span class="tag">Print</span>
         <div class="name">교재</div>
         <div class="desc">B5 인쇄 원본</div>
@@ -80,28 +92,36 @@
     </div>
   </div>
 
-  <!-- 라이브 · 깃 (GitHub Pages 배포본) -->
+  <!-- 라이브 Live — ?dev=0 로 확정본(confirmed)만 노출 (깃 배포본 기준) -->
   <div class="group live-group">
-    <div class="glabel"><span class="live">라이브 · 깃</span><span class="hint">GitHub Pages 배포본</span></div>
+    <div class="glabel"><span class="live">라이브 · Live</span><span class="hint">확정본만 (confirmed) — 배포용</span></div>
     <div class="cards">
-      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_textbook/ata145_textbook.html">
+      <a class="card" href="ata145_textbook/ata145_textbook.html?dev=0">
         <span class="tag">Student</span>
         <div class="name">학생용</div>
         <div class="desc">교재형 모바일 복습</div>
       </a>
-      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_teacher/ata145_teacher.html">
+      <a class="card" href="ata145_teacher/ata145_teacher.html?dev=0">
         <span class="tag">Teacher</span>
         <div class="name">선생님용</div>
         <div class="desc">수업 진행 슬라이드</div>
       </a>
-      <a class="card" href="https://rasheed-park.github.io/allthatarabic145/ata145_original/ata145_original.html">
+      <a class="card" href="ata145_original/ata145_original.html?dev=0">
         <span class="tag">Print</span>
         <div class="name">교재</div>
         <div class="desc">B5 인쇄 원본</div>
       </a>
     </div>
   </div>
+
+  <a class="datalink" href="https://docs.google.com/spreadsheets/d/1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4/edit" target="_blank" rel="noopener">
+    <span class="dl-tag">Sheet</span>1.4.5 데이터 시트 열기 →
+  </a>
 
   <div class="foot">© 2026 markazarabic · all rights reserved</div>
+  <script>
+    // ?dev=1 → 이 브라우저에서 초안(draft) 유닛도 앱에 노출(localStorage 저장). ?dev=0 으로 해제.
+    try{const _dp=new URLSearchParams(location.search).get('dev');if(_dp==='1')localStorage.setItem('ata_dev','1');else if(_dp==='0')localStorage.removeItem('ata_dev');}catch(e){}
+  </script>
 </body>
 </html>

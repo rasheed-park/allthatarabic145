@@ -378,7 +378,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   display:block; padding-left:14px; position:relative;
   margin:0;
   line-height:1.55;
-  color:var(--text);
+  color:var(--sub);
 }
 .m-card.pattern .m-summary .bullet::before {
   content:'•'; color:var(--accent); position:absolute; left:2px; top:0;
@@ -394,6 +394,10 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   display:block;
   margin:0 0 16px;
 }
+/* 블릿 뒤에 이어지는 설명은 줄바꿈(간격)을 넣어 분리 (대표 지침) */
+.m-card.pattern .m-summary .bullet + .para {
+  margin-top:16px;
+}
 .m-card.pattern .m-summary .quote {
   display:block;
   margin:16px 0 0;
@@ -401,7 +405,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   border-left:3px solid var(--accent);
   background:var(--accent-bg);
   border-radius:8px;
-  color:var(--text);
+  color:var(--sub);
   line-height:1.55;
 }
 .m-card.pattern .m-summary .script-table,
@@ -517,7 +521,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   background:var(--surface);
   border:1px solid rgba(18,32,90,0.07);
   border-radius:10px;
-  padding:10px 12px 11px;
+  padding:14px 12px 15px;  /* 한국어 2줄+깃발 넉넉하게 — 위아래 여유 */
   box-shadow:0 1px 2px rgba(18,32,90,0.035);
   gap:10px;
 }
@@ -525,6 +529,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .cols-two .m-ar-line {
   justify-content:flex-start;  /* RTL: start = 오른쪽 */
   direction:rtl;
+  flex-wrap:wrap;   /* 긴 문장+깃발이 칸을 넘치면 깃발이 아래로 내려가 칸이 안 깨짐 */
+  row-gap:3px;
 }
 .cols-two .dc-ar,
 .cols-two .dc-trans {
@@ -540,6 +546,14 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   line-height:1.45;
   flex:0 0 40%;
   direction:ltr;
+}
+/* two 박스 국기는 셀 좌측 아래로 (아랍어 자리 안 뺏게) — 대표 지침 */
+.cols-two .drill-cell { position:relative; }
+.cols-two .drill-cell .m-ar-line > .m-flags {
+  position:absolute;
+  left:12px;
+  bottom:8px;
+  margin:0;
 }
 /* 6열 모드 (`css = 'six'`) — five와 같지만 6칸. 칸이 좁으니 글자 약간 축소 */
 .m-rep-grid.cols-six,
@@ -634,7 +648,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 
 /* ───────── 나스(지문) 카드 ───────── */
 .m-card.nass .m-ar {
-  font-size:var(--ar-nass-size); font-weight:500; line-height:1.6;
+  font-size:var(--ar-nass-size); font-weight:500; line-height:1.6;  /* 드릴 아랍어(dc-ar 16px)와 동일 크기 */
   white-space:pre-line;
   padding:2px 0 0;
 }
@@ -685,7 +699,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 }
 .m-bl-letter {
   font-family:var(--font-ar);
-  font-size:clamp(1.55rem, 7.4vw, 2.3rem);  /* 교재앱 baseline 글자 ~2pt 축소 */
+  font-size:calc(var(--ar-pattern-size) - 1pt);  /* baseline 글자 = 일반(패턴) 크기, 학생앱은 1pt 작게 */
   text-align:center; font-weight:600; color:var(--text);
   line-height:1; z-index:1;
 }
@@ -699,7 +713,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   white-space:nowrap;
 }
 .m-bl-label {
-  font-size:clamp(.62rem, 2.6vw, .78rem); color:var(--sub);
+  font-size:var(--trans-size); color:var(--sub);  /* 다른 발음(음가)과 동일 크기·색으로 통일 (vw→고정 10px) */
   text-align:center; font-weight:500;
   letter-spacing:.3px;
 }
@@ -882,16 +896,16 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 const SHEET_ID    = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 const AUDIO_BASE  = 'https://storage.googleapis.com/all-that-arabic-145/audio';
 const IMG_BASE    = 'https://storage.googleapis.com/all-that-arabic-145/img';
-const IMG_VERSION = '20260607a';
+const IMG_VERSION = '20260722-id';
 
 // 1.4.5 실제 탭명. rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭을 공유(type 열로 구분).
 const TABS = {
   units:   '유닛unit',
-  pattern: '데이터시트sheet',
+  pattern: '패턴pattern',
   drill:   '데이터시트sheet',
   exp:     '데이터시트sheet',
   repertory:'데이터시트sheet',
-  nass:    '나쓰nass',
+  nass:    '데이터시트sheet',
   kalimat: '데이터시트sheet',
 };
 
@@ -954,8 +968,9 @@ function compat145(r) {
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
-// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음(임시 규칙). 값 없으면 이미지 없음.
+// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음. 파일명은 그 행의 id 값 그대로 사용한다.
 const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
+const imageId = r => hasImg(r) ? String((r && r.id) || '').trim() : '';
 
 /* ───────── JSONP 로더 ───────── */
 const _cache = {};
@@ -995,7 +1010,8 @@ function fetchSheet(name) {
 
 /* ───────── 유틸 ───────── */
 // 실행 환경 — dev(localhost/file)인지 prod인지
-const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+try{const _dp=new URLSearchParams(location.search).get('dev');if(_dp==='1')localStorage.setItem('ata_dev','1');else if(_dp==='0')localStorage.removeItem('ata_dev');}catch(e){}
+const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:' || (()=>{try{return localStorage.getItem('ata_dev')==='1';}catch(e){return false;}})();
 // 노출 규칙: confirmed = dev·prod 모두 / draft = dev에서만 / 그 외 = 숨김
 // (유닛·콘텐츠 행 공통 — 유닛을 여는 매커니즘의 기준)
 const ok = r => {
@@ -1124,7 +1140,7 @@ function matchesUnit(row, unit, unitRow = getUnitRow(unit)) {
 }
 
 function ptnRef(row) {
-  return row?.['id_ptn(no)'] || row?.id_ptn || '';
+  return row?.id || row?.['id_ptn(no)'] || row?.id_ptn || '';
 }
 
 function refKey(value) {
@@ -1135,22 +1151,30 @@ function refKey(value) {
     .replace(/[^a-z0-9가-힣ء-ي]/g, '');
 }
 
+function ptnNumOf(v) {
+  const m = String(v || '').match(/^(ptn\d+)/i);
+  return m ? m[1].toLowerCase() : '';
+}
 function sameRef(a, b) {
-  return refKey(a) && refKey(a) === refKey(b);
+  if (refKey(a) && refKey(a) === refKey(b)) return true;
+  // 폴백: 래퍼 ref_ptn 슬러그가 패턴 id 슬러그와 달라도 ptnNNN 번호가 같으면 매칭(인쇄앱과 동일)
+  const pa = ptnNumOf(a), pb = ptnNumOf(b);
+  return !!pa && pa === pb;
 }
 
 function ptnLabel(row) {
   const m = ptnRef(row).match(/p(?:tn)?0*(\d+)/i);
-  return m ? `PATTERN ${m[1].padStart(3,'0')}` : 'PATTERN';
+  return m ? `PATTERN ${m[1].padStart(2,'0')}` : 'PATTERN';
 }
 
 function ptnNumber(row) {
   const m = ptnRef(row).match(/p(?:tn)?0*(\d+)/i);
-  return m ? m[1].padStart(3,'0') : '';
+  return m ? m[1].padStart(2,'0') : '';
 }
 
+// 앱 표시용 유닛 코드: A001 → A01 (문자 유지, 번호 2자리). 시트값은 그대로.
 function unitNo(unit) {
-  return String(unit || '').replace(/^[A-Za-z]+0*/, '') || unit || '';
+  return String(unit || '').replace(/\d+/, m => m.slice(-2).padStart(2, '0'));
 }
 
 function pageKindLabel(page) {
@@ -1178,11 +1202,6 @@ function rowsByUnit(tab, unit, typeFilter) {
     .filter(r => !typeFilter || typeFilter(normType(r.type), r));
 }
 
-function imageIdFor(unit, kind) {
-  if (!unit || !kind) return '';
-  return `${unit}_${kind}1`;
-}
-
 /* ───────── 페이지 빌더 ───────── */
 /* 페이지 = 교재 한 페이지. 한 페이지 안의 모든 카드/표는 그대로 스택해 스크롤. */
 
@@ -1193,12 +1212,12 @@ function buildPagesForUnit(unit) {
   // 표현 (데이터시트sheet 의 exp 타입) — 1.4.5는 단일 탭이라 한 번만 읽는다
   const expRows = rowsByUnit(TABS.exp, unit, t => t === 'exp');
   if (expRows.length) {
-    // img 체크박스가 켜진 행이 하나라도 있으면 hero 표시 (GCS 404 cascade 회피)
-    const expHasImg = expRows.some(hasImg);
+    // 대표 표현 이미지 = img가 체크된 첫 행의 id.png. 체크/ID가 없으면 요청하지 않는다.
+    const expImageId = imageId(expRows.find(r => imageId(r)));
     bySec.exp.push({
       sec:'exp', kind:'list',
       title:'표현', subtitle: expRows.length + '개',
-      hero: expHasImg ? imageIdFor(unit, 'exp') : '',
+      hero: expImageId,
       cards: expRows.map(r => ({...r, _kind:'exp'})),
     });
   }
@@ -1209,11 +1228,11 @@ function buildPagesForUnit(unit) {
     const ref = ptnRef(r);
     const reps = rowsByUnit(TABS.repertory, unit, t => t === 'repertory' || t === 'repertorie')
       .filter(rep => sameRef(rep.ref_ptn, ref));
-    // 패턴별 이미지: img 체크박스가 켜졌을 때만 GCS img/{id_ptn(no)}.png 시도 (404 cascade 회피)
+    // 패턴별 이미지: img 체크박스가 켜진 해당 행의 id.png만 요청한다.
     bySec.ptn.push({
       sec:'ptn', kind:'pattern',
-      title:'패턴', subtitle: `${i+1} / ${ptnRows.length}`,
-      hero: hasImg(r) ? ref : '',
+      title:'패턴', subtitle: ptnNumber(r) || `${i+1} / ${ptnRows.length}`,
+      hero: imageId(r),
       row: r, reps,
     });
   });
@@ -1298,17 +1317,20 @@ function curSection() { return state.pages[state.page]?.sec || 'exp'; }
 
 function renderHead() {
   const unitRow = (_cache[TABS.units]||[]).find(r => r.u === state.unit);
-  document.getElementById('h-unit').textContent = state.unit;
+  document.getElementById('h-unit').textContent = unitNo(state.unit);
   document.getElementById('h-unit-ar').textContent = (unitRow?.arabic || '').slice(0, 22);
   document.getElementById('h-unit-ko').textContent = (unitRow?.korean || '').slice(0, 34);
 
-  // 헤더 카운터: 같은 섹션 안의 위치 (예: "패턴 2/3")
+  // 헤더 카운터: 패턴은 패턴번호 2자리(예: "패턴 01"), 그 외 섹션은 위치(예: "드릴 2/3")
   const sec = curSection();
   const inSec = state.pages.filter(p => p.sec === sec);
   const idxInSec = inSec.findIndex(p => p === state.pages[state.page]);
   const secLabel = SECTIONS.find(s => s.key === sec)?.label || '';
+  const curPage = state.pages[state.page];
+  const ptnNo = (sec === 'ptn' && curPage?.row) ? ptnNumber(curPage.row) : '';
   document.getElementById('h-counter').textContent =
-    inSec.length > 1 ? `${secLabel} ${idxInSec+1}/${inSec.length}` : secLabel;
+    ptnNo ? `${secLabel} ${ptnNo}`
+          : (inSec.length > 1 ? `${secLabel} ${idxInSec+1}/${inSec.length}` : secLabel);
 
   // 푸터 인디케이터: 글로벌 (예: "03 / 07")
   const total = state.pages.length || 1;
@@ -1383,8 +1405,7 @@ function renderBody() {
 }
 
 function renderHero(id, opts = {}) {
-  // 시트의 Img 플래그가 있을 때만 호출됨 — png 단일 시도(확장자 fallback 제거).
-  // 모든 이미지는 png로 저장한다는 컨벤션.
+  // 시트의 img 플래그와 id가 모두 있을 때만 호출됨. 배포 파일명은 {id}.png다.
   const wrap = document.createElement('div');
   wrap.className = 'm-hero-wrap';
   const img = document.createElement('img');
@@ -1453,8 +1474,8 @@ function renderCard(row) {
     su.innerHTML = parseInline(row.sual);
     el.appendChild(su);
   }
-  // 교재에서는 표현(exp)의 script(설명 블록)를 표시하지 않는다 (product-ata145-design 규칙)
-  if (row.script && row._kind !== 'exp') {
+  // 표현(exp)·드릴의 script(설명)는 학생앱에서 노출한다 (인쇄 교재에선 숨김) — 대표 지침 2026-07-22
+  if (row.script) {
     const sc = document.createElement('div');
     sc.className = 'm-script';
     sc.innerHTML = renderScriptLines(row.script);
@@ -1567,8 +1588,8 @@ function renderScriptText(text) {
     if (!t) return '';
     if (t.startsWith('- ')) {
       const raw = t.slice(2);
-      // 불릿만 첫 강한문자 기준으로 dir 부여 — 아랍어로 시작하면 RTL(점이 오른쪽)
-      return `<span class="bullet" dir="${firstStrongDir(raw)}">${parseInline(raw)}</span>`;
+      // 스크립트 불릿은 전부 LTR 고정 — 아랍 토큰은 흐름 안에서 RTL로 임베드(대표 지침 2026-07-21)
+      return `<span class="bullet" dir="ltr">${parseInline(raw)}</span>`;
     }
     if (t.startsWith('>')) return `<span class="quote">${parseInline(t.replace(/^>\s*/, ''))}</span>`;
     return `<span class="para">${parseInline(line)}</span>`;
@@ -1813,7 +1834,7 @@ function buildUnitList() {
     li.className = 'm-unit-row' + (r.u === state.unit ? ' active' : '');
     li.dataset.unit = r.u;
     li.innerHTML = `
-      <span class="ucode">${r.u}</span>
+      <span class="ucode">${unitNo(r.u)}</span>
       <span class="ubody">
         <span class="uar">${(r.arabic||'').slice(0, 26)}</span>
         <span class="uko">${(r.korean||'').slice(0, 28)}</span>

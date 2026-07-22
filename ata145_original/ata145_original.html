@@ -65,10 +65,12 @@ body {
   overflow: hidden;
 }
 
-/* ── 헤더 (회색) ── */
+/* ── 헤더 (회색) — 챕터 라벨 + 네비게이션 영역 ── */
 .page-head {
   background: var(--gray-area);
-  padding: 58px 44px 32px;   /* 상단 여백 살짝 더(유닛 박스 아래로) · 헤더→첫 카드 간격 48(=32+body16) */
+  /* 상단 46: 챕터+네비게이션 영역을 살짝 위로 → 스크립트박스(page-body flex:1)가 그만큼 길어짐
+     하단 20: 네비게이션 영역→스크립트박스 간격 36(=20+body16) = 스크립트↔래퍼토리 간격과 동일 */
+  padding: 46px 44px 20px;
   text-align: center;
   display: flex; flex-direction: column;
   align-items: center; gap: 18px;
@@ -76,6 +78,7 @@ body {
 .head-category {
   display: none;   /* 카테고리 라벨(올댓아라빅 표현 등) 미표시 — UNIT 박스로 대체 */
 }
+/* 네비게이션 영역 (navigation area) — UNIT NN | PATTERN NN 알약 박스 */
 .head-unit-box {
   display: inline-flex; align-items: stretch;
   border-radius: var(--r-md); overflow: hidden;
@@ -482,6 +485,16 @@ body {
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
+  position: relative;   /* 국기 절대배치(좌측 아래) 기준 */
+}
+/* two 박스 국기는 셀 좌측 아래 고정 (인라인 X) — 대표 지침 */
+/* 직접자식만: 홑국기(.lahja-flag) 또는 다중국기 컨테이너(.lahja-flags). 컨테이너 안 개별 국기는 flex로 나란히 유지 */
+.cols-two .two-cell .ar-line > .lahja-flag,
+.cols-two .two-cell .ar-line > .lahja-flags {
+  position: absolute;
+  left: 14px;
+  bottom: 9px;
+  margin: 0;
 }
 .cols-two .two-body { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .cols-two .two-cell .ar-line {
@@ -1053,7 +1066,8 @@ body {
 const SHEET_ID = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 
 // dev/prod 판정 — localhost/127.0.0.1/file: 은 dev (draft 노출), 그 외 prod (confirmed만)
-const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+try{const _dp=new URLSearchParams(location.search).get('dev');if(_dp==='1')localStorage.setItem('ata_dev','1');else if(_dp==='0')localStorage.removeItem('ata_dev');}catch(e){}
+const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:' || (()=>{try{return localStorage.getItem('ata_dev')==='1';}catch(e){return false;}})();
 // status 필터: confirmed=항상, draft=dev에서만, 그 외=숨김
 const okStatus = r => {
   const s = ((r && r.status) || '').trim().toLowerCase();
@@ -1068,10 +1082,10 @@ const okStatus = r => {
    - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
    - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
-  units:'유닛unit', unit:'유닛unit', pattern:'데이터시트sheet',
+  units:'유닛unit', unit:'유닛unit', pattern:'패턴pattern',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
   exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
-  nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
+  nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
 const TYPE_145 = { rep:'repertory', drill:'drilla' };
@@ -1083,8 +1097,9 @@ function compat145(r) {
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
-// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음(임시 규칙). 값 없으면 이미지 없음.
+// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음. 파일명은 그 행의 id 값 그대로 사용한다.
 const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
+const imageId = r => hasImg(r) ? String((r && r.id) || '').trim() : '';
 // 챕터 라벨(All That Arabic N) — 모든 페이지 head 공통 템플릿. renderUnit에서 _curChapter 세팅.
 let _curChapter = '';
 const chapterLabel = () => _curChapter ? `<div class="head-chapter">All That Arabic ${_curChapter}</div>` : '';
@@ -1217,7 +1232,8 @@ function renderScript(text) {
   const flushBullets = () => {
     if (bullets.length) {
       // 줄 시작 언어로 dir 부여 — 아랍어 시작이면 RTL(점이 오른쪽), 그 외 LTR
-      main += `<ul>${bullets.map(l => `<li dir="${firstStrongDir(l)}">${wrapArabicTokens(parseInline(l))}</li>`).join('')}</ul>`;
+      // 스크립트 불릿은 전부 LTR 고정 — 아랍 토큰은 흐름 안에서 RTL로 임베드(대표 지침 2026-07-21)
+      main += `<ul>${bullets.map(l => `<li dir="ltr">${wrapArabicTokens(parseInline(l))}</li>`).join('')}</ul>`;
       bullets = [];
     }
   };
@@ -1411,10 +1427,9 @@ function renderPatternPage(unit, pattern, drills, opts) {
   // 기본(css 없음) 패턴: 음가는 항상 표시(학생앱과 통일). baseline/c는 자체 렌더.
   const showLineTrans = pattern.transliteration && !isBaseline && !isC;
 
-  // 유닛 번호 (A01 → 1), 패턴 번호 (ptn001_… → 001)
+  // 유닛 번호 (A001 → 표시 01), 패턴 번호 (ptn007 → 표시 07). 시트값은 그대로.
   const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
-  const ptnNo = ((pattern['id_ptn(no)'] || '').match(/(\d+)/)?.[1])
-              || String(patternIdx + 1).padStart(3, '0');
+  const ptnNo = String(parseInt((pattern['id_ptn(no)'] || pattern.id || '').match(/(\d+)/)?.[1] || (patternIdx + 1), 10)).padStart(2, '0');
 
   // baseline / c 모드: 가운데 정렬 (별도 wrapper 없이)
   // 일반 모드: 우측 정렬 wrapper 안에 아랍어 + 음가
@@ -1435,7 +1450,7 @@ function renderPatternPage(unit, pattern, drills, opts) {
       <div class="head-unit-box">
         <span class="ub-l">
           <span class="ub-lbl">UNIT</span>
-          <span class="ub-num">${unitNum}</span>
+          <span class="ub-num">${String(unitNum).padStart(2, '0')}</span>
         </span>
         <span class="ub-r">
           <span class="ub-lbl">pattern</span>
@@ -1445,7 +1460,7 @@ function renderPatternPage(unit, pattern, drills, opts) {
     </div>
 
     <div class="page-body">
-      ${(opts.isFirstPattern && hasImg(pattern)) ? `<div class="illustration"><img src="${patternIllustrationUrl(unit.u)}" alt="" onerror="this.parentElement.remove()"></div>` : ''}
+      ${imageId(pattern) ? `<div class="illustration"><img src="${illustrationUrl(imageId(pattern))}" alt="" onerror="this.parentElement.remove()"></div>` : ''}
       <div class="body-card">
         ${arabicSection}
         ${pattern.korean ? `<div class="pattern-korean">${parseInline(pattern.korean)}</div>` : ''}
@@ -1582,10 +1597,11 @@ function _buildDrillAtoms(drills, isB, instruction, sectionId) {
   });
   const orderedKeys = [...groups.keys()].sort((a, b) => {
     const [ra, ma] = a.split('||'), [rb, mb] = b.split('||');
+    // 모드 우선: grid(five/six 낱글자·낱말 드릴) 전체가 먼저, two(문장 드릴) 전체가 뒤로
+    if (ma !== mb) return ma === 'grid' ? -1 : 1;
     if (ra === '' && rb !== '') return 1;
     if (ra !== '' && rb === '') return -1;
-    if (ra !== rb) return ra.localeCompare(rb);
-    return ma === mb ? 0 : (ma === 'grid' ? -1 : 1);  // grid(five) 먼저, two 뒤
+    return ra.localeCompare(rb);
   });
   return orderedKeys.map((k, i) => {
     const mode = k.split('||')[1];
@@ -1610,7 +1626,7 @@ function _drillPageShell(unitNum, pageNo, innerHtml) {
       <div class="head-unit-box">
         <span class="ub-l">
           <span class="ub-lbl">UNIT</span>
-          <span class="ub-num">${unitNum}</span>
+          <span class="ub-num">${String(unitNum).padStart(2, '0')}</span>
         </span>
         <span class="ub-r">
           <span class="ub-text">Drill</span>
@@ -1791,21 +1807,13 @@ function fillDownDrill(rows) {
   });
 }
 
-// 일러스트 URL — GCS 컨벤션 (임시 규칙)
-//   - 표현 페이지: img/{유닛U}_exp1.png
-//   - 첫 패턴 페이지: img/{유닛U}_ptn1.png
-//   파일이 GCS 버킷에 없으면 <img> onerror에서 영역 전체 숨김 (placeholder 없음)
-//   '_exp1', '_ptn1' 접미사는 추후 베리에이션을 위한 자리. 지금은 1번만 사용.
+// 일러스트 URL — img가 체크된 행의 id를 그대로 사용: img/{id}.png
+// 파일이 GCS 버킷에 없으면 <img> onerror에서 영역 전체 숨김 (placeholder 없음).
 const ILLUSTRATION_BASE = 'https://storage.googleapis.com/all-that-arabic-145/img';
-// 초안 단계: 매 페이지 로드마다 캐시 무력화 (GCS의 max-age=3600 회피)
-const _illVer = () => `?v=${Date.now()}`;
-function illustrationUrl(u) {
-  if (!u) return '';
-  return `${ILLUSTRATION_BASE}/${encodeURIComponent(u)}_exp1.png${_illVer()}`;
-}
-function patternIllustrationUrl(u) {
-  if (!u) return '';
-  return `${ILLUSTRATION_BASE}/${encodeURIComponent(u)}_ptn1.png${_illVer()}`;
+const ILLUSTRATION_VERSION = '20260722-id';
+function illustrationUrl(id) {
+  if (!id) return '';
+  return `${ILLUSTRATION_BASE}/${encodeURIComponent(id)}.png?v=${ILLUSTRATION_VERSION}`;
 }
 
 // ── 나쓰(지문) 안내문 (nass·nass+ 공통, 1개) ──
@@ -1841,7 +1849,7 @@ function _nassPageShell(unitNum, pageNo, innerHtml) {
       <div class="head-unit-box">
         <span class="ub-l">
           <span class="ub-lbl">UNIT</span>
-          <span class="ub-num">${unitNum}</span>
+          <span class="ub-num">${String(unitNum).padStart(2, '0')}</span>
         </span>
         <span class="ub-r">
           <span class="ub-text">NASS</span>
@@ -1932,8 +1940,8 @@ async function renderNassPagesAsync(unit, nassRows, opts) {
 function renderExpressionPage(unit, expressions, opts) {
   const { pageNo, showTrans } = opts;
   const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
-  // img 체크박스가 켜진 표현이 하나라도 있으면 일러스트 표시(없으면 GCS 요청 자체를 안 함)
-  const expHasImg = expressions.some(hasImg);
+  // 대표 표현 이미지 = img가 체크된 첫 행의 id.png. 체크/ID가 없으면 요청하지 않는다.
+  const expImageId = imageId(expressions.find(exp => imageId(exp)));
 
   const cards = expressions.map(exp => {
     const trans = (showTrans && exp.transliteration)
@@ -1965,7 +1973,7 @@ function renderExpressionPage(unit, expressions, opts) {
       <div class="head-unit-box">
         <span class="ub-l">
           <span class="ub-lbl">UNIT</span>
-          <span class="ub-num">${unitNum}</span>
+          <span class="ub-num">${String(unitNum).padStart(2, '0')}</span>
         </span>
         <span class="ub-r">
           <span class="ub-text">EXPRESSION</span>
@@ -1974,8 +1982,8 @@ function renderExpressionPage(unit, expressions, opts) {
     </div>
 
     <div class="page-cards">
-      ${expHasImg ? `<div class="illustration">
-        <img src="${illustrationUrl(unit.u)}"
+      ${expImageId ? `<div class="illustration">
+        <img src="${illustrationUrl(expImageId)}"
              alt=""
              onerror="this.parentElement.remove()">
       </div>` : ''}
@@ -2022,8 +2030,8 @@ async function renderUnit(u) {
   const drillsAll = fillDownDrill(drillRaw).filter(r => inU(r) && ok(r));
   const drillA = drillsAll.filter(r => (r.type || '').toLowerCase() === 'drilla');
   const drillB = drillsAll.filter(r => (r.type || '').toLowerCase() === 'drillb');
-  // 나쓰: type이 nass / nass+
-  const nassRows = nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || ''));
+  // 나쓰: 교재(인쇄)에는 nass만 (nass+는 앱 전용, 제외)
+  const nassRows = nassRaw.filter(r => inU(r) && ok(r) && /^nass$/i.test(r.type || ''));
 
   const tParam = new URLSearchParams(location.search).get('trans');
   const isCh0 = /^A/i.test(u);
@@ -2042,14 +2050,14 @@ async function renderUnit(u) {
     pageNo += 1;
   }
 
-  // 패턴 페이지 (각 패턴 = 한 페이지). 첫 패턴에만 일러스트 노출.
+  // 패턴 페이지 (각 패턴 = 한 페이지). img가 체크된 각 패턴 행의 id.png를 노출.
   // 매칭 폴백: pattern.id_ptn(no)와 repertory.ref_ptn의 `ptnNNN_...` 형식에서
   // **번호 prefix(ptnNNN)** 만 추출해서 비교. 시트에서 두 컬럼의 설명 부분이
   // unsync되어도(예: pattern은 'ptn001_ba-ta-tha' / repertory는 'ptn001_bā tā thā')
   // 자동 매칭되어 래퍼토리가 안 보이는 사고 방지.
   const _ptnPrefix = (s) => (s || '').match(/^ptn\d+/i)?.[0]?.toLowerCase() || '';
   patterns.forEach((pat, idx) => {
-    const refKey = pat['id_ptn(no)'] || '';
+    const refKey = pat.id || pat['id_ptn(no)'] || '';
     const refKeyPrefix = _ptnPrefix(refKey);
     // 1차: strict 매칭 / 2차 폴백: ptn-번호 prefix만 매칭
     let items = repertoryAll.filter(r => r.ref_ptn === refKey);
@@ -2060,7 +2068,6 @@ async function renderUnit(u) {
       patternIdx: idx,
       pageNo: pageNo + idx,
       showTrans,
-      isFirstPattern: idx === 0,
     });
   });
   pageNo += patterns.length;
