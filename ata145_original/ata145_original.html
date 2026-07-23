@@ -1334,19 +1334,18 @@ function adjustBaselines() {
   });
 }
 
-// ── 표 ─────────────────────────────────────────────
-// 표 자체에 dir:rtl → 첫 DOM 셀이 시각적으로 가장 오른쪽
-// 모드 결정:
-//   • 항목 중 하나라도 css = 'five' → 5열 아랍어 (korean 무시)
-//   • 한국어가 모두 비어 있음 → 5열 아랍어 (fallback)
-//   • 그 외 → 2 페어 모드 (DOM: ar-ko-ar-ko, 시각적 우→좌)
+// ── 래퍼토리 렌더 ───────────────────────────────────
+// 모드 결정 (학생앱과 동일):
+//   • css = 'two'        → 2열 박스(문장형)             — 단일 .card로 감쌈
+//   • css = 'five'/'six' → 5/6열 아랍어 표               — 단일 .card로 감쌈
+//   • 그 외(디폴트)       → 항목별 개별 박스(.drill-row)  — 드릴 디폴트와 완전히 동일한 모습
+// 반환 HTML은 이미 래퍼(.card 또는 .drill-row 스택)를 포함하므로 호출부에서 별도로 감싸지 않는다.
 function renderRepertory(items, showTrans) {
   if (!items.length) return '';
   const cssOf = it => (it.css || '').trim().toLowerCase();
   const useTwo = items.some(it => cssOf(it) === 'two');
   const useSix = items.some(it => cssOf(it) === 'six');
   const useFive = items.some(it => cssOf(it) === 'five');
-  const hasKorean = items.some(d => (d.korean || '').trim());
   const rows = [];
 
   // 아랍어 + 라하 깃발 인라인 묶음 (셀 안에서 같은 높이)
@@ -1354,7 +1353,7 @@ function renderRepertory(items, showTrans) {
   const arLine = (it, txt) =>
     `<span class="ar-line"><span class="ar-text">${txt}</span>${lahjaFlag(it?.lahja)}</span>`;
 
-  // 우선순위: two > five > 디폴트(페어/5열-fallback)
+  // 우선순위: two > five/six > 디폴트(개별 박스)
   if (useTwo) {
     const cells = items.map(it => {
       const trans = (showTrans && it.transliteration)
@@ -1362,7 +1361,7 @@ function renderRepertory(items, showTrans) {
       const ko = it.korean ? `<span class="ko">${plain(it.korean)}</span>` : '';
       return `<div class="two-cell">${ko}<span class="two-body">${arLine(it, plain(it.arabic || ''))}${trans}</span></div>`;
     }).join('');
-    return `<div class="repertory cols-two">${cells}</div>`;
+    return `<div class="card"><div class="repertory cols-two">${cells}</div></div>`;
   }
 
   // five/six 공용 — six는 five와 동일 레이아웃에 열만 6칸(table-layout:fixed라 칸만 좁아짐)
@@ -1379,22 +1378,20 @@ function renderRepertory(items, showTrans) {
       }
       rows.push(`<tr>${cells.join('')}</tr>`);
     }
-    return `<table class="repertory css-five"><tbody>${rows.join('')}</tbody></table>`;
+    return `<div class="card"><table class="repertory css-five"><tbody>${rows.join('')}</tbody></table></div>`;
   }
 
-  // 페어 모드 — 행당 2 페어. DOM 순: ar1, ko1, ar2, ko2
-  for (let i = 0; i < items.length; i += 2) {
-    const a = items[i], b = items[i + 1];
-    const cellPair = it => {
-      if (!it) return `<td class="ar empty"></td><td class="ko empty"></td>`;
-      const trans = (showTrans && it.transliteration)
-        ? `<span class="trans">${plain(it.transliteration)}</span>` : '';
-      return `<td class="ar">${arLine(it, plain(it.arabic || ''))}${trans}</td>` +
-             `<td class="ko">${plain(it.korean || '')}</td>`;
-    };
-    rows.push(`<tr>${cellPair(a)}${cellPair(b)}</tr>`);
-  }
-  return `<table class="repertory pairs"><tbody>${rows.join('')}</tbody></table>`;
+  // 디폴트 — 항목별 개별 박스(.drill-row). 드릴 디폴트 레이아웃과 완전히 동일:
+  //   좌 한국어 / 우 아랍어 + 음가. page-cards에 박스를 직접 나열(단일 .card로 감싸지 않음).
+  return items.map(it => {
+    const trans = (showTrans && it.transliteration)
+      ? `<div class="drill-trans">${plain(it.transliteration)}</div>` : '';
+    const koHtml = it.korean ? plain(it.korean) : '';
+    return `<div class="drill-row">
+      <div class="drill-row-ko">${koHtml}</div>
+      <div class="drill-row-ar">${arLine(it, plain(it.arabic || ''))}${trans}</div>
+    </div>`;
+  }).join('<div class="drill-row-gap"></div>');
 }
 
 // ── 라하(방언) 코드 → 국기 아이콘 ──
@@ -1475,9 +1472,7 @@ function renderPatternPage(unit, pattern, drills, opts) {
     </div>
 
     ${drills.length ? `
-    <div class="page-cards">
-      <div class="card">${renderRepertory(drills, showTrans)}</div>
-    </div>
+    <div class="page-cards">${renderRepertory(drills, showTrans)}</div>
     ` : ''}
 
     <div class="page-foot">
