@@ -896,7 +896,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 const SHEET_ID    = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 const AUDIO_BASE  = 'https://storage.googleapis.com/all-that-arabic-145/audio';
 const IMG_BASE    = 'https://storage.googleapis.com/all-that-arabic-145/img';
-const IMG_VERSION = '20260722-id';
+const IMG_LOCAL_BASE = '../img';
+const IMG_VERSION = '20260723-a005';
 
 // 1.4.5 실제 탭명. rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭을 공유(type 열로 구분).
 const TABS = {
@@ -951,7 +952,7 @@ const state = {
    1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
    - 탭: 한글+영문 실제 탭명으로 매핑. rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
    - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
-   - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
+   - 타입: rep→repertory, drill/drill+→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
   units:'유닛unit', unit:'유닛unit', pattern:'데이터시트sheet',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
@@ -959,7 +960,7 @@ const TAB_145 = {
   nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1411,7 +1412,15 @@ function renderHero(id, opts = {}) {
   const img = document.createElement('img');
   img.className = 'm-hero';
   img.alt = '';
-  img.onerror = () => { wrap.remove(); opts.onFail?.(); };
+  img.onerror = () => {
+    if (!img.dataset.localTried) {
+      img.dataset.localTried = '1';
+      img.src = `${IMG_LOCAL_BASE}/${encodeURIComponent(id)}.png?v=${IMG_VERSION}`;
+      return;
+    }
+    wrap.remove();
+    opts.onFail?.();
+  };
   img.onload = () => { opts.onLoad?.(); };
   img.src = `${IMG_BASE}/${encodeURIComponent(id)}.png?v=${IMG_VERSION}`;
   wrap.appendChild(img);
@@ -1727,7 +1736,14 @@ function renderDrillPage(wrap, rows, chapter) {
 function groupByRef(rows) {
   const map = new Map();
   rows.forEach((r, index) => {
-    const key = r.ref_ptn || '__unit__';
+    const ref = String(r.ref_ptn || '').trim();
+    // A005의 알리프(p015)·함자(p016) five 드릴은 각각 5개씩이지만
+    // 교재에서는 한 10칸 블록으로 이어서 보여 준다. 데이터의 ref_ptn은
+    // 바꾸지 않고 표시 그룹 키만 합쳐 패턴 연결성을 보존한다.
+    const mergeA005AlifHamza = String(r.u || '').trim() === 'A005'
+      && String(r.css || '').trim().toLowerCase() === 'five'
+      && /^ptn01(?:5|6)(?:_|$)/i.test(ref);
+    const key = mergeA005AlifHamza ? 'ptn015_016_a005_alif_hamza' : (ref || '__unit__');
     if (!map.has(key)) map.set(key, { key, first:index, rows:[] });
     map.get(key).rows.push(r);
   });

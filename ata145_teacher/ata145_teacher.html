@@ -1113,7 +1113,8 @@ body.book-view #book-root { display: flex; }
 const SHEET_ID   = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 const AUDIO_BASE = 'https://storage.googleapis.com/all-that-arabic-145';
 const IMAGE_BASE = 'https://storage.googleapis.com/all-that-arabic-145/img';
-const IMAGE_VERSION = '20260722-id';
+const IMAGE_LOCAL_BASE = '../img';
+const IMAGE_VERSION = '20260723-a005';
 // 1.4.4 신구조: audio/{유닛}/{id}.{mp3|wav} — getAudioUrls에서 unit별 경로 생성
 
 // 시트 탭명
@@ -1186,16 +1187,29 @@ function imageUrl(r) {
   const id = imageId(r);
   return id ? `${IMAGE_BASE}/${encodeURIComponent(id)}.png?v=${IMAGE_VERSION}` : '';
 }
+function localImageUrl(r) {
+  const id = imageId(r);
+  return id ? `${IMAGE_LOCAL_BASE}/${encodeURIComponent(id)}.png?v=${IMAGE_VERSION}` : '';
+}
+function retryLocalSlideImage(img) {
+  if (!img.dataset.localTried && img.dataset.localSrc) {
+    img.dataset.localTried = '1';
+    img.src = img.dataset.localSrc;
+    return;
+  }
+  img.parentElement?.remove();
+}
 function slideIllustrationHtml(r, className = 'slide-illustration') {
   const url = imageUrl(r);
-  return url ? `<div class="${className}"><img src="${url}" alt="" onerror="this.parentElement.remove()"></div>` : '';
+  const localUrl = localImageUrl(r);
+  return url ? `<div class="${className}"><img src="${url}" data-local-src="${localUrl}" alt="" onerror="retryLocalSlideImage(this)"></div>` : '';
 }
 
 /* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
    1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
    - 탭: rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
    - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
-   - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
+   - 타입: rep→repertory, drill/drill+→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
   units:'유닛unit', unit:'유닛unit', pattern:'패턴pattern',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
@@ -1203,7 +1217,7 @@ const TAB_145 = {
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
