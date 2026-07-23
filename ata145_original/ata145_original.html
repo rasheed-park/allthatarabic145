@@ -1593,10 +1593,11 @@ function _buildDrillAtoms(drills, isB, instruction, sectionId) {
     const ref = (it.ref_ptn || '').trim();
     const css = (it.css || '').trim().toLowerCase();
     const mode = css === 'two' ? 'two' : 'grid';  // five/two 분리
-    // A005만: p015 알리프 5개 + p016 함자 5개를 한 10칸으로 표시한다.
+    // A005만: p015 알리프 + p016 함자 드릴을 한 테이블로 합쳐 표시한다.
     // 원본 ref_ptn은 그대로 두고 화면 그룹 키에만 명시적 예외를 적용한다.
+    // (five=5칸/six=6칸 둘 다 허용 — 6+6=12칸 six 병합 지원)
     const displayRef = (it.u || '').trim() === 'A005'
-      && css === 'five'
+      && (css === 'five' || css === 'six')
       && /^ptn01(?:5|6)(?:_|$)/i.test(ref)
       ? 'ptn015_016_a005_alif_hamza'
       : ref;
@@ -2060,40 +2061,46 @@ async function renderUnit(u) {
   const isCh0 = /^A/i.test(u);
   const showTrans = tParam === '1' ? true : tParam === '0' ? false : isCh0;
 
-  // 페이지 순서: 표현 → 패턴들
+  // 페이지 순서 특별규칙: 6과부터 패턴 먼저(패턴 → 표현), 1~5과는 표현 먼저(표현 → 패턴)
+  const _uNum = parseInt((u || '').replace(/\D/g, ''), 10) || 0;
+  const patternFirst = _uNum >= 6;
   let html = '';
   let pageNo = 1;
 
-  // 표현 페이지 (있을 때만, 가장 앞)
-  if (expressions.length) {
-    html += renderExpressionPage(unit, expressions, {
-      pageNo,
-      showTrans,
-    });
-    pageNo += 1;
-  }
+  // 표현 페이지 (있을 때만)
+  const emitExpressions = () => {
+    if (expressions.length) {
+      html += renderExpressionPage(unit, expressions, { pageNo, showTrans });
+      pageNo += 1;
+    }
+  };
 
   // 패턴 페이지 (각 패턴 = 한 페이지). img가 체크된 각 패턴 행의 id.png를 노출.
   // 매칭 폴백: pattern.id_ptn(no)와 repertory.ref_ptn의 `ptnNNN_...` 형식에서
   // **번호 prefix(ptnNNN)** 만 추출해서 비교. 시트에서 두 컬럼의 설명 부분이
   // unsync되어도(예: pattern은 'ptn001_ba-ta-tha' / repertory는 'ptn001_bā tā thā')
   // 자동 매칭되어 래퍼토리가 안 보이는 사고 방지.
-  const _ptnPrefix = (s) => (s || '').match(/^ptn\d+/i)?.[0]?.toLowerCase() || '';
-  patterns.forEach((pat, idx) => {
-    const refKey = pat.id || pat['id_ptn(no)'] || '';
-    const refKeyPrefix = _ptnPrefix(refKey);
-    // 1차: strict 매칭 / 2차 폴백: ptn-번호 prefix만 매칭
-    let items = repertoryAll.filter(r => r.ref_ptn === refKey);
-    if (!items.length && refKeyPrefix) {
-      items = repertoryAll.filter(r => _ptnPrefix(r.ref_ptn) === refKeyPrefix);
-    }
-    html += renderPatternPage(unit, pat, items, {
-      patternIdx: idx,
-      pageNo: pageNo + idx,
-      showTrans,
+  const emitPatterns = () => {
+    const _ptnPrefix = (s) => (s || '').match(/^ptn\d+/i)?.[0]?.toLowerCase() || '';
+    patterns.forEach((pat, idx) => {
+      const refKey = pat.id || pat['id_ptn(no)'] || '';
+      const refKeyPrefix = _ptnPrefix(refKey);
+      // 1차: strict 매칭 / 2차 폴백: ptn-번호 prefix만 매칭
+      let items = repertoryAll.filter(r => r.ref_ptn === refKey);
+      if (!items.length && refKeyPrefix) {
+        items = repertoryAll.filter(r => _ptnPrefix(r.ref_ptn) === refKeyPrefix);
+      }
+      html += renderPatternPage(unit, pat, items, {
+        patternIdx: idx,
+        pageNo: pageNo + idx,
+        showTrans,
+      });
     });
-  });
-  pageNo += patterns.length;
+    pageNo += patterns.length;
+  };
+
+  if (patternFirst) { emitPatterns(); emitExpressions(); }
+  else              { emitExpressions(); emitPatterns(); }
 
   // 드릴 페이지 — B5 budget 안에 안 들어가면 박스 단위로 자동 분할 (renderDrillPagesAsync)
   if (drillA.length || drillB.length) {

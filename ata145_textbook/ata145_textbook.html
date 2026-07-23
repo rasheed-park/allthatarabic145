@@ -931,9 +931,9 @@ const unitNum = u => {
   const m = String(u || '').match(/(\d+)/);
   return m ? parseInt(m[1], 10) : 0;
 };
-// 7과부터 패턴 먼저 시작: 패턴 → 드릴 → 표현 → 지문 → 단어
-// 1~6과는 종전 순서: 표현 → 패턴 → 드릴 → 지문 → 단어 (알파벳 학습 시기)
-const isPatternFirst = u => unitNum(u) >= 7;
+// 6과부터 패턴 먼저 시작: 패턴 → 드릴 → 표현 → 지문 → 단어
+// 1~5과는 표현 먼저: 표현 → 패턴 → 드릴 → 지문 → 단어 (알파벳 학습 시기)
+const isPatternFirst = u => unitNum(u) >= 6;
 const sectionOrderFor = u => isPatternFirst(u)
   ? ['ptn', 'drill', 'exp', 'nass', 'kalimat']
   : ['exp', 'ptn', 'drill', 'nass', 'kalimat'];
@@ -1203,6 +1203,31 @@ function rowsByUnit(tab, unit, typeFilter) {
     .filter(r => !typeFilter || typeFilter(normType(r.type), r));
 }
 
+function drillPageMode(row) {
+  return String(row?.css || '').trim().toLowerCase() === 'two' ? 'two' : 'grid';
+}
+
+function drillPageRef(row) {
+  const ref = String(row?.ref_ptn || '').trim();
+  const numbered = ref.match(/^p(?:tn)?0*(\d+)/i);
+  return numbered ? `p${Number(numbered[1])}` : (refKey(ref) || '__unit__');
+}
+
+// 한 page 안에서도 레이아웃 모드가 바뀌면 화면을 나눈다.
+// 특히 two 드릴은 서로 다른 패턴 세트를 한 화면에 합치지 않는다.
+function splitDrillPageSegments(rows) {
+  const segments = [];
+  rows.forEach(row => {
+    const mode = drillPageMode(row);
+    const ref = mode === 'two' ? drillPageRef(row) : '';
+    const prev = segments[segments.length - 1];
+    const startsNew = !prev || prev.mode !== mode || (mode === 'two' && prev.ref !== ref);
+    if (startsNew) segments.push({ mode, ref, rows: [] });
+    segments[segments.length - 1].rows.push(row);
+  });
+  return segments;
+}
+
 /* ───────── 페이지 빌더 ───────── */
 /* 페이지 = 교재 한 페이지. 한 페이지 안의 모든 카드/표는 그대로 스택해 스크롤. */
 
@@ -1257,23 +1282,18 @@ function buildPagesForUnit(unit) {
         if (!isNaN(na) && !isNaN(nb)) return na - nb;
         return String(a).localeCompare(String(b), undefined, { numeric: true });
       });
-      keys.forEach((k, i) => {
+      const pageGroups = keys.flatMap(k => splitDrillPageSegments(byPage.get(k)).map(seg => seg.rows));
+      pageGroups.forEach((rows, i) => {
         bySec.drill.push({
           sec:'drill', kind:'drill',
-          title:'드릴', subtitle: `${i+1} / ${keys.length}`,
-          rows: byPage.get(k),
+          title:'드릴', subtitle: `${i+1} / ${pageGroups.length}`,
+          rows,
           chapter,
         });
       });
     } else {
-      // css 그리드(five/three/six)와 two 모드가 섞이면 페이지를 나눈다 (two는 다음 페이지)
-      const modeOf = r => (r.css || '').toString().trim().toLowerCase() === 'two' ? 'two' : 'grid';
-      const segs = [];
-      drillRows.forEach(r => {
-        const m = modeOf(r);
-        if (!segs.length || segs[segs.length - 1].m !== m) segs.push({ m, rows: [] });
-        segs[segs.length - 1].rows.push(r);
-      });
+      // css 그리드와 two가 섞이거나 two의 연결 패턴이 바뀌면 다음 페이지로 넘긴다.
+      const segs = splitDrillPageSegments(drillRows);
       segs.forEach((seg, i) => bySec.drill.push({
         sec:'drill', kind:'drill',
         title:'드릴', subtitle: segs.length > 1 ? `${i+1} / ${segs.length}` : seg.rows.length + '개',
@@ -1737,11 +1757,11 @@ function groupByRef(rows) {
   const map = new Map();
   rows.forEach((r, index) => {
     const ref = String(r.ref_ptn || '').trim();
-    // A005의 알리프(p015)·함자(p016) five 드릴은 각각 5개씩이지만
-    // 교재에서는 한 10칸 블록으로 이어서 보여 준다. 데이터의 ref_ptn은
-    // 바꾸지 않고 표시 그룹 키만 합쳐 패턴 연결성을 보존한다.
+    // A005의 알리프(p015)·함자(p016) 드릴을 한 테이블 블록으로 이어서 보여 준다.
+    // 데이터의 ref_ptn은 바꾸지 않고 표시 그룹 키만 합쳐 패턴 연결성을 보존한다.
+    // (five=5칸/six=6칸 둘 다 허용 — 6+6=12칸 six 병합 지원)
     const mergeA005AlifHamza = String(r.u || '').trim() === 'A005'
-      && String(r.css || '').trim().toLowerCase() === 'five'
+      && ['five','six'].includes(String(r.css || '').trim().toLowerCase())
       && /^ptn01(?:5|6)(?:_|$)/i.test(ref);
     const key = mergeA005AlifHamza ? 'ptn015_016_a005_alif_hamza' : (ref || '__unit__');
     if (!map.has(key)) map.set(key, { key, first:index, rows:[] });

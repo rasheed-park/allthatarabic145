@@ -1351,49 +1351,59 @@ async function buildSlides(baseUnit) {
   // 1. 유닛 슬라이드
   unitRaw.filter(r => inU(r) && ok(r)).forEach(r => push('unit', r));
 
-  // 2. 패턴별: 패턴 → 레퍼토리(예문) (drillA는 별도 모음으로 분리)
-  patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
-    push('ptn', ptn);
-    const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
-    repertoryRaw
-      .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'repertory')
-      .forEach(r => push('repertory', r));
-  });
+  // 섹션 순서 특별규칙: 6과부터 패턴 먼저(패턴→드릴→표현), 1~5과는 표현 먼저(표현→패턴→드릴)
+  const patternFirst = (parseInt((baseUnit || '').replace(/\D/g, ''), 10) || 0) >= 6;
 
-  // 3+4. 드릴(drillA/B/C) — `page` 값이 있으면 page 순서대로,
-  //      없으면(1·2과 등) 기존 ref_ptn 매칭 로직 유지 (교재앱과 동일 스코핑)
-  const isDrill = r => ['drilla','drillb','drillc'].includes(normalizeType(r.type));
-  const drillAll = drillRaw.filter(r => inU(r) && ok(r) && isDrill(r));
-  const pageVal = r => (r.page || '').toString().trim();
-  if (drillAll.some(r => pageVal(r) !== '')) {
-    drillAll
-      .map((r, i) => ({ r, i }))
-      .sort((a, b) => {
-        const na = parseFloat(pageVal(a.r)), nb = parseFloat(pageVal(b.r));
-        const ka = pageVal(a.r) === '' || isNaN(na) ? Infinity : na;
-        const kb = pageVal(b.r) === '' || isNaN(nb) ? Infinity : nb;
-        return ka !== kb ? ka - kb : a.i - b.i;   // page 오름차순, 같은 page는 시트순
-      })
-      .forEach(({ r }) => push(normalizeType(r.type), r));
-  } else {
-    // drillA — 패턴별 매칭 먼저, ref_ptn 비어있는 유닛 공통 마지막
+  // [블록 A] 패턴 → 레퍼토리(예문) → 드릴(drillA/B/C)
+  const emitPatternAndDrill = () => {
     patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
+      push('ptn', ptn);
       const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
-      drillRaw
-        .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'drilla')
-        .forEach(r => push('drilla', r));
+      repertoryRaw
+        .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'repertory')
+        .forEach(r => push('repertory', r));
     });
-    drillRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'drilla' && !r.ref_ptn)
-      .forEach(r => push('drilla', r));
-    // drillB/C (연습)
-    drillRaw.filter(r => inU(r) && ok(r) &&
-        (normalizeType(r.type) === 'drillb' || normalizeType(r.type) === 'drillc'))
-      .forEach(r => push(normalizeType(r.type), r));
-  }
 
-  // 4. exp (표현)
-  expressionRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'exp')
-    .forEach(r => push('exp', r));
+    // 드릴(drillA/B/C) — `page` 값이 있으면 page 순서대로,
+    //   없으면(1·2과 등) 기존 ref_ptn 매칭 로직 유지 (교재앱과 동일 스코핑)
+    const isDrill = r => ['drilla','drillb','drillc'].includes(normalizeType(r.type));
+    const drillAll = drillRaw.filter(r => inU(r) && ok(r) && isDrill(r));
+    const pageVal = r => (r.page || '').toString().trim();
+    if (drillAll.some(r => pageVal(r) !== '')) {
+      drillAll
+        .map((r, i) => ({ r, i }))
+        .sort((a, b) => {
+          const na = parseFloat(pageVal(a.r)), nb = parseFloat(pageVal(b.r));
+          const ka = pageVal(a.r) === '' || isNaN(na) ? Infinity : na;
+          const kb = pageVal(b.r) === '' || isNaN(nb) ? Infinity : nb;
+          return ka !== kb ? ka - kb : a.i - b.i;   // page 오름차순, 같은 page는 시트순
+        })
+        .forEach(({ r }) => push(normalizeType(r.type), r));
+    } else {
+      // drillA — 패턴별 매칭 먼저, ref_ptn 비어있는 유닛 공통 마지막
+      patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
+        const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
+        drillRaw
+          .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'drilla')
+          .forEach(r => push('drilla', r));
+      });
+      drillRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'drilla' && !r.ref_ptn)
+        .forEach(r => push('drilla', r));
+      // drillB/C (연습)
+      drillRaw.filter(r => inU(r) && ok(r) &&
+          (normalizeType(r.type) === 'drillb' || normalizeType(r.type) === 'drillc'))
+        .forEach(r => push(normalizeType(r.type), r));
+    }
+  };
+
+  // [블록 B] exp (표현)
+  const emitExpressions = () => {
+    expressionRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'exp')
+      .forEach(r => push('exp', r));
+  };
+
+  if (patternFirst) { emitPatternAndDrill(); emitExpressions(); }
+  else              { emitExpressions(); emitPatternAndDrill(); }
 
   // 5. nass (지문) — nass + nass+ (데이터시트sheet에서 type으로 분리)
   nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
