@@ -1098,9 +1098,11 @@ function compat145(r) {
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
-// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음. 파일명은 그 행의 id 값 그대로 사용한다.
-const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
-const imageId = r => hasImg(r) ? String((r && r.id) || '').trim() : '';
+// 표현 이미지 = type=expi 행. 파일명은 그 행의 id 값 그대로 사용한다.
+const rowType = r => String((r && r.type) || '').toLowerCase().trim();
+const isExpi = r => rowType(r) === 'expi';
+const isPrintExpression = r => rowType(r) === 'expi' || rowType(r) === 'exp';
+const imageId = r => isExpi(r) ? String((r && r.id) || '').trim() : '';
 // 챕터 라벨(All That Arabic N) — 모든 페이지 head 공통 템플릿. renderUnit에서 _curChapter 세팅.
 let _curChapter = '';
 const chapterLabel = () => _curChapter ? `<div class="head-chapter">All That Arabic ${_curChapter}</div>` : '';
@@ -2043,7 +2045,7 @@ async function renderUnit(u) {
   const patterns = patternRaw.filter(r => inU(r) && ok(r) && (r.type || '').toLowerCase() === 'ptn');
   const repertoryAll = repertoryRaw.filter(r => inU(r) && ok(r) && (r.type || '').toLowerCase() === 'repertory');
   const expressions = expressionRaw.filter(r =>
-    inU(r) && ok(r) && (r.type || '').toLowerCase() === 'exp'
+    inU(r) && ok(r) && isPrintExpression(r)
   );
   // drill 탭은 type/status가 섹션 헤더 행에만 있음 → fill-down
   const drillsAll = fillDownDrill(drillRaw).filter(r => inU(r) && ok(r));

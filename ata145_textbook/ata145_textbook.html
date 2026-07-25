@@ -969,9 +969,11 @@ function compat145(r) {
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
-// img 열 = 체크박스(TRUE/FALSE). 체크됨 = 이미지 있음. 파일명은 그 행의 id 값 그대로 사용한다.
-const hasImg = r => /^(true|1|y|yes)$/i.test(String((r && r.img) || '').trim());
-const imageId = r => hasImg(r) ? String((r && r.id) || '').trim() : '';
+// 표현 이미지 = type=expi 행. 파일명은 그 행의 id 값 그대로 사용한다.
+const rowType = r => String((r && r.type) || '').toLowerCase().trim();
+const isExpi = r => rowType(r) === 'expi';
+const isAppExpression = r => rowType(r) === 'expi' || rowType(r) === 'exp' || rowType(r) === 'exp+';
+const imageId = r => isExpi(r) ? String((r && r.id) || '').trim() : '';
 
 /* ───────── JSONP 로더 ───────── */
 const _cache = {};
@@ -1235,10 +1237,10 @@ function buildPagesForUnit(unit) {
   const unitRow = getUnitRow(unit);
   const bySec = { exp: [], ptn: [], drill: [], nass: [], kalimat: [] };
 
-  // 표현 (데이터시트sheet 의 exp 타입) — 1.4.5는 단일 탭이라 한 번만 읽는다
-  const expRows = rowsByUnit(TABS.exp, unit, t => t === 'exp');
+  // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
+  const expRows = rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r));
   if (expRows.length) {
-    // 대표 표현 이미지 = img가 체크된 첫 행의 id.png. 체크/ID가 없으면 요청하지 않는다.
+    // 대표 표현 이미지 = type=expi인 첫 행의 id.png. expi/ID가 없으면 요청하지 않는다.
     const expImageId = imageId(expRows.find(r => imageId(r)));
     bySec.exp.push({
       sec:'exp', kind:'list',
@@ -1254,11 +1256,11 @@ function buildPagesForUnit(unit) {
     const ref = ptnRef(r);
     const reps = rowsByUnit(TABS.repertory, unit, t => t === 'repertory' || t === 'repertorie')
       .filter(rep => sameRef(rep.ref_ptn, ref));
-    // 패턴별 이미지: img 체크박스가 켜진 해당 행의 id.png만 요청한다.
+    // 패턴 이미지는 더 이상 img 체크박스로 요청하지 않는다. 대표 이미지는 expi 행이 담당한다.
     bySec.ptn.push({
       sec:'ptn', kind:'pattern',
       title:'패턴', subtitle: ptnNumber(r) || `${i+1} / ${ptnRows.length}`,
-      hero: imageId(r),
+      hero: '',
       row: r, reps,
     });
   });
