@@ -15,7 +15,8 @@ Icon[$'\r']
 __pycache__/
 *.py[cod]
 
-# Git에는 올리되 GitHub Pages live artifact에서는 제외하는 draft/dev 산출물
+# Git과 Pages에 올리는 작업자용 draft/dev 산출물
+# live/confirmed index.html에서는 링크하지 않고, index.dev.html 주소를 아는 작업자만 사용한다.
 # - index.dev.html
 # - drafts/preview.html
 # - drafts/A00*-draft.md

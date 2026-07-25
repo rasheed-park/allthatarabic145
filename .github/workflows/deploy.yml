@@ -2,8 +2,9 @@ name: Deploy live (GitHub Pages)
 
 # main 에 push 되면 라이브 사이트로 배포한다.
 # draft/dev 파일도 Git에는 같이 보관한다.
-# 다만 라이브 Pages artifact에는 실제 제품 파일만 올리고, 개발/문서 전용 파일은 제외한다.
-# → 앱은 실도메인(github.io)에서 IS_DEV=false 이므로 시트의 confirmed 데이터만 렌더한다.
+# Pages에는 confirmed/live 인덱스(index.html)와 작업자용 dev 인덱스(index.dev.html)을 함께 올린다.
+# 다만 내부 제품문서·로컬 환경 파일은 제외한다.
+# → index.html은 confirmed만, index.dev.html은 draft+confirmed를 렌더한다.
 
 on:
   push:
@@ -28,16 +29,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build live site (dev 전용 파일 제외)
+      - name: Build Pages site (worker dev entry included)
         run: |
           mkdir -p _site
           rsync -a \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='.claude' \
-            --exclude='drafts' \
-            --exclude='index.dev.html' \
-            --exclude='*.md' \
+            --exclude='/*.md' \
             --exclude='*.gsheet' \
             --exclude='.DS_Store' \
             --exclude='._*' \
