@@ -33,6 +33,8 @@
   --trans-size: 10px;
   --ko-size: 11px;
   --script-size: 11px;
+  --pattern-card-height: 320px;       /* 학생앱 임시 규칙: 패턴/스크립트창 고정 높이 */
+  --pattern-hero-card-height: 380px;  /* 이미지형 패턴은 이미지 공간 때문에 별도 고정 높이 */
 }
 *,*::before,*::after { box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
 html,body { height:100%; background:var(--bg); color:var(--text); font-family:var(--font-kr); -webkit-text-size-adjust:100%; }
@@ -180,8 +182,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   display:flex; flex-direction:column; gap:6px;
   position:relative;
 }
-/* kalimat+ — 일반 단어와 아주 살짝 구분 (옅은 회색 음영) */
-.m-card.kalimat-plus { background:#f5f6f9; }
+/* + 타입 — 학생앱 전용 보충 카드. 일반 카드와 아주 살짝 구분되는 연회색 음영 */
+.m-card.plus-card,
+.m-card.kalimat-plus { background:#f2f3f6; }
 .hl-text { color:var(--hl-text); font-weight:inherit; }
 /* 명사문 구분자 (`css = 'nom'`) — 시작어 ‖ 서술어 */
 .nom-divider {
@@ -354,6 +357,10 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-card.pattern {
   gap:14px;
   padding:20px 16px;
+  height:var(--pattern-card-height);
+  flex:0 0 var(--pattern-card-height);
+  min-height:0;
+  overflow:hidden;
 }
 .m-card.pattern .m-ar {
   font-size:var(--ar-pattern-size);
@@ -373,6 +380,11 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   margin-top:10px;
   font-size:var(--script-size); line-height:1.65; color:var(--sub);
   text-align:left;
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding-right:2px;
 }
 .m-card.pattern .m-summary .bullet {
   display:block; padding-left:14px; position:relative;
@@ -460,14 +472,18 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
    아랍어/한국어/음가 데이터는 숨김. 스크립트만 적정 간격을 두고 노출.
    이미지 실패 시 JS의 onFail에서 .pattern-with-hero 클래스 제거 → 일반 카드로 복원. */
 .m-card.pattern.pattern-with-hero {
+  height:var(--pattern-hero-card-height);
+  flex-basis:var(--pattern-hero-card-height);
   padding-top: 0;            /* 이미지가 카드 상단 가장자리에 붙도록 위쪽 패딩 제거 */
   overflow: hidden;          /* 이미지가 카드 radius를 넘지 않게 */
 }
 .m-card.pattern.pattern-with-hero .m-hero-wrap {
   margin: 0 -16px;           /* 카드 좌우 패딩(16px) 상쇄해 가로폭 가득 채움 */
   width: calc(100% + 32px);
+  flex: 0 0 168px;
+  height: 168px;
 }
-.m-card.pattern.pattern-with-hero .m-hero { width:100%; height:auto; display:block; }
+.m-card.pattern.pattern-with-hero .m-hero { width:100%; height:100%; object-fit:cover; display:block; }
 /* 데이터 숨김 — 이미지가 패턴 정보를 대체 */
 .m-card.pattern.pattern-with-hero .m-ar,
 .m-card.pattern.pattern-with-hero .m-ko,
@@ -483,6 +499,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
    알파벳/발음 연습에만 사용한다. */
 .m-card.exp,
 .m-card.repertory { gap:7px; }
+.m-card.exp.exp-plus {
+  background:#f2f3f6; /* exp+는 학생앱 전용 보충 표현: 아주 연한 음영으로만 구분 */
+}
 .m-card.exp .m-ar,
 .m-card.repertory .m-ar { font-size:var(--ar-nass-size); }
 /* 페어 모드 레퍼토리 — 개별 카드들을 묶는 투명 컨테이너 */
@@ -647,6 +666,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 }
 
 /* ───────── 나스(지문) 카드 ───────── */
+.m-card.nass.nass-plus {
+  background:#f2f3f6; /* nass+는 학생앱 전용 보충 지문: 아주 연한 음영으로만 구분 */
+}
 .m-card.nass .m-ar {
   font-size:var(--ar-nass-size); font-weight:500; line-height:1.6;  /* 드릴 아랍어(dc-ar 16px)와 동일 크기 */
   white-space:pre-line;
@@ -960,7 +982,7 @@ const TAB_145 = {
   nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -973,6 +995,17 @@ function compat145(r) {
 const rowType = r => String((r && r.type) || '').toLowerCase().trim();
 const isExpi = r => rowType(r) === 'expi';
 const isAppExpression = r => rowType(r) === 'expi' || rowType(r) === 'exp' || rowType(r) === 'exp+';
+const isExpPlus = r => rowType(r) === 'exp+';
+const sortAppExpressions = rows => [
+  ...rows.filter(r => !isExpPlus(r)),
+  ...rows.filter(r => isExpPlus(r)),
+];
+const isNassPlus = r => rowType(r) === 'nass+';
+const sortNassRows = rows => [
+  ...rows.filter(r => !isNassPlus(r)),
+  ...rows.filter(r => isNassPlus(r)),
+];
+const isPlusRow = r => rowType(r).endsWith('+') || String((r && r._kind) || '').endsWith('-plus');
 const imageId = r => isExpi(r) ? String((r && r.id) || '').trim() : '';
 
 /* ───────── JSONP 로더 ───────── */
@@ -1238,7 +1271,7 @@ function buildPagesForUnit(unit) {
   const bySec = { exp: [], ptn: [], drill: [], nass: [], kalimat: [] };
 
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
-  const expRows = rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r));
+  const expRows = sortAppExpressions(rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r)));
   if (expRows.length) {
     // 대표 표현 이미지 = type=expi인 첫 행의 id.png. expi/ID가 없으면 요청하지 않는다.
     const expImageId = imageId(expRows.find(r => imageId(r)));
@@ -1305,8 +1338,8 @@ function buildPagesForUnit(unit) {
     }
   }
 
-  // 지문 (nass + nass+ 통합)
-  const nassRows = rowsByUnit(TABS.nass, unit, t => t === 'nass' || t === 'nass+');
+  // 지문 — 학생앱에는 nass + nass+를 모두 노출하되, nass+는 맨 아래로 모은다.
+  const nassRows = sortNassRows(rowsByUnit(TABS.nass, unit, t => t === 'nass' || t === 'nass+'));
   if (nassRows.length) {
     bySec.nass.push({
       sec:'nass', kind:'list',
@@ -1451,7 +1484,10 @@ function renderHero(id, opts = {}) {
 
 function renderCard(row) {
   const el = document.createElement('div');
-  el.className = 'm-card ' + (row._kind || '');
+  el.className = 'm-card ' + (row._kind || '')
+    + (isPlusRow(row) ? ' plus-card' : '')
+    + (isExpPlus(row) ? ' exp-plus' : '')
+    + (isNassPlus(row) ? ' nass-plus' : '');
 
   const pair = document.createElement('div');
   pair.className = 'm-pair';
@@ -1788,8 +1824,8 @@ function drillInstruction(type, unit, chapter) {
 }
 
 function renderNassPage(wrap, cards) {
-  // nass·nass+ 구분 없이 시트 순서대로 연속 표시
-  const rows = cards.filter(r => ['nass','nass+'].includes(normType(r.type)));
+  // nass 먼저, nass+는 학생앱 전용 보충 지문으로 맨 아래에 모아 표시한다.
+  const rows = sortNassRows(cards.filter(r => ['nass','nass+'].includes(normType(r.type))));
   if (!rows.length) return;
   const section = document.createElement('section');
   section.className = 'm-subsection';
