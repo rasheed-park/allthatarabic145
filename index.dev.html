@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[DEV] 올댓아라빅 1.4.5 — 개발/로컬 인덱스</title>
+<style>
+  :root{
+    --accent:#1D49FF; --amber:#B8860B; --text:#12205A; --sub:#888FAC;
+    --bg:#F2F4F6; --surface:#fff; --border:#D5DAE8; --draftbg:#FFF7E6; --draftbd:#F0D98C;
+    --font-kr:'Spoqa Han Sans Neo','Apple SD Gothic Neo',sans-serif;
+    --font-ar:'Noto Sans Arabic',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-kr); background:var(--bg); color:var(--text);
+    min-height:100dvh; display:flex; flex-direction:column; align-items:center; padding:32px 20px; gap:22px}
+  .banner{width:100%; max-width:760px; background:var(--draftbg); border:1px dashed var(--draftbd);
+    border-radius:12px; padding:12px 16px; color:var(--amber); font-size:.8rem; line-height:1.6}
+  .banner b{color:var(--amber)}
+  .brand{text-align:center}
+  .brand h1{font-size:1.4rem; letter-spacing:.5px}
+  .brand .ver{color:var(--sub); font-size:.82rem; margin-top:6px; letter-spacing:2px}
+  .seclabel{width:100%; max-width:760px; font-size:.72rem; font-weight:700; letter-spacing:1.5px;
+    color:var(--sub); text-transform:uppercase; margin-top:6px}
+  .units{width:100%; max-width:760px; display:flex; flex-direction:column; gap:10px}
+  .ucard{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:15px 18px;
+    box-shadow:0 1px 3px rgba(18,32,90,.06); display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+  .ucard.draft{background:var(--draftbg); border-color:var(--draftbd)}
+  .u-id{font-size:.66rem; font-weight:700; letter-spacing:1px; color:var(--accent);
+    background:rgba(29,73,255,.08); border-radius:6px; padding:4px 9px; white-space:nowrap}
+  .badge{font-size:.6rem; font-weight:700; letter-spacing:.5px; border-radius:5px; padding:3px 7px}
+  .badge.confirmed{color:#0a7d3c; background:#e5f6ec}
+  .badge.draft{color:var(--amber); background:#fbeecb}
+  .u-ar{font-family:var(--font-ar); font-size:1.2rem; direction:rtl; color:var(--text)}
+  .u-title{flex:1; min-width:110px}
+  .u-title .ko{font-size:.9rem; font-weight:700}
+  .u-title .note{font-size:.72rem; color:var(--sub); font-style:italic; margin-top:2px}
+  .apps{display:flex; gap:6px; flex-wrap:wrap}
+  a.app{text-decoration:none; font-size:.72rem; font-weight:700; color:var(--accent);
+    border:1px solid var(--border); border-radius:8px; padding:6px 10px; transition:.12s; background:#fff}
+  a.app:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
+  a.app.ghost{color:var(--amber); border-color:var(--draftbd)}
+  a.app.ghost:hover{background:var(--amber); color:#fff}
+  .state{color:var(--sub); font-size:.82rem; text-align:center; padding:16px}
+  .foot{color:var(--sub); font-size:.7rem; margin-top:8px; text-align:center; max-width:640px}
+</style>
+</head>
+<body>
+  <div class="brand">
+    <h1>올댓아라빅 1.4.5 · 개발 인덱스</h1>
+    <div class="ver">DEV · localhost 전용</div>
+  </div>
+
+  <div class="banner">
+    <b>개발/로컬 전용 인덱스입니다.</b> localhost·file 로 열 때만 <b>draft</b> 유닛이 앱에 노출됩니다(라이브에서는 confirmed 만).
+    깃에는 올라가지 않습니다(<code>.gitignore</code>). 공개용은 <a href="index.html">index.html</a> 입니다.
+  </div>
+
+  <div class="seclabel">시트 유닛 (confirmed + draft)</div>
+  <div class="units" id="units"><div class="state">유닛을 불러오는 중…</div></div>
+
+  <div class="seclabel">시트 반영 전 초안 (drafts/*.md)</div>
+  <div class="units" id="predrafts"></div>
+
+  <div class="foot">이 페이지는 로컬 검토용입니다. 초안이 확정되면 시트 status 를 confirmed 로 바꾸고, git push 하면 <a href="index.html">라이브</a>에 반영됩니다.</div>
+
+<script>
+const SHEET_ID = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
+const UNIT_TAB = '데이터시트sheet';
+const IS_DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+
+const APPS = [
+  { label:'선생님', path:'ata145_teacher/ata145_teacher.html' },
+  { label:'학생',   path:'ata145_textbook/ata145_textbook.html' },
+  { label:'인쇄',   path:'ata145_original/ata145_original.html' },
+];
+
+// 시트 미반영 초안(.md 미리보기). 시트에 올라가면 위 목록에서 자동으로 사라짐(중복 제거)
+const PRE_DRAFTS = [
+  { u:'A003', ar:'ج ح خ م ه', ko:'유닛3 · jīm ḥā khā mīm hā', preview:'drafts/preview.html', md:'drafts/A003-draft.md' },
+  { u:'A004', ar:'ف ق ك ل ع غ', ko:'유닛4 · fā qāf kāf lām ʕayn ghayn', preview:'drafts/preview.html', md:'drafts/A004-draft.md' },
+  { u:'A005', ar:'س ش ص ض ط ظ', ko:'유닛5 · sīn shīn ṣād ḍād ṭā ẓā', preview:'drafts/preview.html', md:'drafts/A005-draft.md' },
+  { u:'A006', ar:'ى آ ٰ / ء', ko:'유닛6 · 알리프·함자 / 지시대명사', preview:'drafts/preview.html', md:'drafts/A006-draft.md' },
+];
+
+function fetchUnits() {
+  return new Promise((resolve, reject) => {
+    const cb = '__units_' + Date.now();
+    const timer = setTimeout(() => { delete window[cb]; reject(new Error('timeout')); }, 15000);
+    window[cb] = resp => {
+      clearTimeout(timer); delete window[cb];
+      try {
+        const cols = resp.table.cols.map(c => (c.label || '').toLowerCase().trim());
+        const rows = (resp.table.rows || []).map(r => {
+          const o = {}; cols.forEach((h, i) => { if (h) o[h] = (r.c?.[i]?.v ?? '').toString().trim(); });
+          return o;
+        }).filter(o => (o.u || '').trim() && (o.type || '').toLowerCase() === 'ptn');
+        const seen = new Set();
+        resolve(rows.filter(o => {
+          const u = norm(o.u);
+          if (!u || seen.has(u)) return false;
+          seen.add(u);
+          return true;
+        }));
+      } catch (e) { reject(e); }
+    };
+    const s = document.createElement('script');
+    s.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json;responseHandler:${cb}&sheet=${encodeURIComponent(UNIT_TAB)}&headers=1`;
+    s.onerror = () => { clearTimeout(timer); delete window[cb]; reject(new Error('load fail')); };
+    document.head.appendChild(s);
+  });
+}
+const firstLine = s => (s || '').split('\n')[0].replace(/[|*_]/g, ' ').replace(/\s+/g, ' ').trim();
+const norm = s => (s || '').trim().toLowerCase();
+
+function renderUnits(units) {
+  const el = document.getElementById('units');
+  // dev: 전부 노출 / 비-dev: confirmed만 (안전장치)
+  const list = units.filter(u => IS_DEV || norm(u.status) === 'confirmed');
+  if (!list.length) { el.innerHTML = '<div class="state">유닛이 없습니다.</div>'; return; }
+  el.innerHTML = list.map(u => {
+    const isDraft = norm(u.status) !== 'confirmed';
+    const apps = APPS.map(a => `<a class="app${isDraft?' ghost':''}" href="${a.path}?unit=${encodeURIComponent(u.u)}">${a.label}</a>`).join('');
+    return `<div class="ucard${isDraft?' draft':''}">
+      <span class="u-id">${u.u}</span>
+      <span class="badge ${isDraft?'draft':'confirmed'}">${isDraft?(u.status||'draft'):'confirmed'}</span>
+      <span class="u-ar">${firstLine(u.arabic)}</span>
+      <div class="u-title"><div class="ko">${firstLine(u.korean)}</div><div class="note">${firstLine(u.note)}</div></div>
+      <div class="apps">${apps}</div>
+    </div>`;
+  }).join('');
+  return new Set(list.map(u => norm(u.u)));
+}
+
+function renderPreDrafts(sheetUnits) {
+  const el = document.getElementById('predrafts');
+  const present = sheetUnits || new Set();
+  const list = PRE_DRAFTS.filter(d => !present.has(norm(d.u)));  // 시트에 이미 있으면 숨김
+  if (!list.length) { el.innerHTML = '<div class="state">시트 미반영 초안이 없습니다.</div>'; return; }
+  el.innerHTML = list.map(d => `<div class="ucard draft">
+    <span class="u-id">${d.u}</span>
+    <span class="badge draft">md 초안</span>
+    <span class="u-ar">${d.ar}</span>
+    <div class="u-title"><div class="ko">${d.ko}</div><div class="note">시트 반영 전 · 미리보기 시안</div></div>
+    <div class="apps">
+      <a class="app ghost" href="${d.preview}">미리보기</a>
+      <a class="app ghost" href="${d.md}">.md</a>
+    </div>
+  </div>`).join('');
+}
+
+fetchUnits()
+  .then(units => { const present = renderUnits(units); renderPreDrafts(present); })
+  .catch(() => {
+    document.getElementById('units').innerHTML = '<div class="state">유닛을 불러오지 못했습니다(오프라인?). 초안 미리보기는 아래에서 확인하세요.</div>';
+    renderPreDrafts(new Set());
+  });
+</script>
+</body>
+</html>

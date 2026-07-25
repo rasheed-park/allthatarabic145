@@ -12,20 +12,29 @@ Icon[$'\r']
 .vscode/
 .idea/
 *.swp
+__pycache__/
+*.py[cod]
 
-# 개발/로컬 전용 (깃·라이브에 올리지 않음)
-index.dev.html
-drafts/
+# Git에는 올리되 GitHub Pages live artifact에서는 제외하는 draft/dev 산출물
+# - index.dev.html
+# - drafts/preview.html
+# - drafts/A00*-draft.md
+drafts/sheet-import/
 _site/
 
 # 로컬 환경·비밀·작업파일 (깃에 올리지 않음)
 .claude/
 .mcp.json
 *.psd
-img(draft)/
-img(style)/
 
 # 내부 문서는 리포에 올리지 않음(드라이브·backlog에 보관). 공개 README 필요 시 git add -f
 *.md
+!drafts/**/*.md
 
 .codex/
+
+# 대량 생성/레거시 자산은 GCS·Drive에 보관
+/audio/
+/img/144/
+img(draft)/
+img(style)/

@@ -1,7 +1,8 @@
 name: Deploy live (GitHub Pages)
 
 # main 에 push 되면 라이브 사이트로 배포한다.
-# 라이브에는 실제 제품 파일만 올리고, 개발/문서 전용 파일은 제외한다.
+# draft/dev 파일도 Git에는 같이 보관한다.
+# 다만 라이브 Pages artifact에는 실제 제품 파일만 올리고, 개발/문서 전용 파일은 제외한다.
 # → 앱은 실도메인(github.io)에서 IS_DEV=false 이므로 시트의 confirmed 데이터만 렌더한다.
 
 on:
