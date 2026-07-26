@@ -1026,7 +1026,7 @@ const TAB_145 = {
   nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1420,14 +1420,16 @@ function buildPagesForUnit(unit) {
     });
   }
 
-  // 단어 (kalimat → kalimat+)
+  // 단어 (kalG → kalimat → kalimat+)
+  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimatg' && (r.arabic || '').trim() !== '');
   const kReg  = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat'  && (r.arabic || '').trim() !== '');
   const kPlus = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat+' && (r.arabic || '').trim() !== '');
-  if (kReg.length || kPlus.length) {
+  if (kGram.length || kReg.length || kPlus.length) {
     bySec.kalimat.push({
       sec:'kalimat', kind:'list',
-      title:'단어', subtitle: (kReg.length + kPlus.length) + '개',
+      title:'단어', subtitle: (kGram.length + kReg.length + kPlus.length) + '개',
       cards: [
+        ...kGram.map(r => ({...r, _kind:'kalimat'})),
         ...kReg.map(r => ({...r, _kind:'kalimat'})),
         ...kPlus.map(r => ({...r, _kind:'kalimat-plus'})),
       ],

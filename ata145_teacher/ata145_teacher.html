@@ -1137,8 +1137,8 @@ const okStatus = r => {
   return false;
 };
 
-const TYPE_EN = { unit:'UNIT', ptn:'PATTERN', repertory:'REPERTORY', drilla:'DRILL A', drillb:'DRILL B', drillc:'DRILL C', writing:'WRITING', exp:'EXPRESSION', kalimat:'KALIMAT', nass:'NASS' };
-const TYPE_KO = { unit:'유닛',  ptn:'패턴',   repertory:'예문',     drilla:'드릴A',   drillb:'드릴B',   drillc:'드릴C',   writing:'쓰기',    exp:'표현',        kalimat:'단어',      nass:'지문' };
+const TYPE_EN = { unit:'UNIT', ptn:'PATTERN', repertory:'REPERTORY', drilla:'DRILL A', drillb:'DRILL B', drillc:'DRILL C', writing:'WRITING', exp:'EXPRESSION', kalimat:'KALIMAT', kalimatg:'KALIMAT', nass:'NASS' };
+const TYPE_KO = { unit:'유닛',  ptn:'패턴',   repertory:'예문',     drilla:'드릴A',   drillb:'드릴B',   drillc:'드릴C',   writing:'쓰기',    exp:'표현',        kalimat:'단어',      kalimatg:'단어',      nass:'지문' };
 const LAHJA_FLAG = {
   EGY: '../assets/icons/icon-egypt.png',
   LEV: '../assets/icons/icon-lebanon.png',
@@ -1168,6 +1168,7 @@ function normalizeType(t) {
   if (tl === 'writing') return 'writing';
   if (tl === 'exp')     return 'exp';
   if (tl === 'expi')    return 'expi';
+  if (tl === 'kalg' || tl === 'kalimatg') return 'kalimatg';
   if (tl === 'kalimat') return 'kalimat';
   if (tl === 'nass')    return 'nass';
   return tl;
@@ -1219,7 +1220,7 @@ const TAB_145 = {
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1410,8 +1411,9 @@ async function buildSlides(baseUnit) {
   // 5. nass (지문) — nass + nass+ (데이터시트sheet에서 type으로 분리)
   nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
 
-  // 6. kalimat (단어)
-  kalimatRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'kalimat')
+  // 6. kalimat (단어) — kalG(문법/기능 단어)를 일반 kalimat보다 먼저
+  kalimatRaw.filter(r => inU(r) && ok(r) && ['kalimatg', 'kalimat'].includes(normalizeType(r.type)))
+    .sort((a, b) => (normalizeType(a.type) === 'kalimatg' ? 0 : 1) - (normalizeType(b.type) === 'kalimatg' ? 0 : 1))
     .forEach(r => push('kalimat', r));
 
   if (_firstLoad) {
