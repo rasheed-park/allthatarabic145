@@ -1421,7 +1421,7 @@ function buildPagesForUnit(unit) {
   }
 
   // 단어 (kalG → kalimat → kalimat+)
-  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimatg' && (r.arabic || '').trim() !== '');
+  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => ['kalg', 'kalimatg'].includes(t) && (r.arabic || '').trim() !== '');
   const kReg  = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat'  && (r.arabic || '').trim() !== '');
   const kPlus = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat+' && (r.arabic || '').trim() !== '');
   if (kGram.length || kReg.length || kPlus.length) {
