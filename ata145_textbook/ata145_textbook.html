@@ -1050,7 +1050,35 @@ const sortNassRows = rows => [
   ...rows.filter(r => isNassPlus(r)),
 ];
 const isPlusRow = r => rowType(r).endsWith('+') || String((r && r._kind) || '').endsWith('-plus');
-const imageId = r => isExpi(r) ? String((r && r.id) || '').trim() : '';
+function slug145(raw) {
+  return String(raw || '')
+    .toLowerCase()
+    .replace(/\*/g, '')
+    .replace(/_/g, '')
+    .replace(/'/g, '')
+    .replace(/ʿ|ʕ/g, '3')
+    .replace(/ʾ/g, '2')
+    .replace(/[.,!?]/g, '')
+    .replace(/ā/g, 'aa')
+    .replace(/ī/g, 'ii')
+    .replace(/ū/g, 'uu')
+    .replace(/ē/g, 'e')
+    .replace(/ō/g, 'o')
+    .replace(/ḥ/g, 'hh')
+    .replace(/ṣ/g, 'ss')
+    .replace(/ḍ/g, 'dd')
+    .replace(/ṭ/g, 'tt')
+    .replace(/ẓ/g, 'zz')
+    .replace(/[\s-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+function imageId(r) {
+  if (!isExpi(r)) return '';
+  const id = String((r && r.id) || '').trim();
+  if (id) return id;
+  const fallback = slug145(r && (r.note || r.transliteration || r.korean || r.arabic));
+  return fallback ? `expi_${fallback}` : '';
+}
 
 /* ───────── JSONP 로더 ───────── */
 const _cache = {};
@@ -1317,7 +1345,7 @@ function buildPagesForUnit(unit) {
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
   const expRows = sortAppExpressions(rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r)));
   if (expRows.length) {
-    // 대표 표현 이미지 = type=expi인 첫 행의 id.png. expi/ID가 없으면 요청하지 않는다.
+    // 대표 표현 이미지 = type=expi인 첫 행. id가 비어 있으면 note 기반 expi_{slug}.png로 복구한다.
     const expImageId = imageId(expRows.find(r => imageId(r)));
     bySec.exp.push({
       sec:'exp', kind:'list',
@@ -1509,7 +1537,7 @@ function renderBody() {
 }
 
 function renderHero(id, opts = {}) {
-  // 시트의 img 플래그와 id가 모두 있을 때만 호출됨. 배포 파일명은 {id}.png다.
+  // type=expi 대표 이미지. 배포 파일명은 {id}.png이며 GCS 실패 시 로컬 미러를 한 번 재시도한다.
   const wrap = document.createElement('div');
   wrap.className = 'm-hero-wrap';
   const img = document.createElement('img');
