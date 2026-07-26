@@ -34,6 +34,7 @@
   --ko-size: 11px;
   --script-size: 11px;
   --pattern-card-height: min(390px, calc(100dvh - 238px));       /* 학생앱 임시 규칙: 모바일에서 과하게 커지지 않는 패턴/스크립트창. 내용 초과 시 내부 스크롤 */
+  --pattern-baseline-card-height: min(330px, calc(100dvh - 278px)); /* 알파벳/baseline 패턴은 위쪽 패턴부가 짧으므로 더 낮게 잡는다 */
   --pattern-hero-card-height: min(450px, calc(100dvh - 238px));  /* 이미지형 패턴은 이미지 공간 때문에 별도 고정 높이 */
 }
 *,*::before,*::after { box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
@@ -481,9 +482,17 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   min-height:0;
   max-height:100%;
 }
+.m-page.pattern-page > .m-card.pattern.pattern-baseline {
+  flex-basis:var(--pattern-baseline-card-height);
+  height:var(--pattern-baseline-card-height);
+}
 .m-page.pattern-page.has-reps > .m-card.pattern {
   flex-basis:min(var(--pattern-card-height), calc(100% - min(170px, 30dvh) - 10px));
   height:min(var(--pattern-card-height), calc(100% - min(170px, 30dvh) - 10px));
+}
+.m-page.pattern-page.has-reps > .m-card.pattern.pattern-baseline {
+  flex-basis:min(var(--pattern-baseline-card-height), calc(100% - min(170px, 30dvh) - 10px));
+  height:min(var(--pattern-baseline-card-height), calc(100% - min(170px, 30dvh) - 10px));
 }
 .m-page.pattern-page > .m-rep-wrap,
 .m-page.pattern-page > .m-card.repertory,
@@ -525,6 +534,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 @media (max-height:700px) {
   :root {
     --pattern-card-height: min(360px, calc(100dvh - 224px));
+    --pattern-baseline-card-height: min(315px, calc(100dvh - 264px));
     --pattern-hero-card-height: min(410px, calc(100dvh - 224px));
   }
   .m-card.pattern {
@@ -1613,6 +1623,7 @@ function renderPatternCard(row, hero) {
   const cssVal = (row.css || '').trim().toLowerCase();
   const isBaseline = cssVal === 'baseline' || cssVal === 'baseline2';
   const noLine = cssVal === 'baseline2';
+  if (isBaseline) el.classList.add('pattern-baseline');
 
   if (isBaseline) {
     el.appendChild(renderBaseline(row, { noLine }));
