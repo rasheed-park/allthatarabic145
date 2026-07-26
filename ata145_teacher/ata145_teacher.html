@@ -1357,46 +1357,47 @@ async function buildSlides(baseUnit) {
   // 섹션 순서 특별규칙: 6과부터 패턴 먼저(패턴→드릴→표현), 1~5과는 표현 먼저(표현→패턴→드릴)
   const patternFirst = (parseInt((baseUnit || '').replace(/\D/g, ''), 10) || 0) >= 6;
 
-  // [블록 A] 패턴 → 레퍼토리(예문) → 드릴(drillA/B/C)
+  // [블록 A] 패턴마다 → 패턴 → 레퍼토리(예문) → 드릴(drillA/B/C)
+  // 매칭 주의: pattern.id 는 전체 슬러그('ptn004_alif-...')인데 rep/drill.ref_ptn 은
+  // 번호만('ptn004')이라 strict 비교가 어긋난다 → 인쇄앱과 동일하게 **ptn 번호 prefix**로 매칭한다.
   const emitPatternAndDrill = () => {
-    patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
-      push('ptn', ptn);
-      const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
-      repertoryRaw
-        .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'repertory')
-        .forEach(r => push('repertory', r));
-    });
+    const ptnPrefix = s => (String(s || '').match(/^ptn\d+/i)?.[0] || '').toLowerCase();
+    const refKeyOf  = r => ptnPrefix(r.ref_ptn || r.id_ptn || r['id_ptn(no)'] || r.ptn || '');
+    const patKeyOf  = p => ptnPrefix(p.id || p['id_ptn(no)'] || p.id_ptn || p.ptn || '');
 
-    // 드릴(drillA/B/C) — `page` 값이 있으면 page 순서대로,
-    //   없으면(1·2과 등) 기존 ref_ptn 매칭 로직 유지 (교재앱과 동일 스코핑)
-    const isDrill = r => ['drilla','drillb','drillc'].includes(normalizeType(r.type));
+    const patterns = patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn');
+    const repAll   = repertoryRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'repertory');
+    const isDrill  = r => ['drilla','drillb','drillc'].includes(normalizeType(r.type));
     const drillAll = drillRaw.filter(r => inU(r) && ok(r) && isDrill(r));
-    const pageVal = r => (r.page || '').toString().trim();
-    if (drillAll.some(r => pageVal(r) !== '')) {
-      drillAll
-        .map((r, i) => ({ r, i }))
-        .sort((a, b) => {
-          const na = parseFloat(pageVal(a.r)), nb = parseFloat(pageVal(b.r));
-          const ka = pageVal(a.r) === '' || isNaN(na) ? Infinity : na;
-          const kb = pageVal(b.r) === '' || isNaN(nb) ? Infinity : nb;
-          return ka !== kb ? ka - kb : a.i - b.i;   // page 오름차순, 같은 page는 시트순
-        })
-        .forEach(({ r }) => push(normalizeType(r.type), r));
-    } else {
-      // drillA — 패턴별 매칭 먼저, ref_ptn 비어있는 유닛 공통 마지막
-      patternRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'ptn').forEach(ptn => {
-        const ref = ptn.id || ptn['id_ptn(no)'] || ptn.id_ptn || '';
-        drillRaw
-          .filter(r => inU(r) && ok(r) && r.ref_ptn === ref && normalizeType(r.type) === 'drilla')
-          .forEach(r => push('drilla', r));
-      });
-      drillRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'drilla' && !r.ref_ptn)
-        .forEach(r => push('drilla', r));
-      // drillB/C (연습)
-      drillRaw.filter(r => inU(r) && ok(r) &&
-          (normalizeType(r.type) === 'drillb' || normalizeType(r.type) === 'drillc'))
-        .forEach(r => push(normalizeType(r.type), r));
-    }
+
+    const pageVal   = r => (r.page || '').toString().trim();
+    const drillRank = r => ({ drilla:0, drillb:1, drillc:2 }[normalizeType(r.type)] ?? 9);
+    // 한 패턴 안 드릴 정렬: page(숫자) 우선 → drillA/B/C → 시트순
+    const orderDrills = rows => rows
+      .map((r, i) => ({ r, i }))
+      .sort((a, b) => {
+        const pa = parseFloat(pageVal(a.r)), pb = parseFloat(pageVal(b.r));
+        const ka = pageVal(a.r) === '' || isNaN(pa) ? Infinity : pa;
+        const kb = pageVal(b.r) === '' || isNaN(pb) ? Infinity : pb;
+        if (ka !== kb) return ka - kb;
+        if (drillRank(a.r) !== drillRank(b.r)) return drillRank(a.r) - drillRank(b.r);
+        return a.i - b.i;
+      })
+      .map(x => x.r);
+
+    const usedRep = new Set(), usedDrill = new Set();
+    patterns.forEach(ptn => {
+      const key = patKeyOf(ptn);
+      push('ptn', ptn);
+      repAll.filter(r => refKeyOf(r) === key)
+        .forEach(r => { usedRep.add(r); push('repertory', r); });
+      orderDrills(drillAll.filter(r => refKeyOf(r) === key))
+        .forEach(r => { usedDrill.add(r); push(normalizeType(r.type), r); });
+    });
+    // 패턴에 매칭 안 된 레퍼토리·드릴(ref_ptn 비었거나 미매칭)은 유닛 공통 → 맨 뒤로
+    repAll.filter(r => !usedRep.has(r)).forEach(r => push('repertory', r));
+    orderDrills(drillAll.filter(r => !usedDrill.has(r)))
+      .forEach(r => push(normalizeType(r.type), r));
   };
 
   // [블록 B] exp (표현)
