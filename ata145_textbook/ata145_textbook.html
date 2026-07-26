@@ -33,8 +33,8 @@
   --trans-size: 10px;
   --ko-size: 11px;
   --script-size: 11px;
-  --pattern-card-height: 320px;       /* 학생앱 임시 규칙: 패턴/스크립트창 고정 높이 */
-  --pattern-hero-card-height: 380px;  /* 이미지형 패턴은 이미지 공간 때문에 별도 고정 높이 */
+  --pattern-card-height: min(460px, calc(100dvh - 192px));       /* 학생앱 임시 규칙: 패턴/스크립트창 고정 높이. 내용 초과 시 내부 스크롤 */
+  --pattern-hero-card-height: min(520px, calc(100dvh - 192px));  /* 이미지형 패턴은 이미지 공간 때문에 별도 고정 높이 */
 }
 *,*::before,*::after { box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
 html,body { height:100%; background:var(--bg); color:var(--text); font-family:var(--font-kr); -webkit-text-size-adjust:100%; }
@@ -167,6 +167,11 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-page {
   padding:12px 14px 18px;
   display:flex; flex-direction:column; gap:10px;
+}
+.m-page.pattern-page {
+  height:100%;
+  min-height:0;
+  overflow:hidden;
 }
 .m-empty {
   margin:80px 20px; text-align:center;
@@ -355,8 +360,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 
 /* ───────── 패턴 카드 ───────── */
 .m-card.pattern {
-  gap:14px;
-  padding:20px 16px;
+  gap:12px;
+  padding:18px 16px;
   height:var(--pattern-card-height);
   flex:0 0 var(--pattern-card-height);
   min-height:0;
@@ -377,14 +382,15 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   margin-top:0;
 }
 .m-card.pattern .m-summary {
-  margin-top:10px;
+  margin-top:8px;
   font-size:var(--script-size); line-height:1.65; color:var(--sub);
   text-align:left;
   flex:1 1 auto;
   min-height:0;
   overflow-y:auto;
   overscroll-behavior:contain;
-  padding-right:2px;
+  padding:0 4px 4px 0;
+  -webkit-overflow-scrolling:touch;
 }
 .m-card.pattern .m-summary .bullet {
   display:block; padding-left:14px; position:relative;
@@ -467,6 +473,21 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   text-align:center;
 }
 
+.m-page.pattern-page > .m-card.pattern {
+  flex:1 1 auto;
+  height:auto;
+  min-height:0;
+}
+.m-page.pattern-page > .m-rep-wrap,
+.m-page.pattern-page > .m-card.repertory,
+.m-page.pattern-page > .m-rep-table {
+  flex:0 0 auto;
+  max-height:min(190px, 32dvh);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
 /* ───────── 패턴 + 히어로 이미지 (임시) ─────────
    pattern에 GCS 이미지가 있으면(id_ptn(no) 일치), 카드 상단에 이미지를 띄우고
    아랍어/한국어/음가 데이터는 숨김. 스크립트만 적정 간격을 두고 노출.
@@ -490,8 +511,21 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-card.pattern.pattern-with-hero .m-trans { display: none; }
 /* 이미지 ↔ 스크립트 간격 */
 .m-card.pattern.pattern-with-hero .m-summary {
-  margin-top: 18px;
+  margin-top: 14px;
   padding: 0 4px 4px;
+}
+
+@media (max-height:700px) {
+  :root {
+    --pattern-card-height: min(420px, calc(100dvh - 184px));
+    --pattern-hero-card-height: min(480px, calc(100dvh - 184px));
+  }
+  .m-card.pattern {
+    gap:10px;
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+  .m-card.pattern .m-ar { padding-top:10px; padding-bottom:6px; }
 }
 
 /* ───────── 표현·래퍼토리 카드 (작게, 인쇄 카드 느낌) ─────────
@@ -1445,6 +1479,7 @@ function renderBody() {
     if (pageIdx >= 0 && pageIdx < state.pages.length) {
       const wrap = document.createElement('div');
       wrap.className = 'm-page';
+      if (state.pages[pageIdx]?.sec === 'ptn') wrap.classList.add('pattern-page');
       buildPageContent(wrap, state.pages[pageIdx]);
       pane.appendChild(wrap);
     }
