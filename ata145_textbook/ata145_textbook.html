@@ -33,8 +33,8 @@
   --trans-size: 10px;
   --ko-size: 11px;
   --script-size: 11px;
-  --pattern-card-height: min(390px, calc(100dvh - 238px));       /* 학생앱 임시 규칙: 모바일에서 과하게 커지지 않는 패턴/스크립트창. 내용 초과 시 내부 스크롤 */
-  --pattern-baseline-card-height: min(360px, calc(100dvh - 258px)); /* 알파벳/baseline 패턴은 일반 패턴보다 낮되 설명이 답답하지 않게 잡는다 */
+  --pattern-card-max-height: min(390px, calc(100dvh - 238px));   /* 학생앱 패턴 카드 안전 상한. 스크립트 박스가 실제 조절 대상 */
+  --pattern-summary-max-height: min(250px, 36dvh);               /* 패턴 아래 스크립트 설명 박스. 내용 초과 시 이 박스 안에서 스크롤 */
   --pattern-hero-card-height: min(450px, calc(100dvh - 238px));  /* 이미지형 패턴은 이미지 공간 때문에 별도 고정 높이 */
 }
 *,*::before,*::after { box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
@@ -363,8 +363,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-card.pattern {
   gap:12px;
   padding:18px 16px;
-  height:var(--pattern-card-height);
-  flex:0 0 var(--pattern-card-height);
+  height:auto;
+  max-height:var(--pattern-card-max-height);
+  flex:0 0 auto;
   min-height:0;
   overflow:hidden;
 }
@@ -386,9 +387,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   margin-top:8px;
   font-size:var(--script-size); line-height:1.65; color:var(--sub);
   text-align:left;
-  flex:1 1 0;
+  flex:0 1 auto;
   min-height:0;
-  max-height:100%;
+  max-height:var(--pattern-summary-max-height);
   overflow-y:auto;
   overscroll-behavior:contain;
   padding:0 4px 4px 0;
@@ -477,22 +478,13 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 }
 
 .m-page.pattern-page > .m-card.pattern {
-  flex:0 1 var(--pattern-card-height);
-  height:var(--pattern-card-height);
+  flex:0 1 auto;
+  height:auto;
   min-height:0;
-  max-height:100%;
-}
-.m-page.pattern-page > .m-card.pattern.pattern-baseline {
-  flex-basis:var(--pattern-baseline-card-height);
-  height:var(--pattern-baseline-card-height);
+  max-height:var(--pattern-card-max-height);
 }
 .m-page.pattern-page.has-reps > .m-card.pattern {
-  flex-basis:min(var(--pattern-card-height), calc(100% - min(170px, 30dvh) - 10px));
-  height:min(var(--pattern-card-height), calc(100% - min(170px, 30dvh) - 10px));
-}
-.m-page.pattern-page.has-reps > .m-card.pattern.pattern-baseline {
-  flex-basis:min(var(--pattern-baseline-card-height), calc(100% - min(170px, 30dvh) - 10px));
-  height:min(var(--pattern-baseline-card-height), calc(100% - min(170px, 30dvh) - 10px));
+  max-height:min(var(--pattern-card-max-height), calc(100% - min(170px, 30dvh) - 10px));
 }
 .m-page.pattern-page > .m-rep-wrap,
 .m-page.pattern-page > .m-card.repertory,
@@ -533,8 +525,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 
 @media (max-height:700px) {
   :root {
-    --pattern-card-height: min(360px, calc(100dvh - 224px));
-    --pattern-baseline-card-height: min(340px, calc(100dvh - 244px));
+    --pattern-card-max-height: min(360px, calc(100dvh - 224px));
+    --pattern-summary-max-height: min(230px, 34dvh);
     --pattern-hero-card-height: min(410px, calc(100dvh - 224px));
   }
   .m-card.pattern {
@@ -1623,7 +1615,6 @@ function renderPatternCard(row, hero) {
   const cssVal = (row.css || '').trim().toLowerCase();
   const isBaseline = cssVal === 'baseline' || cssVal === 'baseline2';
   const noLine = cssVal === 'baseline2';
-  if (isBaseline) el.classList.add('pattern-baseline');
 
   if (isBaseline) {
     el.appendChild(renderBaseline(row, { noLine }));
