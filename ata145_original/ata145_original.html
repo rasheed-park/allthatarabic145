@@ -1080,7 +1080,7 @@ const okStatus = r => {
 /* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
    1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
    - 탭: rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
-   - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
+   - 링크: 유닛은 type=unit 행의 U(A001), 패턴은 ptn(ptn001) → id_ptn(no)/ref_ptn.
    - 타입: rep→repertory, drill→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
   units:'유닛unit', unit:'유닛unit', pattern:'패턴pattern',
@@ -1089,7 +1089,7 @@ const TAB_145 = {
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1960,8 +1960,9 @@ async function renderNassPagesAsync(unit, nassRows, opts) {
 function renderExpressionPage(unit, expressions, opts) {
   const { pageNo, showTrans } = opts;
   const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
-  // 대표 표현 이미지 = img가 체크된 첫 행의 id.png. 체크/ID가 없으면 요청하지 않는다.
-  const expImageId = imageId(expressions.find(exp => imageId(exp)));
+  // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`. 트리거는 대표표현(expi) 존재, 첫 표현 위에 노출.
+  const _heroExp = expressions.find(exp => imageId(exp));
+  const expImageId = _heroExp ? 'img_' + String(unit.u || '').toLowerCase() : '';
 
   const cards = expressions.map(exp => {
     const trans = (showTrans && exp.transliteration)

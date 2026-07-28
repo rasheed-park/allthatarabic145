@@ -1168,7 +1168,7 @@ function normalizeType(t) {
   if (tl === 'writing') return 'writing';
   if (tl === 'exp')     return 'exp';
   if (tl === 'expi')    return 'expi';
-  if (tl === 'kalg' || tl === 'kalimatg') return 'kalimatg';
+  if (tl === 'kalg' || tl === 'kal1' || tl === 'kalimatg') return 'kalimatg';
   if (tl === 'kalimat') return 'kalimat';
   if (tl === 'nass')    return 'nass';
   return tl;
@@ -1185,7 +1185,7 @@ function getRowId(r) {
 // 표현 이미지 = type=expi 행. 파일명은 그 행의 id 값 그대로 사용한다.
 const isExpi = r => normalizeType(r && r.type) === 'expi';
 const isAppExpression = r => ['expi', 'exp', 'exp+'].includes(normalizeType(r && r.type));
-const imageId = r => isExpi(r) ? String((r && r.id) || '').trim() : '';
+const imageId = r => '';  // 1.4.5: 유닛 이미지는 선생님앱(수업 슬라이드)에 표시하지 않는다
 function imageUrl(r) {
   const id = imageId(r);
   return id ? `${IMAGE_BASE}/${encodeURIComponent(id)}.png?v=${IMAGE_VERSION}` : '';
@@ -1211,24 +1211,30 @@ function slideIllustrationHtml(r, className = 'slide-illustration') {
 /* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
    1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
    - 탭: rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
-   - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
+   - 링크: 유닛은 type=unit 행의 U(A001), 패턴은 ptn(ptn001) → id_ptn(no)/ref_ptn.
    - 타입: rep→repertory, drill/drill+→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
-  units:'유닛unit', unit:'유닛unit', pattern:'패턴pattern',
+  units:'데이터시트sheet', unit:'데이터시트sheet', pattern:'패턴pattern',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
   exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
   if (TYPE_145[t]) r.type = TYPE_145[t];
+  if (t === 'unit') {                 // 유닛 헤더: `|` 구분자 제거 + 이어쓰기(둘째 줄) 숨김 → 첫 줄만
+    if (r.arabic) r.arabic = String(r.arabic).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
+    if (r.korean) r.korean = String(r.korean).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
+  }
   const p = String(r.ptn||'').trim();
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
+// 유닛 행: 데이터시트sheet의 type=unit 행에서 가져온다(유닛unit 탭은 참고용 자동뷰)
+const unitRows = () => (_cache[resolveTab145(TAB_UNIT)] || []).filter(r => normalizeType(r.type) === 'unit');
 
 // ── JSONP 데이터 로더 ──────────────────────────────────
 const _cache = {};
@@ -1352,7 +1358,7 @@ async function buildSlides(baseUnit) {
   const push = (type, r) => slides.push({ type, data: r, pg: baseUnit });
 
   // 1. 유닛 슬라이드
-  unitRaw.filter(r => inU(r) && ok(r)).forEach(r => push('unit', r));
+  unitRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'unit').forEach(r => push('unit', r));
 
   // 섹션 순서 특별규칙: 6과부터 패턴 먼저(패턴→드릴→표현), 1~5과는 표현 먼저(표현→패턴→드릴)
   const patternFirst = (parseInt((baseUnit || '').replace(/\D/g, ''), 10) || 0) >= 6;
@@ -1572,7 +1578,7 @@ async function renderUnitBook(baseUnit) {
   ]);
 
   const ok = okStatus;
-  const unit = unitRaw.find(r => r.u === baseUnit && ok(r)) || unitRaw.find(r => r.u === baseUnit) || {};
+  const unit = unitRaw.find(r => r.u === baseUnit && ok(r) && normalizeType(r.type) === 'unit') || unitRaw.find(r => r.u === baseUnit && normalizeType(r.type) === 'unit') || {};
   const chapter = unit.c || '';
   const marks = ['أ', 'ب', 'ج', 'د', 'هـ', 'و', 'ز', 'ح'];
   const patterns = patternRaw
@@ -1647,7 +1653,7 @@ function renderSlide() {
   // 상단 좌측: 현재 유닛 정보(unit탭) + 섹션 탭
   const tl = document.getElementById('ui-tl');
   const curPgU = s.pg || '';
-  const unitRow = (_cache[TAB_UNIT] || []).find(r => r.u === curPgU);
+  const unitRow = unitRows().find(r => r.u === curPgU);
   const tlArabic = (unitRow?.arabic || '').substring(0, 30);
   const tlKorean = (unitRow?.korean || '').substring(0, 28);
   tl.innerHTML =
@@ -2000,7 +2006,7 @@ function buildIndex() {
   const list = document.getElementById('index-list');
   list.innerHTML = '';
 
-  const unitRaw = _cache[TAB_UNIT] || [];
+  const unitRaw = unitRows();
   unitRaw
     .filter(okStatus)
     .forEach(r => {
@@ -2194,7 +2200,7 @@ async function init() {
       fetchSheetData(TAB_NASS),
     ]);
     // 첫 시작 유닛: unit탭 기준
-    const unitRaw = _cache[TAB_UNIT] || [];
+    const unitRaw = unitRows();
     const baseUnits = unitRaw
       .filter(okStatus)
       .map(r => r.u || '')

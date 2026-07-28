@@ -967,7 +967,7 @@ const IMG_VERSION = '20260723-a005';
 
 // 1.4.5 실제 탭명. rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭을 공유(type 열로 구분).
 const TABS = {
-  units:   '유닛unit',
+  units:   '데이터시트sheet',
   pattern: '패턴pattern',
   drill:   '데이터시트sheet',
   exp:     '데이터시트sheet',
@@ -1017,26 +1017,32 @@ const state = {
 /* ═══════════ 1.4.5 스키마 호환 계층 (v1.4.5-compat) ═══════════
    1.4.5 통합 시트를 레거시(1.4.4) 렌더 코드에 연결한다.
    - 탭: 한글+영문 실제 탭명으로 매핑. rep/drill/exp/kalimat 는 데이터시트sheet 단일 탭.
-   - 링크: 패턴 ptn(p001) → id_ptn(no)/ref_ptn, 유닛은 U(A001) 그대로.
+   - 링크: 유닛은 type=unit 행의 U(A001), 패턴은 ptn(ptn001) → id_ptn(no)/ref_ptn.
    - 타입: rep→repertory, drill/drill+→drilla(레이아웃은 css 열로 분기). */
 const TAB_145 = {
-  units:'유닛unit', unit:'유닛unit', pattern:'데이터시트sheet',
+  units:'데이터시트sheet', unit:'데이터시트sheet', pattern:'데이터시트sheet',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
   exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
   nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
   if (TYPE_145[t]) r.type = TYPE_145[t];
+  if (t === 'unit') {                 // 유닛 헤더: `|` 구분자 제거 + 이어쓰기(둘째 줄) 숨김 → 첫 줄만
+    if (r.arabic) r.arabic = String(r.arabic).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
+    if (r.korean) r.korean = String(r.korean).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
+  }
   const p = String(r.ptn||'').trim();
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
   return r;
 }
 // 표현 이미지 = type=expi 행. 파일명은 그 행의 id 값 그대로 사용한다.
 const rowType = r => String((r && r.type) || '').toLowerCase().trim();
+// 유닛 행: 데이터시트sheet의 type=unit 행에서 가져온다(유닛unit 탭은 참고용 자동뷰)
+const unitRows = () => (_cache[TABS.units] || []).filter(r => rowType(r) === 'unit');
 const isExpi = r => rowType(r) === 'expi';
 const isAppExpression = r => rowType(r) === 'expi' || rowType(r) === 'exp' || rowType(r) === 'exp+';
 const isExpPlus = r => rowType(r) === 'exp+';
@@ -1239,8 +1245,8 @@ function renderFlags(row) {
 }
 
 function getUnitRow(unit) {
-  return (_cache[TABS.units] || []).find(r => r.u === unit && ok(r)) ||
-    (_cache[TABS.units] || []).find(r => r.u === unit) || {};
+  return unitRows().find(r => r.u === unit && ok(r)) ||
+    unitRows().find(r => r.u === unit) || {};
 }
 
 function matchesUnit(row, unit, unitRow = getUnitRow(unit)) {
@@ -1345,8 +1351,9 @@ function buildPagesForUnit(unit) {
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
   const expRows = sortAppExpressions(rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r)));
   if (expRows.length) {
-    // 대표 표현 이미지 = type=expi인 첫 행. id가 비어 있으면 note 기반 expi_{slug}.png로 복구한다.
-    const expImageId = imageId(expRows.find(r => imageId(r)));
+    // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`. 트리거는 대표표현(expi) 존재, 첫 표현 위에 노출.
+    const _heroRow = expRows.find(r => imageId(r));
+    const expImageId = _heroRow ? 'img_' + String(unit).toLowerCase() : '';
     bySec.exp.push({
       sec:'exp', kind:'list',
       title:'표현', subtitle: expRows.length + '개',
@@ -1371,8 +1378,14 @@ function buildPagesForUnit(unit) {
   });
 
   // 드릴 — page 값 있으면 화면 분리, 없으면 한 페이지
-  const drillRows = rowsByUnit(TABS.drill, unit,
+  // two(문장) 드릴은 시트에서 유닛 머리(표현·단어 뒤, ptn 없음)에 두지만,
+  // 렌더는 항상 드릴 마지막(지문 앞) 별도 페이지로 보낸다.
+  const drillRowsRaw = rowsByUnit(TABS.drill, unit,
     (t, r) => ['drilla','drillb','drillc','writing'].includes(t) && (r.arabic || '').trim() !== '');
+  const drillRows = [
+    ...drillRowsRaw.filter(r => drillPageMode(r) !== 'two'),
+    ...drillRowsRaw.filter(r => drillPageMode(r) === 'two'),
+  ];
   if (drillRows.length) {
     const pageVal = r => (r.page || '').toString().trim();
     const hasPaged = drillRows.some(r => pageVal(r) !== '');
@@ -1421,7 +1434,7 @@ function buildPagesForUnit(unit) {
   }
 
   // 단어 (kalG → kalimat → kalimat+)
-  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => ['kalg', 'kalimatg'].includes(t) && (r.arabic || '').trim() !== '');
+  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => ['kalg', 'kal1', 'kalimatg'].includes(t) && (r.arabic || '').trim() !== '');
   const kReg  = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat'  && (r.arabic || '').trim() !== '');
   const kPlus = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat+' && (r.arabic || '').trim() !== '');
   if (kGram.length || kReg.length || kPlus.length) {
@@ -1446,7 +1459,7 @@ function curSection() { return state.pages[state.page]?.sec || 'exp'; }
 /* ───────── 렌더 ───────── */
 
 function renderHead() {
-  const unitRow = (_cache[TABS.units]||[]).find(r => r.u === state.unit);
+  const unitRow = unitRows().find(r => r.u === state.unit);
   document.getElementById('h-unit').textContent = unitNo(state.unit);
   document.getElementById('h-unit-ar').textContent = (unitRow?.arabic || '').slice(0, 22);
   document.getElementById('h-unit-ko').textContent = (unitRow?.korean || '').slice(0, 34);
@@ -1979,7 +1992,7 @@ function playAudio(row, el) {
 function buildUnitList() {
   const list = document.getElementById('unit-list');
   list.innerHTML = '';
-  const rows = (_cache[TABS.units]||[]).filter(ok);
+  const rows = unitRows().filter(ok);
   state.units = rows.map(r => r.u).filter(Boolean);
   rows.forEach(r => {
     const li = document.createElement('li');
@@ -2221,7 +2234,7 @@ async function init() {
     const sp = new URLSearchParams(location.search);
     const u  = sp.get('unit');
     const p  = parseInt(sp.get('page'));
-    const validUnits = (_cache[TABS.units]||[]).filter(ok).map(r => r.u);
+    const validUnits = unitRows().filter(ok).map(r => r.u);
     state.unit = (u && validUnits.includes(u)) ? u : (validUnits[0] || 'A001');
     if (!isNaN(p)) state.page = Math.max(0, p);
 
