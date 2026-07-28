@@ -1026,7 +1026,7 @@ const TAB_145 = {
   nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1351,9 +1351,8 @@ function buildPagesForUnit(unit) {
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
   const expRows = sortAppExpressions(rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r)));
   if (expRows.length) {
-    // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`. 트리거는 대표표현(expi) 존재, 첫 표현 위에 노출.
-    const _heroRow = expRows.find(r => imageId(r));
-    const expImageId = _heroRow ? 'img_' + String(unit).toLowerCase() : '';
+    // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`, 첫 표현 위. 없으면 onerror로 숨김(expi 폐기).
+    const expImageId = 'img_' + String(unit).toLowerCase();
     bySec.exp.push({
       sec:'exp', kind:'list',
       title:'표현', subtitle: expRows.length + '개',
@@ -1433,16 +1432,14 @@ function buildPagesForUnit(unit) {
     });
   }
 
-  // 단어 (kalG → kalimat → kalimat+)
-  const kGram = rowsByUnit(TABS.kalimat, unit, (t, r) => ['kalg', 'kal1', 'kalimatg'].includes(t) && (r.arabic || '').trim() !== '');
+  // 단어 (시트 행 순서의 kal → kalimat+)
   const kReg  = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat'  && (r.arabic || '').trim() !== '');
   const kPlus = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat+' && (r.arabic || '').trim() !== '');
-  if (kGram.length || kReg.length || kPlus.length) {
+  if (kReg.length || kPlus.length) {
     bySec.kalimat.push({
       sec:'kalimat', kind:'list',
-      title:'단어', subtitle: (kGram.length + kReg.length + kPlus.length) + '개',
+      title:'단어', subtitle: (kReg.length + kPlus.length) + '개',
       cards: [
-        ...kGram.map(r => ({...r, _kind:'kalimat'})),
         ...kReg.map(r => ({...r, _kind:'kalimat'})),
         ...kPlus.map(r => ({...r, _kind:'kalimat-plus'})),
       ],

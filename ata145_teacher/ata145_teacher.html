@@ -1168,7 +1168,6 @@ function normalizeType(t) {
   if (tl === 'writing') return 'writing';
   if (tl === 'exp')     return 'exp';
   if (tl === 'expi')    return 'expi';
-  if (tl === 'kalg' || tl === 'kal1' || tl === 'kalimatg') return 'kalimatg';
   if (tl === 'kalimat') return 'kalimat';
   if (tl === 'nass')    return 'nass';
   return tl;
@@ -1220,7 +1219,7 @@ const TAB_145 = {
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1418,9 +1417,8 @@ async function buildSlides(baseUnit) {
   // 5. nass (지문) — nass + nass+ (데이터시트sheet에서 type으로 분리)
   nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
 
-  // 6. kalimat (단어) — kalG(문법/기능 단어)를 일반 kalimat보다 먼저
-  kalimatRaw.filter(r => inU(r) && ok(r) && ['kalimatg', 'kalimat'].includes(normalizeType(r.type)))
-    .sort((a, b) => (normalizeType(a.type) === 'kalimatg' ? 0 : 1) - (normalizeType(b.type) === 'kalimatg' ? 0 : 1))
+  // 6. kalimat (단어) — 문법/기능 단어도 kal이며 시트 행 순서를 그대로 사용
+  kalimatRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'kalimat')
     .forEach(r => push('kalimat', r));
 
   if (_firstLoad) {

@@ -1089,7 +1089,7 @@ const TAB_145 = {
   nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
-const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kalg:'kalimatg', kal1:'kalimatg', kal:'kalimat', 'kal+':'kalimat+' };
+const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
@@ -1960,9 +1960,8 @@ async function renderNassPagesAsync(unit, nassRows, opts) {
 function renderExpressionPage(unit, expressions, opts) {
   const { pageNo, showTrans } = opts;
   const unitNum = (parseInt((unit.u || '').replace(/\D/g, ''), 10) || 1);
-  // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`. 트리거는 대표표현(expi) 존재, 첫 표현 위에 노출.
-  const _heroExp = expressions.find(exp => imageId(exp));
-  const expImageId = _heroExp ? 'img_' + String(unit.u || '').toLowerCase() : '';
+  // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`, 첫 표현 위. 없으면 onerror로 숨김(expi 폐기).
+  const expImageId = 'img_' + String(unit.u || '').toLowerCase();
 
   const cards = expressions.map(exp => {
     const trans = (showTrans && exp.transliteration)
