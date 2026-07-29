@@ -126,6 +126,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-tabs[data-order="ptn-first"] .m-tab[data-sec="exp"]     { order: 3; }
 .m-tabs[data-order="ptn-first"] .m-tab[data-sec="nass"]    { order: 4; }
 .m-tabs[data-order="ptn-first"] .m-tab[data-sec="kalimat"] { order: 5; }
+/* 1~5과(exp-first): 지문에 패턴 미연결 → 단어 뒤에 지문 */
+.m-tabs[data-order="exp-first"] .m-tab[data-sec="kalimat"] { order: 4; }
+.m-tabs[data-order="exp-first"] .m-tab[data-sec="nass"]    { order: 5; }
 .m-tab {
   flex:1; display:flex; align-items:center; justify-content:center;
   font-size:13px; font-weight:600; color:var(--sub);
@@ -388,9 +391,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   margin-top:8px;
   font-size:var(--script-size); line-height:1.65; color:var(--sub);
   text-align:left;
-  flex:0 1 auto;
+  flex:1 1 auto;
   min-height:0;
-  max-height:var(--pattern-summary-max-height);
+  max-height:none;
   overflow-y:auto;
   overscroll-behavior:contain;
   padding:0 4px 4px 0;
@@ -475,16 +478,29 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   font-family:var(--font-ar);
   font-size:15px;
   font-weight:500;
-  text-align:center;
+  text-align:right;
+}
+.m-card.pattern .m-summary .script-table td[dir="ltr"],
+.m-script .script-table td[dir="ltr"] {
+  direction:ltr;
+  text-align:left;
+}
+.m-card.pattern .m-summary .script-table td[dir="rtl"],
+.m-script .script-table td[dir="rtl"] {
+  direction:rtl;
+  text-align:right;
 }
 
-.m-page.pattern-page > .m-card.pattern {
-  flex:0 1 auto;
-  height:auto;
+/* 스크립트 길이와 css 값에 관계없이 패턴 카드 높이를 통일한다.
+   아래 레퍼토리가 있으면 최대 170px과 페이지 간격 10px을 먼저 확보한다. */
+.m-page.pattern-page > .m-card.pattern:not(.pattern-with-hero) {
+  flex:0 0 auto;
+  height:var(--pattern-card-max-height);
   min-height:0;
   max-height:var(--pattern-card-max-height);
 }
-.m-page.pattern-page.has-reps > .m-card.pattern {
+.m-page.pattern-page.has-reps > .m-card.pattern:not(.pattern-with-hero) {
+  height:min(var(--pattern-card-max-height), calc(100% - min(170px, 30dvh) - 10px));
   max-height:min(var(--pattern-card-max-height), calc(100% - min(170px, 30dvh) - 10px));
 }
 .m-page.pattern-page > .m-rep-wrap,
@@ -495,6 +511,66 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   overflow-y:auto;
   overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
+}
+
+/* 패턴 스크립트의 2열 예문표: 한국어는 왼쪽, 아랍어와 음가는 오른쪽에 정렬한다. */
+.m-card.pattern .m-summary .script-pair-table,
+.m-script .script-pair-table {
+  table-layout:fixed;
+}
+.m-card.pattern .m-summary .script-pair-table td,
+.m-script .script-pair-table td {
+  padding:9px 10px;
+  border-right:0;
+  vertical-align:middle;
+}
+.m-card.pattern .m-summary .script-pair-table .script-ko,
+.m-script .script-pair-table .script-ko {
+  width:44%;
+  direction:ltr;
+  text-align:left;
+  font-family:var(--font-kr);
+  font-size:var(--ko-size);
+  font-weight:500;
+  line-height:1.45;
+  color:var(--text);
+}
+.m-card.pattern .m-summary .script-pair-table .script-ar,
+.m-script .script-pair-table .script-ar {
+  width:56%;
+  direction:rtl;
+  text-align:right;
+  font-family:var(--font-ar);
+  font-size:15px;
+  font-weight:500;
+  line-height:1.45;
+  color:var(--text);
+}
+.m-card.pattern .m-summary .script-pair-table .script-ar-main,
+.m-script .script-pair-table .script-ar-main {
+  display:block;
+  direction:rtl;
+  unicode-bidi:isolate;
+  text-align:right;
+  font-family:var(--font-ar);
+  font-size:15px;
+  font-weight:500;
+  line-height:1.45;
+}
+.m-card.pattern .m-summary .script-pair-table .script-trans,
+.m-script .script-pair-table .script-trans {
+  display:block;
+  margin-top:2px;
+  direction:ltr;
+  unicode-bidi:isolate;
+  text-align:right;
+  font-family:var(--font-kr);
+  font-size:var(--trans-size);
+  font-weight:400;
+  font-style:italic;
+  line-height:1.4;
+  letter-spacing:.2px;
+  color:var(--sub);
 }
 
 /* ───────── 패턴 + 히어로 이미지 (임시) ─────────
@@ -1002,11 +1078,11 @@ const unitNum = u => {
   return m ? parseInt(m[1], 10) : 0;
 };
 // 6과부터 패턴 먼저 시작: 패턴 → 드릴 → 표현 → 지문 → 단어
-// 1~5과는 표현 먼저: 표현 → 패턴 → 드릴 → 지문 → 단어 (알파벳 학습 시기)
+// 1~5과는 표현 먼저 + 지문에 패턴 미연결이라 단어 뒤로: 표현 → 패턴 → 드릴 → 단어 → 지문
 const isPatternFirst = u => unitNum(u) >= 6;
 const sectionOrderFor = u => isPatternFirst(u)
   ? ['ptn', 'drill', 'exp', 'nass', 'kalimat']
-  : ['exp', 'ptn', 'drill', 'nass', 'kalimat'];
+  : ['exp', 'ptn', 'drill', 'kalimat', 'nass'];
 
 /* ───────── 상태 ───────── */
 const state = {
@@ -1034,6 +1110,8 @@ const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kali
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
+  // drill / drill+은 같은 화면 타입으로 렌더하지만, 메인→추가 순서는 보존한다.
+  if (t === 'drill' || t === 'drill+') r._sourceType = t;
   if (TYPE_145[t]) r.type = TYPE_145[t];
   if (t === 'unit') {                 // 유닛 헤더: `|` 구분자 제거 + 이어쓰기(둘째 줄) 숨김 → 첫 줄만
     if (r.arabic) r.arabic = String(r.arabic).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
@@ -1345,6 +1423,22 @@ function splitDrillPageSegments(rows) {
   return segments;
 }
 
+// css와 무관한 학습 단계: 같은 패턴에서는 메인 드릴 뒤에 추가 드릴을 둔다.
+// `two`는 순서가 아니라 레이아웃만 결정한다.
+function drillStage(row) {
+  return String(row?._sourceType || '').trim().toLowerCase() === 'drill+' ? 1 : 0;
+}
+
+function orderDrillRows(rows) {
+  return rows.map((row, index) => ({ row, index })).sort((a, b) => {
+    const aRef = drillPageRef(a.row), bRef = drillPageRef(b.row);
+    if (aRef === bRef && drillStage(a.row) !== drillStage(b.row)) {
+      return drillStage(a.row) - drillStage(b.row);
+    }
+    return a.index - b.index;
+  }).map(({ row }) => row);
+}
+
 /* ───────── 페이지 빌더 ───────── */
 /* 페이지 = 교재 한 페이지. 한 페이지 안의 모든 카드/표는 그대로 스택해 스크롤. */
 
@@ -1380,15 +1474,11 @@ function buildPagesForUnit(unit) {
     });
   });
 
-  // 드릴 — page 값 있으면 화면 분리, 없으면 한 페이지
-  // two(문장) 드릴은 시트에서 유닛 머리(표현·단어 뒤, ptn 없음)에 두지만,
-  // 렌더는 항상 드릴 마지막(지문 앞) 별도 페이지로 보낸다.
+  // 드릴 — page 값 있으면 화면 분리, 없으면 한 페이지.
+  // css는 레이아웃만 결정한다. 같은 패턴 안에서는 메인 드릴 뒤에 추가 드릴을 둔다.
   const drillRowsRaw = rowsByUnit(TABS.drill, unit,
     (t, r) => ['drilla','drillb','drillc','writing'].includes(t) && (r.arabic || '').trim() !== '');
-  const drillRows = [
-    ...drillRowsRaw.filter(r => drillPageMode(r) !== 'two'),
-    ...drillRowsRaw.filter(r => drillPageMode(r) === 'two'),
-  ];
+  const drillRows = orderDrillRows(drillRowsRaw);
   if (drillRows.length) {
     const pageVal = r => (r.page || '').toString().trim();
     const hasPaged = drillRows.some(r => pageVal(r) !== '');
@@ -1756,29 +1846,86 @@ function renderScriptText(text) {
 }
 
 function renderScriptTable(html) {
-  const rows = [];
-  String(html || '').replace(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi, (_, rowHtml) => {
-    const cells = [];
-    rowHtml.replace(/<(t[dh])\b[^>]*>([\s\S]*?)<\/t[dh]>/gi, (match, tag, cellHtml) => {
-      const text = cellHtml
-        .replace(/<br\s*\/?>/gi, '\n')
-        .replace(/<[^>]+>/g, '')
-        .trim();
-      cells.push({ tag: tag.toLowerCase() === 'th' ? 'th' : 'td', text });
-      return match;
-    });
-    if (cells.length) rows.push(cells);
-    return rowHtml;
-  });
-  if (!rows.length) return `<span class="para">${parseInline(html)}</span>`;
+  const template = document.createElement('template');
+  template.innerHTML = String(html || '');
+  const sourceTable = template.content.querySelector('table');
+  if (!sourceTable) return `<span class="para">${parseInline(html)}</span>`;
 
-  const body = rows.map(cells => (
-    '<tr>' + cells.map(cell => {
-      const dir = firstStrongDir(cell.text);
-      return `<${cell.tag} dir="${dir}">${parseInline(cell.text)}</${cell.tag}>`;
-    }).join('') + '</tr>'
-  )).join('');
-  return `<table class="script-table">${body}</table>`;
+  const sourceRows = [...sourceTable.querySelectorAll('tr')]
+    .map(row => [...row.children].filter(cell => /^(TD|TH)$/.test(cell.tagName)))
+    .filter(cells => cells.length);
+  if (!sourceRows.length) return `<span class="para">${parseInline(html)}</span>`;
+
+  const decodeText = value => {
+    const decoder = document.createElement('textarea');
+    decoder.innerHTML = String(value || '');
+    return decoder.value;
+  };
+  const cellLines = cell => decodeText(
+    cell.innerHTML
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/<\/(?:div|p|span|small)>/gi, '\n')
+      .replace(/<[^>]+>/g, '')
+  ).split(/\n+/).map(line => line.trim()).filter(Boolean);
+  const plainCellText = cell => cellLines(cell).join('\n');
+  const hasArabic = value => /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(String(value || ''));
+  const hasLatin = value => /[A-Za-zÀ-ɏḀ-ỿʰ-˿]/.test(String(value || ''));
+
+  // 시트 HTML의 class가 제거되어도 2열의 언어와 줄 구조로 예문표를 판별한다.
+  const rowLooksLikePair = cells => {
+    if (cells.length !== 2 || firstStrongDir(cells[0].textContent) !== 'ltr') return false;
+    const rightLines = cellLines(cells[1]);
+    const hasMain = Boolean(cells[1].querySelector('.script-ar-main')) ||
+      rightLines.some(line => hasArabic(line));
+    const hasTrans = Boolean(cells[1].querySelector('.script-trans')) ||
+      rightLines.some(line => hasLatin(line) && !hasArabic(line));
+    return hasMain && hasTrans;
+  };
+  const isPairTable = sourceTable.classList.contains('script-pair-table') ||
+    sourceRows.every(rowLooksLikePair);
+
+  const pairRowData = cells => {
+    const rightCell = cells[1];
+    const rightLines = cellLines(rightCell);
+    const semanticMain = rightCell.querySelector('.script-ar-main')?.textContent.trim() || '';
+    const semanticTrans = rightCell.querySelector('.script-trans')?.textContent.trim() || '';
+    const arabicIndex = rightLines.findIndex(line => hasArabic(line));
+    const arabic = semanticMain ||
+      (arabicIndex >= 0 ? rightLines[arabicIndex] : rightLines[0] || '');
+    const trans = semanticTrans ||
+      rightLines.slice(Math.max(0, arabicIndex + 1)).find(line => hasLatin(line) && !hasArabic(line)) ||
+      '';
+    return {
+      korean: cells[0].textContent.trim(),
+      arabic,
+      trans,
+    };
+  };
+
+  const body = isPairTable
+    ? sourceRows.map(cells => {
+      const row = pairRowData(cells);
+      const mainHtml = row.arabic
+        ? `<span class="script-ar-main" dir="rtl">${parseInline(row.arabic)}</span>`
+        : '';
+      const transHtml = row.trans
+        ? `<span class="script-trans" dir="ltr">${parseTrans(row.trans)}</span>`
+        : '';
+      return '<tr>' +
+        `<td class="script-ko" dir="ltr">${parseInline(row.korean)}</td>` +
+        `<td class="script-ar" dir="rtl">${mainHtml}${transHtml}</td>` +
+        '</tr>';
+    }).join('')
+    : sourceRows.map(cells => (
+      '<tr>' + cells.map(cell => {
+        const tag = cell.tagName === 'TH' ? 'th' : 'td';
+        const text = plainCellText(cell);
+        const dir = firstStrongDir(text);
+        return `<${tag} dir="${dir}">${parseInline(text)}</${tag}>`;
+      }).join('') + '</tr>'
+    )).join('');
+
+  return `<table class="script-table${isPairTable ? ' script-pair-table' : ''}">${body}</table>`;
 }
 
 function renderRepertory(rows) {
