@@ -27,8 +27,9 @@
   --max-w: 440px;  /* 모바일 폰 폭에 가깝게 — 데스크톱에서도 폰 시뮬레이션 룩 */
   --font-kr: 'Spoqa Han Sans Neo','Apple SD Gothic Neo',sans-serif;
   --font-ar: 'Noto Sans Arabic', serif;
-  --ar-card-size: clamp(0.98rem, 4vw, 1.12rem);
-  --ar-nass-size: 16px;   /* 드릴 아랍어(.drill-cell .dc-ar 16px)와 동일 크기로 맞춤 */
+  --ar-content-size: 15px; /* 패턴을 제외한 학생앱 아랍어 콘텐츠 공통 크기 */
+  --ar-card-size: var(--ar-content-size);
+  --ar-nass-size: var(--ar-content-size);
   --ar-pattern-size: clamp(1.2rem, 5.2vw, 1.55rem);
   --trans-size: 10px;
   --ko-size: 11px;
@@ -92,7 +93,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-unit-ar {
   flex:0 1 auto;
   font-family:var(--font-ar); direction:rtl; unicode-bidi:isolate;
-  font-size:14px; font-weight:700; color:var(--text);
+  font-size:var(--ar-content-size); font-weight:700; color:var(--text);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   max-width:36%;
 }
@@ -624,8 +625,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   .m-rep-grid.cols-six,
   .m-drill-grid.cols-six { grid-template-columns:repeat(6, 1fr); gap:12px 2px; }
 }
-/* five(16/10)에서 딱 1px만 축소 */
-.cols-six .drill-cell .dc-ar    { font-size:15px; }
+/* 모든 열 모드의 아랍어는 공통 콘텐츠 크기를 유지 */
+.cols-six .drill-cell .dc-ar    { font-size:var(--ar-content-size); }
 .cols-six .drill-cell .dc-trans { font-size:9px; }
 
 /* 3열 모드 (`css = 'three'`) — five와 동일하되 3칸. 칸이 넓어 글자 크기는 five 그대로 */
@@ -665,7 +666,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   font-family:var(--font-ar);
   direction:rtl;
   text-align:right;
-  font-size:17px;
+  font-size:var(--ar-content-size);
   line-height:1.6;
   font-weight:400;
 }
@@ -698,7 +699,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 }
 .drill-cell .dc-ar {
   font-family:var(--font-ar); direction:rtl;
-  font-size:16px; font-weight:500; color:var(--text);
+  font-size:var(--ar-content-size); font-weight:500; color:var(--text);
   line-height:1.4;
 }
 .drill-cell .dc-trans {
@@ -712,14 +713,17 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-card.nass.nass-plus {
   background:#f2f3f6; /* nass+는 학생앱 전용 보충 지문: 아주 연한 음영으로만 구분 */
 }
+.m-card.nass .m-pair {
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);
+}
 .m-card.nass .m-ar {
-  font-size:var(--ar-nass-size); font-weight:500; line-height:1.6;  /* 드릴 아랍어(dc-ar 16px)와 동일 크기 */
+  font-size:var(--ar-nass-size); font-weight:500; line-height:1.6;
   white-space:pre-line;
   padding:2px 0 0;
 }
 .m-card.nass .m-sual {
   font-family:var(--font-ar); direction:rtl;
-  font-size:14px; color:var(--sub);
+  font-size:var(--ar-content-size); color:var(--sub);
   text-align:center; line-height:1.8;
   padding-top:10px; margin-top:8px;
   border-top:1px dashed var(--border-soft);
