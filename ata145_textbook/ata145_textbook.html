@@ -113,33 +113,32 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   letter-spacing:.3px;
 }
 
-/* ───────── 섹션 탭 (44px) ───────── */
-.m-tabs {
-  flex-shrink:0; height:44px;
-  display:flex; align-items:stretch;
+/* ───────── 패턴 문맥 네비게이션 ─────────
+   유닛 전체 탭 대신 패턴 관련 화면에서만 패턴·드릴·지문을 노출한다. */
+.m-context-nav {
+  flex-shrink:0; min-height:36px;
+  display:flex; align-items:center; justify-content:center; gap:5px;
+  padding:5px 12px;
   border-bottom:1px solid var(--border);
   background:var(--surface);
 }
-/* 7과부터 패턴 우선 배열: 패턴 → 드릴 → 표현 → 지문 → 단어 */
-.m-tabs[data-order="ptn-first"] .m-tab[data-sec="ptn"]     { order: 1; }
-.m-tabs[data-order="ptn-first"] .m-tab[data-sec="drill"]   { order: 2; }
-.m-tabs[data-order="ptn-first"] .m-tab[data-sec="exp"]     { order: 3; }
-.m-tabs[data-order="ptn-first"] .m-tab[data-sec="nass"]    { order: 4; }
-.m-tabs[data-order="ptn-first"] .m-tab[data-sec="kalimat"] { order: 5; }
-/* 1~5과(exp-first): 지문에 패턴 미연결 → 단어 뒤에 지문 */
-.m-tabs[data-order="exp-first"] .m-tab[data-sec="kalimat"] { order: 4; }
-.m-tabs[data-order="exp-first"] .m-tab[data-sec="nass"]    { order: 5; }
-.m-tab {
-  flex:1; display:flex; align-items:center; justify-content:center;
-  font-size:13px; font-weight:600; color:var(--sub);
-  position:relative;
-  transition:color .12s;
+.m-context-nav[hidden] { display:none; }
+.m-context-btn {
+  flex:0 1 76px; min-width:64px; height:26px;
+  padding:0 10px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  font-size:10px; font-weight:600; color:var(--sub);
+  transition:background .12s,color .12s,border-color .12s;
 }
-.m-tab[data-disabled="1"] { opacity:.32; pointer-events:none; }
-.m-tab.active { color:var(--accent); }
-.m-tab.active::after {
-  content:''; position:absolute; left:14%; right:14%; bottom:-1px;
-  height:2px; background:var(--accent); border-radius:2px 2px 0 0;
+.m-context-btn.active {
+  background:var(--accent-bg);
+  border-color:rgba(29,73,255,.32);
+  color:var(--accent);
+}
+.m-context-btn:disabled {
+  opacity:.28;
+  pointer-events:none;
 }
 
 /* ───────── 콘텐츠 (스크롤) ───────── */
@@ -907,7 +906,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-sb-overlay.open { opacity:1; pointer-events:auto; }
 .m-sb-mask { flex:1; background:rgba(18,32,90,.35); }
 .m-sb-panel {
-  width:min(290px,80vw); height:100%;
+  width:min(330px,86vw); height:100%;
   background:var(--surface);
   display:flex; flex-direction:column;
   transform:translateX(-100%); transition:transform .22s ease;
@@ -927,36 +926,97 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   flex:1; overflow-y:auto; list-style:none;
   padding:6px 0 12px;
 }
+.m-unit-group { list-style:none; }
 .m-unit-row {
-  display:flex; align-items:flex-start; gap:10px;
-  padding:12px 18px;
+  display:flex; align-items:center; gap:4px;
+  padding:5px 10px 5px 15px;
   border-left:3px solid transparent;
-  cursor:pointer;
 }
-.m-unit-row:active { background:var(--accent-bg); }
-.m-unit-row.active {
+.m-unit-group.active > .m-unit-row {
   background:var(--accent-bg); border-left-color:var(--accent);
 }
-.m-unit-row .ucode {
+.m-unit-open {
+  flex:1; min-width:0;
+  display:flex; align-items:flex-start; gap:10px;
+  padding:7px 0;
+  text-align:left;
+}
+.m-unit-open:active { opacity:.72; }
+.m-unit-open .ucode {
   flex-shrink:0; margin-top:2px;
   font-size:10px; font-weight:700; letter-spacing:.05em;
   padding:3px 7px; border-radius:5px;
   background:var(--accent-bg); color:var(--accent);
 }
-.m-unit-row.active .ucode { background:var(--accent); color:#fff; }
-.m-unit-row .ubody { flex:1; min-width:0; }
-.m-unit-row .uar {
+.m-unit-group.active .ucode { background:var(--accent); color:#fff; }
+.m-unit-open .ubody { flex:1; min-width:0; }
+.m-unit-open .uar {
   display:block;
   font-family:var(--font-ar); direction:rtl;
   font-size:15px; font-weight:700; color:var(--text);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.m-unit-row.active .uar { color:var(--accent); }
-.m-unit-row .uko {
+.m-unit-group.active .uar { color:var(--accent); }
+.m-unit-open .uko {
   display:block; margin-top:2px;
   font-size:11px; color:var(--sub);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
+.m-unit-expand {
+  flex:0 0 30px; width:30px; height:30px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:15px;
+  color:var(--sub); font-size:17px;
+  transform:rotate(0deg);
+  transition:transform .16s,background .12s;
+}
+.m-unit-expand[aria-expanded="true"] { transform:rotate(90deg); }
+.m-unit-expand:active { background:rgba(29,73,255,.08); }
+.m-unit-children {
+  display:flex; flex-direction:column; gap:2px;
+  padding:2px 12px 10px 54px;
+}
+.m-unit-children[hidden] { display:none; }
+.m-unit-link,
+.m-pattern-link {
+  width:100%;
+  min-height:30px;
+  display:flex; align-items:center;
+  border-radius:7px;
+  text-align:left;
+  font-size:11px; color:var(--sub);
+}
+.m-unit-link { padding:6px 9px; }
+.m-pattern-link {
+  padding:7px 9px 4px;
+  color:var(--text); font-weight:600;
+  line-height:1.35;
+}
+.m-unit-link.active,
+.m-pattern-link.active {
+  background:var(--accent-bg);
+  color:var(--accent);
+}
+.m-pattern-nav-group {
+  border-top:1px solid var(--border-soft);
+  margin-top:2px; padding-top:2px;
+}
+.m-pattern-stage-row {
+  display:flex; gap:3px;
+  padding:0 6px 6px 9px;
+}
+.m-pattern-stage {
+  flex:1; min-width:0; height:24px;
+  border-radius:6px;
+  font-size:9px; color:var(--sub);
+  background:var(--soft);
+}
+.m-pattern-stage.active {
+  color:var(--accent);
+  background:var(--accent-bg);
+  font-weight:700;
+}
+.m-pattern-stage:disabled { opacity:.3; pointer-events:none; }
 .m-sb-foot {
   padding:12px 18px;
   border-top:1px solid var(--border);
@@ -1011,12 +1071,10 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
     <span class="m-counter" id="h-counter">1 / 1</span>
   </header>
 
-  <nav class="m-tabs" id="tabs">
-    <button class="m-tab" data-sec="exp">표현</button>
-    <button class="m-tab" data-sec="ptn">패턴</button>
-    <button class="m-tab" data-sec="drill">드릴</button>
-    <button class="m-tab" data-sec="nass">지문</button>
-    <button class="m-tab" data-sec="kalimat">단어</button>
+  <nav class="m-context-nav" id="context-nav" hidden>
+    <button class="m-context-btn" data-stage="ptn">패턴</button>
+    <button class="m-context-btn" data-stage="drill">드릴</button>
+    <button class="m-context-btn" data-stage="nass">지문</button>
   </nav>
 
   <main class="m-body" id="body"></main>
@@ -1035,8 +1093,8 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 /* ============================================================
    ATA 1.4.4 — 교재 모바일 앱 초안 (textbook144m.html)
    - 페이지 = 교재 페이지 단위 (한 페이지가 길면 스크롤)
-   - 글로벌 페이지 시퀀스: 표현 → 패턴(N) → 드릴 → 지문
-   - ◀▶ = 글로벌 페이지 이동 / 섹션 탭 = 해당 섹션 첫 페이지로 점프
+   - 글로벌 페이지 시퀀스: 표현 → 단어 → 패턴(N)·드릴 → 지문
+   - ◀▶ = 유닛 전체 순차 이동 / 사이드바 = 유닛·패턴별 바로가기
    ============================================================ */
 
 const SHEET_ID    = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
@@ -1063,33 +1121,14 @@ const LAHJA_FLAG = {
   GLF: '../assets/icons/icon-saudi.png',
 };
 
-// 섹션 메타 (라벨 lookup 용도) — 실제 순서는 isPatternFirst(unit)에 따라 동적 결정
-const SECTIONS = [
-  { key:'exp',   label:'표현', long:'expression' },
-  { key:'ptn',   label:'패턴', long:'pattern' },
-  { key:'drill', label:'드릴', long:'drill' },
-  { key:'nass',  label:'지문', long:'nass' },
-  { key:'kalimat', label:'단어', long:'kalimat' },
-];
-
-// 유닛 번호 파싱 (A07 → 7)
-const unitNum = u => {
-  const m = String(u || '').match(/(\d+)/);
-  return m ? parseInt(m[1], 10) : 0;
-};
-// 6과부터 패턴 먼저 시작: 패턴 → 드릴 → 표현 → 지문 → 단어
-// 1~5과는 표현 먼저 + 지문에 패턴 미연결이라 단어 뒤로: 표현 → 패턴 → 드릴 → 단어 → 지문
-const isPatternFirst = u => unitNum(u) >= 6;
-const sectionOrderFor = u => isPatternFirst(u)
-  ? ['ptn', 'drill', 'exp', 'nass', 'kalimat']
-  : ['exp', 'ptn', 'drill', 'kalimat', 'nass'];
-
 /* ───────── 상태 ───────── */
 const state = {
   unit:        'A001',
   pages:       [],     // [{sec, kind, ...}]   글로벌 페이지 시퀀스
   page:        0,      // 글로벌 인덱스
   units:       [],
+  expandedUnits:new Set(),
+  contextPtnRef:'',
   hideKorean: false,
   audioId:     null,
 };
@@ -1373,18 +1412,69 @@ function unitNo(unit) {
   return String(unit || '').replace(/\d+/, m => m.slice(-2).padStart(2, '0'));
 }
 
-function pageKindLabel(page) {
-  if (page.sec === 'exp') return 'EXPRESSION';
-  if (page.sec === 'ptn') return 'PATTERN';
-  if (page.sec === 'drill') return 'DRILL';
-  if (page.sec === 'nass') return 'NASS';
-  if (page.sec === 'kalimat') return 'KALIMAT';
-  return (page.title || '').toUpperCase();
+function patternTitle(row) {
+  return String(row?.korean || '')
+    .split(/\n+/)[0]
+    .replace(/\s*\|\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
-function pageKindMain(page) {
-  if (page.sec === 'ptn') return ptnNumber(page.row) || 'PATTERN';
-  return pageKindLabel(page);
+function pagePatternRefs(page) {
+  const refs = Array.isArray(page?.ptnRefs) ? page.ptnRefs : [];
+  if (refs.length) return refs.filter(Boolean);
+  if (page?.row && page.sec === 'ptn') return [ptnRef(page.row)].filter(Boolean);
+  return [];
+}
+
+function pageHasPatternRef(page, ref) {
+  return pagePatternRefs(page).some(candidate => sameRef(candidate, ref));
+}
+
+function patternRowForRef(ref, pages = state.pages) {
+  return pages.find(page => page.sec === 'ptn' && sameRef(ptnRef(page.row), ref))?.row || null;
+}
+
+function activePatternRef(page = state.pages[state.page]) {
+  const refs = pagePatternRefs(page);
+  if (!refs.length) return '';
+  if (state.contextPtnRef && refs.some(ref => sameRef(ref, state.contextPtnRef))) {
+    return refs.find(ref => sameRef(ref, state.contextPtnRef)) || refs[0];
+  }
+  return refs[0];
+}
+
+function firstPageIndexForPattern(ref, sec, pages = state.pages) {
+  return pages.findIndex(page => page.sec === sec && pageHasPatternRef(page, ref));
+}
+
+function pageLocationLabel(page) {
+  if (!page) return '';
+  if (page.sec === 'exp') return '표현';
+  if (page.sec === 'kalimat') return '단어';
+
+  const ref = activePatternRef(page);
+  const patternRow = ref ? patternRowForRef(ref) : null;
+  const no = patternRow ? ptnNumber(patternRow) : '';
+  const prefix = no ? `패턴 ${Number(no)}` : '';
+
+  if (page.sec === 'ptn') return prefix || '패턴';
+  if (page.sec === 'drill') {
+    if (!patternRow) return '종합 드릴';
+    const siblings = ref
+      ? state.pages.filter(candidate => candidate.sec === 'drill' && pageHasPatternRef(candidate, ref))
+      : state.pages.filter(candidate => candidate.sec === 'drill');
+    const idx = siblings.findIndex(candidate => candidate === page);
+    const suffix = siblings.length > 1 ? ` ${idx + 1}/${siblings.length}` : '';
+    return prefix ? `${prefix} · 드릴${suffix}` : `드릴${suffix}`;
+  }
+  if (page.sec === 'nass') {
+    if (prefix) return `${prefix} · 지문`;
+    const siblings = state.pages.filter(candidate => candidate.sec === 'nass');
+    const idx = siblings.findIndex(candidate => candidate === page);
+    return siblings.length > 1 ? `지문 ${idx + 1}/${siblings.length}` : '지문';
+  }
+  return page.title || '';
 }
 
 function sortByPtn(a, b) {
@@ -1408,15 +1498,22 @@ function drillPageRef(row) {
   return numbered ? `p${Number(numbered[1])}` : (refKey(ref) || '__unit__');
 }
 
+function drillSegmentRef(row) {
+  const ref = String(row?.ref_ptn || '').trim();
+  const mergesA005AlifHamza = String(row?.u || '').trim() === 'A005' &&
+    /^ptn01(?:5|6)(?:_|$)/i.test(ref);
+  return mergesA005AlifHamza ? 'ptn015_016_a005_alif_hamza' : drillPageRef(row);
+}
+
 // 한 page 안에서도 레이아웃 모드가 바뀌면 화면을 나눈다.
-// 특히 two 드릴은 서로 다른 패턴 세트를 한 화면에 합치지 않는다.
+// 서로 다른 패턴은 나누되 A005의 알리프·함자 공동 드릴만 한 화면에 유지한다.
 function splitDrillPageSegments(rows) {
   const segments = [];
   rows.forEach(row => {
     const mode = drillPageMode(row);
-    const ref = mode === 'two' ? drillPageRef(row) : '';
+    const ref = drillSegmentRef(row);
     const prev = segments[segments.length - 1];
-    const startsNew = !prev || prev.mode !== mode || (mode === 'two' && prev.ref !== ref);
+    const startsNew = !prev || prev.mode !== mode || prev.ref !== ref;
     if (startsNew) segments.push({ mode, ref, rows: [] });
     segments[segments.length - 1].rows.push(row);
   });
@@ -1444,14 +1541,19 @@ function orderDrillRows(rows) {
 
 function buildPagesForUnit(unit) {
   const unitRow = getUnitRow(unit);
-  const bySec = { exp: [], ptn: [], drill: [], nass: [], kalimat: [] };
+  const expPages = [];
+  const kalimatPages = [];
+  const patternPages = [];
+  const drillPages = [];
+  const nassPages = [];
+  const uniqueRefs = rows => [...new Set(rows.map(row => String(row.ref_ptn || '').trim()).filter(Boolean))];
 
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
   const expRows = sortAppExpressions(rowsByUnit(TABS.exp, unit, (_t, r) => isAppExpression(r)));
   if (expRows.length) {
     // 유닛 이미지(1.4.5): 유닛당 1개 `img_<유닛>.png`, 첫 표현 위. 없으면 onerror로 숨김(expi 폐기).
     const expImageId = 'img_' + String(unit).toLowerCase();
-    bySec.exp.push({
+    expPages.push({
       sec:'exp', kind:'list',
       title:'표현', subtitle: expRows.length + '개',
       hero: expImageId,
@@ -1466,11 +1568,11 @@ function buildPagesForUnit(unit) {
     const reps = rowsByUnit(TABS.repertory, unit, t => t === 'repertory' || t === 'repertorie')
       .filter(rep => sameRef(rep.ref_ptn, ref));
     // 패턴 이미지는 더 이상 img 체크박스로 요청하지 않는다. 대표 이미지는 expi 행이 담당한다.
-    bySec.ptn.push({
+    patternPages.push({
       sec:'ptn', kind:'pattern',
       title:'패턴', subtitle: ptnNumber(r) || `${i+1} / ${ptnRows.length}`,
       hero: '',
-      row: r, reps,
+      row: r, reps, ptnRefs:[ref],
     });
   });
 
@@ -1497,40 +1599,32 @@ function buildPagesForUnit(unit) {
       });
       const pageGroups = keys.flatMap(k => splitDrillPageSegments(byPage.get(k)).map(seg => seg.rows));
       pageGroups.forEach((rows, i) => {
-        bySec.drill.push({
+        drillPages.push({
           sec:'drill', kind:'drill',
           title:'드릴', subtitle: `${i+1} / ${pageGroups.length}`,
           rows,
           chapter,
+          ptnRefs:uniqueRefs(rows),
         });
       });
     } else {
       // css 그리드와 two가 섞이거나 two의 연결 패턴이 바뀌면 다음 페이지로 넘긴다.
       const segs = splitDrillPageSegments(drillRows);
-      segs.forEach((seg, i) => bySec.drill.push({
+      segs.forEach((seg, i) => drillPages.push({
         sec:'drill', kind:'drill',
         title:'드릴', subtitle: segs.length > 1 ? `${i+1} / ${segs.length}` : seg.rows.length + '개',
         rows: seg.rows,
         chapter,
+        ptnRefs:uniqueRefs(seg.rows),
       }));
     }
-  }
-
-  // 지문 — 학생앱에는 nass + nass+를 모두 노출하되, nass+는 맨 아래로 모은다.
-  const nassRows = sortNassRows(rowsByUnit(TABS.nass, unit, t => t === 'nass' || t === 'nass+'));
-  if (nassRows.length) {
-    bySec.nass.push({
-      sec:'nass', kind:'list',
-      title:'지문', subtitle: nassRows.length + '개',
-      cards: nassRows.map(r => ({...r, _kind:'nass'})),
-    });
   }
 
   // 단어 (시트 행 순서의 kal → kalimat+)
   const kReg  = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat'  && (r.arabic || '').trim() !== '');
   const kPlus = rowsByUnit(TABS.kalimat, unit, (t, r) => t === 'kalimat+' && (r.arabic || '').trim() !== '');
   if (kReg.length || kPlus.length) {
-    bySec.kalimat.push({
+    kalimatPages.push({
       sec:'kalimat', kind:'list',
       title:'단어', subtitle: (kReg.length + kPlus.length) + '개',
       cards: [
@@ -1540,12 +1634,53 @@ function buildPagesForUnit(unit) {
     });
   }
 
-  // 섹션 순서: 7과부터는 ptn → drill → exp → nass → kalimat (패턴 우선)
-  //           1~6과는 종전대로 exp → ptn → drill → nass → kalimat (알파벳 학습기)
-  return sectionOrderFor(unit).flatMap(key => bySec[key]);
-}
+  // 지문은 패턴 연결 여부를 탐색 구조로만 사용하고, 콘텐츠 자체는 한 번만 만든다.
+  // 연결 지문은 패턴 순서, 미연결 지문은 시트 순서로 마지막에 자동 포함한다.
+  const nassRows = rowsByUnit(TABS.nass, unit, t => t === 'nass' || t === 'nass+');
+  const usedNass = new Set();
+  patternPages.forEach(patternPage => {
+    const ref = patternPage.ptnRefs[0];
+    const linked = sortNassRows(nassRows.filter(row => sameRef(row.ref_ptn, ref)));
+    if (!linked.length) return;
+    linked.forEach(row => usedNass.add(row));
+    nassPages.push({
+      sec:'nass', kind:'list',
+      title:'지문', subtitle: linked.length + '개',
+      cards: linked.map(row => ({...row, _kind:'nass'})),
+      ptnRefs:[ref],
+    });
+  });
+  const unlinkedNass = sortNassRows(nassRows.filter(row => !usedNass.has(row)));
+  if (unlinkedNass.length) {
+    nassPages.push({
+      sec:'nass', kind:'list',
+      title:'지문', subtitle: unlinkedNass.length + '개',
+      cards: unlinkedNass.map(row => ({...row, _kind:'nass'})),
+      ptnRefs:[],
+    });
+  }
 
-function curSection() { return state.pages[state.page]?.sec || 'exp'; }
+  // 유닛 여정은 표현 → 단어 → 각 패턴과 연결 드릴 → 전체 지문 순서다.
+  // 드릴과 지문은 패턴 바로가기와 전체 순차 이동이 같은 페이지 객체를 공유한다.
+  const journey = [...expPages, ...kalimatPages];
+  const usedDrills = new Set();
+  patternPages.forEach((patternPage, patternIndex) => {
+    journey.push(patternPage);
+    drillPages.forEach(drillPage => {
+      if (usedDrills.has(drillPage)) return;
+      const matchedPatternIndexes = patternPages
+        .map((candidate, index) => drillPage.ptnRefs.some(ref => pageHasPatternRef(candidate, ref)) ? index : -1)
+        .filter(index => index >= 0);
+      if (!matchedPatternIndexes.length || Math.max(...matchedPatternIndexes) !== patternIndex) return;
+      usedDrills.add(drillPage);
+      journey.push(drillPage);
+    });
+  });
+  drillPages.filter(page => !usedDrills.has(page)).forEach(page => journey.push(page));
+  journey.push(...nassPages);
+
+  return journey;
+}
 
 /* ───────── 렌더 ───────── */
 
@@ -1555,16 +1690,8 @@ function renderHead() {
   document.getElementById('h-unit-ar').textContent = (unitRow?.arabic || '').slice(0, 22);
   document.getElementById('h-unit-ko').textContent = (unitRow?.korean || '').slice(0, 34);
 
-  // 헤더 카운터: 패턴은 패턴번호 2자리(예: "패턴 01"), 그 외 섹션은 위치(예: "드릴 2/3")
-  const sec = curSection();
-  const inSec = state.pages.filter(p => p.sec === sec);
-  const idxInSec = inSec.findIndex(p => p === state.pages[state.page]);
-  const secLabel = SECTIONS.find(s => s.key === sec)?.label || '';
   const curPage = state.pages[state.page];
-  const ptnNo = (sec === 'ptn' && curPage?.row) ? ptnNumber(curPage.row) : '';
-  document.getElementById('h-counter').textContent =
-    ptnNo ? `${secLabel} ${ptnNo}`
-          : (inSec.length > 1 ? `${secLabel} ${idxInSec+1}/${inSec.length}` : secLabel);
+  document.getElementById('h-counter').textContent = pageLocationLabel(curPage);
 
   // 푸터 인디케이터: 글로벌 (예: "03 / 07")
   const total = state.pages.length || 1;
@@ -1575,16 +1702,25 @@ function renderHead() {
   document.getElementById('next').disabled = state.page >= total - 1;
 }
 
-function renderTabs() {
-  const cur = curSection();
-  // 유닛 번호에 따라 탭 시각 순서 전환 (CSS flex order로 처리)
-  const tabsNav = document.getElementById('tabs');
-  if (tabsNav) tabsNav.dataset.order = isPatternFirst(state.unit) ? 'ptn-first' : 'exp-first';
-  document.querySelectorAll('.m-tab').forEach(btn => {
-    const sec = btn.dataset.sec;
-    const has = state.pages.some(p => p.sec === sec);
-    btn.dataset.disabled = has ? '0' : '1';
-    btn.classList.toggle('active', sec === cur);
+function renderContextNav() {
+  const nav = document.getElementById('context-nav');
+  const page = state.pages[state.page];
+  const ref = activePatternRef(page);
+  const row = ref ? patternRowForRef(ref) : null;
+  if (!row) {
+    nav.hidden = true;
+    return;
+  }
+
+  state.contextPtnRef = ref;
+  nav.hidden = false;
+
+  nav.querySelectorAll('.m-context-btn').forEach(button => {
+    const stage = button.dataset.stage;
+    const index = firstPageIndexForPattern(ref, stage);
+    button.disabled = index < 0;
+    button.dataset.page = index >= 0 ? String(index) : '';
+    button.classList.toggle('active', page?.sec === stage);
   });
 }
 
@@ -2142,21 +2278,147 @@ function buildUnitList() {
   list.innerHTML = '';
   const rows = unitRows().filter(ok);
   state.units = rows.map(r => r.u).filter(Boolean);
+
+  const makeLink = (className, label, unit, index, options = {}) => {
+    const button = document.createElement('button');
+    button.className = className;
+    button.type = 'button';
+    button.textContent = label;
+    button.disabled = index < 0;
+    button.dataset.unit = unit;
+    button.dataset.page = index >= 0 ? String(index) : '';
+    button.dataset.match = options.match || 'page';
+    if (options.sec) button.dataset.sec = options.sec;
+    if (options.ref) button.dataset.ref = options.ref;
+    button.addEventListener('click', event => {
+      event.stopPropagation();
+      if (index < 0) return;
+      goToUnitPage(unit, index, options.ref || '');
+      closeSidebar();
+    });
+    return button;
+  };
+
   rows.forEach(r => {
+    const pages = r.u === state.unit ? state.pages : buildPagesForUnit(r.u);
+    const firstIndex = pages.findIndex(page => page.sec === 'exp');
+    const startIndex = firstIndex >= 0 ? firstIndex : 0;
+    const expIndex = pages.findIndex(page => page.sec === 'exp');
+    const kalimatIndex = pages.findIndex(page => page.sec === 'kalimat');
+    const nassIndex = pages.findIndex(page => page.sec === 'nass');
+    const expanded = state.expandedUnits.has(r.u) || r.u === state.unit;
+
     const li = document.createElement('li');
-    li.className = 'm-unit-row' + (r.u === state.unit ? ' active' : '');
+    li.className = 'm-unit-group' + (r.u === state.unit ? ' active' : '');
     li.dataset.unit = r.u;
-    li.innerHTML = `
+
+    const row = document.createElement('div');
+    row.className = 'm-unit-row';
+
+    const open = document.createElement('button');
+    open.className = 'm-unit-open';
+    open.type = 'button';
+    open.innerHTML = `
       <span class="ucode">${unitNo(r.u)}</span>
       <span class="ubody">
-        <span class="uar">${(r.arabic||'').slice(0, 26)}</span>
-        <span class="uko">${(r.korean||'').slice(0, 28)}</span>
+        <span class="uar">${(r.arabic || '').slice(0, 26)}</span>
+        <span class="uko">${(r.korean || '').slice(0, 28)}</span>
       </span>`;
-    li.addEventListener('click', () => {
-      state.unit = r.u; state.page = 0;
-      refresh(); closeSidebar(); saveURL();
+    open.addEventListener('click', () => {
+      goToUnitPage(r.u, startIndex);
+      closeSidebar();
     });
+
+    const expand = document.createElement('button');
+    expand.className = 'm-unit-expand';
+    expand.type = 'button';
+    expand.textContent = '›';
+    expand.setAttribute('aria-label', `${unitNo(r.u)} 하위 항목`);
+    expand.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    expand.addEventListener('click', event => {
+      event.stopPropagation();
+      if (state.expandedUnits.has(r.u)) state.expandedUnits.delete(r.u);
+      else state.expandedUnits.add(r.u);
+      buildUnitList();
+    });
+
+    row.append(open, expand);
+    li.appendChild(row);
+
+    const children = document.createElement('div');
+    children.className = 'm-unit-children';
+    children.hidden = !expanded;
+    children.appendChild(makeLink('m-unit-link', '표현', r.u, expIndex, { sec:'exp', match:'section' }));
+    children.appendChild(makeLink('m-unit-link', '단어', r.u, kalimatIndex, { sec:'kalimat', match:'section' }));
+
+    pages.filter(page => page.sec === 'ptn').forEach(patternPage => {
+      const ref = patternPage.ptnRefs[0];
+      const patternIndex = pages.indexOf(patternPage);
+      const drillIndex = firstPageIndexForPattern(ref, 'drill', pages);
+      const patternNassIndex = firstPageIndexForPattern(ref, 'nass', pages);
+      const number = ptnNumber(patternPage.row);
+      const title = patternTitle(patternPage.row);
+      const group = document.createElement('div');
+      group.className = 'm-pattern-nav-group';
+      group.dataset.ref = ref;
+
+      const patternLink = makeLink(
+        'm-pattern-link',
+        `패턴 ${number ? Number(number) : ''}${title ? ` · ${title}` : ''}`.trim(),
+        r.u,
+        patternIndex,
+        { ref, match:'pattern' }
+      );
+      group.appendChild(patternLink);
+
+      const stages = document.createElement('div');
+      stages.className = 'm-pattern-stage-row';
+      stages.append(
+        makeLink('m-pattern-stage', '패턴', r.u, patternIndex, { ref, sec:'ptn', match:'pattern-stage' }),
+        makeLink('m-pattern-stage', '드릴', r.u, drillIndex, { ref, sec:'drill', match:'pattern-stage' }),
+        makeLink('m-pattern-stage', '지문', r.u, patternNassIndex, { ref, sec:'nass', match:'pattern-stage' })
+      );
+      group.appendChild(stages);
+      children.appendChild(group);
+    });
+
+    const unitDrillIndex = pages.findIndex(page => {
+      if (page.sec !== 'drill') return false;
+      const refs = pagePatternRefs(page);
+      return !refs.length || !refs.some(ref => patternRowForRef(ref, pages));
+    });
+    if (unitDrillIndex >= 0) {
+      children.appendChild(makeLink('m-unit-link', '종합 드릴', r.u, unitDrillIndex, {
+        sec:'drill', match:'page',
+      }));
+    }
+    children.appendChild(makeLink('m-unit-link', '지문 전체', r.u, nassIndex, {
+      sec:'nass', match:'section',
+    }));
+
+    li.appendChild(children);
     list.appendChild(li);
+  });
+  syncUnitNavActive();
+}
+
+function syncUnitNavActive() {
+  const currentPage = state.pages[state.page];
+  const currentRef = activePatternRef(currentPage);
+  document.querySelectorAll('#unit-list [data-match]').forEach(button => {
+    if (button.dataset.unit !== state.unit) {
+      button.classList.remove('active');
+      return;
+    }
+    const match = button.dataset.match;
+    const samePattern = currentRef && button.dataset.ref &&
+      sameRef(currentRef, button.dataset.ref);
+    const active =
+      (match === 'page' && Number(button.dataset.page) === state.page) ||
+      (match === 'section' && button.dataset.sec === currentPage?.sec) ||
+      (match === 'pattern' && samePattern) ||
+      (match === 'pattern-stage' && samePattern && button.dataset.sec === currentPage?.sec);
+    button.classList.toggle('active', Boolean(active));
   });
 }
 function openSidebar()  { document.getElementById('sb').classList.add('open'); }
@@ -2174,22 +2436,36 @@ function toggleKorean() {
 }
 
 /* ───────── 이동 ───────── */
-function goSection(sec) {
-  const idx = state.pages.findIndex(p => p.sec === sec);
-  if (idx === -1) return;
-  state.page = idx;
-  paintCurrent(); saveURL();
+function goToUnitPage(unit, index, patternRef = '') {
+  const unitChanged = unit !== state.unit;
+  if (unitChanged) {
+    state.unit = unit;
+    state.pages = buildPagesForUnit(unit);
+  }
+  if (!state.pages.length) return;
+  state.page = Math.max(0, Math.min(index, state.pages.length - 1));
+  state.contextPtnRef = patternRef || pagePatternRefs(state.pages[state.page])[0] || '';
+  state.expandedUnits.add(unit);
+  if (unitChanged) buildUnitList();
+  paintCurrent();
+  saveURL();
 }
+
 function goPage(delta) {
   const next = state.page + delta;
   if (next < 0 || next >= state.pages.length) return;
   state.page = next;
+  const refs = pagePatternRefs(state.pages[next]);
+  if (!refs.some(ref => sameRef(ref, state.contextPtnRef))) {
+    state.contextPtnRef = refs[0] || '';
+  }
   paintCurrent(); saveURL();
 }
 function paintCurrent() {
   renderHead();
-  renderTabs();
+  renderContextNav();
   renderBody();
+  syncUnitNavActive();
   // baseline 기준선 동적 정렬 — 폰트 로드 완료 후 첫 글자 baseline에 맞춤
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(adjustBaselines);
@@ -2223,6 +2499,8 @@ window.addEventListener('resize', () => {
 function refresh() {
   state.pages = buildPagesForUnit(state.unit);
   state.page = Math.min(state.page, Math.max(0, state.pages.length - 1));
+  state.expandedUnits.add(state.unit);
+  state.contextPtnRef = pagePatternRefs(state.pages[state.page])[0] || '';
   buildUnitList();
   paintCurrent();
 }
@@ -2242,10 +2520,11 @@ document.getElementById('sb-mask').onclick  = closeSidebar;
 document.getElementById('prev').onclick     = () => goPage(-1);
 document.getElementById('next').onclick     = () => goPage(+1);
 document.getElementById('toggle').onclick   = toggleKorean;
-document.querySelectorAll('.m-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (btn.dataset.disabled === '1') return;
-    goSection(btn.dataset.sec);
+document.querySelectorAll('.m-context-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const index = Number(button.dataset.page);
+    if (!Number.isInteger(index) || index < 0) return;
+    goToUnitPage(state.unit, index, state.contextPtnRef);
   });
 });
 // 드래그-페이지 캐러셀 — 손가락 따라 strip이 이동, 임계값 넘으면 다음/이전으로 스냅
@@ -2329,8 +2608,7 @@ document.querySelectorAll('.m-tab').forEach(btn => {
         clearTimeout(timer);
         stripEl.removeEventListener('transitionend', cleanup);
         if (delta !== 0) {
-          state.page += delta;
-          paintCurrent(); saveURL();
+          goPage(delta);
         }
       };
       stripEl.addEventListener('transitionend', cleanup, { once: true });
