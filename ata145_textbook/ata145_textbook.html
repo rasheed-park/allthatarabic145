@@ -1420,6 +1420,12 @@ function unitNo(unit) {
   return String(unit || '').replace(/\d+/, m => m.slice(-2).padStart(2, '0'));
 }
 
+function isChapterZeroUnit(unit = state.unit) {
+  const match = String(unit || '').match(/^A0*(\d+)$/i);
+  const number = match ? Number(match[1]) : NaN;
+  return Number.isFinite(number) && number >= 1 && number <= 5;
+}
+
 function patternTitle(row) {
   return String(row?.korean || '')
     .split(/\n+/)[0]
@@ -1715,10 +1721,15 @@ function renderContextNav() {
   const page = state.pages[state.page];
   const ref = activePatternRef(page);
   const row = ref ? patternRowForRef(ref) : null;
-  if (state.navMode === 'auto') {
-    state.navMode = row ? 'pattern' : 'overview';
+  const chapterZero = isChapterZeroUnit();
+  if (chapterZero) {
+    state.navMode = 'overview';
+  } else {
+    if (state.navMode === 'auto') {
+      state.navMode = row ? 'pattern' : 'overview';
+    }
+    if (state.navMode === 'pattern' && !row) state.navMode = 'overview';
   }
-  if (state.navMode === 'pattern' && !row) state.navMode = 'overview';
   if (row) state.contextPtnRef = ref;
 
   const makeButton = (label, index, options = {}) => {
@@ -1736,6 +1747,36 @@ function renderContextNav() {
   };
 
   nav.innerHTML = '';
+  if (chapterZero) {
+    const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
+    const drillIndex = state.pages.findIndex(candidate => candidate.sec === 'drill');
+    const nassIndex = state.pages.findIndex(candidate => candidate.sec === 'nass');
+    nav.appendChild(makeButton('표현', expIndex, {
+      active:page?.sec === 'exp', mode:'overview',
+    }));
+    const patternPages = state.pages.filter(candidate => candidate.sec === 'ptn');
+    const patternGroups = patternPages.length <= 3
+      ? patternPages.map(patternPage => [patternPage])
+      : [[patternPages[0]], [patternPages[1]], patternPages.slice(2)];
+    patternGroups.forEach((group, index) => {
+      const patternRefs = group.flatMap(patternPage => patternPage.ptnRefs || []).filter(Boolean);
+      nav.appendChild(makeButton(`패턴 ${index + 1}`, state.pages.indexOf(group[0]), {
+        active:page?.sec === 'ptn' && patternRefs.some(patternRef => pageHasPatternRef(page, patternRef)),
+        ref:patternRefs[0] || '',
+        mode:'overview',
+      }));
+    });
+    nav.append(
+      makeButton('드릴', drillIndex, {
+        active:page?.sec === 'drill', mode:'overview',
+      }),
+      makeButton('지문', nassIndex, {
+        active:page?.sec === 'nass', mode:'overview',
+      })
+    );
+    return;
+  }
+
   if (state.navMode === 'pattern' && row) {
     const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
     const number = ptnNumber(row);
