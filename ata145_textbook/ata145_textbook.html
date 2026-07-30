@@ -130,16 +130,21 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-context-btn {
   flex:0 0 auto; min-width:48px; height:24px;
   padding:0 8px;
-  border:1px solid var(--border);
-  border-radius:12px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
   font-size:9px; font-weight:600; color:var(--sub);
   white-space:nowrap;
   transition:background .12s,color .12s,border-color .12s;
 }
 .m-context-btn.back { min-width:58px; }
 .m-context-btn.active {
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 1px 3px rgba(29,73,255,.2);
+}
+.m-context-btn:not(.active):active {
   background:var(--accent-bg);
-  border-color:rgba(29,73,255,.32);
   color:var(--accent);
 }
 .m-context-btn:disabled {
@@ -1750,9 +1755,13 @@ function renderContextNav() {
   }
 
   const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
+  const kalimatIndex = state.pages.findIndex(candidate => candidate.sec === 'kalimat');
   const nassIndex = state.pages.findIndex(candidate => candidate.sec === 'nass');
   nav.appendChild(makeButton('표현', expIndex, {
     active:page?.sec === 'exp', mode:'overview',
+  }));
+  nav.appendChild(makeButton('단어', kalimatIndex, {
+    active:page?.sec === 'kalimat', mode:'overview',
   }));
   state.pages.filter(candidate => candidate.sec === 'ptn').forEach(patternPage => {
     const patternRef = patternPage.ptnRefs[0];
