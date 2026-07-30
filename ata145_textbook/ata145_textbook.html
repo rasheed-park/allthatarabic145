@@ -1466,10 +1466,18 @@ function firstPageIndexForPattern(ref, sec, pages = state.pages) {
   return pages.findIndex(page => page.sec === sec && pageHasPatternRef(page, ref));
 }
 
+function firstOverviewNassIndex(pages = state.pages) {
+  const scoped = pages.findIndex(page => page.sec === 'nass' && page.navScope === 'overview');
+  return scoped >= 0 ? scoped : pages.findIndex(page => page.sec === 'nass');
+}
+
 function pageLocationLabel(page) {
   if (!page) return '';
   if (page.sec === 'exp') return '표현';
   if (page.sec === 'kalimat') return '단어';
+  if (page.sec === 'nass' && page.navScope === 'overview') {
+    return isChapterZeroUnit() ? '지문' : '전체 지문';
+  }
 
   const ref = activePatternRef(page);
   const patternRow = ref ? patternRowForRef(ref) : null;
@@ -1563,7 +1571,8 @@ function buildPagesForUnit(unit) {
   const kalimatPages = [];
   const patternPages = [];
   const drillPages = [];
-  const nassPages = [];
+  const patternNassPages = [];
+  const overviewNassPages = [];
   const uniqueRefs = rows => [...new Set(rows.map(row => String(row.ref_ptn || '').trim()).filter(Boolean))];
 
   // 표현 — 학생앱에는 expi + exp + exp+를 모두 노출한다.
@@ -1652,34 +1661,43 @@ function buildPagesForUnit(unit) {
     });
   }
 
-  // 지문은 패턴 연결 여부를 탐색 구조로만 사용하고, 콘텐츠 자체는 한 번만 만든다.
-  // 연결 지문은 패턴 순서, 미연결 지문은 시트 순서로 마지막에 자동 포함한다.
+  // 연결 지문은 패턴 단계에서 드릴 바로 뒤에 놓고, 같은 행을 유닛 전체 지문에도 다시 모은다.
+  // 미연결 지문은 패턴 단계에는 넣지 않고 전체 지문에만 자동 포함한다.
   const nassRows = rowsByUnit(TABS.nass, unit, t => t === 'nass' || t === 'nass+');
   const usedNass = new Set();
+  const orderedNassRows = [];
   patternPages.forEach(patternPage => {
     const ref = patternPage.ptnRefs[0];
-    const linked = sortNassRows(nassRows.filter(row => sameRef(row.ref_ptn, ref)));
+    const linked = sortNassRows(nassRows.filter(row =>
+      !usedNass.has(row) && sameRef(row.ref_ptn, ref)
+    ));
     if (!linked.length) return;
-    linked.forEach(row => usedNass.add(row));
-    nassPages.push({
+    linked.forEach(row => {
+      usedNass.add(row);
+      orderedNassRows.push(row);
+    });
+    patternNassPages.push({
       sec:'nass', kind:'list',
       title:'지문', subtitle: linked.length + '개',
       cards: linked.map(row => ({...row, _kind:'nass'})),
       ptnRefs:[ref],
+      navScope:'pattern',
     });
   });
   const unlinkedNass = sortNassRows(nassRows.filter(row => !usedNass.has(row)));
-  if (unlinkedNass.length) {
-    nassPages.push({
+  const allNassRows = [...orderedNassRows, ...unlinkedNass];
+  if (allNassRows.length) {
+    overviewNassPages.push({
       sec:'nass', kind:'list',
-      title:'지문', subtitle: unlinkedNass.length + '개',
-      cards: unlinkedNass.map(row => ({...row, _kind:'nass'})),
+      title:'전체 지문', subtitle: allNassRows.length + '개',
+      cards: allNassRows.map(row => ({...row, _kind:'nass'})),
       ptnRefs:[],
+      navScope:'overview',
     });
   }
 
-  // 유닛 여정은 표현 → 단어 → 각 패턴과 연결 드릴 → 전체 지문 순서다.
-  // 드릴과 지문은 패턴 바로가기와 전체 순차 이동이 같은 페이지 객체를 공유한다.
+  // 챕터 1 여정은 표현 → 단어 → [패턴 → 드릴 → 연결 지문] 반복 → 전체 지문 순서다.
+  // 챕터 0은 패턴 귀속 지문이 없으므로 기존처럼 패턴·드릴 뒤에 유닛 지문만 둔다.
   const journey = [...expPages, ...kalimatPages];
   const usedDrills = new Set();
   patternPages.forEach((patternPage, patternIndex) => {
@@ -1693,9 +1711,14 @@ function buildPagesForUnit(unit) {
       usedDrills.add(drillPage);
       journey.push(drillPage);
     });
+    if (!isChapterZeroUnit(unit)) {
+      patternNassPages
+        .filter(nassPage => pageHasPatternRef(nassPage, patternPage.ptnRefs[0]))
+        .forEach(nassPage => journey.push(nassPage));
+    }
   });
   drillPages.filter(page => !usedDrills.has(page)).forEach(page => journey.push(page));
-  journey.push(...nassPages);
+  journey.push(...overviewNassPages);
 
   return journey;
 }
@@ -1754,7 +1777,7 @@ function renderContextNav() {
   if (chapterZero) {
     const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
     const drillIndex = state.pages.findIndex(candidate => candidate.sec === 'drill');
-    const nassIndex = state.pages.findIndex(candidate => candidate.sec === 'nass');
+    const nassIndex = firstOverviewNassIndex();
     nav.appendChild(makeButton('표현', expIndex, {
       active:page?.sec === 'exp', mode:'overview',
     }));
@@ -1775,7 +1798,7 @@ function renderContextNav() {
         active:page?.sec === 'drill', mode:'overview',
       }),
       makeButton('지문', nassIndex, {
-        active:page?.sec === 'nass', mode:'overview',
+        active:page?.sec === 'nass' && page?.navScope === 'overview', mode:'overview',
       })
     );
     return;
@@ -1801,7 +1824,7 @@ function renderContextNav() {
 
   const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
   const kalimatIndex = state.pages.findIndex(candidate => candidate.sec === 'kalimat');
-  const nassIndex = state.pages.findIndex(candidate => candidate.sec === 'nass');
+  const nassIndex = firstOverviewNassIndex();
   nav.appendChild(makeButton('표현', expIndex, {
     active:page?.sec === 'exp', mode:'overview',
   }));
@@ -1816,7 +1839,7 @@ function renderContextNav() {
     }));
   });
   nav.appendChild(makeButton('전체 지문', nassIndex, {
-    active:page?.sec === 'nass', mode:'overview',
+    active:page?.sec === 'nass' && page?.navScope === 'overview', mode:'overview',
   }));
 }
 
@@ -2406,7 +2429,7 @@ function buildUnitList() {
     const startIndex = firstIndex >= 0 ? firstIndex : 0;
     const expIndex = pages.findIndex(page => page.sec === 'exp');
     const kalimatIndex = pages.findIndex(page => page.sec === 'kalimat');
-    const nassIndex = pages.findIndex(page => page.sec === 'nass');
+    const nassIndex = firstOverviewNassIndex(pages);
     const expanded = state.expandedUnits.has(r.u) || r.u === state.unit;
 
     const li = document.createElement('li');
@@ -2494,7 +2517,7 @@ function buildUnitList() {
       }));
     }
     children.appendChild(makeLink('m-unit-link', '지문 전체', r.u, nassIndex, {
-      sec:'nass', match:'section',
+      sec:'nass', match:'page',
     }));
 
     li.appendChild(children);
