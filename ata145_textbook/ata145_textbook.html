@@ -113,24 +113,30 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
   letter-spacing:.3px;
 }
 
-/* ───────── 패턴 문맥 네비게이션 ─────────
-   유닛 전체 탭 대신 패턴 관련 화면에서만 패턴·드릴·지문을 노출한다. */
+/* ───────── 2단계 소형 네비게이션 ─────────
+   상위: 표현·패턴들·전체 지문 / 하위: 돌아가기·현재 패턴·드릴·지문 */
 .m-context-nav {
-  flex-shrink:0; min-height:36px;
-  display:flex; align-items:center; justify-content:center; gap:5px;
-  padding:5px 12px;
+  flex-shrink:0; min-height:31px;
+  display:flex; align-items:center; justify-content:flex-start; gap:4px;
+  padding:3px 8px;
   border-bottom:1px solid var(--border);
   background:var(--surface);
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
-.m-context-nav[hidden] { display:none; }
+.m-context-nav::-webkit-scrollbar { display:none; }
 .m-context-btn {
-  flex:0 1 76px; min-width:64px; height:26px;
-  padding:0 10px;
+  flex:0 0 auto; min-width:48px; height:24px;
+  padding:0 8px;
   border:1px solid var(--border);
-  border-radius:13px;
-  font-size:10px; font-weight:600; color:var(--sub);
+  border-radius:12px;
+  font-size:9px; font-weight:600; color:var(--sub);
+  white-space:nowrap;
   transition:background .12s,color .12s,border-color .12s;
 }
+.m-context-btn.back { min-width:58px; }
 .m-context-btn.active {
   background:var(--accent-bg);
   border-color:rgba(29,73,255,.32);
@@ -1071,11 +1077,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
     <span class="m-counter" id="h-counter">1 / 1</span>
   </header>
 
-  <nav class="m-context-nav" id="context-nav" hidden>
-    <button class="m-context-btn" data-stage="ptn">패턴</button>
-    <button class="m-context-btn" data-stage="drill">드릴</button>
-    <button class="m-context-btn" data-stage="nass">지문</button>
-  </nav>
+  <nav class="m-context-nav" id="context-nav" aria-label="학습 위치"></nav>
 
   <main class="m-body" id="body"></main>
 
@@ -1129,6 +1131,7 @@ const state = {
   units:       [],
   expandedUnits:new Set(),
   contextPtnRef:'',
+  navMode:     'auto',
   hideKorean: false,
   audioId:     null,
 };
@@ -1707,21 +1710,60 @@ function renderContextNav() {
   const page = state.pages[state.page];
   const ref = activePatternRef(page);
   const row = ref ? patternRowForRef(ref) : null;
-  if (!row) {
-    nav.hidden = true;
+  if (state.navMode === 'auto') {
+    state.navMode = row ? 'pattern' : 'overview';
+  }
+  if (state.navMode === 'pattern' && !row) state.navMode = 'overview';
+  if (row) state.contextPtnRef = ref;
+
+  const makeButton = (label, index, options = {}) => {
+    const button = document.createElement('button');
+    button.className = 'm-context-btn' + (options.back ? ' back' : '');
+    button.type = 'button';
+    button.textContent = label;
+    button.disabled = index < 0;
+    button.classList.toggle('active', Boolean(options.active));
+    button.addEventListener('click', () => {
+      if (index < 0) return;
+      goToUnitPage(state.unit, index, options.ref || '', options.mode || 'overview');
+    });
+    return button;
+  };
+
+  nav.innerHTML = '';
+  if (state.navMode === 'pattern' && row) {
+    const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
+    const number = ptnNumber(row);
+    nav.append(
+      makeButton('돌아가기', expIndex >= 0 ? expIndex : 0, { back:true, mode:'overview' }),
+      makeButton(`패턴 ${number ? Number(number) : ''}`.trim(), firstPageIndexForPattern(ref, 'ptn'), {
+        active:page?.sec === 'ptn', ref, mode:'pattern',
+      }),
+      makeButton('드릴', firstPageIndexForPattern(ref, 'drill'), {
+        active:page?.sec === 'drill', ref, mode:'pattern',
+      }),
+      makeButton('지문', firstPageIndexForPattern(ref, 'nass'), {
+        active:page?.sec === 'nass', ref, mode:'pattern',
+      })
+    );
     return;
   }
 
-  state.contextPtnRef = ref;
-  nav.hidden = false;
-
-  nav.querySelectorAll('.m-context-btn').forEach(button => {
-    const stage = button.dataset.stage;
-    const index = firstPageIndexForPattern(ref, stage);
-    button.disabled = index < 0;
-    button.dataset.page = index >= 0 ? String(index) : '';
-    button.classList.toggle('active', page?.sec === stage);
+  const expIndex = state.pages.findIndex(candidate => candidate.sec === 'exp');
+  const nassIndex = state.pages.findIndex(candidate => candidate.sec === 'nass');
+  nav.appendChild(makeButton('표현', expIndex, {
+    active:page?.sec === 'exp', mode:'overview',
+  }));
+  state.pages.filter(candidate => candidate.sec === 'ptn').forEach(patternPage => {
+    const patternRef = patternPage.ptnRefs[0];
+    const number = ptnNumber(patternPage.row);
+    nav.appendChild(makeButton(`패턴 ${number ? Number(number) : ''}`.trim(), state.pages.indexOf(patternPage), {
+      ref:patternRef, mode:'pattern',
+    }));
   });
+  nav.appendChild(makeButton('전체 지문', nassIndex, {
+    active:page?.sec === 'nass', mode:'overview',
+  }));
 }
 
 function buildPageContent(wrap, page) {
@@ -2293,7 +2335,12 @@ function buildUnitList() {
     button.addEventListener('click', event => {
       event.stopPropagation();
       if (index < 0) return;
-      goToUnitPage(unit, index, options.ref || '');
+      goToUnitPage(
+        unit,
+        index,
+        options.ref || '',
+        options.mode || (options.ref ? 'pattern' : 'overview')
+      );
       closeSidebar();
     });
     return button;
@@ -2436,7 +2483,7 @@ function toggleKorean() {
 }
 
 /* ───────── 이동 ───────── */
-function goToUnitPage(unit, index, patternRef = '') {
+function goToUnitPage(unit, index, patternRef = '', navMode = 'overview') {
   const unitChanged = unit !== state.unit;
   if (unitChanged) {
     state.unit = unit;
@@ -2445,6 +2492,7 @@ function goToUnitPage(unit, index, patternRef = '') {
   if (!state.pages.length) return;
   state.page = Math.max(0, Math.min(index, state.pages.length - 1));
   state.contextPtnRef = patternRef || pagePatternRefs(state.pages[state.page])[0] || '';
+  state.navMode = navMode;
   state.expandedUnits.add(unit);
   if (unitChanged) buildUnitList();
   paintCurrent();
@@ -2455,9 +2503,16 @@ function goPage(delta) {
   const next = state.page + delta;
   if (next < 0 || next >= state.pages.length) return;
   state.page = next;
-  const refs = pagePatternRefs(state.pages[next]);
+  const nextPage = state.pages[next];
+  const refs = pagePatternRefs(nextPage);
   if (!refs.some(ref => sameRef(ref, state.contextPtnRef))) {
     state.contextPtnRef = refs[0] || '';
+  }
+  const nextPatternRow = state.contextPtnRef ? patternRowForRef(state.contextPtnRef) : null;
+  if (!nextPatternRow) {
+    state.navMode = 'overview';
+  } else if (!(nextPage.sec === 'nass' && state.navMode === 'overview')) {
+    state.navMode = 'pattern';
   }
   paintCurrent(); saveURL();
 }
@@ -2510,6 +2565,7 @@ function saveURL() {
   const sp = new URLSearchParams(location.search);
   sp.set('unit', state.unit);
   sp.set('page', state.page);
+  sp.set('nav', state.navMode);
   history.replaceState(null,'','?'+sp.toString());
 }
 
@@ -2520,13 +2576,6 @@ document.getElementById('sb-mask').onclick  = closeSidebar;
 document.getElementById('prev').onclick     = () => goPage(-1);
 document.getElementById('next').onclick     = () => goPage(+1);
 document.getElementById('toggle').onclick   = toggleKorean;
-document.querySelectorAll('.m-context-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const index = Number(button.dataset.page);
-    if (!Number.isInteger(index) || index < 0) return;
-    goToUnitPage(state.unit, index, state.contextPtnRef);
-  });
-});
 // 드래그-페이지 캐러셀 — 손가락 따라 strip이 이동, 임계값 넘으면 다음/이전으로 스냅
 (() => {
   const body = document.getElementById('body');
@@ -2660,9 +2709,11 @@ async function init() {
     const sp = new URLSearchParams(location.search);
     const u  = sp.get('unit');
     const p  = parseInt(sp.get('page'));
+    const navMode = sp.get('nav');
     const validUnits = unitRows().filter(ok).map(r => r.u);
     state.unit = (u && validUnits.includes(u)) ? u : (validUnits[0] || 'A001');
     if (!isNaN(p)) state.page = Math.max(0, p);
+    state.navMode = ['overview','pattern'].includes(navMode) ? navMode : 'auto';
 
     refresh();
     document.getElementById('loading').style.display = 'none';
