@@ -1223,6 +1223,8 @@ const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kali
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
+  // drill / drill+은 같은 화면 타입이지만, 메인→추가 단계는 보존한다.
+  if (t === 'drill' || t === 'drill+') r._sourceType = t;
   if (TYPE_145[t]) r.type = TYPE_145[t];
   if (t === 'unit') {                 // 유닛 헤더: `|` 구분자 제거 + 이어쓰기(둘째 줄) 숨김 → 첫 줄만
     if (r.arabic) r.arabic = String(r.arabic).split('\n')[0].replace(/\s*\|\s*/g, ' ').trim();
@@ -1377,7 +1379,8 @@ async function buildSlides(baseUnit) {
 
     const pageVal   = r => (r.page || '').toString().trim();
     const drillRank = r => ({ drilla:0, drillb:1, drillc:2 }[normalizeType(r.type)] ?? 9);
-    // 한 패턴 안 드릴 정렬: page(숫자) 우선 → drillA/B/C → 시트순
+    const drillStage = r => String(r._sourceType || '').trim().toLowerCase() === 'drill+' ? 1 : 0;
+    // 한 패턴 안 드릴 정렬: page(숫자) → drillA/B/C → 메인/추가 → 시트순
     const orderDrills = rows => rows
       .map((r, i) => ({ r, i }))
       .sort((a, b) => {
@@ -1386,6 +1389,7 @@ async function buildSlides(baseUnit) {
         const kb = pageVal(b.r) === '' || isNaN(pb) ? Infinity : pb;
         if (ka !== kb) return ka - kb;
         if (drillRank(a.r) !== drillRank(b.r)) return drillRank(a.r) - drillRank(b.r);
+        if (drillStage(a.r) !== drillStage(b.r)) return drillStage(a.r) - drillStage(b.r);
         return a.i - b.i;
       })
       .map(x => x.r);
@@ -1414,12 +1418,11 @@ async function buildSlides(baseUnit) {
   if (patternFirst) { emitPatternAndDrill(); emitExpressions(); }
   else              { emitExpressions(); emitPatternAndDrill(); }
 
-  // 5. nass (지문) — nass + nass+ (데이터시트sheet에서 type으로 분리)
-  nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
-
-  // 6. kalimat (단어) — 문법/기능 단어도 kal이며 시트 행 순서를 그대로 사용
-  kalimatRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'kalimat')
-    .forEach(r => push('kalimat', r));
+  // 5·6. 지문·단어 — 1~5과는 지문에 패턴 미연결이라 단어 뒤로(단어→지문), 6과+는 종전(지문→단어)
+  const emitNass = () => nassRaw.filter(r => inU(r) && ok(r) && /^nass\+?$/i.test(r.type || '')).forEach(r => push('nass', r));
+  const emitKalimat = () => kalimatRaw.filter(r => inU(r) && ok(r) && normalizeType(r.type) === 'kalimat').forEach(r => push('kalimat', r));
+  if (patternFirst) { emitNass(); emitKalimat(); }
+  else              { emitKalimat(); emitNass(); }
 
   if (_firstLoad) {
     const savedSlide = parseInt(new URLSearchParams(location.search).get('slide')) || 0;

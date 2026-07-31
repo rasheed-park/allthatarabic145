@@ -1093,6 +1093,8 @@ const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kali
 function compat145(r) {
   if (!r || typeof r !== 'object') return r;
   const t = String(r.type||'').toLowerCase().trim();
+  // drill / drill+은 같은 인쇄 드릴 타입이지만, 메인→추가 단계는 별도로 보존한다.
+  if (t === 'drill' || t === 'drill+') r._sourceType = t;
   if (TYPE_145[t]) r.type = TYPE_145[t];
   const p = String(r.ptn||'').trim();
   if (p) { if (!r['id_ptn(no)']) r['id_ptn(no)']=p; if (!r.id_ptn) r.id_ptn=p; if (!r.ref_ptn) r.ref_ptn=p; }
@@ -1586,7 +1588,7 @@ function _renderDrillBoxHtml(items, isB) {
 function _buildDrillAtoms(drills, isB, instruction, sectionId) {
   if (!drills.length) return [];
   const groups = new Map();
-  drills.forEach(it => {
+  drills.forEach((it, index) => {
     const ref = (it.ref_ptn || '').trim();
     const css = (it.css || '').trim().toLowerCase();
     const mode = css === 'two' ? 'two' : 'grid';  // five/two 분리
@@ -1598,27 +1600,25 @@ function _buildDrillAtoms(drills, isB, instruction, sectionId) {
       && /^ptn01(?:5|6)(?:_|$)/i.test(ref)
       ? 'ptn015_016_a005_alif_hamza'
       : ref;
-    const key = displayRef + '||' + mode;
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(it);
+    // css는 레이아웃만, sourceType은 메인/추가 학습 단계만 나타낸다.
+    const stage = String(it._sourceType || '').trim().toLowerCase() === 'drill+' ? 1 : 0;
+    const key = displayRef + '||' + stage + '||' + mode;
+    if (!groups.has(key)) groups.set(key, { ref: displayRef, stage, mode, first: index, rows: [] });
+    groups.get(key).rows.push(it);
   });
-  const orderedKeys = [...groups.keys()].sort((a, b) => {
-    const [ra, ma] = a.split('||'), [rb, mb] = b.split('||');
-    // 모드 우선: grid(five/six 낱글자·낱말 드릴) 전체가 먼저, two(문장 드릴) 전체가 뒤로
-    if (ma !== mb) return ma === 'grid' ? -1 : 1;
-    if (ra === '' && rb !== '') return 1;
-    if (ra !== '' && rb === '') return -1;
-    return ra.localeCompare(rb);
+  const orderedGroups = [...groups.values()].sort((a, b) => {
+    // 서로 다른 패턴은 시트 순서, 같은 패턴은 메인 드릴→추가 드릴 순서다.
+    if (a.ref === b.ref && a.stage !== b.stage) return a.stage - b.stage;
+    return a.first - b.first;
   });
-  return orderedKeys.map((k, i) => {
-    const mode = k.split('||')[1];
+  return orderedGroups.map((group, i) => {
     // 안내문은 각 css모드(grid/two)의 첫 atom에 붙인다 → five 페이지와 two 페이지 모두 안내문 표시
-    const isFirstOfMode = orderedKeys.findIndex(kk => kk.split('||')[1] === mode) === i;
+    const isFirstOfMode = orderedGroups.findIndex(item => item.mode === group.mode) === i;
     return {
       section: sectionId,           // 'A' or 'B'
       isFirstInSection: isFirstOfMode,
       instruction,
-      boxHtml: _renderDrillBoxHtml(groups.get(k), isB),
+      boxHtml: _renderDrillBoxHtml(group.rows, isB),
     };
   });
 }

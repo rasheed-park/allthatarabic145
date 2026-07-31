@@ -96,7 +96,7 @@ function fetchUnits() {
         const rows = (resp.table.rows || []).map(r => {
           const o = {}; cols.forEach((h, i) => { if (h) o[h] = (r.c?.[i]?.v ?? '').toString().trim(); });
           return o;
-        }).filter(o => (o.u || '').trim() && (o.type || '').toLowerCase() === 'ptn');
+        }).filter(o => (o.u || '').trim() && (o.type || '').toLowerCase() === 'unit');
         const seen = new Set();
         resolve(rows.filter(o => {
           const u = norm(o.u);
@@ -117,8 +117,11 @@ const norm = s => (s || '').trim().toLowerCase();
 
 function renderUnits(units) {
   const el = document.getElementById('units');
-  // dev: 전부 노출 / 비-dev: confirmed만 (안전장치)
-  const list = units.filter(u => IS_DEV || norm(u.status) === 'confirmed');
+  // dev: confirmed + draft / 비-dev: confirmed만. inbox·hold는 항상 숨김.
+  const list = units.filter(u => {
+    const status = norm(u.status);
+    return status === 'confirmed' || (IS_DEV && status === 'draft');
+  });
   if (!list.length) { el.innerHTML = '<div class="state">유닛이 없습니다.</div>'; return; }
   el.innerHTML = list.map(u => {
     const isDraft = norm(u.status) !== 'confirmed';
