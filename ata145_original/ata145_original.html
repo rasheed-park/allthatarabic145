@@ -1167,16 +1167,30 @@ async function fetchSheet(name) {
 }
 
 // ── 유틸 ──────────────────────────────────────────
+const ARABIC_INLINE_CHAR = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
+const ARABIC_JOINER = '\u200D';
+
+// iPad Safari/CoreText는 아랍어 단어 중간의 색·굵기 span 경계에서
+// 셰이핑 런을 나눈다. 경계 양쪽에 ZWJ를 넣어 각 런이 연결형을 유지하게 한다.
+function markedInlineSpan(source, full, content, offset, className) {
+  const hasArabic = ARABIC_INLINE_CHAR.test(content);
+  const before = Array.from(source.slice(0, offset)).pop() || '';
+  const after = Array.from(source.slice(offset + full.length))[0] || '';
+  const joinsBefore = hasArabic && ARABIC_INLINE_CHAR.test(before);
+  const joinsAfter = hasArabic && ARABIC_INLINE_CHAR.test(after);
+  const beforeJoiner = joinsBefore ? ARABIC_JOINER : '';
+  const afterJoiner = joinsAfter ? ARABIC_JOINER : '';
+  const classes = `${className}${hasArabic ? ' hl-ar' : ''}`;
+  return `${beforeJoiner}<span class="${classes}">${beforeJoiner}${content}${afterJoiner}</span>${afterJoiner}`;
+}
+
 function parseInline(s) {
   if (!s) return '';
   return s
     .replace(/<br\s*\/?>/gi, '<br>')
     .replace(/_([^_\n]+)_/g, '<span class="hl-box-inline">$1</span>')
-    // *…* 안에 Arabic이 있으면 hl-ar 클래스 추가 → weight 상속(셰이핑 보존)
-    .replace(/\*([^*\n]+)\*/g, (_, m) => {
-      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
-      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
-    })
+    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
+      markedInlineSpan(source, full, m, offset, 'hl-text'))
     .replace(/\r\n|\r|\n/g, '<br>');
 }
 // 첫 강한 방향 문자로 LTR/RTL 판정 — 마크업(`*_<tag>`) 제거 후 검사.
@@ -1207,10 +1221,8 @@ function plain(s) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/_([^_\n]+)_/g, '$1')
-    .replace(/\*([^*\n]+)\*/g, (_, m) => {
-      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
-      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
-    });
+    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
+      markedInlineSpan(source, full, m, offset, 'hl-text'));
 }
 const plainTrans = plain;
 function wrapArabicTokens(html) {
@@ -1503,8 +1515,8 @@ function maskBlanks(s) {
     .replace(/>/g, '&gt;')
     .replace(/_([^_\n]+)_/g, '$1');
   // 2. *X* → 글자 그대로 + .drill-blank 박스 (CSS에서 color = bg로 숨김)
-  return str.replace(/\*([^*\n]+)\*/g, (_match, inner) =>
-    `<span class="drill-blank">${inner}</span>`
+  return str.replace(/\*([^*\n]+)\*/g, (full, inner, offset, source) =>
+    markedInlineSpan(source, full, inner, offset, 'drill-blank')
   );
 }
 

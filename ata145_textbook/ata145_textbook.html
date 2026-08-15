@@ -1271,18 +1271,30 @@ const inU  = (r,u) => (r.u||'') === u;
 const norm = t => (t||'').toLowerCase().trim();
 const normType = t => norm(t).replace(/\s+/g,'');
 
+const ARABIC_INLINE_CHAR = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
+const ARABIC_JOINER = '\u200D';
+
+// iPad Safari/CoreText의 색·굵기 span 경계에서도 아랍어 연결형을 보존한다.
+function markedInlineSpan(source, full, content, offset, className) {
+  const hasArabic = ARABIC_INLINE_CHAR.test(content);
+  const before = Array.from(source.slice(0, offset)).pop() || '';
+  const after = Array.from(source.slice(offset + full.length))[0] || '';
+  const joinsBefore = hasArabic && ARABIC_INLINE_CHAR.test(before);
+  const joinsAfter = hasArabic && ARABIC_INLINE_CHAR.test(after);
+  const beforeJoiner = joinsBefore ? ARABIC_JOINER : '';
+  const afterJoiner = joinsAfter ? ARABIC_JOINER : '';
+  const classes = `${className}${hasArabic ? ' hl-ar' : ''}`;
+  return `${beforeJoiner}<span class="${classes}">${beforeJoiner}${content}${afterJoiner}</span>${afterJoiner}`;
+}
+
 function parseInline(str) {
   if (!str) return '';
   return String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
     .replace(/_([^_\n]+)_/g,'<span class="hl-box-inline">$1</span>')
-    // *…* 안에 Arabic이 있으면 hl-ar 클래스 추가 → font-weight: inherit로
-    //   Safari/CoreText의 weight 경계 셰이핑 끊김 방지 (예: الْقَ*مَر*)
-    .replace(/\*([^*\n]+)\*/g, (_, m) => {
-      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
-      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
-    });
+    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
+      markedInlineSpan(source, full, m, offset, 'hl-text'));
 }
 
 // 첫 강한 방향 문자로 LTR/RTL 판정 — 마크업(`*_<tag>`) 제거 후 검사.
@@ -1306,10 +1318,8 @@ function parseTrans(str) {
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
     .replace(/_([^_\n]+)_/g,'$1')
-    .replace(/\*([^*\n]+)\*/g, (_, m) => {
-      const hasAr = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/.test(m);
-      return `<span class="hl-text${hasAr ? ' hl-ar' : ''}">${m}</span>`;
-    });
+    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
+      markedInlineSpan(source, full, m, offset, 'hl-text'));
 }
 
 function parseDrillBlank(str) {
@@ -1317,7 +1327,8 @@ function parseDrillBlank(str) {
   return String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
-    .replace(/\*([^*\n]+)\*/g,'<span class="m-blank">$1</span>');
+    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
+      markedInlineSpan(source, full, m, offset, 'm-blank'));
 }
 
 // 명사문 구분자 — `css = 'nom'` 행의 `|`를 옅은 회색 분리자로
