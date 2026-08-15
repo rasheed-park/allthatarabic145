@@ -220,10 +220,9 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 .m-trans .hl-text,
 .m-ko .hl-text,
 .m-summary .hl-text { font-weight:700; }
-/* Arabic 글리프가 포함된 강조는 weight 변경 금지 — Safari/CoreText의
-   weight 경계에서 텍스트 런이 쪼개져 셰이핑(글자 연결)이 끊긴다.
-   색만 적용하고 굵기는 부모로 상속 (예: الْقَ*مَر*) */
-.hl-text.hl-ar { font-weight: inherit !important; }
+/* 아랍어 부분 강조는 DOM을 나누지 않는 CSS Custom Highlight로 처리 */
+::highlight(ata-arabic-focus) { color:var(--hl-text); }
+.ata-highlight-fallback .ata-range-text { color:var(--hl-text); }
 .hl-box-inline {
   border:1.5px solid var(--accent);
   border-radius:6px;
@@ -1100,6 +1099,7 @@ button { font-family:var(--font-kr); cursor:pointer; border:none; background:non
 
 <audio id="player"></audio>
 
+<script src="../assets/ata-inline-highlights.js"></script>
 <script>
 /* ============================================================
    ATA 1.4.4 — 교재 모바일 앱 초안 (textbook144m.html)
@@ -1271,30 +1271,13 @@ const inU  = (r,u) => (r.u||'') === u;
 const norm = t => (t||'').toLowerCase().trim();
 const normType = t => norm(t).replace(/\s+/g,'');
 
-const ARABIC_INLINE_CHAR = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
-const ARABIC_JOINER = '\u200D';
-
-// iPad Safari/CoreText의 색·굵기 span 경계에서도 아랍어 연결형을 보존한다.
-function markedInlineSpan(source, full, content, offset, className) {
-  const hasArabic = ARABIC_INLINE_CHAR.test(content);
-  const before = Array.from(source.slice(0, offset)).pop() || '';
-  const after = Array.from(source.slice(offset + full.length))[0] || '';
-  const joinsBefore = hasArabic && ARABIC_INLINE_CHAR.test(before);
-  const joinsAfter = hasArabic && ARABIC_INLINE_CHAR.test(after);
-  const beforeJoiner = joinsBefore ? ARABIC_JOINER : '';
-  const afterJoiner = joinsAfter ? ARABIC_JOINER : '';
-  const classes = `${className}${hasArabic ? ' hl-ar' : ''}`;
-  return `${beforeJoiner}<span class="${classes}">${beforeJoiner}${content}${afterJoiner}</span>${afterJoiner}`;
-}
-
 function parseInline(str) {
   if (!str) return '';
-  return String(str)
+  const html = String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
-    .replace(/_([^_\n]+)_/g,'<span class="hl-box-inline">$1</span>')
-    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
-      markedInlineSpan(source, full, m, offset, 'hl-text'));
+    .replace(/_([^_\n]+)_/g,'<span class="hl-box-inline">$1</span>');
+  return ATAInlineHighlights.render(html, 'hl-text');
 }
 
 // 첫 강한 방향 문자로 LTR/RTL 판정 — 마크업(`*_<tag>`) 제거 후 검사.
@@ -1314,12 +1297,11 @@ function firstStrongDir(raw) {
 
 function parseTrans(str) {
   if (!str) return '';
-  return String(str)
+  const html = String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
-    .replace(/_([^_\n]+)_/g,'$1')
-    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
-      markedInlineSpan(source, full, m, offset, 'hl-text'));
+    .replace(/_([^_\n]+)_/g,'$1');
+  return ATAInlineHighlights.render(html, 'hl-text');
 }
 
 function parseDrillBlank(str) {
@@ -1327,8 +1309,7 @@ function parseDrillBlank(str) {
   return String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
-    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
-      markedInlineSpan(source, full, m, offset, 'm-blank'));
+    .replace(/\*([^*\n]+)\*/g, '<span class="m-blank">$1</span>');
 }
 
 // 명사문 구분자 — `css = 'nom'` 행의 `|`를 옅은 회색 분리자로

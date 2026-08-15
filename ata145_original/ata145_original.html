@@ -858,10 +858,8 @@ body {
   padding: 0 5px; margin: 0 1px;
   line-height: 1.2;
 }
-/* 색 강조만 적용 — font-weight를 변경하면 Safari/CoreText에서
-   weight 경계로 텍스트 런이 분리되어 Arabic shaping(글자 연결)이 끊긴다.
-   기본 규칙은 부모 weight를 상속(아랍어 셰이핑 보존). 셰이핑 이슈가 없는
-   Latin/Korean 컨텍스트는 아래 별도 규칙에서 bold weight를 추가. */
+/* 라틴·한국어 색 강조. 아랍어 부분 강조는 DOM을 나누지 않는
+   CSS Custom Highlight로 별도 처리한다. */
 .hl-text { color: var(--hl-text); }
 /* Latin 음가 + 한국어 — 셰이핑 영향 없으니 bold로 강조 명확하게 */
 .trans .hl-text,
@@ -869,8 +867,9 @@ body {
 .exp-trans .hl-text,
 .nass-trans .hl-text,
 .pattern-trans .hl-text { font-weight: 700; }
-/* Arabic 강조는 어디서든 weight 변경 금지 (Safari/CoreText 셰이핑 보존) */
-.hl-text.hl-ar { font-weight: inherit !important; }
+::highlight(ata-arabic-focus) { color: var(--hl-text); }
+/* Safari 17.2 미만: 글자 일부를 분리하지 않고 단어 전체에 색을 적용 */
+.ata-highlight-fallback .ata-range-text { color: var(--hl-text); }
 
 /* ── 푸터 (로고 + 회사명 + 저작권 + 페이지번호) ── */
 .page-foot {
@@ -1063,6 +1062,7 @@ body {
 
 <div id="page-area"><div class="notice">데이터 로딩 중…</div></div>
 
+<script src="../assets/ata-inline-highlights.js"></script>
 <script>
 const SHEET_ID = '1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4';
 
@@ -1167,31 +1167,13 @@ async function fetchSheet(name) {
 }
 
 // ── 유틸 ──────────────────────────────────────────
-const ARABIC_INLINE_CHAR = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
-const ARABIC_JOINER = '\u200D';
-
-// iPad Safari/CoreText는 아랍어 단어 중간의 색·굵기 span 경계에서
-// 셰이핑 런을 나눈다. 경계 양쪽에 ZWJ를 넣어 각 런이 연결형을 유지하게 한다.
-function markedInlineSpan(source, full, content, offset, className) {
-  const hasArabic = ARABIC_INLINE_CHAR.test(content);
-  const before = Array.from(source.slice(0, offset)).pop() || '';
-  const after = Array.from(source.slice(offset + full.length))[0] || '';
-  const joinsBefore = hasArabic && ARABIC_INLINE_CHAR.test(before);
-  const joinsAfter = hasArabic && ARABIC_INLINE_CHAR.test(after);
-  const beforeJoiner = joinsBefore ? ARABIC_JOINER : '';
-  const afterJoiner = joinsAfter ? ARABIC_JOINER : '';
-  const classes = `${className}${hasArabic ? ' hl-ar' : ''}`;
-  return `${beforeJoiner}<span class="${classes}">${beforeJoiner}${content}${afterJoiner}</span>${afterJoiner}`;
-}
-
 function parseInline(s) {
   if (!s) return '';
-  return s
+  const html = s
     .replace(/<br\s*\/?>/gi, '<br>')
     .replace(/_([^_\n]+)_/g, '<span class="hl-box-inline">$1</span>')
-    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
-      markedInlineSpan(source, full, m, offset, 'hl-text'))
     .replace(/\r\n|\r|\n/g, '<br>');
+  return ATAInlineHighlights.render(html, 'hl-text');
 }
 // 첫 강한 방향 문자로 LTR/RTL 판정 — 마크업(`*_<tag>`) 제거 후 검사.
 // 아랍어 시작 → 'rtl', 라틴/한글 시작 → 'ltr'. (불릿/산문 줄 단위)
@@ -1216,13 +1198,12 @@ function isAppOnly(row) {
 //   • 색 마커(*...*) → .hl-text 색 강조 유지 (교재에서도 색 적용)
 function plain(s) {
   if (!s) return '';
-  return String(s)
+  const html = String(s)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/_([^_\n]+)_/g, '$1')
-    .replace(/\*([^*\n]+)\*/g, (full, m, offset, source) =>
-      markedInlineSpan(source, full, m, offset, 'hl-text'));
+    .replace(/_([^_\n]+)_/g, '$1');
+  return ATAInlineHighlights.render(html, 'hl-text');
 }
 const plainTrans = plain;
 function wrapArabicTokens(html) {
@@ -1515,9 +1496,7 @@ function maskBlanks(s) {
     .replace(/>/g, '&gt;')
     .replace(/_([^_\n]+)_/g, '$1');
   // 2. *X* → 글자 그대로 + .drill-blank 박스 (CSS에서 color = bg로 숨김)
-  return str.replace(/\*([^*\n]+)\*/g, (full, inner, offset, source) =>
-    markedInlineSpan(source, full, inner, offset, 'drill-blank')
-  );
+  return str.replace(/\*([^*\n]+)\*/g, '<span class="drill-blank">$1</span>');
 }
 
 // ── 드릴 페이지 빌더 ──
