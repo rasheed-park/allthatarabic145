@@ -1689,8 +1689,12 @@ function buildPagesForUnit(unit) {
   }
 
   // 챕터 1 여정은 표현 → 단어 → [패턴 → 드릴 → 연결 지문] 반복 → 전체 지문 순서다.
-  // 챕터 0은 패턴 귀속 지문이 없으므로 기존처럼 패턴·드릴 뒤에 유닛 지문만 둔다.
+  // 챕터 0은 패턴·래퍼를 전부 끝낸 뒤 drill, drill+, 유닛 지문 순서로 고정한다.
   const journey = [...expPages, ...kalimatPages];
+  if (isChapterZeroUnit(unit)) {
+    journey.push(...patternPages, ...drillPages, ...overviewNassPages);
+    return journey;
+  }
   const usedDrills = new Set();
   patternPages.forEach((patternPage, patternIndex) => {
     journey.push(patternPage);
