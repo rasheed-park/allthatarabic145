@@ -2471,6 +2471,33 @@ function buildUnitList() {
     children.appendChild(makeLink('m-unit-link', '표현', r.u, expIndex, { sec:'exp', match:'section' }));
     children.appendChild(makeLink('m-unit-link', '단어', r.u, kalimatIndex, { sec:'kalimat', match:'section' }));
 
+    // 챕터 0은 패턴별 하위 드릴을 만들지 않는다.
+    // 화면·사이드바 모두 패턴 전체 → 드릴 전체 → 지문 순서를 보여 준다.
+    if (isChapterZeroUnit(r.u)) {
+      pages.filter(page => page.sec === 'ptn').forEach(patternPage => {
+        const ref = patternPage.ptnRefs[0];
+        const number = ptnNumber(patternPage.row);
+        const title = patternTitle(patternPage.row);
+        children.appendChild(makeLink(
+          'm-unit-link',
+          `패턴 ${number ? Number(number) : ''}${title ? ` · ${title}` : ''}`.trim(),
+          r.u,
+          pages.indexOf(patternPage),
+          { ref, sec:'ptn', match:'pattern' }
+        ));
+      });
+      const firstDrillIndex = pages.findIndex(page => page.sec === 'drill');
+      children.appendChild(makeLink('m-unit-link', '드릴', r.u, firstDrillIndex, {
+        sec:'drill', match:'page',
+      }));
+      children.appendChild(makeLink('m-unit-link', '지문', r.u, nassIndex, {
+        sec:'nass', match:'page',
+      }));
+      li.appendChild(children);
+      list.appendChild(li);
+      return;
+    }
+
     pages.filter(page => page.sec === 'ptn').forEach(patternPage => {
       const ref = patternPage.ptnRefs[0];
       const patternIndex = pages.indexOf(patternPage);
