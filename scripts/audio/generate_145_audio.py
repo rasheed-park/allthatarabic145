@@ -18,6 +18,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 import tempfile
 import time
@@ -26,6 +27,7 @@ import urllib.request
 import wave
 from array import array
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable
 
@@ -40,6 +42,11 @@ try:
     from google.cloud import storage
 except Exception:  # pragma: no cover - local-only generation can still work.
     storage = None
+
+try:
+    from google.auth import credentials as google_credentials
+except Exception:  # pragma: no cover - dry-run does not need credentials.
+    google_credentials = None
 
 
 SHEET_ID = "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4"
@@ -60,6 +67,40 @@ DEFAULT_VOICE_F = "ar-XA-Chirp3-HD-Zephyr"
 # Male voice is intentionally conservative. Override with --voice-male once chosen.
 DEFAULT_VOICE_M = "ar-XA-Chirp3-HD-Charon"
 TARGET_SAMPLE_RATE = 24000
+DEFAULT_GCLOUD_ACCOUNT = "rasheed.park@markazarabic.com"
+DEFAULT_QUOTA_PROJECT = "all-that-arabic145"
+
+
+class GcloudCliCredentials(google_credentials.Credentials if google_credentials else object):
+    """Use the existing gcloud login for TTS and GCS without a second ADC login."""
+
+    def __init__(self, account: str, quota_project: str):
+        if google_credentials is None:
+            raise RuntimeError("google-auth is unavailable")
+        super().__init__()
+        self.account = account
+        self._quota_project_id = quota_project
+        self.refresh(None)
+
+    @property
+    def quota_project_id(self) -> str:
+        return self._quota_project_id
+
+    def refresh(self, request) -> None:  # noqa: ARG002 - Google auth requires this signature.
+        result = subprocess.run(
+            ["gcloud", "auth", "print-access-token", "--account", self.account],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        token = result.stdout.strip()
+        if result.returncode or not token:
+            detail = result.stderr.strip() or "access token unavailable"
+            raise RuntimeError(f"gcloud authentication failed for {self.account}: {detail}")
+        self.token = token
+        # gcloud access tokens last about one hour. Refresh before a long batch can expire.
+        # google-auth's installed version compares naive UTC timestamps internally.
+        self.expiry = datetime.utcnow() + timedelta(minutes=50)
 
 
 @dataclass(frozen=True)
@@ -360,10 +401,10 @@ def validate_wav_file(path: Path) -> None:
         raise ValueError(f"{path} failed WAV validation: {', '.join(errors)}")
 
 
-def upload_to_gcs(bucket_name: str, source: Path, row: AudioRow, overwrite: bool) -> str:
+def upload_to_gcs(bucket_name: str, source: Path, row: AudioRow, overwrite: bool, credentials) -> str:
     if storage is None:
         raise RuntimeError("google-cloud-storage is unavailable")
-    client = storage.Client()
+    client = storage.Client(credentials=credentials)
     bucket = client.bucket(bucket_name)
     blob_name = f"audio/{row.unit}/{row.audio_id}.wav"
     blob = bucket.blob(blob_name)
@@ -419,6 +460,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--manifest", default="audio/manifest_145_audio.csv")
     parser.add_argument("--voice-female", default=DEFAULT_VOICE_F)
     parser.add_argument("--voice-male", default=DEFAULT_VOICE_M)
+    parser.add_argument("--gcloud-account", default=DEFAULT_GCLOUD_ACCOUNT,
+                        help="Existing gcloud login used for both TTS and GCS; no ADC login required.")
+    parser.add_argument("--quota-project", default=DEFAULT_QUOTA_PROJECT,
+                        help="Google Cloud project billed for TTS requests.")
     parser.add_argument("--speaking-rate", type=float, default=1.0, help="TTS speaking rate, e.g. 0.7 for slow drills")
     return parser.parse_args()
 
@@ -446,7 +491,9 @@ def main() -> int:
             "Google Cloud Text-to-Speech dependencies are unavailable. "
             "Install google-cloud-texttospeech or use --dry-run/--upload-existing."
         )
-    tts_client = None if (args.dry_run or args.upload_existing) else texttospeech.TextToSpeechClient()
+    needs_cloud_credentials = args.upload or args.upload_existing or args.local_only
+    credentials = GcloudCliCredentials(args.gcloud_account, args.quota_project) if needs_cloud_credentials else None
+    tts_client = None if (args.dry_run or args.upload_existing) else texttospeech.TextToSpeechClient(credentials=credentials)
 
     print(f"rows={len(rows)} unit={args.unit.upper()} types={args.types} statuses={args.statuses}")
     for row in rows:
@@ -475,7 +522,7 @@ def main() -> int:
         meta = inspect_wav(target)
         gcs_url = ""
         if args.upload or args.upload_existing:
-            gcs_url = upload_to_gcs(args.bucket, target, row, overwrite=args.overwrite)
+            gcs_url = upload_to_gcs(args.bucket, target, row, overwrite=args.overwrite, credentials=credentials)
         manifest_records.append(
             {
                 "unit": row.unit,
