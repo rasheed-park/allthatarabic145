@@ -176,8 +176,9 @@ def main() -> None:
     for key, item in state.get("items", {}).items():
         if key not in active_keys and item.get("state") == "passed":
             item["state"] = "deleted"
-    ordered_units = sorted({unit["id"]: unit for unit in units}.values(), key=lambda unit: unit["id"])
-    records.sort(key=lambda record: (record["u"], record["ptn"], record["type"], record["id"]))
+    # 시트가 콘텐츠의 정본 순서다. ID·타입 기준 재정렬을 하면
+    # 표현 → 패턴 → 레퍼토리/드릴 → 지문이라는 제작·검수 순서가 깨진다.
+    ordered_units = list({unit["id"]: unit for unit in units}.values())
     result = {"schemaVersion": 1, "generatedAt": datetime.now(timezone.utc).isoformat(), "source": {"sheetId": SHEET_ID, "tab": TAB}, "units": ordered_units, "records": records}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as file:
