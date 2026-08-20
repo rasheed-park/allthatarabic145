@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATA 1.4.5 콘텐츠 검수</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ALL THAT ARABIC · PRODUCT ATA 1.4.5</p>
+        <h1>콘텐츠 검수</h1>
+      </div>
+      <div class="snapshot" id="snapshotMeta">검수 데이터를 불러오는 중입니다.</div>
+    </header>
+
+    <section class="toolbar" aria-label="검수 필터">
+      <label>유닛
+        <select id="unitFilter"><option value="">전체 유닛</option></select>
+      </label>
+      <label>패턴
+        <select id="patternFilter"><option value="">전체 패턴</option></select>
+      </label>
+      <label>타입
+        <select id="typeFilter"><option value="">전체 콘텐츠</option></select>
+      </label>
+      <label class="toggle-label">
+        <input id="unresolvedOnly" type="checkbox">
+        <span>미통과만 보기</span>
+      </label>
+      <div class="summary" id="summary"></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="navigator" aria-label="유닛과 패턴 탐색">
+        <div class="nav-title"><span>검수 범위</span><span id="navCount"></span></div>
+        <div id="navigator"></div>
+      </aside>
+
+      <section class="content" aria-live="polite">
+        <div id="emptyState" class="empty-state" hidden>
+          <strong>검수할 항목이 없습니다.</strong>
+          <span>필터를 바꾸거나 다음 스냅샷을 생성해 주세요.</span>
+        </div>
+        <div id="contentList" class="content-list"></div>
+      </section>
+
+      <aside class="review-panel" aria-label="피드백 안내">
+        <p class="panel-label">검수 방법</p>
+        <h2>바뀐 항목을 다시 듣고 의견을 남겨주세요.</h2>
+        <ol>
+          <li>연한 노란색 카드의 <b>수정 보기</b>를 누릅니다.</li>
+          <li>이전본과 수정본을 비교해 듣습니다.</li>
+          <li>문제 유형을 골라 GitHub 피드백을 남깁니다.</li>
+        </ol>
+        <div class="legend">
+          <div><i class="dot dot-new"></i>신규 검토 필요</div>
+          <div><i class="dot dot-recheck"></i>재검수 필요</div>
+          <div><i class="dot dot-feedback"></i>피드백 접수</div>
+          <div><i class="dot dot-working"></i>수정 중</div>
+          <div><i class="dot dot-passed"></i>통과</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <template id="itemTemplate">
+    <article class="item-card">
+      <header class="item-head">
+        <div class="item-context"></div>
+        <div class="item-actions"></div>
+      </header>
+      <div class="item-body"></div>
+      <section class="comparison" hidden></section>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
