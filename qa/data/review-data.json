@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T15:59:06.068291+00:00",
+  "generatedAt": "2026-08-27T16:25:00.822569+00:00",
   "source": {
     "sheetId": "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4",
     "tab": "데이터시트sheet"
@@ -12418,8 +12418,8 @@
       "id": "exp_ghalttaan-ghalttaana",
       "type": "exp+",
       "sheetStatus": "draft",
-      "arabic": "غَلْطَان",
-      "korean": "틀렸어요, 잘못이에요",
+      "arabic": "أَنَا غَلْطَان",
+      "korean": "제가 틀렸어요, 제 잘못이에요",
       "tss": "",
       "memo": "",
       "lahja": "GLF, LEV, EGY",
@@ -12432,9 +12432,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/exp_ghalttaan-ghalttaana.mp3"
         ]
       },
-      "itemHash": "c7c9d730c04c3145a2c41679fb1cb8e42773c96a8dbca211fc30567370aff156",
+      "itemHash": "c539ba47ca74cca079855ba720f74ae899487a5ec078e17e5731eb8e2fc63ddf",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -12991,7 +12991,7 @@
       "memo": "",
       "lahja": "GLF",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -12999,21 +12999,21 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_shiin.mp3"
         ]
       },
-      "itemHash": "af584bb9790dad4ce6a1b450d266108f672ac76e577ecf4999845007ce13b217",
+      "itemHash": "1c5c78a108f220caf3c95826fa70cba193b48f6a56b970d0c961ed21da38541f",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
-      "key": "A005/kalimat_salaam",
+      "key": "A005/kalimat_mariidd",
       "u": "A005",
       "ptn": "",
-      "id": "kalimat_salaam",
+      "id": "kalimat_mariidd",
       "type": "kal+",
       "sheetStatus": "draft",
-      "arabic": "سَلَام",
-      "korean": "평안, 안녕",
+      "arabic": "مَرِيض",
+      "korean": "아픈",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -13022,25 +13022,25 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_salaam.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_salaam.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_mariidd.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_mariidd.mp3"
         ]
       },
-      "itemHash": "adf41da5e160ff2bf2bb7cfe5aedf73800d7317c97e9032516c33e62477e2c6c",
+      "itemHash": "60620614a124e416fc8907232592a1b78c56cc67eadbd018aa582669385cfd03",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A005/kalimat_samaa2",
+      "key": "A005/kalimat_saliim",
       "u": "A005",
       "ptn": "",
-      "id": "kalimat_samaa2",
+      "id": "kalimat_saliim",
       "type": "kal+",
       "sheetStatus": "draft",
-      "arabic": "سَمَاء",
-      "korean": "하늘",
+      "arabic": "سَلِيم",
+      "korean": "건강한, 멀쩡한",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -13049,25 +13049,25 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_samaa2.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_samaa2.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_saliim.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_saliim.mp3"
         ]
       },
-      "itemHash": "3ba5386d2f6d648d102712a41b73ec9398982a9319d74b502f7b9dfa75e36a0c",
+      "itemHash": "6943272af0482059ca6ecd99f6a38e0173ac76702979c3cb1920501db6d554cf",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A005/kalimat_ardd",
+      "key": "A005/kalimat_wasikh",
       "u": "A005",
       "ptn": "",
-      "id": "kalimat_ardd",
+      "id": "kalimat_wasikh",
       "type": "kal+",
       "sheetStatus": "draft",
-      "arabic": "أَرْض",
-      "korean": "땅",
+      "arabic": "وَسِخ",
+      "korean": "더러운, 지저분한",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -13076,11 +13076,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_ardd.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_ardd.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_wasikh.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_wasikh.mp3"
         ]
       },
-      "itemHash": "dc9b7f76d94d8cbaa1c59d112c569b2f6da36bd201d0960bb3f5932cd0eeb9ff",
+      "itemHash": "aeae683156001ba9ab9f80746a4d2e8ac54b75ee003fe87d451cafe1b0eb3b10",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -13126,7 +13126,7 @@
       "memo": "사용자 확정(2026-07-30). A005 nass+(أَنَا غَلْطَان)의 무등록 사용 해소 + A006 ptn018 drill+ 재료.",
       "lahja": "GLF, LEV, EGY",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -13134,7 +13134,61 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_ghalttaan.mp3"
         ]
       },
-      "itemHash": "a203eadc89d8ac5c208d32de373c73322ecf3ad5b48c9cbca3459e616e530e9e",
+      "itemHash": "ad0bc330d288e7a5f34289bda223f9168c8be3b2825b76691c258fc57a19f5f1",
+      "review": {
+        "state": "needs-recheck",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A005/kalimat_shams",
+      "u": "A005",
+      "ptn": "",
+      "id": "kalimat_shams",
+      "type": "kal+",
+      "sheetStatus": "draft",
+      "arabic": "شَمْس",
+      "korean": "해",
+      "tss": "",
+      "memo": "",
+      "lahja": "MSA",
+      "voi": "",
+      "css": "vlist",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_shams.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_shams.mp3"
+        ]
+      },
+      "itemHash": "1af03b0dfa69a501125fc1bd75af4c4b4b9d75d4ce0595193e52eff1ea952c01",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A005/kalimat_qamar",
+      "u": "A005",
+      "ptn": "",
+      "id": "kalimat_qamar",
+      "type": "kal+",
+      "sheetStatus": "draft",
+      "arabic": "قَمَر",
+      "korean": "달",
+      "tss": "",
+      "memo": "",
+      "lahja": "MSA",
+      "voi": "",
+      "css": "vlist",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_qamar.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/kalimat_qamar.mp3"
+        ]
+      },
+      "itemHash": "e2b3fb52acafac51dd100d6c1665edfebdf7697592a726d36de40f41a46b0227",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -13418,7 +13472,7 @@
       "type": "drill+",
       "sheetStatus": "draft",
       "arabic": "تِلْكَ جَمِيلَة.",
-      "korean": "저건 멋있어beuatiful",
+      "korean": "저건 멋있어",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -13431,9 +13485,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_tilka-jamiila.mp3"
         ]
       },
-      "itemHash": "d7e7dd1d6dc6611c9e51e3a57f38e77d79f6ec3f94d1a83d77669fbb772ac09e",
+      "itemHash": "d7564ee4958b4701ddc40de8c16ff8c50941074ac91b7a9337649ab52eed4a09",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -13445,7 +13499,7 @@
       "type": "drill+",
       "sheetStatus": "draft",
       "arabic": "ذَلِكَ مُمْتَاز.",
-      "korean": "저건 훌륭해excellent",
+      "korean": "저건 훌륭해",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -13458,9 +13512,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_dhaalika-mumtaaz.mp3"
         ]
       },
-      "itemHash": "ef81cc7dcb49d55b187e0564b0fdfd593b172701fa30b0da9e24255ac89490d8",
+      "itemHash": "42419f66ef1b31230d5ae6760dc07d867e5eb187e6118a4d8e3d646ada3d04b3",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -13681,6 +13735,60 @@
       }
     },
     {
+      "key": "A005/nass_anaa-aasif-man-haadhaa-haadhaa-samiir",
+      "u": "A005",
+      "ptn": "",
+      "id": "nass_anaa-aasif-man-haadhaa-haadhaa-samiir",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "أَنَا آسِف، مَنْ هَذَا؟\nهَذَا سَمِير، وَهُوَ مُدِير هُنَا.",
+      "korean": "죄송한데요, 이분은 누구세요?\n이분은 사미르예요, 여기 매니저고요.",
+      "tss": "أَنَا آسِف، مَنْ هَذَا؟\nهَذَا سَمِير، وَهُوَ مُدِير هُنَا.",
+      "memo": "",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_anaa-aasif-man-haadhaa-haadhaa-samiir.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_anaa-aasif-man-haadhaa-haadhaa-samiir.wav"
+        ]
+      },
+      "itemHash": "672e0eb425b491242fea21a9b1648e20d5a27a4ae640172965e1d4dc1e7da7ff",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A005/nass_man-haadhihi-yaa-maryam-haadhihi-hudaa",
+      "u": "A005",
+      "ptn": "",
+      "id": "nass_man-haadhihi-yaa-maryam-haadhihi-hudaa",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "مَنْ هَذِهِ يَا مَرْيَم؟\nهَذِهِ هُدَى، وَهِيَ جَمِيلَة وَاللَّهِ.",
+      "korean": "이분은 누구세요, 마리얌 씨?\n이분은 후다예요, 진짜 좋은 분이에요.",
+      "tss": "مَنْ هَذِهِ يَا مَرْيَم؟\nهَذِهِ هُدَى، وَهِيَ جَمِيلَة وَاللَّهِ.",
+      "memo": "",
+      "lahja": "MSA",
+      "voi": "MF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_man-haadhihi-yaa-maryam-haadhihi-hudaa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_man-haadhihi-yaa-maryam-haadhihi-hudaa.wav"
+        ]
+      },
+      "itemHash": "cc0736ae254f719c43997bc95d51cfdf5b91d689149ff75ef49e46eeb82cdc06",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
       "key": "A005/nass_wallaah-aasif-anaa-ghalttaan-3aadii-maa",
       "u": "A005",
       "ptn": "",
@@ -13789,54 +13897,54 @@
       }
     },
     {
-      "key": "A005/nass_yaa-naadiya-minuu-haadhii-aah-haadhii",
+      "key": "A005/nass_ma3liish-minuu-haadhaak-haadhaak-maajid-wa",
       "u": "A005",
       "ptn": "",
-      "id": "nass_yaa-naadiya-minuu-haadhii-aah-haadhii",
+      "id": "nass_ma3liish-minuu-haadhaak-haadhaak-maajid-wa",
       "type": "nass+",
       "sheetStatus": "draft",
-      "arabic": "يا نادية، مِنُو هَذِي؟\nآه، هَذِي حَبِيبَة. هِيَ مُعَلِّمَة هِنِي.",
-      "korean": "나디야, 이분은 누구셔?\n아, 하비바야. 여기 선생님이야.",
-      "tss": "يا نادية، مِنُو هَذِي؟\nآه، هَذِي حَبِيبَة. هِيَ مُعَلِّمَة هِنِي.",
+      "arabic": "مَعْلِيش، مِنُو هَذَاك؟\nهَذَاك مَاجِد، وَهُوَ مَاهِر وَاللَّهِ.",
+      "korean": "아 미안한데 저 사람 누구지?\n저 사람 마지드야, 진짜 일 잘해.",
+      "tss": "مَعْلِيش، مِنُو هَذَاك؟\nهَذَاك مَاجِد، وَهُوَ مَاهِر وَاللَّهِ.",
       "memo": "의도: 여성 사람을 가리키며 묻는 걸프형 `مِنُو هَذِي؟` 연습. `مِنُو`와 `هَذِي`를 함께 사용.",
       "lahja": "GLF",
-      "voi": "FF",
+      "voi": "MM",
       "css": "",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_yaa-naadiya-minuu-haadhii-aah-haadhii.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_yaa-naadiya-minuu-haadhii-aah-haadhii.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_ma3liish-minuu-haadhaak-haadhaak-maajid-wa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_ma3liish-minuu-haadhaak-haadhaak-maajid-wa.wav"
         ]
       },
-      "itemHash": "19045b3e9a55b2f3e21114e16fffc36de70bbe2416154cd33ce88f9740cc07b2",
+      "itemHash": "5d4eb449cee288376268803a0fadb0aaecc148178e863a29b3b71cd48a06e18c",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A005/nass_haadhaa-samiir-wa-man-haadhihi-aahlan",
+      "key": "A005/nass_halaa-minuu-haadhii-halaa-wallaah-haadhii",
       "u": "A005",
       "ptn": "",
-      "id": "nass_haadhaa-samiir-wa-man-haadhihi-aahlan",
+      "id": "nass_halaa-minuu-haadhii-halaa-wallaah-haadhii",
       "type": "nass+",
       "sheetStatus": "draft",
-      "arabic": "هَذَا سَمِير، وَمَنْ هَذِهِ؟\nأَهْلًا وَسَهْلًا. أَنَا هُدَى.",
-      "korean": "이분은 사미르 씨예요. 이분은 누구세요?\n아, 반갑습니다. 저는 후다입니다.",
-      "tss": "هَذَا سَمِير، وَمَنْ هَذِهِ؟\nأَهْلًا وَسَهْلًا. أَنَا هُدَى.",
+      "arabic": "هَلَا، مِنُو هَذِي؟\nهَلَا وَاللَّه، هَذِي لَيَان.",
+      "korean": "안녕하세요, 이 분은 누구신가요?\n네 안녕하세요, 이 분은 라얀이예요.",
+      "tss": "هَلَا، مِنُو هَذِي؟\nهَلَا وَاللَّه، هَذِي لَيَان.",
       "memo": "의도: 남성 사람을 가리키는 `هَذَا`와 여성 사람을 묻는 `مَنْ هَذِهِ؟`를 한 문장에서 대비. 첫 후보의 걸프형 `مِنُو هَذِي؟`와도 대비.",
-      "lahja": "MSA",
+      "lahja": "GLF",
       "voi": "FF",
       "css": "",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_haadhaa-samiir-wa-man-haadhihi-aahlan.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_haadhaa-samiir-wa-man-haadhihi-aahlan.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_halaa-minuu-haadhii-halaa-wallaah-haadhii.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A005/nass_halaa-minuu-haadhii-halaa-wallaah-haadhii.wav"
         ]
       },
-      "itemHash": "e65876b92c66aa09cbe4940eec0c562b5d50b7aa60a802d89d83b0f92cd5955c",
+      "itemHash": "abb9c1b6e00fc10d2abaf4f2edc6447a4f00795c73335aefbe56aa631c14967a",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -15546,7 +15654,7 @@
     {
       "key": "A005/drill_akh",
       "u": "A005",
-      "ptn": "ptn015",
+      "ptn": "ptn016",
       "id": "drill_akh",
       "type": "drill",
       "sheetStatus": "draft",
@@ -15564,16 +15672,16 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_akh.mp3"
         ]
       },
-      "itemHash": "58bdbdb35769abe7b6e8d58741567458cb976fbefc428887ea747da43932ca64",
+      "itemHash": "7ec12145669dadd3b4d8adf679148df10ae352439f5457abda4ba85c3d82c7bb",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
       "key": "A005/drill_ukht",
       "u": "A005",
-      "ptn": "ptn015",
+      "ptn": "ptn016",
       "id": "drill_ukht",
       "type": "drill",
       "sheetStatus": "draft",
@@ -15591,16 +15699,16 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_ukht.mp3"
         ]
       },
-      "itemHash": "44b81524ef784b418dee0b941ca9b302665aa710df8f5ef7cea9eba09c120cd2",
+      "itemHash": "45311a61b37be72800e7ae7e34c6bae5c7571176f38bca7a1d397517a62f90d3",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
       "key": "A005/drill_iimaan",
       "u": "A005",
-      "ptn": "ptn015",
+      "ptn": "ptn016",
       "id": "drill_iimaan",
       "type": "drill",
       "sheetStatus": "draft",
@@ -15618,9 +15726,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_iimaan.mp3"
         ]
       },
-      "itemHash": "7ec7b150c8f9c2c0464f768e260840ee6d2d074ace5b06ee99c922f6a6138d38",
+      "itemHash": "1a9a8afc4e48c41ace0595ef36a8d1e6981b887f4488b02b3057e6f7affcb38d",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -15951,7 +16059,7 @@
     {
       "key": "A005/drill_kubraa",
       "u": "A005",
-      "ptn": "ptn016",
+      "ptn": "ptn015",
       "id": "drill_kubraa",
       "type": "drill",
       "sheetStatus": "draft",
@@ -15969,16 +16077,16 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_kubraa.mp3"
         ]
       },
-      "itemHash": "1934b94f148760e2f8e5f569e874fedf9d895185c060517853a2d11bdb0095b0",
+      "itemHash": "42eaed991ff31d425c040b140cc4bf67064d57cf82276a76fa2ab62fb26fb486",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
       "key": "A005/drill_aadam",
       "u": "A005",
-      "ptn": "ptn016",
+      "ptn": "ptn015",
       "id": "drill_aadam",
       "type": "drill",
       "sheetStatus": "draft",
@@ -15996,16 +16104,16 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_aadam.mp3"
         ]
       },
-      "itemHash": "da693b48ec64d1c3dab76a208bedf3f418d74893e597619e6be0234bc54f236c",
+      "itemHash": "17cd2bb2ad2aa0dc99c09b73dc0c58ed4da6f1cf7b71f279237a7ca585a9cd2d",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
       "key": "A005/drill_aadhaan",
       "u": "A005",
-      "ptn": "ptn016",
+      "ptn": "ptn015",
       "id": "drill_aadhaan",
       "type": "drill",
       "sheetStatus": "draft",
@@ -16023,9 +16131,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A005/drill_aadhaan.mp3"
         ]
       },
-      "itemHash": "8119ea6c4b4e341a3acdff9c0b55b1b7dc62cd40ffc4f120d897f322928506dd",
+      "itemHash": "9c91f168545d9f9466e36420902a25ae58d95ae835bb9ec411a5b6f9f1af995e",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16246,6 +16354,33 @@
       }
     },
     {
+      "key": "A006/exp_akiid",
+      "u": "A006",
+      "ptn": "",
+      "id": "exp_akiid",
+      "type": "exp+",
+      "sheetStatus": "draft",
+      "arabic": "أَكِيد",
+      "korean": "당연하죠, 확실해요",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF, LEV, EGY",
+      "voi": "",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_akiid.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_akiid.mp3"
+        ]
+      },
+      "itemHash": "04fafce98c34f7cd27366cf451aa96d777e98c9df7c4be77f1e9d9e4f24edc1c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
       "key": "A006/exp_anaa-al-as3ad",
       "u": "A006",
       "ptn": "",
@@ -16321,6 +16456,33 @@
         ]
       },
       "itemHash": "d322f5214f2b212a5ca0ae50be9a405bfab8e314fa8150c389e75108980d43c8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/exp_wish-ismak-wish-ismich",
+      "u": "A006",
+      "ptn": "",
+      "id": "exp_wish-ismak-wish-ismich",
+      "type": "exp+",
+      "sheetStatus": "draft",
+      "arabic": "وِش اسْمَك؟ ، وِش اسْمِچ؟",
+      "korean": "이름이 뭐예요?",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_wish-ismak-wish-ismich.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_wish-ismak-wish-ismich.mp3"
+        ]
+      },
+      "itemHash": "0f54a7441912d04db633668157bb7b67580d3131fa01a56233db80e4dda8a1e7",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -16462,33 +16624,6 @@
       }
     },
     {
-      "key": "A006/exp_ssahhhh",
-      "u": "A006",
-      "ptn": "",
-      "id": "exp_ssahhhh",
-      "type": "exp+",
-      "sheetStatus": "draft",
-      "arabic": "صَحّ؟",
-      "korean": "맞죠?, 그치?",
-      "tss": "",
-      "memo": "소급 등록(2026-08-01): A006 지문 4곳 무등록 사용 해소",
-      "lahja": "GLF, LEV",
-      "voi": "",
-      "css": "",
-      "url": "",
-      "audio": {
-        "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_ssahhhh.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/exp_ssahhhh.mp3"
-        ]
-      },
-      "itemHash": "49b1d4a3c67e8af00d7fb0b80eed9fadc56fa9108cd84fb066e85f81cdb274eb",
-      "review": {
-        "state": "needs-review",
-        "changedFields": []
-      }
-    },
-    {
       "key": "A006/kalimat_ii-my",
       "u": "A006",
       "ptn": "",
@@ -16501,7 +16636,7 @@
       "memo": "사용자 확정. 1인칭 단수 접미 인칭대명사.",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -16509,9 +16644,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_ii-my.mp3"
         ]
       },
-      "itemHash": "6ef84937070349af5644affe4872bcd64385e0955419059cfdc0c0ec34c10ca4",
+      "itemHash": "4b392b177b74b137a5e9d6bd2958b6f837ecc81bc2f804dd494ccd7fd0661dbe",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16820,7 +16955,7 @@
       "type": "kal",
       "sheetStatus": "draft",
       "arabic": "كَبِير",
-      "korean": "큰",
+      "korean": "큰, 나이가 많은",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -16833,9 +16968,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_kabiir.mp3"
         ]
       },
-      "itemHash": "46fb5feb484e744c80daecaebf0192d5d0328f7e46e49709eb2dc33333802e3d",
+      "itemHash": "899c6bf12f9f3ecd9a5f4f186b4d68e203d41c13e7ccd55bf425945cf349fa5c",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16847,7 +16982,7 @@
       "type": "kal",
       "sheetStatus": "draft",
       "arabic": "صَغِير",
-      "korean": "작은",
+      "korean": "작은, 어린",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -16860,9 +16995,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_ssaghiir.mp3"
         ]
       },
-      "itemHash": "a8c74f3cedfa2774cb6a51c278e00bcab478c29e24f0ba5a1364cef8415f74dd",
+      "itemHash": "29843bc040c05085a45e5d8d839803ec5594824e798769c3f62cf9a11f9bfeb2",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16906,7 +17041,7 @@
       "memo": "사용자 확정. 걸프 여성 2인칭 접미 인칭대명사 예외. 패턴·드릴·지문에는 확장하지 않음.",
       "lahja": "GLF",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -16914,9 +17049,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_chi.mp3"
         ]
       },
-      "itemHash": "5e3cc3f4a8bf2510a2654041b06849b1cce9a303b2c0eade6d775e46539314fe",
+      "itemHash": "cd36bf21f23767b9dde73568a3632d412e5284262c01021d656b26a3f0a4878a",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16933,7 +17068,7 @@
       "memo": "사용자 확정. 이집트 의문사; A006 추가단어.",
       "lahja": "EGY",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -16941,9 +17076,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_eh.mp3"
         ]
       },
-      "itemHash": "1efdf8db3a58327f34f613b729e76b4c17213f855c8d5e4465cdd89314d0f41b",
+      "itemHash": "78f768f4db120b463bc5229756d03ff9eb5b2ee1df8a52fbee819652c0c8d67a",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16960,7 +17095,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -16968,9 +17103,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_mu2aththir.mp3"
         ]
       },
-      "itemHash": "9a133e6547ecb8796a76737627c7dccbb8c08125f13966085d67323d687fdc47",
+      "itemHash": "1a477bd53c5aa94e94c561f41934c673d02c7d4d8c9eb4d3b79652b28b578fa5",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -16987,7 +17122,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -16995,9 +17130,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_mussammim.mp3"
         ]
       },
-      "itemHash": "b93383b0a37b8e5d510ecc9baba120bdcbf47782b995843b5f15cdbd34691e5b",
+      "itemHash": "46e42f331c04f030b7bd5e52d05d86a487d2f83b9bc5b35ff5c4e8e05b6d7a00",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17014,7 +17149,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17022,9 +17157,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_mutarjim.mp3"
         ]
       },
-      "itemHash": "eb7bbf08fe8aaea65f3010dbdf8bebf6c8ab41c1c120eaaa73b78feb6f66d550",
+      "itemHash": "78c8d96fce627dedf7047f172a5a08d0bda066934d17f1fa147ec7ff86834e0d",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17041,7 +17176,7 @@
       "memo": "대기열에서 채택(2026-07-30). 직업·신분 어휘 확장.",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17049,9 +17184,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_3aamil.mp3"
         ]
       },
-      "itemHash": "ec24a9d2790b37442431e86cd4a354fd08887bca962d7da8dc506458c9092148",
+      "itemHash": "ec4219f27168060ac9e78c26e3b447f4a9e8d3c4609c606361ae33458c31b9a5",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17068,7 +17203,7 @@
       "memo": "사용자 확정(2026-07-30). عَنْ جِدّ·بِجِدّ의 구성어 원형 등록(§3.5 표현 구성어 원칙). A004 جَدّ(할아버지, jadd)와 하라카·발음으로 구분.",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17076,9 +17211,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_jidd.mp3"
         ]
       },
-      "itemHash": "ceec274695ce779f7e66bb66a91eb8d66db85fad95dc369738b9ec9b2f63df89",
+      "itemHash": "cfd93ccfb5424cf49e9e7d016b294c7af8f562fb5e9fbdf515d0906c0133d58c",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17095,7 +17230,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17103,9 +17238,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_wasiim.mp3"
         ]
       },
-      "itemHash": "931dfa7c6a72674e2b5cecc0ff231a2d4313a325bd30c35cf2b508baa886a778",
+      "itemHash": "4715d25298ed07e29d961b05d479ab0911a95b6b74bdc1fb7a9029d005377692",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17122,7 +17257,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17130,9 +17265,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_mashhuur.mp3"
         ]
       },
-      "itemHash": "2c414701b021ef798a0ad957ea735ca72bc3a2fa30ef413281d7cb76de10063d",
+      "itemHash": "d861b8e14ae2338613f50891e6d5be9cf8eaeb08721b277224f5f995846c2af7",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -17149,7 +17284,7 @@
       "memo": "사용자 확정(2026-07-30). A006 추가단어 확장 — 패턴17·18 확장 드릴 재료(추가단어 총 8개, 5개 규칙 예외).",
       "lahja": "GLF, LEV",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -17157,9 +17292,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/kalimat_faaddii.mp3"
         ]
       },
-      "itemHash": "c19a95ac465763ba26f3d3e3b8effda9ec271340c2c416cbd9c195a0fb1455b0",
+      "itemHash": "cbc0f9464a807995a620e69055ab412e2a763ea98aa3eeea18ec578f3e8b9fe5",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -18028,14 +18163,14 @@
       }
     },
     {
-      "key": "A006/rep_huwa-kuuriyy",
+      "key": "A006/rep_huwa-kabiirun",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "rep_huwa-kuuriyy",
+      "id": "rep_huwa-kabiirun",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "هُوَ كُورِيّ.",
-      "korean": "그는 한국인이에요.",
+      "arabic": "هُوَ | كَبِيرٌ.",
+      "korean": "그는 | 나이가 많아요",
       "tss": "",
       "memo": "형용사·국적 카바르를 오른쪽→왼쪽 two 드릴로 연습. 아나·안타·인타·후와와 지시대명사 배열마다 다른 카바르를 쓴다.\n\n추가지문은 지시대명사+명사로 인물을 소개한 뒤 인칭대명사+형용사 카바르를 연속해, ptn017 소개 구조에서 ptn018 특징 설명으로 자연스럽게 넘어간다. 걸프 원거리 지시대명사는 인물 확인 질문 뒤 형용사 대답으로 활용한다.",
       "lahja": "MSA",
@@ -18044,25 +18179,25 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_huwa-kuuriyy.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_huwa-kuuriyy.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_huwa-kabiirun.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_huwa-kabiirun.mp3"
         ]
       },
-      "itemHash": "947a890d8e763656089b1a79a11b4d6d0fc6003f2c44ed6b91cd663e99db150c",
+      "itemHash": "93f3a9849f6d31ea01747a3b815fc5fbaef59ae1c38101d82c55cc60fd5e57c6",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A006/rep_hiya-3arabiyya",
+      "key": "A006/rep_hiya-ssaghiiratun",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "rep_hiya-3arabiyya",
+      "id": "rep_hiya-ssaghiiratun",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "هِيَ عَرَبِيَّة.",
-      "korean": "그녀는 아랍인이에요.",
+      "arabic": "هِيَ | صَغِيرَةٌ.",
+      "korean": "그녀는 | 어려요",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -18071,11 +18206,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_hiya-3arabiyya.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_hiya-3arabiyya.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_hiya-ssaghiiratun.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/rep_hiya-ssaghiiratun.mp3"
         ]
       },
-      "itemHash": "4e7110ef85ed04a1c2bf7ef281d1289b2d1e14b0b1d75515641bf0ac8f8b841a",
+      "itemHash": "0db6ede4dc9814abd808bd10e5c438a94245cb926528a5b4bad4c0642d17d8a2",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -18089,7 +18224,7 @@
       "type": "drill",
       "sheetStatus": "draft",
       "arabic": "أَنَا آسِفَة.",
-      "korean": "저는 미안해요.",
+      "korean": "미안해요.",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -18102,9 +18237,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/drill_anaa-aasifa.mp3"
         ]
       },
-      "itemHash": "d5e49f19e0a726b7c0903bce620e66808198876d5b6829c655f3fb19ba43ace1",
+      "itemHash": "3b98ccda12edd52af9e350914c3c71ce90cdb748fac3bc944b2d09e75f917545",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -18116,7 +18251,7 @@
       "type": "drill",
       "sheetStatus": "draft",
       "arabic": "أَنَا آسِف.",
-      "korean": "저는 미안해요.",
+      "korean": "미안해요.",
       "tss": "",
       "memo": "",
       "lahja": "MSA",
@@ -18129,9 +18264,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A006/drill_anaa-aasif.mp3"
         ]
       },
-      "itemHash": "3a84e70ab64609443528c27207a52d440e1dabdb2215fe9278f177b19a42a8c6",
+      "itemHash": "d3189231ccf3bc654499d7b1136caa27c8a10e581b5475236d13837da364f440",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -18649,149 +18784,176 @@
       }
     },
     {
-      "key": "A006/nass_haadhaa-maajid-huwa-mudiir-hunaa-wa",
+      "key": "A006/nass_inta-mashghuul-yaa-salmaan-aasif-anaa",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_haadhaa-maajid-huwa-mudiir-hunaa-wa",
+      "id": "nass_inta-mashghuul-yaa-salmaan-aasif-anaa",
       "type": "nass",
       "sheetStatus": "draft",
-      "arabic": "هَذَا مَاجِد. هُوَ مُدِير هُنَا، وَهُوَ مَاهِر.\nآه، أَنْتَ مَاجِد؟ أَهْلًا وَسَهْلًا.",
-      "korean": "이분은 마지드예요. 여기 매니저이고, 솜씨가 좋아요.\n아, 마지드님, 어서 오세요.",
+      "arabic": "إِنْتَ مَشْغُول يَا سَلْمَان؟\nآسِف، أَنَا مَشْغُول عَنْ جِدّ.",
+      "korean": "살만, 너 바빠?\n미안. 나 진짜 바빠.",
       "tss": "",
       "memo": "",
-      "lahja": "MSA",
-      "voi": "FM",
-      "css": "",
-      "url": "",
-      "audio": {
-        "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaa-maajid-huwa-mudiir-hunaa-wa.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaa-maajid-huwa-mudiir-hunaa-wa.wav"
-        ]
-      },
-      "itemHash": "e7f3fe0d98465f20999cd0f9f70521f23b15affc0244923433e6029cc1453713",
-      "review": {
-        "state": "needs-review",
-        "changedFields": []
-      }
-    },
-    {
-      "key": "A006/nass_haadhihi-hhabiiba-hiya-mutarjima-hunaa-wa",
-      "u": "A006",
-      "ptn": "ptn018",
-      "id": "nass_haadhihi-hhabiiba-hiya-mutarjima-hunaa-wa",
-      "type": "nass",
-      "sheetStatus": "draft",
-      "arabic": "هَذِهِ حَبِيبَة. هِيَ مُتَرْجِمَة هُنَا، وَهِيَ خَبِيرَة.\nأَهْلًا، فُرْصَة سَعِيدَة، يَا حَبِيبَة.",
-      "korean": "이분은 하비바예요. 여기 통역사이고, 전문가예요.\n안녕하세요. 반가워요, 하비바 씨.",
-      "tss": "",
-      "memo": "지시대명사+고유명사 소개(هَذِهِ حَبِيبَة) 뒤에 명사 카바르(هِيَ مُتَرْجِمَة)와 인칭대명사+형용사 카바르(هِيَ خَبِيرَة)를 연속해, 소개에서 특징 설명으로 넘어간다. 이어 기본 표현 أَهْلًا·فُرْصَة سَعِيدَة로 환대한다.",
-      "lahja": "MSA",
-      "voi": "FF",
-      "css": "",
-      "url": "",
-      "audio": {
-        "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhihi-hhabiiba-hiya-mutarjima-hunaa-wa.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhihi-hhabiiba-hiya-mutarjima-hunaa-wa.wav"
-        ]
-      },
-      "itemHash": "c07a8ae53e679bd7c0fa1f9e1a0a29e7732d1a6b09ec0fcda323a436527576e8",
-      "review": {
-        "state": "needs-review",
-        "changedFields": []
-      }
-    },
-    {
-      "key": "A006/nass_haadhaak-muhhammad-ssahhhh-ii-ssahhhh-huwa",
-      "u": "A006",
-      "ptn": "ptn018",
-      "id": "nass_haadhaak-muhhammad-ssahhhh-ii-ssahhhh-huwa",
-      "type": "nass",
-      "sheetStatus": "draft",
-      "arabic": "هَذَاك مُحَمَّد؟ صَحّ؟\nإِي، صَحّ. هُوَ وَسِيم وَاللّٰهِ.",
-      "korean": "저 사람이 무함마드예요, 맞죠?\n응, 맞아. 정말 잘생겼어.",
-      "tss": "",
-      "memo": "걸프 원거리 지시대명사 هَذَاك으로 멀리 있는 남성을 확인한 뒤, 응답에서 인칭대명사+형용사 카바르(هُوَ وَسِيم)와 감탄 표현 وَاللّٰهِ로 특징을 강조한다.",
       "lahja": "GLF",
       "voi": "MM",
       "css": "",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaak-muhhammad-ssahhhh-ii-ssahhhh-huwa.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaak-muhhammad-ssahhhh-ii-ssahhhh-huwa.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_inta-mashghuul-yaa-salmaan-aasif-anaa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_inta-mashghuul-yaa-salmaan-aasif-anaa.wav"
         ]
       },
-      "itemHash": "1501d23103db28a7431f3592eb5b312efe9d5edf552ed340237be23c6e71364f",
+      "itemHash": "2dcd0aee399c7e99a2995e050289a42aacdb12aec2569043a9e9c1fbc6fc16a8",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A006/nass_haadhiik-maryam-hiya-muhandisa-hinii-ii",
+      "key": "A006/nass_yaa-raaniyaa-inti-mashghuula-ii-aasifa",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_haadhiik-maryam-hiya-muhandisa-hinii-ii",
+      "id": "nass_yaa-raaniyaa-inti-mashghuula-ii-aasifa",
       "type": "nass",
       "sheetStatus": "draft",
-      "arabic": "هَذِيك مَرْيَم؟ هِيَ مُهَنْدِسَة هِنِي؟\nإِي، هِيَ مُهَنْدِسَة هِنِي. هِيَ خَبِيرَة عَنْ جِدّ.",
-      "korean": "저분이 마리얌이에요? \n여기 엔지니어?\n맞아요. 여기 엔지니어. \n그녀는 진짜 전문가예요.",
+      "arabic": "يَا رَانِيَا، إِنْتِ مَشْغُولَة؟\nإِي، آسِفَة، أَنَا مَشْغُولَة عَنْ جِدّ. مَعْلِيش.",
+      "korean": "라니아, 바빠?\n응 미안. 진짜 바빠. 미안해.",
       "tss": "",
-      "memo": "걸프 원거리 지시대명사 هَذِيك으로 멀리 있는 여성을 확인한 뒤, 직업 확인에 답하고 인칭대명사+형용사 카바르(هِيَ خَبِيرَة)와 강조 표현 عَنْ جَدّ를 이어 전문성을 덧붙인다.",
+      "memo": "지시대명사+고유명사 소개(هَذِهِ حَبِيبَة) 뒤에 명사 카바르(هِيَ مُتَرْجِمَة)와 인칭대명사+형용사 카바르(هِيَ خَبِيرَة)를 연속해, 소개에서 특징 설명으로 넘어간다. 이어 기본 표현 أَهْلًا·فُرْصَة سَعِيدَة로 환대한다.",
       "lahja": "GLF",
       "voi": "FF",
       "css": "",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhiik-maryam-hiya-muhandisa-hinii-ii.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhiik-maryam-hiya-muhandisa-hinii-ii.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-raaniyaa-inti-mashghuula-ii-aasifa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-raaniyaa-inti-mashghuula-ii-aasifa.wav"
         ]
       },
-      "itemHash": "35384cec3c0e55072605ffcf9072d536a2c8889c4dc4c38f368e9c6616a073e0",
+      "itemHash": "198bf2f5975256062149115882cb66f78a1eedcab1053314645500c0a43fb0e7",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A006/nass_hal-anti-jaahiza-hayyaa-binaa-na3am",
+      "key": "A006/nass_yaa-hhabiibii-dhaalika-muhhammad-ssahhiihh-na3am",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_hal-anti-jaahiza-hayyaa-binaa-na3am",
+      "id": "nass_yaa-hhabiibii-dhaalika-muhhammad-ssahhiihh-na3am",
       "type": "nass",
       "sheetStatus": "draft",
-      "arabic": "هَلْ أَنْتِ جَاهِزَة؟ هَيَّا بِنَا.\nنَعَم، أَنَا جَاهِزَة. يَلَّا.",
-      "korean": "너 준비 다 됐지? 얼른 가자.\n응, 다 됐어. 얄라.",
+      "arabic": "يَا حَبِيبِي، ذَلِكَ مُحَمَّد؟ صَحِيح؟\nنَعَم، صَحِيح. هُوَ مَاهِر وَاللّٰهِ.",
+      "korean": "야, 저 사람이 무함마드예요? 맞지요?\n네 맞아요, 정말 솜씨가 좋은 분이예요.",
       "tss": "",
-      "memo": "",
+      "memo": "걸프 원거리 지시대명사 هَذَاك으로 멀리 있는 남성을 확인한 뒤, 응답에서 인칭대명사+형용사 카바르(هُوَ وَسِيم)와 감탄 표현 وَاللّٰهِ로 특징을 강조한다.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibii-dhaalika-muhhammad-ssahhiihh-na3am.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibii-dhaalika-muhhammad-ssahhiihh-na3am.wav"
+        ]
+      },
+      "itemHash": "e6396dc1b80371d285c3de226c1e3f45a047f2da4668739d1a578b7638c5e347",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_yaa-hhabiibatii-tilka-maryam-hiya-muhandisa",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_yaa-hhabiibatii-tilka-maryam-hiya-muhandisa",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "يَا حَبِيبَتِي، تِلْكَ مَرْيَم؟ هِيَ مُهَنْدِسَة هُنَا؟\nنَعَم، هِيَ مُهَنْدِسَة هُنَا. هِيَ خَبِيرَة.",
+      "korean": "야, 저 사람이 마리얌이예요? 여기 엔지니어죠?\n맞아요, 여기 엔지니어예요. 전문가예요.",
+      "tss": "",
+      "memo": "걸프 원거리 지시대명사 هَذِيك으로 멀리 있는 여성을 확인한 뒤, 직업 확인에 답하고 인칭대명사+형용사 카바르(هِيَ خَبِيرَة)와 강조 표현 عَنْ جَدّ를 이어 전문성을 덧붙인다.",
       "lahja": "MSA",
       "voi": "FF",
       "css": "",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_hal-anti-jaahiza-hayyaa-binaa-na3am.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_hal-anti-jaahiza-hayyaa-binaa-na3am.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibatii-tilka-maryam-hiya-muhandisa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibatii-tilka-maryam-hiya-muhandisa.wav"
         ]
       },
-      "itemHash": "c5ca474d81037eed822d75953d3d4ae34037ca5a0f204d89eb7d360aedd7bd94",
+      "itemHash": "3e4721121785a61ff82ab368c50aaa9b3e8b9857cd501cfdc7b1d510886c7558",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A006/nass_shuu-hhaalak-faaddii-laa-laa-anaa",
+      "key": "A006/nass_haadhaa-muhhammad-huwa-3arabii-wa-huwa",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_shuu-hhaalak-faaddii-laa-laa-anaa",
+      "id": "nass_haadhaa-muhhammad-huwa-3arabii-wa-huwa",
       "type": "nass+",
       "sheetStatus": "draft",
-      "arabic": "شُو حَالَك؟ فَاضِي؟\nلَا لَا، أَنَا مَشْغُول عَنْ جِدّ. آسِف.",
-      "korean": "어떻게 지내? 시간 좀 있어?\n아니, 나 진짜 바빠. 미안.",
+      "arabic": "هَذَا مُحَمَّد. هُوَ عَرَبِيّ، وَهُوَ مَشْهُور.\nعَنْ جِدّ؟ أَهْلًا، فُرْصَة سَعِيدَة يَا مُحَمَّد.",
+      "korean": "이 분이 무함마드예요. 그는 아랍인이고, 유명한 사람이예요.\n아 진짜요? 안녕하세요, 반가워요 무함마드 씨.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "FM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaa-muhhammad-huwa-3arabii-wa-huwa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaa-muhhammad-huwa-3arabii-wa-huwa.wav"
+        ]
+      },
+      "itemHash": "0091423fc09d56c83240914a1d984c80289c3743fc88af2c2c11a7185ac4bb0b",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_haadhii-layaan-hiya-mu2aththira-wa-hiya",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_haadhii-layaan-hiya-mu2aththira-wa-hiya",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذِي لَيَان. هِيَ مُؤَثِّرَة، وَهِيَ لَطِيفَة.\nأَكِيد، هِيَ حِلْوَة.",
+      "korean": "이 분이 라얀이예요. 인플루언서고, 상냥해요.\n맞아, 진짜 예뻐.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "MF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhii-layaan-hiya-mu2aththira-wa-hiya.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhii-layaan-hiya-mu2aththira-wa-hiya.wav"
+        ]
+      },
+      "itemHash": "c88707ef6ffa9ecf1b72f472792d445f781c4a98809cd7945b809d5862e1bea8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_shuu-hhaalak-inta-faaddii-laa-laa",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_shuu-hhaalak-inta-faaddii-laa-laa",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "شُو حَالَك؟ إِنْتَ فَاضِي؟\nلَا لَا، أَنَا مَشْغُول عَنْ جِدّ. آسِف.",
+      "korean": "어떻게 지내? 너 시간 있어?\n아니 아니, 나 진짜 바빠. 미안.",
       "tss": "",
       "memo": "걸프 안부 표현 شُو حَالَك؟ 뒤에 فَاضِي؟를 이어 묻고, مشغول·عن جد·آسف로 현재 상태와 사과를 답한다.",
       "lahja": "GLF",
@@ -18800,11 +18962,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-hhaalak-faaddii-laa-laa-anaa.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-hhaalak-faaddii-laa-laa-anaa.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-hhaalak-inta-faaddii-laa-laa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-hhaalak-inta-faaddii-laa-laa.wav"
         ]
       },
-      "itemHash": "7d82f47426e7c58aa27fb9b3b521a5fa25e796663c503712d91d1aa0197a5868",
+      "itemHash": "bc411cd50415d07c3a71fc08873898e175821a4156aa258663317a2ffa8183c7",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -18838,14 +19000,68 @@
       }
     },
     {
-      "key": "A006/nass_dhaalika-mudarris-hunaa-na3am-huwa-3arabii",
+      "key": "A006/nass_marhhabaa-yaa-samiir-inta-mniihh-marhhabten",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_dhaalika-mudarris-hunaa-na3am-huwa-3arabii",
+      "id": "nass_marhhabaa-yaa-samiir-inta-mniihh-marhhabten",
       "type": "nass+",
       "sheetStatus": "draft",
-      "arabic": "ذَلِكَ مُدَرِّس هُنَا؟\nنَعَم، هُوَ عَرَبِيّ.",
-      "korean": "저기 저분은 여기 선생님이에요?\n네, 맞아요. 그는 아랍 사람이에요.",
+      "arabic": "مَرْحَبَا يَا سَمِير! إِنْتَ مْنِيح؟\nمَرْحَبْتَيْن. الحَمْدُ لِلّٰهِ، أَنَا مْنِيح.",
+      "korean": "안녕 사미르! 잘 지내?\n응 안녕. 알함두릴라, 난 잘 지내.",
+      "tss": "",
+      "memo": "",
+      "lahja": "LEV",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_marhhabaa-yaa-samiir-inta-mniihh-marhhabten.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_marhhabaa-yaa-samiir-inta-mniihh-marhhabten.wav"
+        ]
+      },
+      "itemHash": "709359428ecf604a520a436634f0bed8317619d6664bb96d169fb627b2587304",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_shuu-akhbaarich-yaa-faattima-laa-wallaah",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_shuu-akhbaarich-yaa-faattima-laa-wallaah",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "شُو أَخْبَارِچ يَا فَاطِمَة؟\nلَا وَاللّٰه، أَنَا مَرِيضَة.",
+      "korean": "파티마, 별일 없어?\n아니 진짜, 나 아파.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-akhbaarich-yaa-faattima-laa-wallaah.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_shuu-akhbaarich-yaa-faattima-laa-wallaah.wav"
+        ]
+      },
+      "itemHash": "f238b06a3c24d238118e0612c8703a7dc3e2f21a9a3432873e05c66c73f9936d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_dhaalika-mudarris-hunaa-hal-huwa-3arabii",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_dhaalika-mudarris-hunaa-hal-huwa-3arabii",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "ذَلِكَ مُدَرِّس هُنَا؟ هَلْ هُوَ عَرَبِيّ؟\nنَعَم، هُوَ عَرَبِيّ. وَهُوَ وَسِيم بِجِدّ.",
+      "korean": "저기 저분은 여기 선생님이에요? 아랍 분이세요?\n네, 아랍 사람이에요. 그리고 진짜 잘생겼어요.",
       "tss": "",
       "memo": "표준 원거리 지시대명사 ذَلِكَ로 남성을 가리키고, هُوَ+형용사 카바르로 국적을 답한다.",
       "lahja": "MSA",
@@ -18854,25 +19070,25 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_dhaalika-mudarris-hunaa-na3am-huwa-3arabii.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_dhaalika-mudarris-hunaa-na3am-huwa-3arabii.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_dhaalika-mudarris-hunaa-hal-huwa-3arabii.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_dhaalika-mudarris-hunaa-hal-huwa-3arabii.wav"
         ]
       },
-      "itemHash": "636da5c10a03975cf3431650925aa6bd27eca9b34edb2e6f20d842285b96464e",
+      "itemHash": "004543d12462fb524209fa75a9922dad5c56fe771aef9a60a413f682fd335ce8",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A006/nass_yaa-haadhiik-muʔaththira-ssahh-3an-jad",
+      "key": "A006/nass_yaa-diinaa-haadhiik-mu2aththira-ssahhhh-3an",
       "u": "A006",
       "ptn": "ptn018",
-      "id": "nass_yaa-haadhiik-muʔaththira-ssahh-3an-jad",
+      "id": "nass_yaa-diinaa-haadhiik-mu2aththira-ssahhhh-3an",
       "type": "nass+",
       "sheetStatus": "draft",
-      "arabic": "يَا، هَذِيك مُؤَثِّرَة، صَحّ؟\nعَنْ جِدّ؟ هِيَ جَمِيلَة وَاللّٰهِ.",
-      "korean": "야, 저 사람 인플루언서잖아. 맞지?\n진짜? 엄청 예쁘다.",
+      "arabic": "يَا دِينَا، هَذِيك مُؤَثِّرَة، صَحّ؟\nعَنْ جِدّ؟ هِيَ جَمِيلَة وَاللّٰهِ.",
+      "korean": "디나야, 저 사람 인플루언서잖아, 맞지?\n진짜? 진짜 예쁘다.",
       "tss": "",
       "memo": "걸프 원거리 여성 지시대명사 هَذِيك으로 인플루언서를 가리키고, هي+형용사 카바르와 وَايِد로 외모를 강조한다.",
       "lahja": "GLF",
@@ -18881,11 +19097,65 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-haadhiik-muʔaththira-ssahh-3an-jad.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-haadhiik-muʔaththira-ssahh-3an-jad.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-diinaa-haadhiik-mu2aththira-ssahhhh-3an.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-diinaa-haadhiik-mu2aththira-ssahhhh-3an.wav"
         ]
       },
-      "itemHash": "aa545e11629083ef471009c31dff401e55573c1a3abcbdb9842e63510a0d7e93",
+      "itemHash": "06069ddad57c240af9265c2fe1dc24de0dcd03cbe0cff718abc244244b428967",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_haadhaak-minuu-huwa-mudarris-hinii-ii",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_haadhaak-minuu-huwa-mudarris-hinii-ii",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَاك مِنُو؟ هُوَ مُدَرِّس هِنِي؟\nإِي، صَحّ. هُوَ مُدَرِّس هِنِي. هُوَ فَارُوق.",
+      "korean": "저 사람 누구지? 여기 선생님이야?\n응 맞아, 여기 선생님. 그는 파루끄야.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaak-minuu-huwa-mudarris-hinii-ii.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhaak-minuu-huwa-mudarris-hinii-ii.wav"
+        ]
+      },
+      "itemHash": "a39b450118a50fa16c84dd01eec29dcd86796c68a4a0f8d917360811cf4e62a5",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_haadhiik-minuu-hiya-mudiira-hinii-laa",
+      "u": "A006",
+      "ptn": "ptn018",
+      "id": "nass_haadhiik-minuu-hiya-mudiira-hinii-laa",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذِيك مِنُو؟ هِيَ مُدِيرَة هِنِي؟\nلَا، هِيَ فَاطِمَة وَاللّٰهِ. هِيَ مُوَظَّفَة هِنِي.",
+      "korean": "저 사람 누구지? 여기 매니저인가?(여자)\n아니, 그녀는 파티마잖아, 진짜. 여기 직원이야.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhiik-minuu-hiya-mudiira-hinii-laa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_haadhiik-minuu-hiya-mudiira-hinii-laa.wav"
+        ]
+      },
+      "itemHash": "dacb9510945b43b16227997f0e38999822407e41ec6f1643caa7fe3eae99cce6",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -19513,14 +19783,14 @@
       }
     },
     {
-      "key": "A006/nass_yaa-hhabiibii-yaa-salmaan-inta-mashghuul",
+      "key": "A006/nass_yaa-hhamiid-haadhaa-ssa3b-laa-laa",
       "u": "A006",
       "ptn": "ptn019",
-      "id": "nass_yaa-hhabiibii-yaa-salmaan-inta-mashghuul",
+      "id": "nass_yaa-hhamiid-haadhaa-ssa3b-laa-laa",
       "type": "nass",
       "sheetStatus": "draft",
-      "arabic": "يَا حَبِيبِي يَا سَلْمَان، إِنْتَ مَشْغُول؟\nلَا لَا، أَنَا مُو مَشْغُول. أَنَا فَاضِي.",
-      "korean": "야, 살만. 너 바빠?\n아니 아니, 안 바빠. 시간 있어.",
+      "arabic": "يَا حَمِيد، هَذَا صَعْب؟\nلَا لَا، هَذَا مُو صَعْب. هَذَا سَهْل وَاللّٰه.",
+      "korean": "하미드, 이거 어려운거야?\n아니 아니, 이거 어렵지 않아. 진짜 쉬워.",
       "tss": "",
       "memo": "",
       "lahja": "GLF",
@@ -19529,38 +19799,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibii-yaa-salmaan-inta-mashghuul.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhabiibii-yaa-salmaan-inta-mashghuul.wav"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhamiid-haadhaa-ssa3b-laa-laa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-hhamiid-haadhaa-ssa3b-laa-laa.wav"
         ]
       },
-      "itemHash": "a4ae978b3091b2d365f0983a760e2c12bee04fb7740cce9ab61c8b7a01509ad1",
-      "review": {
-        "state": "needs-review",
-        "changedFields": []
-      }
-    },
-    {
-      "key": "A006/nass_yaa-mu3allim-haadhaa-ssa3b-3an-jidd",
-      "u": "A006",
-      "ptn": "ptn019",
-      "id": "nass_yaa-mu3allim-haadhaa-ssa3b-3an-jidd",
-      "type": "nass",
-      "sheetStatus": "draft",
-      "arabic": "يَا مُعَلِّم، هَذَا صَعْب عَنْ جِدّ.\nإِي، صَحّ. هَذَا مُو سَهْل.",
-      "korean": "선생님, 이거 너무 어려운데요.\n응, 맞아. 이거 쉽지 않아.",
-      "tss": "",
-      "memo": "학생의 어려움 호소에 إِي، صَحّ로 동의한 뒤, هَذَا مُو سَهْل로 형용사 카바르를 부정한다.",
-      "lahja": "GLF",
-      "voi": "MM",
-      "css": "",
-      "url": "",
-      "audio": {
-        "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-mu3allim-haadhaa-ssa3b-3an-jidd.mp3",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-mu3allim-haadhaa-ssa3b-3an-jidd.wav"
-        ]
-      },
-      "itemHash": "3e53ec3d0eaacdd7c327a99d3698f2c6133fc4a03ebb18e7ae5d1492dcd995c4",
+      "itemHash": "8267901b9489c0bb103a4a9d7040e6af72376df30c9e4d3344ff492dc373fbd7",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -19615,6 +19858,87 @@
         ]
       },
       "itemHash": "f47ed18e3fbbba11163cc21ea33e446c01282065ac0dbec33fd7659fcbffc466",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_yaa-ghaada-haadhii-ghariiba-3an-jidd",
+      "u": "A006",
+      "ptn": "ptn019",
+      "id": "nass_yaa-ghaada-haadhii-ghariiba-3an-jidd",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "يَا غَادَة، هَذِي غَرِيبَة عَنْ جِدّ؟\nلَا، هَذِي مُو غَرِيبَة. هَذِي عَادِيَة.",
+      "korean": "가다, 이거 진짜 이상해?\n아니, 안 이상해. 괜찮아.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-ghaada-haadhii-ghariiba-3an-jidd.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-ghaada-haadhii-ghariiba-3an-jidd.wav"
+        ]
+      },
+      "itemHash": "17a1bb50cd36e02b1b70523fd18c9421d84b6c6186a5b8317c595a83f01a8fbf",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_yaa-kariim-inta-mashghuul-laa-laa",
+      "u": "A006",
+      "ptn": "ptn019",
+      "id": "nass_yaa-kariim-inta-mashghuul-laa-laa",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "يَا كَرِيم، إِنْتَ مَشْغُول؟\nلَا لَا، أَنَا مُو مَشْغُول. أَنَا فَاضِي.",
+      "korean": "카림, 너 바빠?\n아니 아니, 나 안 바빠. 시간 있어.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-kariim-inta-mashghuul-laa-laa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-kariim-inta-mashghuul-laa-laa.wav"
+        ]
+      },
+      "itemHash": "a6a106a1e912dca284fbf8b36a270e9bff4f7f0c1c8e23af815e7e3ec5c49f4f",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A006/nass_yaa-layaan-rawaan-hiya-jadiida-hinii",
+      "u": "A006",
+      "ptn": "ptn019",
+      "id": "nass_yaa-layaan-rawaan-hiya-jadiida-hinii",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "يَا لَيَان، رَوَان هِيَ جَدِيدَة هِنِي، صَحّ؟\nلَا، هِيَ مُو جَدِيدَة. هِيَ مَاهِرَة وَخَبِيرَة.",
+      "korean": "라얀, 라완 씨 여기 신입이지, 맞지?\n아니, 신입 아니야. 실력 좋고 전문가야.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-layaan-rawaan-hiya-jadiida-hinii.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A006/nass_yaa-layaan-rawaan-hiya-jadiida-hinii.wav"
+        ]
+      },
+      "itemHash": "6bd6d5d6264ea66ef52a6397c61b8dde4ab1b858085d6a2728e0b59bd02be17c",
       "review": {
         "state": "needs-review",
         "changedFields": []
