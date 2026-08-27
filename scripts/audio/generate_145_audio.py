@@ -513,7 +513,9 @@ def main() -> int:
         if args.upload_existing:
             if not target.exists():
                 raise SystemExit(f"missing local file for upload-existing: {target}")
-        elif not target.exists() or args.upload:
+        # A feedback correction must replace a cached local render before it can
+        # be uploaded. Previously --overwrite only affected the GCS upload.
+        elif not target.exists() or args.upload or args.overwrite:
             assert tts_client is not None
             synthesize_wav(tts_client, row, target, args.voice_female, args.voice_male, args.speaking_rate)
             add_fade_in(target)
