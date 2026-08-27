@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T12:42:27.450598+00:00",
+  "generatedAt": "2026-08-27T15:59:06.068291+00:00",
   "source": {
     "sheetId": "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4",
     "tab": "데이터시트sheet"
@@ -6343,7 +6343,7 @@
       "id": "nass_marhhabaa-yaa-maajid-kiif-il-hhaal",
       "type": "nass",
       "sheetStatus": "draft",
-      "arabic": "مَرْحَبَا يَا مَاجِد، كِيف الْحَال؟\nمَرْحَبَا يَا دِيمَا. أَنَا مْنِيح، الْحَمْدُ لله.",
+      "arabic": "مَرْحَبَا يَا مَاجِد، كِيف الْحَال؟\nمَرْحَبَا يَا دِيمَة. أَنَا مْنِيح، الْحَمْدُ لله.",
       "korean": "안녕하세요, 마지드. 잘 지내세요?\n안녕하세요, 디마. 덕분에요",
       "tss": "",
       "memo": "1·2과 인삿말 전부 복습 + 안부 대답 대비: أنا بخير(푸스하 정통) ↔ أنا مْنيح(구어체)",
@@ -6357,9 +6357,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_marhhabaa-yaa-maajid-kiif-il-hhaal.wav"
         ]
       },
-      "itemHash": "06f4a20be85ba5eb08989131e00eaaede87e05600def20f8456071fd942ad769",
+      "itemHash": "d4024cc4c0dceb0d9bc50ed332555ef72b66a874dd1f117dd59bcc314feaeb34",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -6466,6 +6466,60 @@
         ]
       },
       "itemHash": "f58268c6701846d859f50d6d37100b92b7d015ab3c1f5040d0a36fff4daa958f",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A003/nass_yaa-jawaad-inta-jaahiz-ii-anaa",
+      "u": "A003",
+      "ptn": "",
+      "id": "nass_yaa-jawaad-inta-jaahiz-ii-anaa",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "يَا جَوَاد، إِنْتَ جَاهِز؟\nإِي، أَنَا جَاهِز.",
+      "korean": "야 자와드, 너 준비 됐어?\n응, 나 준비됐어.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF, LEV",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_yaa-jawaad-inta-jaahiz-ii-anaa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_yaa-jawaad-inta-jaahiz-ii-anaa.wav"
+        ]
+      },
+      "itemHash": "6443a30c9282484044ae40e3f3b4f6073b0d1ca7284f7abfd1bddd6c4489df9b",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A003/nass_inti-jaahiza-yaa-khadiija-ii-anaa",
+      "u": "A003",
+      "ptn": "",
+      "id": "nass_inti-jaahiza-yaa-khadiija-ii-anaa",
+      "type": "nass",
+      "sheetStatus": "draft",
+      "arabic": "إِنْتِ جَاهِزَة يَا خَدِيجَة؟\nإِي، أَنَا جَاهِزَة.",
+      "korean": "너 준비 됐어, 카디자야?\n응, 나 준비됐어.",
+      "tss": "",
+      "memo": "",
+      "lahja": "GLF, LEV",
+      "voi": "MF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inti-jaahiza-yaa-khadiija-ii-anaa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inti-jaahiza-yaa-khadiija-ii-anaa.wav"
+        ]
+      },
+      "itemHash": "4cb9403d25b514de1c524901eba85c238a0084ee87475cf13022899f5991fc4a",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -6715,6 +6769,60 @@
       }
     },
     {
+      "key": "A003/nass_inta-mniihh-yaa-naadir-ah-anaa",
+      "u": "A003",
+      "ptn": "",
+      "id": "nass_inta-mniihh-yaa-naadir-ah-anaa",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِنْتَ مْنِيح يَا نَادِر؟\nأَه، أَنَا مْنِيح، الْحَمْدُ لِله.",
+      "korean": "잘 지내, 나디르?\n응, 잘 지내. 알함두릴라.",
+      "tss": "",
+      "memo": "",
+      "lahja": "LEV",
+      "voi": "FM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inta-mniihh-yaa-naadir-ah-anaa.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inta-mniihh-yaa-naadir-ah-anaa.wav"
+        ]
+      },
+      "itemHash": "c4e08013d68d405bd038bb99a5d124ddb600d97930c684cc3d739ed97131b386",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A003/nass_inti-mniihha-yaa-maryam-anaa-ah",
+      "u": "A003",
+      "ptn": "",
+      "id": "nass_inti-mniihha-yaa-maryam-anaa-ah",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِنْتِ مْنِيحَة يَا مَرْيَم؟\nأَنَا؟ أَه، أَنَا مْنِيحَة. وَإِنْتِ؟",
+      "korean": "너 잘 지내, 마리얌?\n나? 응, 잘 지내. 너는?",
+      "tss": "",
+      "memo": "",
+      "lahja": "LEV",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inti-mniihha-yaa-maryam-anaa-ah.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/nass_inti-mniihha-yaa-maryam-anaa-ah.wav"
+        ]
+      },
+      "itemHash": "38ee492ea19b69e8871a1af2a5c4d0ea39d3e6513bb299e900126235b6607672",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
       "key": "A003/rep_jawaad",
       "u": "A003",
       "ptn": "ptn007",
@@ -6769,13 +6877,13 @@
       }
     },
     {
-      "key": "A003/rep_khayrii",
+      "key": "A003/rep_khadiija",
       "u": "A003",
       "ptn": "ptn007",
-      "id": "rep_khayrii",
+      "id": "rep_khadiija",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*خَ*يْرِي",
+      "arabic": "*خَ*دِيجَة",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -6785,11 +6893,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khayrii.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khayrii.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khadiija.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khadiija.mp3"
         ]
       },
-      "itemHash": "a7c7e1a1d819335efce5936a1ed08be69e9c9fd1205ec4e09b1fa5e6ee307a51",
+      "itemHash": "9640507fcb9593ccc95ba9ac7b5e8605824230f84d16a5c6f01ec8b4efd2f044",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -7801,7 +7909,7 @@
       "id": "rep_zawja",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "زَوْ*جَ**ة*",
+      "arabic": "زَوْجَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7815,9 +7923,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_zawja.mp3"
         ]
       },
-      "itemHash": "096c2c0947825f238f00f3900e6926ac1dfea6adb36b56ba62bd4ba8dd26b01e",
+      "itemHash": "bc88f82dea34bf20e91668695ebbbf3f666befa5b3c3ae5f362f17bcbed9680d",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7828,7 +7936,7 @@
       "id": "rep_raahha",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "رَا*حَ**ة*",
+      "arabic": "رَاحَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7842,9 +7950,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_raahha.mp3"
         ]
       },
-      "itemHash": "398ebdaf9194d7eeaf53bdd0d0a43e5054cc05460a40fc7101981f056b57e4f4",
+      "itemHash": "afe9a8cf2b573424995383f2a17616c82a997ac2aa4cd277282e39a3bef793d6",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7855,7 +7963,7 @@
       "id": "rep_khidma",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*خِ*دْمَ*ة*",
+      "arabic": "خِدْمَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7869,9 +7977,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khidma.mp3"
         ]
       },
-      "itemHash": "ce04fb88160bfcbe9d38814b569acdcd117bb3c457411aee931a0273a6f1168b",
+      "itemHash": "f0fbc30fa8f8d13bd73d1d2adf3c0baea5ca13ca82625c077ef864ad2d16c60f",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7882,7 +7990,7 @@
       "id": "rep_madiina",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*مَ*دِينَ*ة*",
+      "arabic": "مَدِينَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7896,9 +8004,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_madiina.mp3"
         ]
       },
-      "itemHash": "7e55cfc0b390b45460daf745a20091183ecd5a9a7066ddf9267fecca3c79fe20",
+      "itemHash": "cfdb8ac20c45231dc5791110a68edf332ca84ec0e14626b644998a0bd1503dd1",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7909,7 +8017,7 @@
       "id": "rep_jaahiza",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "جَا*هِ*زَ*ة*",
+      "arabic": "جَاهِزَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7923,9 +8031,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_jaahiza.mp3"
         ]
       },
-      "itemHash": "125e1fd8ee1b01cea4ab24c09a2d6f604f43ad88524b56d6ae706610a797eda2",
+      "itemHash": "be36e7ab7c2a8bde48081f4ced093c50edd2b62e4decf3f3ff5710c462093711",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7936,7 +8044,7 @@
       "id": "rep_jadiida",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*جَ*دِيدَ*ة*",
+      "arabic": "جَدِيدَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7950,9 +8058,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_jadiida.mp3"
         ]
       },
-      "itemHash": "f26fd37d681ce454a26561ead15b464d9a4a4d2c0e795cb856820f9c130e4a4a",
+      "itemHash": "27735dc42f73ce0c02363d4775b6e14ef47df350a72363932e99b96e0f5809be",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7963,7 +8071,7 @@
       "id": "rep_hhabiiba",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*حَ*بِيبَ*ة*",
+      "arabic": "حَبِيبَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -7977,9 +8085,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_hhabiiba.mp3"
         ]
       },
-      "itemHash": "629580efeba71aba294617898feea2a38eb6ab9fb639c8037ce2a9ac7c4b18dd",
+      "itemHash": "88b8a6c4832df715fb7f068f81b081a67fd16417391b01ce3c56f20f2a539ca2",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -7990,7 +8098,7 @@
       "id": "rep_khabiira",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*خَ*بِيرَ*ة*",
+      "arabic": "خَبِيرَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -8004,9 +8112,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_khabiira.mp3"
         ]
       },
-      "itemHash": "221c5167cdaa5a155e19fae9bc38d54ba3a845750c83a1f2b12b35b1dc3568de",
+      "itemHash": "2272bae2b9ca05262f19f0abb5f8872cf3daa0bdef976ca363d699af282cb83e",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -8017,7 +8125,7 @@
       "id": "rep_mudiira",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*مُ*دِيرَ*ة*",
+      "arabic": "مُدِيرَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -8031,9 +8139,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_mudiira.mp3"
         ]
       },
-      "itemHash": "211c5a41d30041a0de0ad30c55b606a899a43f0d30e40ecd90e00f1ad0607bac",
+      "itemHash": "0b7825957ff616f7947ed34b28117d928924e9520ab73879827b9852d34bf21d",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -8044,7 +8152,7 @@
       "id": "rep_maahira",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "مَا*هِ*رَ*ة*",
+      "arabic": "مَاهِرَ*ة*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -8058,9 +8166,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A003/rep_maahira.mp3"
         ]
       },
-      "itemHash": "8069c91b0841eb34d10d12948bcb488e5e618aa119d02242aae4b85660caff58",
+      "itemHash": "8f17f382ba5a88e18d53f70b0878fa6f9b642d6322ca8f129df17fbdcddc5176",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -8524,10 +8632,10 @@
       }
     },
     {
-      "key": "A004/exp_yallaa-baʔa",
+      "key": "A004/exp_yallaa-ba2a",
       "u": "A004",
       "ptn": "",
-      "id": "exp_yallaa-baʔa",
+      "id": "exp_yallaa-ba2a",
       "type": "exp+",
       "sheetStatus": "draft",
       "arabic": "يَلَّا بَقَى",
@@ -8540,8 +8648,8 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/exp_yallaa-baʔa.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/exp_yallaa-baʔa.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/exp_yallaa-ba2a.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/exp_yallaa-ba2a.mp3"
         ]
       },
       "itemHash": "ac2ccdafe393181c59ea9bb8db06626590775245c9f4e0a68a591e3b2ce924af",
@@ -8806,7 +8914,7 @@
       "memo": "",
       "lahja": "MSA, GLF, LEV, EGY",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -8814,9 +8922,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_ya3nii.mp3"
         ]
       },
-      "itemHash": "4ff6cec9c47988f5e7bc9faff763533e2b69d34ac620eb768209b20f5f0ed484",
+      "itemHash": "1c237500ead27d94144cbf211c08eda7709177c769bdef4da4dee07c8800df9c",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -8902,10 +9010,10 @@
       }
     },
     {
-      "key": "A004/kalimat_˕aadii",
+      "key": "A004/kalimat_3aadii",
       "u": "A004",
       "ptn": "",
-      "id": "kalimat_˕aadii",
+      "id": "kalimat_3aadii",
       "type": "kal",
       "sheetStatus": "draft",
       "arabic": "عَادِي",
@@ -8914,15 +9022,15 @@
       "memo": "",
       "lahja": "GLF, LEV, EGY",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_˕aadii.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_˕aadii.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_3aadii.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_3aadii.mp3"
         ]
       },
-      "itemHash": "898cc0ca493fa85cec7cba54938934590ff7f226ecfebf733a09a0a3b69b24a0",
+      "itemHash": "e256af98a6ed64d73178633edf48f1c7eca52346a3ad05b0fe1f5257be9c91c6",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -9022,7 +9130,7 @@
       "memo": "",
       "lahja": "LEV",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -9030,9 +9138,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_honiik.mp3"
         ]
       },
-      "itemHash": "85e6cf264a3ce8feaab9262b4ad2e56632cfc4928051f3ae77776d5aa71479fb",
+      "itemHash": "6be5f7512fd9994380f51b1449d2dd13b53b841be8a305545d9eae63d094d387",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -9049,7 +9157,7 @@
       "memo": "",
       "lahja": "EGY",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -9057,9 +9165,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_hinaak.mp3"
         ]
       },
-      "itemHash": "d226c8564533db050ef55345d5e9f27b9dc902720df47e60cf8c88356789fa7f",
+      "itemHash": "eb9430fe1ef449eb45b55f51bcfe6fe7d8228167e97382a5560be994ac8ab4fa",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -9238,7 +9346,7 @@
       "memo": "국적을 나타내는 추가단어. 여성형은 كُورِيَّة.",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -9246,9 +9354,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_kuurii.mp3"
         ]
       },
-      "itemHash": "fbd40dc2586460803011c519f78501a273e6cf95ecbb8c0fa3ae8d5394eb780d",
+      "itemHash": "5425bdc2de1cd018232f04dc3ad593f5a1acbf9566667bdfb5c4c05d4f1277de",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -9265,7 +9373,7 @@
       "memo": "국적을 나타내는 추가단어. 여성형은 أَمْرِيكِيَّة.",
       "lahja": "MSA",
       "voi": "",
-      "css": "",
+      "css": "vlist",
       "url": "",
       "audio": {
         "candidates": [
@@ -9273,9 +9381,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/kalimat_amriikii.mp3"
         ]
       },
-      "itemHash": "6c577c7188b41d06e30e674ad0a4e970f95b4ca0430ba21a7659cf1c06797585",
+      "itemHash": "e430897973f9c23804690304b8c041b5917f80e3370f9bd5f6f768816bd9092f",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -10127,7 +10235,7 @@
       "korean": "그는 미국 사람이야?\n아니, 그는 한국 사람이야.",
       "tss": "",
       "memo": "",
-      "lahja": "",
+      "lahja": "MSA",
       "voi": "",
       "css": "",
       "url": "",
@@ -10137,9 +10245,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/nass_hal-huwa-amriikii-laa-huwa-kuurii.wav"
         ]
       },
-      "itemHash": "a072e047d9d96d6e37acea3561022c25d271e4f876f54335b1ed194cece2ed91",
+      "itemHash": "6e8149d061c2006bed5a27229638e0f3343be300f4a16d0815cbda19f6b73351",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -10154,7 +10262,7 @@
       "korean": "이 책은 새 거야, 아니면 오래된 거야?\n오래됐지만 좋아.",
       "tss": "",
       "memo": "",
-      "lahja": "",
+      "lahja": "MSA",
       "voi": "",
       "css": "",
       "url": "",
@@ -10164,9 +10272,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/nass_hal-haadhaa-al-kitaab-jadiid-am.wav"
         ]
       },
-      "itemHash": "f654e952b8c422684e9848ae36df1785e567ad9af5b266ce12422fc17003a14e",
+      "itemHash": "06e2cbfbf8c16fda4bdc52c1d7bc2c012a5538a5ae48199c501c1da7dfded595",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -10181,7 +10289,7 @@
       "korean": "너 카림이야?\n아니, 나는 마흐무드야. 카림은 저기 있어.",
       "tss": "",
       "memo": "",
-      "lahja": "",
+      "lahja": "GLF, LEV",
       "voi": "",
       "css": "",
       "url": "",
@@ -10191,9 +10299,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/nass_inta-kariim-laa-anaa-mahhmuud-wa.wav"
         ]
       },
-      "itemHash": "3b23e49ceb1773f656e94cc08e81ee60a9ac6d4dd952562ed533081629eb8229",
+      "itemHash": "c24388ca6c7557f9bfd375ff84e70c20179399ca8093019ea6351d0020578ba8",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11494,13 +11602,13 @@
       }
     },
     {
-      "key": "A004/rep_fakkar",
+      "key": "A004/rep_fakkara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_fakkar",
+      "id": "rep_fakkara",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*فَ*كَّر",
+      "arabic": "فَ*كَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11510,11 +11618,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fakkar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fakkar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fakkara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fakkara.mp3"
         ]
       },
-      "itemHash": "77fa20fc50a856d5a3c953a1be6275d822d11277488b71d35a0d4bf870a5085e",
+      "itemHash": "b180b27884959a50d1e937b81efb07c5b05469796ba1562b08216b5c49474af2",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -11527,7 +11635,7 @@
       "id": "rep_quuwa",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*قُ*وَّة",
+      "arabic": "قُ*وَّ*ة",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11541,9 +11649,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_quuwa.mp3"
         ]
       },
-      "itemHash": "9b4dd81ea85a5ef37c7f9adcf1a6f6445c23bee10de175c5f61debc6ea2b6b76",
+      "itemHash": "07c4404821e8b89f5b331952333aea8c315cd81f8299bb426cb96eddc1178560",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11554,7 +11662,7 @@
       "id": "rep_kull",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*كُ*لّ",
+      "arabic": "كُ*لّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11568,9 +11676,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_kull.mp3"
         ]
       },
-      "itemHash": "5e042ec7c842595ec5c68d3154aa0f0bd30c106fbb87c723bc9b5c7137ab03ac",
+      "itemHash": "71e251d9ecdf0367a5a38c8e2f8e3c65226d0ecf00a635b63cc6bba7d2a8acea",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11581,7 +11689,7 @@
       "id": "rep_ladhdha",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*لَ*ذَّة",
+      "arabic": "لَ*ذَّ*ة",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11595,9 +11703,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ladhdha.mp3"
         ]
       },
-      "itemHash": "be300bbc3192b539192539e6bb551f8aca54fcd6fd86cc74bcb2db9d36752bd9",
+      "itemHash": "725074ff2712640795ac7ae9794d8bbcccd1db8f8214d23120f115a0c4ce41f1",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11608,7 +11716,7 @@
       "id": "rep_3amm",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*عَ*مّ",
+      "arabic": "عَ*مّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11622,9 +11730,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_3amm.mp3"
         ]
       },
-      "itemHash": "8e9c938fbf9ba8fbf924cb1b65910016b648ace322b1e3ecc55d84d86539f525",
+      "itemHash": "3462646f3b17481b72139ff06cca821afe83c2b52dad4d149710b42bff5dcf6c",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11635,7 +11743,7 @@
       "id": "rep_ghanii",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*غَ*نِيّ",
+      "arabic": "غَنِ*يّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11649,20 +11757,20 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ghanii.mp3"
         ]
       },
-      "itemHash": "7ecfe256483b2b6f98e7933ea452a413b3b57dcbe2e6f13c9eeb3b34f27be1ba",
+      "itemHash": "13a6c977372af0ce414b8e3adabe84200ffe1d20a9d7abe5f8ebd318631a5ca8",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_fattahh",
+      "key": "A004/rep_fann",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_fattahh",
+      "id": "rep_fann",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*فَ*تَّح",
+      "arabic": "فَ*نّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11672,24 +11780,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fattahh.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fattahh.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fann.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_fann.mp3"
         ]
       },
-      "itemHash": "c591c95a43c6bae8843f5a90a4b1772629e816b3cf8955e1f8dd57a0c59da11f",
+      "itemHash": "0de7cefe4c26e788c01c1dcbb9669ae62adbd4fd1408d697faef1ff7814522c5",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_qarrar",
+      "key": "A004/rep_qarrara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_qarrar",
+      "id": "rep_qarrara",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*قَ*رَّر",
+      "arabic": "قَ*رَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11699,24 +11807,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_qarrar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_qarrar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_qarrara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_qarrara.mp3"
         ]
       },
-      "itemHash": "2563233ef77ad5f926149f2922f326c7419debb15d7048c074c2dc8f0fb17f59",
+      "itemHash": "3dfd565037caae10435f720a4237e39b361f0323ded25691e4b9e0e35d6b4aff",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_karrar",
+      "key": "A004/rep_karrara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_karrar",
+      "id": "rep_karrara",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*كَ*رَّر",
+      "arabic": "كَ*رَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11726,24 +11834,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_karrar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_karrar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_karrara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_karrara.mp3"
         ]
       },
-      "itemHash": "d7da7468be4bf47373da8ed2f03a05f701a8ee8e3b309603e6e928f64b81127d",
+      "itemHash": "91ca4d2a71d47e96141d678b3b1f23f8fc5d1a5d67056c3a0a04422f09ee7da3",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_laqqab",
+      "key": "A004/rep_laqqaba",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_laqqab",
+      "id": "rep_laqqaba",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*لَ*قَّب",
+      "arabic": "لَ*قَّ*بَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11753,24 +11861,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_laqqab.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_laqqab.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_laqqaba.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_laqqaba.mp3"
         ]
       },
-      "itemHash": "875414d0808294e757010faa22bd8b77e6d7f0eae7cd5ad1bd1a0f1248488e5f",
+      "itemHash": "da155b31ee6f0ae0f40843e7379b7167fa28c312522511825bde20c4974b59a4",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_3allam",
+      "key": "A004/rep_3allama",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_3allam",
+      "id": "rep_3allama",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*عَ*لَّم",
+      "arabic": "عَ*لَّ*مَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11780,24 +11888,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_3allam.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_3allam.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_3allama.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_3allama.mp3"
         ]
       },
-      "itemHash": "4b4cc8124ef51f9069e65677601b270399bb21596faa66ead7cc24444bfe0746",
+      "itemHash": "b795960fa9cc91b9fbfa9be653fe0ab661c6552e23e10b020504ef44e81eaa15",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/rep_ghayyar",
+      "key": "A004/rep_ghayyara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "rep_ghayyar",
+      "id": "rep_ghayyara",
       "type": "rep",
       "sheetStatus": "draft",
-      "arabic": "*غَ*يَّر",
+      "arabic": "غَ*يَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11807,11 +11915,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ghayyar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ghayyar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ghayyara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/rep_ghayyara.mp3"
         ]
       },
-      "itemHash": "0260f9bc77acc8907acfe2c26df542884b47db4e576870fdc85c258911d6d3f9",
+      "itemHash": "5b296e1f226fd1d9bff24302dc24813cc482a88c7800a7490f1234b4c22bb6ee",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -11851,7 +11959,7 @@
       "id": "drill_qilla",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "قِ*لَّ*ة",
+      "arabic": "قِ*لَّ*ة",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11865,9 +11973,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_qilla.mp3"
         ]
       },
-      "itemHash": "171fa15d7ace28386c90cf5b7ff3b3f31b67cda13db58688199b25a65fa1b4fd",
+      "itemHash": "d339f2cb029966f2bd56846e3137a4d9d77d83497453e1596911860499fe778e",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11926,13 +12034,13 @@
       }
     },
     {
-      "key": "A004/drill_3aqqad",
+      "key": "A004/drill_3idda",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "drill_3aqqad",
+      "id": "drill_3idda",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "عَ*قَّ*د",
+      "arabic": "عِ*دَّ*ة",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11942,11 +12050,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3aqqad.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3aqqad.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3idda.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3idda.mp3"
         ]
       },
-      "itemHash": "8a6b72497e1fd28ca7e7e68c56a2bbaabd5749a7a8db4f503e957b2cdd9da591",
+      "itemHash": "6c64a11c84e07ea77029a0cdd50d23e314b0b56909291989616bc8508160704f",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -11959,7 +12067,7 @@
       "id": "drill_ghannaa",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "غَ*نَّ*ى",
+      "arabic": "غَ*نَّ*ى",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -11973,9 +12081,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_ghannaa.mp3"
         ]
       },
-      "itemHash": "82c79dc232f0a25a147fef6811f13264ad5e990cd5a82216691dd274b77cf2fa",
+      "itemHash": "75b7dbc9a10731a62c0088aa0a63a68d34ab7291d80bcb9a5c8aadf9e51105b5",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
@@ -11986,7 +12094,7 @@
       "id": "drill_fa33aal",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "فَ*عَّ*ال",
+      "arabic": "فَ*عَّ*ال",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12000,20 +12108,20 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_fa33aal.mp3"
         ]
       },
-      "itemHash": "1c4cd55d460ec7aaa974adae0494046c4f311f4669e6c425d22dea3b32f65357",
+      "itemHash": "b3fbb46d5fd436d12ccc84ec44cec222cc1d92641d3b3cea14fa4a51b3864e48",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
-      "key": "A004/drill_qabbal",
+      "key": "A004/drill_quddaam",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "drill_qabbal",
+      "id": "drill_quddaam",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "قَ*بَّ*ل",
+      "arabic": "قُ*دَّ*ام",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12023,24 +12131,24 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_qabbal.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_qabbal.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_quddaam.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_quddaam.mp3"
         ]
       },
-      "itemHash": "0ad06e6d3d554b15bad24ffae39ad91a196c0c5420d46235bf54c51f57f7f9b2",
+      "itemHash": "1a51cebc90a5cd3165376b37b422c9d75cf8e31ef9a2752153786955be3fac89",
       "review": {
         "state": "needs-review",
         "changedFields": []
       }
     },
     {
-      "key": "A004/drill_kabbar",
+      "key": "A004/drill_kabbara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "drill_kabbar",
+      "id": "drill_kabbara",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "كَ*بَّ*ر",
+      "arabic": "كَ*بَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12050,11 +12158,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_kabbar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_kabbar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_kabbara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_kabbara.mp3"
         ]
       },
-      "itemHash": "b4dd1d685cb0e144935ed3dda66c3a7e3f0e45034b60fb54d52fbfdaa3ae05ea",
+      "itemHash": "4667b7bf479ee8d5d78be4fbedd986d2e55d27e2d4925e485f30b3b97753590f",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -12067,7 +12175,7 @@
       "id": "drill_lamma",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "لَ*مّ*",
+      "arabic": "لَ*مَّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12081,20 +12189,20 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_lamma.mp3"
         ]
       },
-      "itemHash": "21566dabdfc196a854ec158195c0b44ef0405f9d5479960fcd555c0c5a8b605e",
+      "itemHash": "3525d3e56c8c876b158925500c9b92d0300f5216509a88d59dc3142f80ff965e",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
     {
-      "key": "A004/drill_3abbar",
+      "key": "A004/drill_3abbara",
       "u": "A004",
       "ptn": "ptn012",
-      "id": "drill_3abbar",
+      "id": "drill_3abbara",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "عَ*بَّ*ر",
+      "arabic": "عَ*بَّ*رَ",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12104,11 +12212,11 @@
       "url": "",
       "audio": {
         "candidates": [
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3abbar.wav",
-          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3abbar.mp3"
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3abbara.wav",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_3abbara.mp3"
         ]
       },
-      "itemHash": "487093fa31770b77e5174b21a143c326e78cfe2e300cc42a17bf3737ab4809cb",
+      "itemHash": "8ef537b837f7a8ef08ce2a171d25bf136b7913dfd7d43b42deef46deb601dd4d",
       "review": {
         "state": "needs-review",
         "changedFields": []
@@ -12121,7 +12229,7 @@
       "id": "drill_gharra",
       "type": "drill",
       "sheetStatus": "draft",
-      "arabic": "غَ*رّ*",
+      "arabic": "غَ*رَّ*",
       "korean": "",
       "tss": "",
       "memo": "",
@@ -12135,9 +12243,9 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A004/drill_gharra.mp3"
         ]
       },
-      "itemHash": "74616b3df2b1e29e0ad244d8beaea3bccab32adab0cf4362b45fb957a240511c",
+      "itemHash": "8e07721d366faec6729f2c9010b0e772da14835e36b5138cc6affd3c3202cdaf",
       "review": {
-        "state": "needs-review",
+        "state": "needs-recheck",
         "changedFields": []
       }
     },
