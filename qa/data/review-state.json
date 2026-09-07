@@ -2,7 +2,7 @@
   "version": 1,
   "items": {
     "A001/exp_as-salaamu-3alaykum": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/exp_wa-3alaykumu-as-salaam": {
       "state": "needs-review"
@@ -14,13 +14,13 @@
       "state": "needs-review"
     },
     "A001/exp_tamaam-kulluhu-tamaam": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/rep_baa": {
       "state": "needs-review"
     },
     "A001/rep_taa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/rep_thaa": {
       "state": "needs-review"
@@ -98,7 +98,7 @@
       "state": "needs-review"
     },
     "A001/rep_bayna": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/rep_tibn": {
       "state": "needs-review"
@@ -119,7 +119,7 @@
       "state": "needs-review"
     },
     "A001/drill_thuniya": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_thanaba": {
       "state": "needs-review"
@@ -128,13 +128,13 @@
       "state": "needs-review"
     },
     "A001/drill_natana": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_yabata": {
       "state": "needs-review"
     },
     "A001/drill_yabinu": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_banat": {
       "state": "needs-review"
@@ -146,31 +146,31 @@
       "state": "needs-review"
     },
     "A001/drill_buniyat": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_tathbut": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_tanbut": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_thabatat": {
       "state": "needs-review"
     },
     "A001/drill_nabatat": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_yanbut": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/drill_yathbut": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/nass_as-salaamu-3alaykum-wa-3alaykumu-as": {
       "state": "needs-review"
     },
     "A001/nass_salaam-3alayk-3alayk-as-salaam": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A001/nass_kayf-al-hhaal-tamaam-al-hhamdu": {
       "state": "needs-review"
@@ -179,7 +179,7 @@
       "state": "needs-review"
     },
     "A002/exp_ana-badr": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/exp_yaa": {
       "state": "needs-review"
@@ -194,7 +194,7 @@
       "state": "needs-review"
     },
     "A002/exp_inta-zayd": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/exp_ahlan-ahlayn": {
       "state": "needs-review"
@@ -203,7 +203,7 @@
       "state": "needs-review"
     },
     "A002/exp_aah": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/exp_aywa": {
       "state": "needs-review"
@@ -326,19 +326,19 @@
       "state": "needs-review"
     },
     "A002/nass_halaa-yaa-zayd-halaa-wallaah-yaa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/nass_ahlan-yaa-diinaa-ahlayn-yaa-raaniyaa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/nass_kulluh-zayn-yaa-zaayid-ii-ii": {
       "state": "needs-review"
     },
     "A002/nass_yaa-nuur-kulluh-tamaam-tamaam-tamaam": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/nass_ahlan-inti-raaniyaa-ah-anaa-raaniyaa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/nass_ahlan-inti-riim-aywa-anaa-riim": {
       "state": "needs-review"
@@ -368,13 +368,13 @@
       "state": "needs-review"
     },
     "A002/rep_zayn": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/rep_wazn": {
       "state": "needs-review"
     },
     "A002/drill_dayn": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A002/drill_dhanb": {
       "state": "needs-review"
@@ -659,7 +659,7 @@
       "state": "needs-review"
     },
     "A003/nass_marhhabaa-yaa-maajid-kiif-il-hhaal": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/nass_halaa-yaa-badr-halaa-wallaah-yaa": {
       "state": "needs-review"
@@ -821,34 +821,34 @@
       "state": "needs-review"
     },
     "A003/rep_zawja": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_raahha": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_khidma": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_madiina": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_jaahiza": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_jadiida": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_hhabiiba": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_khabiira": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_mudiira": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/rep_maahira": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A003/drill_jaahiza": {
       "state": "needs-review"
@@ -932,7 +932,7 @@
       "state": "needs-review"
     },
     "A004/kalimat_ya3nii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/kalimat_hunaaka": {
       "state": "needs-review"
@@ -956,10 +956,10 @@
       "state": "needs-review"
     },
     "A004/kalimat_honiik": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/kalimat_hinaak": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/kalimat_akh": {
       "state": "needs-review"
@@ -980,10 +980,10 @@
       "state": "needs-review"
     },
     "A004/kalimat_kuurii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/kalimat_amriikii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/drill_na3am-anaa-muhhammad": {
       "state": "needs-review"
@@ -1079,13 +1079,13 @@
       "state": "needs-review"
     },
     "A004/nass_hal-huwa-amriikii-laa-huwa-kuurii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/nass_hal-haadhaa-al-kitaab-jadiid-am": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/nass_inta-kariim-laa-anaa-mahhmuud-wa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_farahh": {
       "state": "needs-review"
@@ -1235,19 +1235,19 @@
       "state": "needs-review"
     },
     "A004/rep_quuwa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_kull": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_ladhdha": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_3amm": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_ghanii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/rep_fattahh": {
       "state": "needs-review"
@@ -1271,7 +1271,7 @@
       "state": "needs-review"
     },
     "A004/drill_qilla": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/drill_kaff": {
       "state": "needs-review"
@@ -1283,10 +1283,10 @@
       "state": "needs-review"
     },
     "A004/drill_ghannaa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/drill_fa33aal": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/drill_qabbal": {
       "state": "needs-review"
@@ -1295,13 +1295,13 @@
       "state": "needs-review"
     },
     "A004/drill_lamma": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A004/drill_3abbar": {
       "state": "needs-review"
     },
     "A004/drill_gharra": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/exp_anaa-aasif-aasifa": {
       "state": "needs-review"
@@ -1322,7 +1322,7 @@
       "state": "needs-review"
     },
     "A005/exp_ghalttaan-ghalttaana": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/exp_maa-3aleh": {
       "state": "needs-review"
@@ -1385,7 +1385,7 @@
       "state": "needs-review"
     },
     "A005/kalimat_shiin": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/kalimat_salaam": {
       "state": "needs-review"
@@ -1400,7 +1400,7 @@
       "state": "needs-review"
     },
     "A005/kalimat_ghalttaan": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_haadhihi-qadiima": {
       "state": "needs-review"
@@ -1433,10 +1433,10 @@
       "state": "needs-review"
     },
     "A005/drill_tilka-jamiila": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_dhaalika-mumtaaz": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_haadhiik-ghariiba": {
       "state": "needs-review"
@@ -1670,13 +1670,13 @@
       "state": "needs-review"
     },
     "A005/drill_akh": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_ukht": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_iimaan": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/rep_ams": {
       "state": "needs-review"
@@ -1715,13 +1715,13 @@
       "state": "needs-review"
     },
     "A005/drill_kubraa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_aadam": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_aadhaan": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A005/drill_mu2adhdhin": {
       "state": "needs-review"
@@ -1775,7 +1775,7 @@
       "state": "needs-review"
     },
     "A006/kalimat_ii-my": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_maa": {
       "state": "needs-review"
@@ -1811,43 +1811,43 @@
       "state": "needs-review"
     },
     "A006/kalimat_kabiir": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_ssaghiir": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_lattiif": {
       "state": "needs-review"
     },
     "A006/kalimat_chi": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_eh": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_mu2aththir": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_mussammim": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_mutarjim": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_3aamil": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_jidd": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_wasiim": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_mashhuur": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/kalimat_faaddii": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/rep_huwa-mudarrisun": {
       "state": "needs-review"
@@ -1952,10 +1952,10 @@
       "state": "needs-review"
     },
     "A006/drill_anaa-aasifa": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/drill_anaa-aasif": {
-      "state": "needs-review"
+      "state": "needs-recheck"
     },
     "A006/drill_anti-jamiila": {
       "state": "needs-review"
@@ -3479,6 +3479,660 @@
       "state": "needs-review"
     },
     "A012/drill_limaadhaa-taquum-al-aan": {
+      "state": "needs-review"
+    },
+    "A003/nass_yaa-jawaad-inta-jaahiz-ii-anaa": {
+      "state": "needs-review"
+    },
+    "A003/nass_inti-jaahiza-yaa-khadiija-ii-anaa": {
+      "state": "needs-review"
+    },
+    "A003/nass_inta-mniihh-yaa-naadir-ah-anaa": {
+      "state": "needs-review"
+    },
+    "A003/nass_inti-mniihha-yaa-maryam-anaa-ah": {
+      "state": "needs-review"
+    },
+    "A003/rep_khadiija": {
+      "state": "needs-review"
+    },
+    "A004/exp_yallaa-ba2a": {
+      "state": "needs-review"
+    },
+    "A004/kalimat_3aadii": {
+      "state": "needs-review"
+    },
+    "A004/rep_fakkara": {
+      "state": "needs-review"
+    },
+    "A004/rep_fann": {
+      "state": "needs-review"
+    },
+    "A004/rep_qarrara": {
+      "state": "needs-review"
+    },
+    "A004/rep_karrara": {
+      "state": "needs-review"
+    },
+    "A004/rep_laqqaba": {
+      "state": "needs-review"
+    },
+    "A004/rep_3allama": {
+      "state": "needs-review"
+    },
+    "A004/rep_ghayyara": {
+      "state": "needs-review"
+    },
+    "A004/drill_3idda": {
+      "state": "needs-review"
+    },
+    "A004/drill_quddaam": {
+      "state": "needs-review"
+    },
+    "A004/drill_kabbara": {
+      "state": "needs-review"
+    },
+    "A004/drill_3abbara": {
+      "state": "needs-review"
+    },
+    "A005/kalimat_mariidd": {
+      "state": "needs-review"
+    },
+    "A005/kalimat_saliim": {
+      "state": "needs-review"
+    },
+    "A005/kalimat_wasikh": {
+      "state": "needs-review"
+    },
+    "A005/kalimat_shams": {
+      "state": "needs-review"
+    },
+    "A005/kalimat_qamar": {
+      "state": "needs-review"
+    },
+    "A005/nass_anaa-aasif-man-haadhaa-haadhaa-samiir": {
+      "state": "needs-review"
+    },
+    "A005/nass_man-haadhihi-yaa-maryam-haadhihi-hudaa": {
+      "state": "needs-review"
+    },
+    "A005/nass_ma3liish-minuu-haadhaak-haadhaak-maajid-wa": {
+      "state": "needs-review"
+    },
+    "A005/nass_halaa-minuu-haadhii-halaa-wallaah-haadhii": {
+      "state": "needs-review"
+    },
+    "A006/exp_akiid": {
+      "state": "needs-review"
+    },
+    "A006/exp_wish-ismak-wish-ismich": {
+      "state": "needs-review"
+    },
+    "A006/rep_huwa-kabiirun": {
+      "state": "needs-review"
+    },
+    "A006/rep_hiya-ssaghiiratun": {
+      "state": "needs-review"
+    },
+    "A006/nass_inta-mashghuul-yaa-salmaan-aasif-anaa": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-raaniyaa-inti-mashghuula-ii-aasifa": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-hhabiibii-dhaalika-muhhammad-ssahhiihh-na3am": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-hhabiibatii-tilka-maryam-hiya-muhandisa": {
+      "state": "needs-review"
+    },
+    "A006/nass_haadhaa-muhhammad-huwa-3arabii-wa-huwa": {
+      "state": "needs-review"
+    },
+    "A006/nass_haadhii-layaan-hiya-mu2aththira-wa-hiya": {
+      "state": "needs-review"
+    },
+    "A006/nass_shuu-hhaalak-inta-faaddii-laa-laa": {
+      "state": "needs-review"
+    },
+    "A006/nass_marhhabaa-yaa-samiir-inta-mniihh-marhhabten": {
+      "state": "needs-review"
+    },
+    "A006/nass_shuu-akhbaarich-yaa-faattima-laa-wallaah": {
+      "state": "needs-review"
+    },
+    "A006/nass_dhaalika-mudarris-hunaa-hal-huwa-3arabii": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-diinaa-haadhiik-mu2aththira-ssahhhh-3an": {
+      "state": "needs-review"
+    },
+    "A006/nass_haadhaak-minuu-huwa-mudarris-hinii-ii": {
+      "state": "needs-review"
+    },
+    "A006/nass_haadhiik-minuu-hiya-mudiira-hinii-laa": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-hhamiid-haadhaa-ssa3b-laa-laa": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-ghaada-haadhii-ghariiba-3an-jidd": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-kariim-inta-mashghuul-laa-laa": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-layaan-hiya-mashhuura-laa-hiya": {
+      "state": "needs-review"
+    },
+    "A006/nass_yaa-layaan-rawaan-hiya-jadiida-hinii": {
+      "state": "needs-review"
+    },
+    "A007/exp_raa2i3": {
+      "state": "needs-review"
+    },
+    "A007/exp_lil-asaf": {
+      "state": "needs-review"
+    },
+    "A007/exp_ssidg": {
+      "state": "needs-review"
+    },
+    "A007/exp_rahiib": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudiir-hunaa": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudiir-hunaak": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudarris-hunaak": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudiir-hinii": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudarris-hinii": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudiir-hinaak": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-mudarris-hinaak": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-walad-lattiif": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-bint-lattiifa": {
+      "state": "needs-review"
+    },
+    "A007/drill_att-ttaalib-dhakii": {
+      "state": "needs-review"
+    },
+    "A007/drill_att-ttaaliba-dhakiyya": {
+      "state": "needs-review"
+    },
+    "A007/drill_al-qahwa-ladhiidha": {
+      "state": "needs-review"
+    },
+    "A007/nass_law-samahht-hal-al-mudarris-mashghuul": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-mudarris-hal-al-kitaab-jayyid": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-khaalid-al-qahwa-ladhiidha-laa": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-riim-al-qalam-jadiid-laa": {
+      "state": "needs-review"
+    },
+    "A007/nass_ahlan-yaa-hhamad-kef-al-walad": {
+      "state": "needs-review"
+    },
+    "A007/nass_kayf-al-mudiir-hal-huwa-bikhayr": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-saara-kayf-att-ttaaliba-hal": {
+      "state": "needs-review"
+    },
+    "A007/nass_kef-att-tta3aam-ladhiidh-ii-zen": {
+      "state": "needs-review"
+    },
+    "A007/nass_kayf-al-kitaab-mumti3-na3am-huwa": {
+      "state": "needs-review"
+    },
+    "A007/nass_law-samahht-man-huwa-al-mudarris": {
+      "state": "needs-review"
+    },
+    "A007/nass_aah-man-huwa-att-ttaalib-att": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-riim-minuu-hiya-al-mudarrisa": {
+      "state": "needs-review"
+    },
+    "A007/nass_law-samahhti-minuu-hiya-al-mudiira": {
+      "state": "needs-review"
+    },
+    "A007/nass_hal-haadhaa-al-kitaab-mumti3-na3am": {
+      "state": "needs-review"
+    },
+    "A007/nass_hal-haadhihi-al-qahwa-ladhiidha-na3am": {
+      "state": "needs-review"
+    },
+    "A007/nass_hal-haadhaa-ad-daftar-jayyid-na3am": {
+      "state": "needs-review"
+    },
+    "A007/nass_hal-haadhaa-att-tta3aam-ladhiidh-na3am": {
+      "state": "needs-review"
+    },
+    "A007/nass_haal-bayt-kabiir-waayid-ssidg-ii": {
+      "state": "needs-review"
+    },
+    "A007/nass_haal-shaay-hhilw-waayid-yaa-salaam": {
+      "state": "needs-review"
+    },
+    "A007/nass_haal-khubz-zaakii-waayid-ssidg-ii": {
+      "state": "needs-review"
+    },
+    "A007/nass_haal-kitaab-mumti3-laa-lil-asaf": {
+      "state": "needs-review"
+    },
+    "A007/nass_law-samahht-man-haadhaa-ar-rajul": {
+      "state": "needs-review"
+    },
+    "A007/nass_man-haadhihi-al-mar2a-hiya-al": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-khaalid-minuu-haadhaa-att-ttaalib": {
+      "state": "needs-review"
+    },
+    "A007/nass_yaa-riim-minuu-haadhihi-att-ttaaliba": {
+      "state": "needs-review"
+    },
+    "A007/drill_haadhaa-ssadiiqii-wa-huwa-dhakii-hhaqqan": {
+      "state": "needs-review"
+    },
+    "A007/drill_haadhaa-shaayuhaa-wa-huwa-ladhiidh": {
+      "state": "needs-review"
+    },
+    "A007/nass_qalamuki-hunaa-tafaddddalii-aah-shukran-yaa": {
+      "state": "needs-review"
+    },
+    "A007/nass_law-samahhta-hal-kitaabii-hunaak-na3am": {
+      "state": "needs-review"
+    },
+    "A007/nass_daftarich-hinii-tafaddddalii-mashkuura": {
+      "state": "needs-review"
+    },
+    "A007/nass_qahwatuki-hunaa-tafaddddalii-aah-shukran": {
+      "state": "needs-review"
+    },
+    "A007/nass_haadhaa-ssadiiqii-ismuhu-saalim-aah-anta": {
+      "state": "needs-review"
+    },
+    "A007/nass_haadhihi-ssadiiqatii-ismuhaa-nuura-ahlan-yaa": {
+      "state": "needs-review"
+    },
+    "A007/nass_shuu-ismich-min-faddlich-aah-ismii": {
+      "state": "needs-review"
+    },
+    "A007/nass_shuu-ismak-aah-ismii-badr-wa": {
+      "state": "needs-review"
+    },
+    "A008/exp_maadhaa-turiid": {
+      "state": "needs-review"
+    },
+    "A008/exp_wish-tabii": {
+      "state": "needs-review"
+    },
+    "A008/exp_abii-tabii": {
+      "state": "needs-review"
+    },
+    "A008/exp_anaa-ayddan-anaa-kamaan": {
+      "state": "needs-review"
+    },
+    "A008/exp_hanii2an": {
+      "state": "needs-review"
+    },
+    "A008/exp_bi-l-3aafiya": {
+      "state": "needs-review"
+    },
+    "A008/exp_hhaaddir": {
+      "state": "needs-review"
+    },
+    "A008/exp_tislam": {
+      "state": "needs-review"
+    },
+    "A008/exp_ya3ttiik-al-3aafiya": {
+      "state": "needs-review"
+    },
+    "A008/exp_qahwa-wallaa-shaay": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_uriidu": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_ashrab": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_aakul": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_uhhibb": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_aqra2": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_aktub": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_a3rif": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_as2al": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_nii": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_al-aan": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_al-hhiin": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_al-yawm": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_kamaan": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_ayddan": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_kathiiran": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_ahhmil": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_risaala": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_jariida": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_su2aal": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_kiis": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_khabar": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_jawaab": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_iissaal": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_hhisaab": {
+      "state": "needs-review"
+    },
+    "A008/kalimat_3assiir": {
+      "state": "needs-review"
+    },
+    "A008/rep_ashrabu-3assiiran": {
+      "state": "needs-review"
+    },
+    "A008/rep_aktubu-risaalatan": {
+      "state": "needs-review"
+    },
+    "A008/drill_tashrabu-shaayan": {
+      "state": "needs-review"
+    },
+    "A008/drill_ashrabu-shaayan": {
+      "state": "needs-review"
+    },
+    "A008/drill_taqra2u-bariidan": {
+      "state": "needs-review"
+    },
+    "A008/drill_aqra2u-bariidan": {
+      "state": "needs-review"
+    },
+    "A008/drill_tas2alu-mudarrisan": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2alu-mudarrisan": {
+      "state": "needs-review"
+    },
+    "A008/drill_ta2kulu-khubzan": {
+      "state": "needs-review"
+    },
+    "A008/drill_aakulu-khubzan": {
+      "state": "needs-review"
+    },
+    "A008/drill_taktubu-kitaaban": {
+      "state": "needs-review"
+    },
+    "A008/drill_aktubu-kitaaban": {
+      "state": "needs-review"
+    },
+    "A008/drill_ta3rifu-mudiiran": {
+      "state": "needs-review"
+    },
+    "A008/drill_a3rifu-mudiiran": {
+      "state": "needs-review"
+    },
+    "A008/drill_tahhmilu-daftaran": {
+      "state": "needs-review"
+    },
+    "A008/drill_ahhmilu-daftaran": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-uriidu-haadhaa-shukran": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-uhhibbu-al-qahwata-kathiiran": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-anta-tuhhibbu-al-madiinata-ayddan": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-uriidu-iissaalan-al-aan": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-anta-turiidu-jariidatan-al-yawm": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-abii-3assiir-tislam": {
+      "state": "needs-review"
+    },
+    "A008/drill_inta-tabii-tta3aam-al-hhiin": {
+      "state": "needs-review"
+    },
+    "A008/nass_yaa-zayd-maadhaa-tashrabu-al-aan": {
+      "state": "needs-review"
+    },
+    "A008/nass_ahlan-maadhaa-taqra2u-al-aan-aah": {
+      "state": "needs-review"
+    },
+    "A008/nass_maadhaa-turiid-uriidu-qahwatan-shukran": {
+      "state": "needs-review"
+    },
+    "A008/nass_hal-turiidu-iissaalan-ayddan-na3am-min": {
+      "state": "needs-review"
+    },
+    "A008/nass_wish-tabii-qahwa-wallaa-shaay-abii": {
+      "state": "needs-review"
+    },
+    "A008/nass_tiktib-risaala-al-hhiin-ii-aktib": {
+      "state": "needs-review"
+    },
+    "A008/rep_a3rifu-al-walada": {
+      "state": "needs-review"
+    },
+    "A008/rep_a3rifu-al-binta": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-tuhhibbu-al-madiina": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-uhhibbu-al-3amal": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-taqra2u-al-jariida": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-aqra2u-al-kitaab": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-taktubu-al-jawaab": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-aktubu-r-risaala": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-ta3rifu-al-mudiir": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-a3rifu-al-muwazzzzaf": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-turiidu-al-hhisaab": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-uriidu-al-iissaal": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-tashrabu-sh-shaay": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-ashrabu-al-3assiir": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-ta2kulu-al-khubz": {
+      "state": "needs-review"
+    },
+    "A008/drill_anaa-aakulu-tt-tta3aam": {
+      "state": "needs-review"
+    },
+    "A008/drill_uhhibbu-l-qahwa-ayddan": {
+      "state": "needs-review"
+    },
+    "A008/drill_aktubu-r-risaala-al-aan": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2alu-l-mudarris-al-yawm": {
+      "state": "needs-review"
+    },
+    "A008/drill_uriidu-l-iissaal-min-faddlika": {
+      "state": "needs-review"
+    },
+    "A008/drill_uhhibb-haatt-tta3aam-waayid": {
+      "state": "needs-review"
+    },
+    "A008/drill_tihhibb-haal-kitaab-kamaan": {
+      "state": "needs-review"
+    },
+    "A008/drill_abii-haal-kiis-tislam": {
+      "state": "needs-review"
+    },
+    "A008/nass_ahlan-maadhaa-turiid-uriidu-l-3assiir": {
+      "state": "needs-review"
+    },
+    "A008/nass_hal-tuhhibbu-haadhaa-l-kitaab-na3am": {
+      "state": "needs-review"
+    },
+    "A008/nass_ahlan-wish-tabii-qahwa-wallaa-shaay": {
+      "state": "needs-review"
+    },
+    "A008/nass_anaa-uhhibb-haatt-tta3aam-wa-inti": {
+      "state": "needs-review"
+    },
+    "A008/rep_ta3rifunii": {
+      "state": "needs-review"
+    },
+    "A008/rep_a3rifuhaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_ta3rifunii": {
+      "state": "needs-review"
+    },
+    "A008/drill_tafhamunii": {
+      "state": "needs-review"
+    },
+    "A008/drill_a3rifuka": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2aluka": {
+      "state": "needs-review"
+    },
+    "A008/drill_a3rifuki": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2aluki": {
+      "state": "needs-review"
+    },
+    "A008/drill_ta3rifuhu": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2aluhu": {
+      "state": "needs-review"
+    },
+    "A008/drill_ta3rifuhaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2aluhaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_tuhhibbuhu": {
+      "state": "needs-review"
+    },
+    "A008/drill_aqra2uhu": {
+      "state": "needs-review"
+    },
+    "A008/drill_tuhhibbuhaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_ashrabuhaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-tafhamunii-al-aan": {
+      "state": "needs-review"
+    },
+    "A008/drill_aah-a3rifk-inta-muwazzzzaf-hinii-ssahhhh": {
+      "state": "needs-review"
+    },
+    "A008/drill_as2aluki-al-yawm": {
+      "state": "needs-review"
+    },
+    "A008/drill_a3rifuhu-huwa-al-mudiir-hunaa": {
+      "state": "needs-review"
+    },
+    "A008/drill_hal-ta3rifuhaa-ayddan-hiya-mashhuura": {
+      "state": "needs-review"
+    },
+    "A008/drill_uhhibbuhu-kathiiran-huwa-mumti3": {
+      "state": "needs-review"
+    },
+    "A008/drill_ashrabhaa-al-hhiin-ladhiidha-waayid": {
+      "state": "needs-review"
+    },
+    "A008/nass_ahlan-hal-ta3rifu-al-mudiir-na3am": {
+      "state": "needs-review"
+    },
+    "A008/nass_anaa-uhhibbu-haadhaa-al-maqhaa-wa": {
+      "state": "needs-review"
+    },
+    "A008/nass_tihhibb-al-qahwa-ii-uhhibbhaa-wa": {
+      "state": "needs-review"
+    },
+    "A008/nass_tabii-haal-kiis-ii-abiih-tislam": {
       "state": "needs-review"
     }
   }

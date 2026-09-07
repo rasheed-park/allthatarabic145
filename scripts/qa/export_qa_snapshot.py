@@ -41,6 +41,35 @@ STATE_ALIASES = {
 HASH_FIELDS = ("u", "ptn", "type", "sheetStatus", "arabic", "korean", "tss", "memo", "lahja", "voi", "css", "url")
 
 
+def slugify_note(note: str) -> str:
+    raw = (note or "").lower()
+    for old, new in (("*", ""), ("_", ""), ("'", ""), ("ʿ", "3"), ("ʾ", "2"), ("ʕ", "3"),
+                     ("ā", "aa"), ("ī", "ii"), ("ū", "uu"), ("ē", "e"), ("ō", "o"),
+                     ("ḥ", "hh"), ("ṣ", "ss"), ("ḍ", "dd"), ("ṭ", "tt"), ("ẓ", "zz")):
+        raw = raw.replace(old, new)
+    raw = raw.replace(".", "").replace(",", "").replace("!", "").replace("?", "")
+    return re.sub(r"^-+|-+$", "", re.sub(r"[\s\-]+", "-", raw))
+
+
+def derived_audio_id(row: dict[str, str]) -> str:
+    explicit = row.get("id", "").strip()
+    if explicit:
+        return explicit
+    typ = row.get("type", "").strip().lower()
+    note = row.get("note", "").strip()
+    ptn = row.get("ptn", "").strip()
+    if not typ or not note:
+        return ""
+    slug = slugify_note(note)
+    base_type = typ.replace("+", "")
+    if base_type == "ptn":
+        return f"{ptn}_{slug}" if ptn else ""
+    if base_type in {"nas", "nass"}:
+        return "nass_" + "-".join(slug.split("-")[:6])
+    kind = "kalimat" if base_type == "kal" else base_type
+    return f"{kind}_{slug}" if slug else ""
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--set-state", nargs=2, metavar=("U/ID", "STATE"), help="Persist an item state before exporting.")
@@ -72,6 +101,13 @@ def fetch_sheet() -> list[dict[str, str]]:
             value = "" if cell is None else cell.get("f", cell.get("v", ""))
             row[header] = str(value).strip()
         if any(row.values()):
+            # The sheet's ARRAYFORMULA ID column can be rendered as #REF!.
+            # Keep the snapshot aligned with the audio generators by deriving
+            # the same stable ID from type/note when the explicit ID is absent.
+            if not row.get("id"):
+                derived = derived_audio_id(row)
+                if derived:
+                    row["id"] = derived
             rows.append(row)
     return rows
 
@@ -176,8 +212,9 @@ def main() -> None:
     for key, item in state.get("items", {}).items():
         if key not in active_keys and item.get("state") == "passed":
             item["state"] = "deleted"
-    ordered_units = sorted({unit["id"]: unit for unit in units}.values(), key=lambda unit: unit["id"])
-    records.sort(key=lambda record: (record["u"], record["ptn"], record["type"], record["id"]))
+    # 시트가 콘텐츠의 정본 순서다. ID·타입 기준 재정렬을 하면
+    # 표현 → 패턴 → 레퍼토리/드릴 → 지문이라는 제작·검수 순서가 깨진다.
+    ordered_units = list({unit["id"]: unit for unit in units}.values())
     result = {"schemaVersion": 1, "generatedAt": datetime.now(timezone.utc).isoformat(), "source": {"sheetId": SHEET_ID, "tab": TAB}, "units": ordered_units, "records": records}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as file:
