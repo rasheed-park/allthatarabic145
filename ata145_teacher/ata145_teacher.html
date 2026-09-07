@@ -1390,7 +1390,8 @@ async function buildSlides(baseUnit) {
   // 섹션 순서 특별규칙: 6과부터 패턴 먼저(패턴→드릴→표현), 1~5과는 표현 먼저(표현→패턴→드릴)
   const patternFirst = (parseInt((baseUnit || '').replace(/\D/g, ''), 10) || 0) >= 6;
 
-  // [블록 A] 패턴마다 → 패턴 → 레퍼토리(예문) → 드릴(drillA/B/C)
+  // [블록 A] 챕터 0은 패턴·래퍼를 모두 먼저 보인 뒤 드릴을 한곳에 모은다.
+  // A006부터는 연결 패턴마다 패턴 → 레퍼토리 → 드릴을 유지한다.
   // 매칭 주의: pattern.id 는 전체 슬러그('ptn004_alif-...')인데 rep/drill.ref_ptn 은
   // 번호만('ptn004')이라 strict 비교가 어긋난다 → 인쇄앱과 동일하게 **ptn 번호 prefix**로 매칭한다.
   const emitPatternAndDrill = () => {
@@ -1421,6 +1422,24 @@ async function buildSlides(baseUnit) {
       .map(x => x.r);
 
     const usedRep = new Set(), usedDrill = new Set();
+    const chapterZero = (parseInt((baseUnit || '').replace(/\D/g, ''), 10) || 0) <= 5;
+    if (chapterZero) {
+      patterns.forEach(ptn => {
+        const key = patKeyOf(ptn);
+        push('ptn', ptn);
+        repAll.filter(r => refKeyOf(r) === key)
+          .forEach(r => { usedRep.add(r); push('repertory', r); });
+      });
+      repAll.filter(r => !usedRep.has(r)).forEach(r => push('repertory', r));
+      // 챕터 0의 순서 계약: 모든 drill 뒤에 모든 drill+를 배치한다.
+      [0, 1].forEach(stage => {
+        drillAll.filter(r => drillStage(r) === stage)
+          .forEach(r => { usedDrill.add(r); push(normalizeType(r.type), r); });
+      });
+      drillAll.filter(r => !usedDrill.has(r))
+        .forEach(r => push(normalizeType(r.type), r));
+      return;
+    }
     patterns.forEach(ptn => {
       const key = patKeyOf(ptn);
       push('ptn', ptn);

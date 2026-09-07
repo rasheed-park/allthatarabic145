@@ -1154,7 +1154,7 @@ const TAB_145 = {
   units:'데이터시트sheet', unit:'데이터시트sheet', pattern:'데이터시트sheet',
   repertory:'데이터시트sheet', drill:'데이터시트sheet', expression:'데이터시트sheet',
   exp:'데이터시트sheet', kalimat:'데이터시트sheet', sheet:'데이터시트sheet',
-  nass:'나쓰nass', alam:'고유명사alam', appendix:'어펜딕스appendix',
+  nass:'데이터시트sheet', alam:'고유명사alam', appendix:'어펜딕스appendix',
 };
 const resolveTab145 = n => TAB_145[String(n||'').toLowerCase().trim()] || n;
 const TYPE_145 = { rep:'repertory', drill:'drilla', 'drill+':'drilla', kal:'kalimat', 'kal+':'kalimat+' };
@@ -1599,12 +1599,29 @@ function buildPagesForUnit(unit) {
   // css는 레이아웃만 결정한다. 같은 패턴 안에서는 메인 드릴 뒤에 추가 드릴을 둔다.
   const drillRowsRaw = rowsByUnit(TABS.drill, unit,
     (t, r) => ['drilla','drillb','drillc','writing'].includes(t) && (r.arabic || '').trim() !== '');
-  const drillRows = orderDrillRows(drillRowsRaw);
+  // 챕터 0은 패턴을 모두 학습한 뒤 드릴을 한 번에 푼다.
+  // 시트의 행 위치와 ref_ptn에 관계없이 메인 드릴 전체를 먼저, drill+ 전체를 다음에 둔다.
+  const drillRows = isChapterZeroUnit(unit)
+    ? [...drillRowsRaw.filter(row => drillStage(row) === 0), ...drillRowsRaw.filter(row => drillStage(row) === 1)]
+    : orderDrillRows(drillRowsRaw);
   if (drillRows.length) {
     const pageVal = r => (r.page || '').toString().trim();
     const hasPaged = drillRows.some(r => pageVal(r) !== '');
     const chapter = String(unitRow.C || unitRow.c || '');
-    if (hasPaged) {
+    if (isChapterZeroUnit(unit)) {
+      [0, 1].forEach(stage => {
+        const rows = drillRows.filter(row => drillStage(row) === stage);
+        if (!rows.length) return;
+        drillPages.push({
+          sec:'drill', kind:'drill',
+          title:'드릴', subtitle: stage === 0 ? '드릴' : '드릴+',
+          rows,
+          chapter,
+          ptnRefs:uniqueRefs(rows),
+          drillStage:stage,
+        });
+      });
+    } else if (hasPaged) {
       const byPage = new Map();
       drillRows.forEach(r => {
         const k = pageVal(r) || '￿';
@@ -1689,8 +1706,12 @@ function buildPagesForUnit(unit) {
   }
 
   // 챕터 1 여정은 표현 → 단어 → [패턴 → 드릴 → 연결 지문] 반복 → 전체 지문 순서다.
-  // 챕터 0은 패턴 귀속 지문이 없으므로 기존처럼 패턴·드릴 뒤에 유닛 지문만 둔다.
+  // 챕터 0은 패턴·래퍼를 전부 끝낸 뒤 drill, drill+, 유닛 지문 순서로 고정한다.
   const journey = [...expPages, ...kalimatPages];
+  if (isChapterZeroUnit(unit)) {
+    journey.push(...patternPages, ...drillPages, ...overviewNassPages);
+    return journey;
+  }
   const usedDrills = new Set();
   patternPages.forEach((patternPage, patternIndex) => {
     journey.push(patternPage);
@@ -1774,14 +1795,12 @@ function renderContextNav() {
       active:page?.sec === 'exp', mode:'overview',
     }));
     const patternPages = state.pages.filter(candidate => candidate.sec === 'ptn');
-    const patternGroups = patternPages.length <= 3
-      ? patternPages.map(patternPage => [patternPage])
-      : [[patternPages[0]], [patternPages[1]], patternPages.slice(2)];
-    patternGroups.forEach((group, index) => {
-      const patternRefs = group.flatMap(patternPage => patternPage.ptnRefs || []).filter(Boolean);
-      nav.appendChild(makeButton(`패턴 ${index + 1}`, state.pages.indexOf(group[0]), {
-        active:page?.sec === 'ptn' && patternRefs.some(patternRef => pageHasPatternRef(page, patternRef)),
-        ref:patternRefs[0] || '',
+    patternPages.forEach(patternPage => {
+      const ref = patternPage.ptnRefs[0] || '';
+      const number = ptnNumber(patternPage.row);
+      nav.appendChild(makeButton(`패턴 ${number ? Number(number) : ''}`.trim(), state.pages.indexOf(patternPage), {
+        active:page?.sec === 'ptn' && pageHasPatternRef(page, ref),
+        ref,
         mode:'overview',
       }));
     });
@@ -2466,6 +2485,33 @@ function buildUnitList() {
     children.hidden = !expanded;
     children.appendChild(makeLink('m-unit-link', '표현', r.u, expIndex, { sec:'exp', match:'section' }));
     children.appendChild(makeLink('m-unit-link', '단어', r.u, kalimatIndex, { sec:'kalimat', match:'section' }));
+
+    // 챕터 0은 패턴별 하위 드릴을 만들지 않는다.
+    // 화면·사이드바 모두 패턴 전체 → 드릴 전체 → 지문 순서를 보여 준다.
+    if (isChapterZeroUnit(r.u)) {
+      pages.filter(page => page.sec === 'ptn').forEach(patternPage => {
+        const ref = patternPage.ptnRefs[0];
+        const number = ptnNumber(patternPage.row);
+        const title = patternTitle(patternPage.row);
+        children.appendChild(makeLink(
+          'm-unit-link',
+          `패턴 ${number ? Number(number) : ''}${title ? ` · ${title}` : ''}`.trim(),
+          r.u,
+          pages.indexOf(patternPage),
+          { ref, sec:'ptn', match:'pattern' }
+        ));
+      });
+      const firstDrillIndex = pages.findIndex(page => page.sec === 'drill');
+      children.appendChild(makeLink('m-unit-link', '드릴', r.u, firstDrillIndex, {
+        sec:'drill', match:'page',
+      }));
+      children.appendChild(makeLink('m-unit-link', '지문', r.u, nassIndex, {
+        sec:'nass', match:'page',
+      }));
+      li.appendChild(children);
+      list.appendChild(li);
+      return;
+    }
 
     pages.filter(page => page.sec === 'ptn').forEach(patternPage => {
       const ref = patternPage.ptnRefs[0];
