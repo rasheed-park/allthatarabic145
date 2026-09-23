@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T14:53:41.074211+00:00",
+  "generatedAt": "2026-09-23T09:56:44.085520+00:00",
   "source": {
     "sheetId": "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4",
     "tab": "데이터시트sheet"
@@ -23496,7 +23496,7 @@
       "sheetStatus": "draft",
       "arabic": "مِيَة مِيَة",
       "korean": "완전 좋아요, 백점이에요",
-      "tss": "",
+      "tss": "مِيَة مِيَة",
       "memo": "",
       "lahja": "LEV, EGY",
       "voi": "",
@@ -23508,10 +23508,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_miyya-miyya.mp3"
         ]
       },
-      "itemHash": "3329cf83869dc23dd0a535eaba9f068593f403c3ae0a84faac7911a0fe60b493",
+      "itemHash": "c959bff073224fec62cca2e0020cc5b5096ca33e24bf4ed965b95b02ec9d85ea",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "مِيَة مِيَة",
+          "korean": "완전 좋아요, 백점이에요",
+          "tss": "",
+          "memo": "",
+          "lahja": "LEV, EGY",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_miyya-miyya.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_miyya-miyya.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -23577,7 +23594,7 @@
       "sheetStatus": "draft",
       "arabic": "تِسْلَم",
       "korean": "고마워요",
-      "tss": "",
+      "tss": "تِسْلَمْ",
       "memo": "",
       "lahja": "GLF",
       "voi": "",
@@ -23589,10 +23606,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_tislam.mp3"
         ]
       },
-      "itemHash": "c94d54d27050326ea600d28ce418bcd9ab95a07a6df98881992cb79cdca9b704",
+      "itemHash": "65607774943cbef6a46df1444eecd4331223bd55f97b6460509ba46124f8075f",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "تِسْلَم",
+          "korean": "고마워요",
+          "tss": "",
+          "memo": "",
+          "lahja": "GLF",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_tislam.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/exp_tislam.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -23685,7 +23719,7 @@
       "sheetStatus": "draft",
       "arabic": "أَشْرَب",
       "korean": "마셔요",
-      "tss": "",
+      "tss": "أَشْرَبْ",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -23697,10 +23731,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_ashrab.mp3"
         ]
       },
-      "itemHash": "b6d01a338dc06b0a88db778f5d2e53a258329f15097e799c9dcde67518dfee75",
+      "itemHash": "69355da9da49e09c2bd22c96781c0c5dd2dc6142db6ef825ac188caa457a3af5",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَشْرَب",
+          "korean": "마셔요",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_ashrab.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_ashrab.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -23712,7 +23763,7 @@
       "sheetStatus": "draft",
       "arabic": "آكُل",
       "korean": "먹어요",
-      "tss": "",
+      "tss": "آكُلْ",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -23724,10 +23775,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_aakul.mp3"
         ]
       },
-      "itemHash": "54f4c4d4d0a4713cab5b027e2271a0597d0e1e5e5b079039196a7d59ed11d897",
+      "itemHash": "e540a9a112b86d3b67dc1cb6a2940edef1dc54d10d6d3bdc333b96c8a632004b",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "آكُل",
+          "korean": "먹어요",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_aakul.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_aakul.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24306,7 +24374,7 @@
       "sheetStatus": "draft",
       "arabic": "عَصِير",
       "korean": "주스",
-      "tss": "",
+      "tss": "عَصِيرْ",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -24318,10 +24386,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_3assiir.mp3"
         ]
       },
-      "itemHash": "7db3ea78adabcbe1bdab0c54813619711154d81c2b78e80399f423a95d93c4be",
+      "itemHash": "ad7b9eb88a3d75dc37d158451664e67288b072360f788e11e4e91dfba0fd326c",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "عَصِير",
+          "korean": "주스",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_3assiir.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/kalimat_3assiir.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24333,7 +24418,7 @@
       "sheetStatus": "draft",
       "arabic": "أَشْرَبُ عَصِيرًا.",
       "korean": "주스를 마셔요",
-      "tss": "",
+      "tss": "أَشْرَبُ عَصِيرًا.",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -24345,10 +24430,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/rep_ashrabu-3assiiran.mp3"
         ]
       },
-      "itemHash": "65c3cf3e8d4a6d640a2e2d5591e70cb30bad204458068f1f5af456d2ebab237e",
+      "itemHash": "75da6439d2601e6957f78182651af9a0e8841f2011382f658c037b9377f4a2e6",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَشْرَبُ عَصِيرًا.",
+          "korean": "주스를 마셔요",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/rep_ashrabu-3assiiran.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/rep_ashrabu-3assiiran.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24657,7 +24759,7 @@
       "sheetStatus": "draft",
       "arabic": "تَعْرِفُ مُدِيرًا؟",
       "korean": "매니저를 알아요?",
-      "tss": "",
+      "tss": "تَعْرِفُ مُدِيرًا؟",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -24669,10 +24771,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ta3rifu-mudiiran.mp3"
         ]
       },
-      "itemHash": "4accd1f7485706076f2c5df8ea3395d4bd1eda3b73c6e1d3166899454768dbd4",
+      "itemHash": "8e409c7fb52570cdf3001a3e2845cd7b96a74bb16398539d524fd372ef1ef46d",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "تَعْرِفُ مُدِيرًا؟",
+          "korean": "매니저를 알아요?",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ta3rifu-mudiiran.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ta3rifu-mudiiran.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24738,7 +24857,7 @@
       "sheetStatus": "draft",
       "arabic": "أَحْمِلُ دَفْتَرًا.",
       "korean": "공책을 들고 있어요.",
-      "tss": "",
+      "tss": "أَحْمِلُ دَفْتَرًا.",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -24750,10 +24869,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ahhmilu-daftaran.mp3"
         ]
       },
-      "itemHash": "b4b86a56f82f9e38ff46a79014d0c05f07c82921f01c4ee35a7613b447a6f7f0",
+      "itemHash": "9beeaaa46d5bb6d2ff431cf8d5cf5501c021b381a8ffddcec556aaa5c3b0abce",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَحْمِلُ دَفْتَرًا.",
+          "korean": "공책을 들고 있어요.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ahhmilu-daftaran.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_ahhmilu-daftaran.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24873,7 +25009,7 @@
       "sheetStatus": "draft",
       "arabic": "هَلْ أَنْتَ تُرِيدُ جَرِيدَةً الْيَوْم؟",
       "korean": "당신은 오늘 신문을 원해요?",
-      "tss": "",
+      "tss": "هَلْ أَنْتَ تُرِيدُ جَرِيدَةً الْيَوْم؟",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -24885,10 +25021,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_hal-anta-turiidu-jariidatan-al-yawm.mp3"
         ]
       },
-      "itemHash": "47ad9ab31744560bab1087fd775a11359f60dc5d4874220bf8f27637ead4b95d",
+      "itemHash": "c115ee580c708cfafce6de3675055ce455f524682b78f8fed70fb7ba4ac7da06",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "هَلْ أَنْتَ تُرِيدُ جَرِيدَةً الْيَوْم؟",
+          "korean": "당신은 오늘 신문을 원해요?",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_hal-anta-turiidu-jariidatan-al-yawm.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_hal-anta-turiidu-jariidatan-al-yawm.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24927,7 +25080,7 @@
       "sheetStatus": "draft",
       "arabic": "إِنْتَ تَبِي طَعَام الْحِين؟",
       "korean": "너 지금 밥 먹을래?",
-      "tss": "",
+      "tss": "إِنْتَ تَبِي طَعَام الْحِين؟",
       "memo": "",
       "lahja": "GLF",
       "voi": "",
@@ -24939,10 +25092,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_inta-tabii-tta3aam-al-hhiin.mp3"
         ]
       },
-      "itemHash": "ae4bffa398b5415b9f17b9bbd53f8d84435ba66ea94bd5d43a61efedafbcf4d8",
+      "itemHash": "acfafcec821d7799d2ad99c5849bae2ecf2f30a0dd18bbb30b1a557400ee5260",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "إِنْتَ تَبِي طَعَام الْحِين؟",
+          "korean": "너 지금 밥 먹을래?",
+          "tss": "",
+          "memo": "",
+          "lahja": "GLF",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_inta-tabii-tta3aam-al-hhiin.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_inta-tabii-tta3aam-al-hhiin.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -24981,10 +25151,10 @@
       "sheetStatus": "draft",
       "arabic": "أَهْلًا، مَاذَا تَقْرَأُ الْآن؟\nآه، أَقْرَأُ جَرِيدَةً. وَأَنْتَ؟",
       "korean": "안녕, 지금 뭐 읽고 있어?\n아, 신문 보는 중이야. 너는?",
-      "tss": "",
+      "tss": "أَهْلًا، مَاذَا تَقْرَأُ الْآن؟\nآه، أَقْرَأُ جَرِيدَةً. وَأَنْتَ؟",
       "memo": "",
       "lahja": "MSA",
-      "voi": "FM",
+      "voi": "MM",
       "css": "",
       "url": "",
       "audio": {
@@ -24993,10 +25163,28 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-taqra2u-al-aan-aah.wav"
         ]
       },
-      "itemHash": "66e9ff9d092c6c6f119a84e7deb2a82ddaf635b9121d5d23694057736f0a4eec",
+      "itemHash": "28d3d63cb487cd6a47461cc13d8389cbff46a2544ec9de017568c71dbbd2065b",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS",
+          "화자"
+        ],
+        "previous": {
+          "arabic": "أَهْلًا، مَاذَا تَقْرَأُ الْآن؟\nآه، أَقْرَأُ جَرِيدَةً. وَأَنْتَ؟",
+          "korean": "안녕, 지금 뭐 읽고 있어?\n아, 신문 보는 중이야. 너는?",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "FM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-taqra2u-al-aan-aah.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-taqra2u-al-aan-aah.wav"
+            ]
+          }
+        }
       }
     },
     {
@@ -25008,7 +25196,7 @@
       "sheetStatus": "draft",
       "arabic": "مَاذَا تُرِيد؟\nأُرِيدُ قَهْوَةً، شُكْرًا.",
       "korean": "뭐 드릴까요?\n커피로 할게요. 감사합니다.",
-      "tss": "",
+      "tss": "مَاذَا تُرِيد؟\nأُرِيدُ قَهْوَةً، شُكْرًا.",
       "memo": "",
       "lahja": "MSA",
       "voi": "MM",
@@ -25020,10 +25208,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_maadhaa-turiid-uriidu-qahwatan-shukran.wav"
         ]
       },
-      "itemHash": "63d75977e9bbf364985953cbd067300a166bc331b1fada5a0b7115ffe5cbf215",
+      "itemHash": "f9dcdf4cb6d46639b587653c7d383c3e07d6028130e843781d109128a5b96991",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "مَاذَا تُرِيد؟\nأُرِيدُ قَهْوَةً، شُكْرًا.",
+          "korean": "뭐 드릴까요?\n커피로 할게요. 감사합니다.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "MM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_maadhaa-turiid-uriidu-qahwatan-shukran.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_maadhaa-turiid-uriidu-qahwatan-shukran.wav"
+            ]
+          }
+        }
       }
     },
     {
@@ -25035,7 +25240,7 @@
       "sheetStatus": "draft",
       "arabic": "هَلْ تُرِيدُ إِيصَالًا أَيْضًا؟\nنَعَم، مِنْ فَضْلِكَ. شُكْرًا.",
       "korean": "영수증도 필요하세요?\n네, 부탁합니다. 감사합니다.",
-      "tss": "",
+      "tss": "هَلْ تُرِيدُ إِيصَالًا أَيْضًا؟\nنَعَم، مِنْ فَضْلِكَ. شُكْرًا.",
       "memo": "",
       "lahja": "MSA",
       "voi": "FM",
@@ -25047,10 +25252,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-turiidu-iissaalan-ayddan-na3am-min.wav"
         ]
       },
-      "itemHash": "887eb55e10e731a715c67b367d180a1f4d48b6b54ee665741a7564fef9251b0c",
+      "itemHash": "1e36963c2d3ccb54cc0a52fc35e8813ba492ab91a555a9c74e64533a586ace02",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "هَلْ تُرِيدُ إِيصَالًا أَيْضًا؟\nنَعَم، مِنْ فَضْلِكَ. شُكْرًا.",
+          "korean": "영수증도 필요하세요?\n네, 부탁합니다. 감사합니다.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "FM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-turiidu-iissaalan-ayddan-na3am-min.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-turiidu-iissaalan-ayddan-na3am-min.wav"
+            ]
+          }
+        }
       }
     },
     {
@@ -25062,7 +25284,7 @@
       "sheetStatus": "draft",
       "arabic": "وِش تَبِي؟ قَهْوَة وَلَّا شَاي؟\nأَبِي شَاي، تِسْلَم.",
       "korean": "뭐 마실래? 커피 아니면 차?\n차로 할게. 고마워.",
-      "tss": "",
+      "tss": "وِش تَبِي؟ قَهْوَة وَلَّا شَاي؟\nأَبِي شَاي، تِسْلَمْ.",
       "memo": "",
       "lahja": "GLF",
       "voi": "MM",
@@ -25074,10 +25296,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_wish-tabii-qahwa-wallaa-shaay-abii.wav"
         ]
       },
-      "itemHash": "d521704623e69ca965c9c3de135cbdb8f1b1305c8ac3cd4b11a71998be46e1ee",
+      "itemHash": "ecdce62097b9c71794e546f4cb6b65f3accb0bcfa70b39ee0cc6fd1e3328ead7",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "وِش تَبِي؟ قَهْوَة وَلَّا شَاي؟\nأَبِي شَاي، تِسْلَم.",
+          "korean": "뭐 마실래? 커피 아니면 차?\n차로 할게. 고마워.",
+          "tss": "",
+          "memo": "",
+          "lahja": "GLF",
+          "voi": "MM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_wish-tabii-qahwa-wallaa-shaay-abii.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_wish-tabii-qahwa-wallaa-shaay-abii.wav"
+            ]
+          }
+        }
       }
     },
     {
@@ -25548,7 +25787,7 @@
       "sheetStatus": "draft",
       "arabic": "أُحِبُّ الْقَهْوَة أَيْضًا.",
       "korean": "저도 커피 좋아해요.",
-      "tss": "",
+      "tss": "أُحِبُّ الْقَهْوَة أَيْضًا.",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -25560,10 +25799,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibbu-l-qahwa-ayddan.mp3"
         ]
       },
-      "itemHash": "b735b13993506b077d4af8525d37ff234f5b613c99c8e3c87262c9927222e45e",
+      "itemHash": "07937869bebad8d455d080840c8a1dc54d8dd91062ef0196ab1171e2902fd97e",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أُحِبُّ الْقَهْوَة أَيْضًا.",
+          "korean": "저도 커피 좋아해요.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibbu-l-qahwa-ayddan.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibbu-l-qahwa-ayddan.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -25575,7 +25831,7 @@
       "sheetStatus": "draft",
       "arabic": "أَكْتُبُ الرِّسَالَة الْآن.",
       "korean": "지금 메시지 쓰고 있어요.",
-      "tss": "",
+      "tss": "أَكْتُبُ الرِّسَالَة الْآن.",
       "memo": "",
       "lahja": "MSA",
       "voi": "",
@@ -25587,10 +25843,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_aktubu-r-risaala-al-aan.mp3"
         ]
       },
-      "itemHash": "f3f230296ce27c5a37d1a53ef80af0763ed42ff1b751d303b7f81d66da1f1552",
+      "itemHash": "e4b5112a8efcc561a9af74fea26b2ecd33c3b236d44f63a4169717ce4a00bad8",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَكْتُبُ الرِّسَالَة الْآن.",
+          "korean": "지금 메시지 쓰고 있어요.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_aktubu-r-risaala-al-aan.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_aktubu-r-risaala-al-aan.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -25656,7 +25929,7 @@
       "sheetStatus": "draft",
       "arabic": "أُحِبُّ هَالطَّعَام وَايِد.",
       "korean": "이 음식 진짜 좋아해.",
-      "tss": "",
+      "tss": "أُحِبُّ هَالطَّعَام وَايِد.",
       "memo": "",
       "lahja": "GLF",
       "voi": "",
@@ -25668,10 +25941,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibb-haatt-tta3aam-waayid.mp3"
         ]
       },
-      "itemHash": "592a7fb6578dab2a5790a5d4f0afbb02b3df2136ad9af8824bb490a33fb613e9",
+      "itemHash": "6823910d893082bffb8537ee4b031bb14f13f8b0905261a580895497e8a7caf4",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أُحِبُّ هَالطَّعَام وَايِد.",
+          "korean": "이 음식 진짜 좋아해.",
+          "tss": "",
+          "memo": "",
+          "lahja": "GLF",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibb-haatt-tta3aam-waayid.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_uhhibb-haatt-tta3aam-waayid.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -25710,7 +26000,7 @@
       "sheetStatus": "draft",
       "arabic": "أَبِي هَالْكِيس، تِسْلَم.",
       "korean": "이 쇼핑백으로 할게, 고마워.",
-      "tss": "",
+      "tss": "أَبِي هَالْكِيس، تِسْلَمْ.",
       "memo": "",
       "lahja": "GLF",
       "voi": "",
@@ -25722,10 +26012,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_abii-haal-kiis-tislam.mp3"
         ]
       },
-      "itemHash": "d78c164f55f143e6426519c17c01fbdfa464d13e3c7b7b9b1e9bdab04290ad12",
+      "itemHash": "f0c3227b3e83fa2a0304f539dcabaacdf5f1c66ab19f2e45126d355217f6e179",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَبِي هَالْكِيس، تِسْلَم.",
+          "korean": "이 쇼핑백으로 할게, 고마워.",
+          "tss": "",
+          "memo": "",
+          "lahja": "GLF",
+          "voi": "",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_abii-haal-kiis-tislam.wav",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/drill_abii-haal-kiis-tislam.mp3"
+            ]
+          }
+        }
       }
     },
     {
@@ -25737,7 +26044,7 @@
       "sheetStatus": "draft",
       "arabic": "أَهْلًا، مَاذَا تُرِيد؟\nأُرِيدُ الْعَصِير، مِنْ فَضْلِكَ.",
       "korean": "어서 오세요, 무엇을 드릴까요?\n주스 부탁합니다.",
-      "tss": "",
+      "tss": "أَهْلًا، مَاذَا تُرِيد؟\nأُرِيدُ الْعَصِير، مِنْ فَضْلِكَ.",
       "memo": "",
       "lahja": "MSA",
       "voi": "FM",
@@ -25749,10 +26056,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-turiid-uriidu-l-3assiir.wav"
         ]
       },
-      "itemHash": "1da2239b201b9b9ecb6c94c088c0d0266ed794146572e6a644c01e1e21cedb60",
+      "itemHash": "b629c72dc9da230a6b24b171390dcf728771f493a6fd95ae688dcbcc981dd80d",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "أَهْلًا، مَاذَا تُرِيد؟\nأُرِيدُ الْعَصِير، مِنْ فَضْلِكَ.",
+          "korean": "어서 오세요, 무엇을 드릴까요?\n주스 부탁합니다.",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "FM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-turiid-uriidu-l-3assiir.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_ahlan-maadhaa-turiid-uriidu-l-3assiir.wav"
+            ]
+          }
+        }
       }
     },
     {
@@ -25764,7 +26088,7 @@
       "sheetStatus": "draft",
       "arabic": "هَلْ تُحِبُّ هَذَا الْكِتَاب؟\nنَعَم، أُحِبُّ الْكِتَاب كَثِيرًا. رَائِع!",
       "korean": "이 책 마음에 들어요?\n네, 정말 좋아해요. 멋져요!",
-      "tss": "",
+      "tss": "هَلْ تُحِبُّ هَذَا الْكِتَاب؟\nنَعَم، أُحِبُّ الْكِتَاب كَثِيرًا. رَائِع!",
       "memo": "",
       "lahja": "MSA",
       "voi": "MM",
@@ -25776,10 +26100,27 @@
           "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-tuhhibbu-haadhaa-l-kitaab-na3am.wav"
         ]
       },
-      "itemHash": "8246e80035c2fd5dbc0d51c084f0cc4371ea70bb953112ff50bd9c74617978b0",
+      "itemHash": "612917e08f3361cd0d7dbe0a3bad6bca42400feae98fd42af1ed95872e02095d",
       "review": {
-        "state": "needs-review",
-        "changedFields": []
+        "state": "needs-recheck",
+        "changedFields": [
+          "TSS"
+        ],
+        "previous": {
+          "arabic": "هَلْ تُحِبُّ هَذَا الْكِتَاب؟\nنَعَم، أُحِبُّ الْكِتَاب كَثِيرًا. رَائِع!",
+          "korean": "이 책 마음에 들어요?\n네, 정말 좋아해요. 멋져요!",
+          "tss": "",
+          "memo": "",
+          "lahja": "MSA",
+          "voi": "MM",
+          "url": "",
+          "audio": {
+            "candidates": [
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-tuhhibbu-haadhaa-l-kitaab-na3am.mp3",
+              "https://storage.googleapis.com/all-that-arabic-145/audio/A008/nass_hal-tuhhibbu-haadhaa-l-kitaab-na3am.wav"
+            ]
+          }
+        }
       }
     },
     {
