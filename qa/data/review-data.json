@@ -1,9 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T12:15:32.624659+00:00",
+  "generatedAt": "2026-09-27T12:49:37.636652+00:00",
   "source": {
     "sheetId": "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4",
-    "tab": "데이터시트sheet"
+    "tabs": [
+      "데이터시트sheet",
+      "연습문제practice"
+    ]
   },
   "units": [
     {
@@ -34326,6 +34329,3246 @@
         ]
       },
       "itemHash": "5d2c25543f2547a40a2309a48b3ba00ec9dae196a299ed2b968c687fb4f43354",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r214",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r214",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ جَيِّدًا.\nرَائِع!",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r214.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r214.wav"
+        ]
+      },
+      "itemHash": "f4ef766acc28698cce32eaf884a726d8e29b1ffc148707dec1079e284b82ec3a",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r215",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r215",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ سَرِيعًا؟\nنَعَم، أَقْرَأُ سَرِيعًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r215.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r215.wav"
+        ]
+      },
+      "itemHash": "8a6884c9c97293ea0f0df7b6461adc1f70cee9863b4ec609537b505cf011558d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r216",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r216",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ بَطِيئًا؟\nنَعَم، أَقْرَأُ بَطِيئًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r216.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r216.wav"
+        ]
+      },
+      "itemHash": "ab07ea12857fe349f30da6dd0e13297eb93d12a125c6d060348e663080ba6c01",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r217",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r217",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَكْتُبُ سَرِيعًا الْآن.\nمَا شَاء الله!",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r217.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r217.wav"
+        ]
+      },
+      "itemHash": "92dd318097a05077e761624d53b37ba65b486ccaf63a77ddf9238aa87a30ad6c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r218",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r218",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَكْتُبُ قَلِيلًا الْآن.\nأَنَا أَيْضًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r218.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r218.wav"
+        ]
+      },
+      "itemHash": "4edbee415fc4c2d2c2b2fca46cd1495137813c738137c0fc4a9ed40a412e4a3c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r219",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r219",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَدْرُسُ كَثِيرًا؟\nنَعَم، أَدْرُسُ كَثِيرًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r219.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r219.wav"
+        ]
+      },
+      "itemHash": "0f17e6f2ff7c92cc50795815ece6a84f8b9aa29b55a111daacbb62ae20889750",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r220",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r220",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَدْرُسُ جَيِّدًا؟\nنَعَم، أَدْرُسُ جَيِّدًا جِدًّا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r220.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r220.wav"
+        ]
+      },
+      "itemHash": "74a9ab5f56bae4b1957bbf06b7d929bf9358749ef893626123f1ec85f703901d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r221",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r221",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَعْمَلُ طَوِيلًا الْيَوْم.\nطَبْعًا، أَنْتَ مَشْغُول.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r221.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r221.wav"
+        ]
+      },
+      "itemHash": "79393793fe953f00872342593e5451fbd0ae521f7bda12420c08cf34e6a7e66f",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r222",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r222",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا الْكِتَابُ صَعْبٌ قَلِيلًا.\nنَعَم، صَعْبٌ قَلِيلًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r222.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r222.wav"
+        ]
+      },
+      "itemHash": "18575a19e6898663fe4b8dc180be7432d1e2ddcb951a01b8f54edf72d59277aa",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r223",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_nassplus_r223",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا الْكِتَابُ سَهْلٌ جِدًّا.\nنَعَم، سَهْلٌ جِدًّا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r223.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r223.wav"
+        ]
+      },
+      "itemHash": "95d115f89ffd81a0f73565b02277ef6f63da9b1fc5d0e622f1bda18340505e29",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r224",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r224",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ صَبَاحًا؟\nنَعَم، أَقْرَأُ صَبَاحًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r224.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r224.wav"
+        ]
+      },
+      "itemHash": "d4201b2737ccc10a4751d47212e32998fc7d130414bc64594f1e51383354a0d7",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r225",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r225",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ مَسَاءً.\nأَنَا أَيْضًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r225.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r225.wav"
+        ]
+      },
+      "itemHash": "67247ff6dabbc0c8fe99e95e49647e1a83c8ce5a4d97a70a5cbae9b0f8906534",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r226",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r226",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَعْمَلُ؟\nأَعْمَلُ صَبَاحًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r226.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r226.wav"
+        ]
+      },
+      "itemHash": "d7114c1b0e0439149754e426964fba719e1263a48f2d1a0fa6f9f9560ee56b3d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r227",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r227",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَدْرُسُ؟\nأَدْرُسُ مَسَاءً.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r227.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r227.wav"
+        ]
+      },
+      "itemHash": "5c107cc47310d7961fbd67b5701f88d46b4b69103e2157392a39e4d75877e98e",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r228",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r228",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَكْتُبُ الْيَوْمَ؟\nنَعَم، أَكْتُبُ الْيَوْمَ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r228.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r228.wav"
+        ]
+      },
+      "itemHash": "4a1ad9bb501505879890a3ee166b0f514c5066f90512d161957d18c3d9780682",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r229",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r229",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ الْآنَ؟\nنَعَم، أَقْرَأُ الْآنَ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r229.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r229.wav"
+        ]
+      },
+      "itemHash": "246c88f6fe5bba0c777ef52cf75c5f17e08224bdc060041539708c93134c9edd",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r230",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r230",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ صَبَاحًا وَأَدْرُسُ مَسَاءً.\nرَائِع!",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r230.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r230.wav"
+        ]
+      },
+      "itemHash": "9a71d445cab5786428c400244ad04f48be955a4671b99b6785cf6240edfc3279",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r231",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r231",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَقْرَأُ؟\nأَقْرَأُ غَدًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r231.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r231.wav"
+        ]
+      },
+      "itemHash": "fd1be1ba15cf62ea67e9e7c72688198d349f01db7c3dc740fa488ce82dcbda0e",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r232",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r232",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَاذَا تَفْعَلُ الْيَوْمَ؟\nأَعْمَلُ الْيَوْمَ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r232.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r232.wav"
+        ]
+      },
+      "itemHash": "06c8bb94079efd120c3a66724cdc9cb9c3e592104674265e93d35fe828b5bbfe",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r233",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_nassplus_r233",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ غَدًا صَبَاحًا.\nإِنْ شَاء الله.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r233.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r233.wav"
+        ]
+      },
+      "itemHash": "8ac7dfd9694d8bbcc1e8468c07a0c89d11b9fdb935fea326e6652e37c855c19c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r234",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r234",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ دَائِمًا؟\nنَعَم، أَقْرَأُ دَائِمًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r234.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r234.wav"
+        ]
+      },
+      "itemHash": "b0d928b795c5d40c7ab04a698800dbaabd33a108e69f24d61b8259dbaa3aa089",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r235",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r235",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَشْرَبُ الشَّايَ دَائِمًا؟\nنَعَم، أَشْرَبُهُ دَائِمًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r235.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r235.wav"
+        ]
+      },
+      "itemHash": "53f32c32cc17de501df097ecab229d2bfe44cd80a65608a4e8915a9107e244a3",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r236",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r236",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ غَالِبًا مَسَاءً.\nأَنَا أَيْضًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r236.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r236.wav"
+        ]
+      },
+      "itemHash": "50d446546a7b360f4b87b3171b0dd11a1243a3f2c147ceddd43eaf7a25eabd93",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r237",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r237",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَدْرُسُ غَالِبًا صَبَاحًا؟\nنَعَم، أَدْرُسُ غَالِبًا صَبَاحًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r237.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r237.wav"
+        ]
+      },
+      "itemHash": "c2de868dc7dd8b935e8f95b80a0030d79b49e455d8ceb9da029e6c2e7fab2c90",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r238",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r238",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ أَحْيَانًا.\nأَنَا كَمَان.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r238.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r238.wav"
+        ]
+      },
+      "itemHash": "29f602c364bdfe81ae25e9e7e7caa7afe6cf24fe390a6bd64b57de28afc2264c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r239",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r239",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَعْمَلُ أَحْيَانًا مَسَاءً؟\nنَعَم، أَعْمَلُ أَحْيَانًا مَسَاءً.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r239.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r239.wav"
+        ]
+      },
+      "itemHash": "8cd8728bbb001c037d01afa19d5cc938f4e691b12fd3a90fbaf13fba5db64b1f",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r240",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r240",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ نَادِرًا مَسَاءً.\nطَبْعًا، أَفْهَمُ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r240.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r240.wav"
+        ]
+      },
+      "itemHash": "1ab09b7bb54535a17756e9a5a73e758af5c8f016f3d6bcba8794d468fbf3d628",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r241",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r241",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَشْرَبُ الْقَهْوَةَ نَادِرًا؟\nنَعَم، أَشْرَبُهَا نَادِرًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r241.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r241.wav"
+        ]
+      },
+      "itemHash": "638a50589465c225d0573799b25b5a643c9fc55c42bb97a1535f2be37d6c3b3d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r242",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r242",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَعْمَلُ دَائِمًا صَبَاحًا.\nرَائِع!",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r242.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r242.wav"
+        ]
+      },
+      "itemHash": "9d37ff7fd95a09c904d1c25b388d20bdf5f070113a65ef8a8d43bf5133d42eda",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_nassplus_r243",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_nassplus_r243",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ غَالِبًا مَسَاءً، وَأَدْرُسُ أَحْيَانًا صَبَاحًا.\nمُمْتَاز!",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r243.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_nassplus_r243.wav"
+        ]
+      },
+      "itemHash": "2a7eb835432c24987a4e9da16b20980cc3693cf44e6ac19417e6bea4ca26eea8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r244",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r244",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ جَيِّدًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَقْرَأُ جَيِّدًا. · نَعَم، أَقْرَأُ صَبَاحًا. · أُرِيدُ جَرِيدَةً.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r244.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r244.wav"
+        ]
+      },
+      "itemHash": "3bc6bc8bf4e3f7fa3731590ab12a12d528891a35b9153b21afe7fca5e18577ad",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r245",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r245",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَكْتُبُ سَرِيعًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَكْتُبُ سَرِيعًا. · نَعَم، أَكْتُبُ غَدًا. · أُحِبُّ الرِّسَالَةَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r245.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r245.wav"
+        ]
+      },
+      "itemHash": "ddb538e4dc852620eca1e861a9b9b44bc7f5ca0a2a6d08834c9063e1e0c500ff",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r246",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r246",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "كَيْفَ تَقْرَأُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَقْرَأُ بَطِيئًا. · أَقْرَأُ مَسَاءً. · أَقْرَأُ دَائِمًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r246.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r246.wav"
+        ]
+      },
+      "itemHash": "4fb36bf6077d3d90acf5374431ca5dfdc45dfb7aaf2a8b41784a257ad194ec2d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r247",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r247",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَدْرُسُ كَثِيرًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَدْرُسُ كَثِيرًا. · نَعَم، أَدْرُسُ غَدًا. · أَدْرُسُ نَادِرًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r247.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r247.wav"
+        ]
+      },
+      "itemHash": "70addeefb7ea531e28f381db361115532f1182d220b7fde0d68199a59dcdd02b",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r248",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r248",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَعْمَلُ سَرِيعًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَعْمَلُ سَرِيعًا. · نَعَم، أَعْمَلُ مَسَاءً. · أُرِيدُ حِسَابًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r248.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r248.wav"
+        ]
+      },
+      "itemHash": "0933e9cab15e18d47fdd65450c3f4a019ebf76fa2c8efad575b9485b64ba7d52",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r249",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r249",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "كَيْفَ تَكْتُبُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَكْتُبُ جَيِّدًا. · أَكْتُبُ الْآن. · أَكْتُبُ أَحْيَانًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r249.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r249.wav"
+        ]
+      },
+      "itemHash": "725d59c5f94abcb3dc939539febff1c1caefe17e6c331ef19fc99e5bfde4deb5",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r250",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r250",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ هَذَا الْكِتَابُ سَهْلٌ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، سَهْلٌ جِدًّا. · نَعَم، أَقْرَؤُهُ غَدًا. · أَقْرَأُهُ دَائِمًا.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r250.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r250.wav"
+        ]
+      },
+      "itemHash": "794fd58fd2826d13b360c85c4673db32c5b1a1a46b8a1ab7d0e05df8c79ad7cb",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r251",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r251",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ هَذَا الْكِتَابُ صَعْبٌ جِدًّا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، صَعْبٌ جِدًّا. · نَعَم، أَدْرُسُ صَبَاحًا. · أُرِيدُ كِتَابًا.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r251.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r251.wav"
+        ]
+      },
+      "itemHash": "78aa6c92a456643d49c7a530179eb75f7b26e1ffb1a3aa11a1c581e974f4c011",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r252",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r252",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَكْتُبُ قَلِيلًا الْآن.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا أَيْضًا، أَكْتُبُ قَلِيلًا. · أَنَا أَيْضًا، أَكْتُبُ غَدًا. · أُحِبُّ الْكِتَابَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r252.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r252.wav"
+        ]
+      },
+      "itemHash": "c01f6478e3d624277c7acffea2953df002133836eea4010c9696667b84c87b5d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r253",
+      "u": "A009",
+      "ptn": "ptn026",
+      "id": "practice_lc_r253",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ سَرِيعًا جِدًّا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: مَا شَاء الله! · صَبَاحَ النُّور. · إِلَى الْغَدِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r253.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r253.wav"
+        ]
+      },
+      "itemHash": "f611808072974f1d9f1bdd0d5c6ace9b4c3325685ceac9be1b245e7c0b71bf26",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r254",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r254",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ صَبَاحًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَقْرَأُ صَبَاحًا. · نَعَم، أَقْرَأُ جَيِّدًا. · أُحِبُّ الْجَرِيدَةَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r254.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r254.wav"
+        ]
+      },
+      "itemHash": "b2dfb794464e5ac55119f4aa54b92eeb36c7d2c0119cdb22f65376784b9c222e",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r255",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r255",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَدْرُسُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَدْرُسُ مَسَاءً. · أَدْرُسُ كَثِيرًا. · أُرِيدُ كِتَابًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r255.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r255.wav"
+        ]
+      },
+      "itemHash": "ff9186592d951244cb4ca2904e728d27b9838999ee9e23b136f1092bd17e322e",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r256",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r256",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَعْمَلُ الْيَوْمَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَعْمَلُ الْيَوْمَ. · نَعَم، أَعْمَلُ سَرِيعًا. · أُحِبُّ الْعَمَلَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r256.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r256.wav"
+        ]
+      },
+      "itemHash": "33a03aa3013d60f2192c997583377baee3b9258094ef9b588d8b3633d444428f",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r257",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r257",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَقْرَأُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَقْرَأُ غَدًا. · أَقْرَأُ جَيِّدًا. · أَقْرَأُ دَائِمًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r257.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r257.wav"
+        ]
+      },
+      "itemHash": "dcb962941864837722917cb52e10732d6b06c580bd854777cf4ad66a13f0a8c8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r258",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r258",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَكْتُبُ الْآنَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَكْتُبُ الْآنَ. · نَعَم، أَكْتُبُ سَرِيعًا. · أُحِبُّ الرِّسَالَةَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r258.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r258.wav"
+        ]
+      },
+      "itemHash": "7b3e640a60b0292ca2cd0c700328043ceb95c2ffc773f5d2c90901c34cc2c9d2",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r259",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r259",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَعْمَلُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَعْمَلُ صَبَاحًا. · أَعْمَلُ جَيِّدًا. · أَعْمَلُ غَالِبًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r259.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r259.wav"
+        ]
+      },
+      "itemHash": "d4a8ca40ddcbb25bc0b5ad6082ab860fcba8c8d9848a2b76d4ade0e1571aa444",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r260",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r260",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ غَدًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا أَيْضًا، أَدْرُسُ غَدًا. · أَنَا أَيْضًا، أَدْرُسُ كَثِيرًا. · صَبَاحُ النُّور.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r260.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r260.wav"
+        ]
+      },
+      "itemHash": "a0c1bed81d54d728835bfd7b8f7c5248719ea68c9eefd995e112df30e8adf292",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r261",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r261",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ مَسَاءً.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا كَمَان، أَقْرَأُ مَسَاءً. · أَنَا كَمَان، أَقْرَأُ سَرِيعًا. · أُرِيدُ جَرِيدَةً.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r261.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r261.wav"
+        ]
+      },
+      "itemHash": "a6270aaada2ef6748f8e5a7d466e52feb412ffd3f7cc8c203f7a16d59acd86e1",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r262",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r262",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَاذَا تَفْعَلُ الْيَوْمَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَعْمَلُ الْيَوْمَ. · أَعْمَلُ جَيِّدًا. · أَعْمَلُ نَادِرًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r262.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r262.wav"
+        ]
+      },
+      "itemHash": "a0ffad7c76b505830279437d3d3116f709699ac5fe559003b4d0035ad78ec990",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r263",
+      "u": "A009",
+      "ptn": "ptn027",
+      "id": "practice_lc_r263",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ غَدًا صَبَاحًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: إِنْ شَاء الله. · مَا شَاء الله. · طَبْعًا، أَدْرُسُ كَثِيرًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r263.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r263.wav"
+        ]
+      },
+      "itemHash": "c15f1ed481d03899c42480e3f3db2750320f16487e4a9c8463ca9742e7e575ba",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r264",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r264",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ دَائِمًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَقْرَأُ دَائِمًا. · نَعَم، أَقْرَأُ صَبَاحًا. · أُرِيدُ جَرِيدَةً.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r264.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r264.wav"
+        ]
+      },
+      "itemHash": "c0b8702863379fe0e44ab42e5097565759e9a1b509f96ec8e3284f3edb34408c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r265",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r265",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَشْرَبُ الشَّايَ دَائِمًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَشْرَبُهُ دَائِمًا. · نَعَم، أَشْرَبُهُ سَرِيعًا. · أُحِبُّ الْقَهْوَةَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r265.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r265.wav"
+        ]
+      },
+      "itemHash": "ba36031939d6aab627477bc2ea20f9bbcd288b737c9270c3b8d3e58cd31d978d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r266",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r266",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مَتَى تَقْرَأُ غَالِبًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَقْرَأُ غَالِبًا مَسَاءً. · أَقْرَأُ جَيِّدًا. · أَقْرَأُ غَدًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r266.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r266.wav"
+        ]
+      },
+      "itemHash": "67e68ff4900002063a28ac8c85ed18637fd53c8631d0533d3e029d647f97cc56",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r267",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r267",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَدْرُسُ أَحْيَانًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَدْرُسُ أَحْيَانًا. · نَعَم، أَدْرُسُ مَسَاءً. · أُرِيدُ كِتَابًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r267.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r267.wav"
+        ]
+      },
+      "itemHash": "2608f43e097b2c2a3f8b35f04c9705898abb3a4628431e7e3406ec62a1966746",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r268",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r268",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَعْمَلُ نَادِرًا مَسَاءً؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَعْمَلُ نَادِرًا مَسَاءً. · نَعَم، أَعْمَلُ سَرِيعًا. · أَعْمَلُ غَدًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r268.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r268.wav"
+        ]
+      },
+      "itemHash": "fcb17dc4c94b276f2399a43f834cba3c54fdee2e37d11f2812a196c50dde866d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r269",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r269",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَقْرَأُ غَالِبًا مَسَاءً.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا أَيْضًا، أَقْرَأُ غَالِبًا مَسَاءً. · أَنَا أَيْضًا، أَقْرَأُ صَبَاحًا. · أُحِبُّ الْجَرِيدَةَ.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r269.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r269.wav"
+        ]
+      },
+      "itemHash": "d83bac2d76ed5c2c9f44b205db581b27496dca92afe5bbbf3cfc8c7277ad94dc",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r270",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r270",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ أَحْيَانًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا كَمَان، أَدْرُسُ أَحْيَانًا. · أَنَا كَمَان، أَدْرُسُ جَيِّدًا. · إِنْ شَاء الله.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r270.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r270.wav"
+        ]
+      },
+      "itemHash": "ed775d42d6c471609359e97d011d385fe7a3463ec085544c549a5e320757185a",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r271",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r271",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَقْرَأُ نَادِرًا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَقْرَأُ نَادِرًا. · نَعَم، أَقْرَأُ الْآنَ. · أُرِيدُ كِتَابًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r271.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r271.wav"
+        ]
+      },
+      "itemHash": "3b70ad4cc37e9494ca0ec681db6dd87952df3087b366b69af4f639a06299fe91",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r272",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r272",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَعْمَلُ دَائِمًا صَبَاحًا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا أَيْضًا، أَعْمَلُ دَائِمًا صَبَاحًا. · أَنَا أَيْضًا، أَعْمَلُ سَرِيعًا. · أَعْمَلُ غَدًا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r272.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r272.wav"
+        ]
+      },
+      "itemHash": "4fcb8e3a5e1112c7348888781299eec1faef00e091440ef7be56ab2ef18426b8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A009/practice_lc_r273",
+      "u": "A009",
+      "ptn": "ptn028",
+      "id": "practice_lc_r273",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَدْرُسُ غَالِبًا مَسَاءً.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا كَمَان، أَدْرُسُ غَالِبًا مَسَاءً. · أَنَا كَمَان، أَدْرُسُ جَيِّدًا. · صَبَاحَ النُّور.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r273.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A009/practice_lc_r273.wav"
+        ]
+      },
+      "itemHash": "c3c0ca1b3735ddb0bcc12196ca28848804d0b55c7fa839f7edfce9df5307c496",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r274",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r274",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ أَنْتَ؟\nأَنَا فِي الْفُنْدُقِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r274.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r274.wav"
+        ]
+      },
+      "itemHash": "44930ad5e74c9bad0a66604fc348202d5aadbf8cb8bf8191f9d8bde7eea02c2e",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r275",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r275",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مِنْ أَيِّ بَلَدٍ أَنْتَ؟\nأَنَا مِنْ كُورِيَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r275.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r275.wav"
+        ]
+      },
+      "itemHash": "897ecbe8c10f3d0dd6c9c67e36bb3f6f56dce03275056c05b07461f21aa0e23c",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r276",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r276",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "بِمَاذَا تَكْتُبُ؟\nأَكْتُبُ بِالْقَلَمِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r276.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r276.wav"
+        ]
+      },
+      "itemHash": "6b5de29e383273d69e6d1feff142488ad8f9e9e96bceb3aa5a54c5a74c6b4551",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r277",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r277",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ هُوَ؟\nهُوَ فِي الشَّرِكَةِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r277.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r277.wav"
+        ]
+      },
+      "itemHash": "57a184e56c1f5cb4991a017016df61bd3672614ca73569f2c5f111bfdfd85548",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r278",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r278",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "السُّؤَالُ عَنْ مَاذَا؟\nالسُّؤَالُ عَنِ الْمَطْعَمِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r278.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r278.wav"
+        ]
+      },
+      "itemHash": "4c06ede67901478b46e6695b9b97e051269c562d6b49ee1bbfe1f898965dfddd",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r279",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r279",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لِمَنْ؟\nهَذَا لِلطَّالِبِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r279.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r279.wav"
+        ]
+      },
+      "itemHash": "14f7b948f3dc0bb8a8beafbc0ba9ae17a6db91aecfef18d7c943f8e8a17ea58d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r280",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r280",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ الْمَرْكَزُ؟\nالْمَرْكَزُ فِي هَذِهِ الْمَدِينَةِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r280.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r280.wav"
+        ]
+      },
+      "itemHash": "0db129073bf7d83a37dfe5391d6206a78c635413a8eb7e7bb2cb7a7058afc45a",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r281",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r281",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَذْهَبُ إِلَى الْمَطَارِ؟\nنَعَم، أَذْهَبُ إِلَى الْمَطَارِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r281.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r281.wav"
+        ]
+      },
+      "itemHash": "51e85294b00870999c9a2e74cae0cf746cfc070fbc87251130510bb50a6824c2",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r282",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r282",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ الْفُنْدُقُ؟\nالْفُنْدُقُ قَرِيبٌ مِنَ الْمَطَارِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r282.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r282.wav"
+        ]
+      },
+      "itemHash": "a0673a07a4b2051c103fed1f9380d12565617f3abb799bea8f28d86a7780c762",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r283",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_nassplus_r283",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ تَدْرُسُ؟\nأَدْرُسُ فِي الْجَامِعَةِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r283.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r283.wav"
+        ]
+      },
+      "itemHash": "8039acc93f32bf6cd7ddd5be42d8d7e99366a93c7d65cd8763ec8b1d77076a67",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r284",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r284",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "فِي أَيِّ فُنْدُقٍ أَنْتَ؟\nأَنَا فِي فُنْدُقٍ قَرِيبٍ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r284.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r284.wav"
+        ]
+      },
+      "itemHash": "7e3eca7a8f704d8481f48388f8f6efc4eba6a31c3d5fe73e7c35ba117ad77f14",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r285",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r285",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "فِي أَيِّ مَرْكَزٍ تَعْمَلُ؟\nأَعْمَلُ فِي مَرْكَزٍ قَرِيبٍ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r285.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r285.wav"
+        ]
+      },
+      "itemHash": "6dcb15a5028ddf56eac2065352e59398b1dd1d85b9aa369740d5b585ea12ceac",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r286",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r286",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِلَى أَيِّ مَطَارٍ تَذْهَبُ؟\nأَذْهَبُ إِلَى مَطَارِ سِيُولَ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r286.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r286.wav"
+        ]
+      },
+      "itemHash": "4d2696ed96772d0febf6c057cb7cc35f07935136d89c5c5f7f46710e63317adf",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r287",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r287",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِلَى أَيْنَ تَذْهَبُ؟ \nأَذْهَبُ إِلَى الْمَطْعَمِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r287.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r287.wav"
+        ]
+      },
+      "itemHash": "6aefcb7247af729a74b9a6b60524fbd5e6cbbe37da748c407cf60acfc8e4393b",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r288",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r288",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "بِأَيِّ قَلَمٍ تَكْتُبُ؟\nأَكْتُبُ بِهَذَا الْقَلَمِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r288.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r288.wav"
+        ]
+      },
+      "itemHash": "15e37d701bcad1fe9ef3697bf549a2ba7332c4798500276adbea16a4b1a10fe6",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r289",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r289",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ مَاذَا السُّؤَالُ؟\nالسُّؤَالُ عَنِ الْمَطْعَمِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r289.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r289.wav"
+        ]
+      },
+      "itemHash": "96d0cf021d5ea570a73c0539446c7e082663a0873f948b22e1b95dfbb0edb8b0",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r290",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r290",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ مَاذَا تَسْأَلُ؟\nأَسْأَلُ عَنِ الْمَطَارِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r290.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r290.wav"
+        ]
+      },
+      "itemHash": "57a2bd1b7b3ec0931cfb16e06693ecd9e96bb10b5ada9294ec81a0c8ff1069e7",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r291",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r291",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "لِأَيِّ شَرِكَةٍ هَذَا؟\nهَذَا لِهَذِهِ الشَّرِكَةِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r291.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r291.wav"
+        ]
+      },
+      "itemHash": "d0cdde1d166cd807714d328bb6ec7f83533381c7a736cad35512a7538c2a1e32",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r292",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r292",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "لِأَيِّ بَلَدٍ هَذَا الْمَطَارُ؟\nهَذَا الْمَطَارُ لِهَذَا الْبَلَدِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r292.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r292.wav"
+        ]
+      },
+      "itemHash": "6cd15e61446f535ffbfb21579d8aa4778a65d04707914af28c5ba2d587dba81d",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r293",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_nassplus_r293",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ أَيِّ مَوْضُوعٍ السُّؤَالُ؟\nالسُّؤَالُ عَنْ هَذَا الْمَوْضُوعِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r293.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r293.wav"
+        ]
+      },
+      "itemHash": "240ea6c8274c6bec433eb322d570f3c79927a18703e9b8d9099058bc45f22fd5",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r294",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r294",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لَكَ؟\nنَعَم، هَذَا لِي.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r294.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r294.wav"
+        ]
+      },
+      "itemHash": "bf63efe4fa00259db8ad28452cb7cfc606b16779151aab4265e96762bba044cf",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r295",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r295",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الرِّسَالَةُ مِنْهَا؟\nنَعَم، الرِّسَالَةُ مِنْهَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r295.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r295.wav"
+        ]
+      },
+      "itemHash": "7d212af55d5801d1ea498af85d0a94a7b339efa7b20f791fc9e7332ccdfe7603",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r296",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r296",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لَكَ؟\nلَا، هَذَا لَهُ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r296.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r296.wav"
+        ]
+      },
+      "itemHash": "169c40bdfdd6d1c0a795534f73c1f73aa32f9e55a413580f02a195ef3f2f8021",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r297",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r297",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذِهِ لَهَا؟\nنَعَم، هَذِهِ لَهَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r297.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r297.wav"
+        ]
+      },
+      "itemHash": "8fb13d8f2207f682fe481c6822527b9f479729da0a498d65507aa65fb6981790",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r298",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r298",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الْكِتَابُ لَهُ؟\nنَعَم، الْكِتَابُ لَهُ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r298.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r298.wav"
+        ]
+      },
+      "itemHash": "032fbdd346f5a1df38f4bb3d8a699dac5c12cc2bc5ca575475c0206f65f323ff",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r299",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r299",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الْكِتَابُ لِمَنْ؟\nالْكِتَابُ لَهُ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r299.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r299.wav"
+        ]
+      },
+      "itemHash": "3c2bcbf3e69329ca12e35225eb6c27269e3cb43f1d7d340f98e27d4554451759",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r300",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r300",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ الرِّسَالَةُ لَهَا؟\nنَعَم، الرِّسَالَةُ لَهَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r300.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r300.wav"
+        ]
+      },
+      "itemHash": "869c62ce318208b49fc682f552759748afe18b93dbc2a7d290dcd8fa4ba3a362",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r301",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r301",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "تَكْتُبُ بِمَاذَا؟\nأَكْتُبُ بِهِ.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r301.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r301.wav"
+        ]
+      },
+      "itemHash": "e8e13c11c87c3308a94850b543aa719b507f2912225cb519244e2bd54f61612a",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r302",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r302",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا الْقَلَمُ لَهَا؟\nنَعَم، الْقَلَمُ لَهَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r302.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r302.wav"
+        ]
+      },
+      "itemHash": "7764e35ca856669b0ed5e9dde7210df30119496f23ff41cdbf6d6a22ded4d306",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_nassplus_r303",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_nassplus_r303",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الرِّسَالَةُ لِمَنْ؟\nالرِّسَالَةُ لَهَا.",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · 추가지문",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r303.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_nassplus_r303.wav"
+        ]
+      },
+      "itemHash": "be7124b94505e40515042f3b5b9c22502f14447f8227a82e23c09e57555ae104",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r304",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r304",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ أَنْتَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا فِي الْفُنْدُقِ. · أَنَا مِنَ الْفُنْدُقِ. · أَنَا عَنِ الْفُنْدُقِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r304.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r304.wav"
+        ]
+      },
+      "itemHash": "0d8f6024e7c9b1923f05502274452a2c2aa3b034b7b05c99f2d47a2481f81063",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r305",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r305",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "مِنْ أَيِّ بَلَدٍ أَنْتَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا مِنْ كُورِيَا. · أَنَا فِي كُورِيَا. · أَنَا لِكُورِيَا.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r305.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r305.wav"
+        ]
+      },
+      "itemHash": "cfa39f8484b85a0bb8b7b5a86b2184dbe8cdcc981815d06e45aa2229bed93d27",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r306",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r306",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "بِمَاذَا تَكْتُبُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَكْتُبُ بِالْقَلَمِ. · أَكْتُبُ فِي الْقَلَمِ. · أَكْتُبُ مِنَ الْقَلَمِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r306.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r306.wav"
+        ]
+      },
+      "itemHash": "4c5e1f668c52fda57657585431136437a16f263d869160889cfda3bbb8532515",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r307",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r307",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ هُوَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: هُوَ فِي الشَّرِكَةِ. · هُوَ عَنِ الشَّرِكَةِ. · هُوَ مِنَ الشَّرِكَةِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r307.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r307.wav"
+        ]
+      },
+      "itemHash": "975d4e0f788d8a224f76e9698a526f7d48621f29b4c6f8c1a56e216f08ec3ad1",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r308",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r308",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "السُّؤَالُ عَنْ مَاذَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: السُّؤَالُ عَنِ الْمَطْعَمِ. · السُّؤَالُ فِي الْمَطْعَمِ. · السُّؤَالُ مِنَ الْمَطْعَمِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r308.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r308.wav"
+        ]
+      },
+      "itemHash": "ddbd72f1cdb2a67d55cdefd05730e7f48e8624c923c24a3a20d3eed39eb7b89b",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r309",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r309",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لِمَنْ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: هَذَا لِلطَّالِبِ. · هَذَا مِنَ الطَّالِبِ. · هَذَا فِي الطَّالِبِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r309.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r309.wav"
+        ]
+      },
+      "itemHash": "2bd05092ace3c4660689712b4048ad2c62a47e45e5b5e83d001935b358123dbf",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r310",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r310",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ الْمَرْكَزُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: الْمَرْكَزُ فِي هَذِهِ الْمَدِينَةِ. · الْمَرْكَزُ مِنْ هَذِهِ الْمَدِينَةِ. · الْمَرْكَزُ لِهَذِهِ الْمَدِينَةِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r310.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r310.wav"
+        ]
+      },
+      "itemHash": "3af8431d4421cf05a1a818e584f9c307eaf3b46da3e0be952940d971e8bbd7f9",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r311",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r311",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ تَذْهَبُ إِلَى الْمَطَارِ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، أَذْهَبُ إِلَى الْمَطَارِ. · نَعَم، أَذْهَبُ فِي الْمَطَارِ. · نَعَم، أَذْهَبُ عَنِ الْمَطَارِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r311.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r311.wav"
+        ]
+      },
+      "itemHash": "418c31e946c41ab52ed301c76018fa84141d4791c0b90cf0b437b3aa0adcf830",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r312",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r312",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ الْفُنْدُقُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: الْفُنْدُقُ قَرِيبٌ مِنَ الْمَطَارِ. · الْفُنْدُقُ قَرِيبٌ لِلْمَطَارِ. · الْفُنْدُقُ قَرِيبٌ عَلَى الْمَطَارِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r312.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r312.wav"
+        ]
+      },
+      "itemHash": "272d2ff287461b457bacc5b9bc31a33d7c6078ba749b62d077bfb6b718a8bc42",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r313",
+      "u": "A010",
+      "ptn": "ptn029",
+      "id": "practice_lc_r313",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "أَيْنَ تَدْرُسُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَدْرُسُ فِي الْجَامِعَةِ. · أَدْرُسُ مِنَ الْجَامِعَةِ. · أَدْرُسُ عَنِ الْجَامِعَةِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r313.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r313.wav"
+        ]
+      },
+      "itemHash": "609d78e346499db5da25f197ac73a54b97a5ab2c1c84b1a6c9e1bb3c5114a736",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r314",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r314",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِلَى أَيِّ مَطَارٍ تَذْهَبُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَذْهَبُ إِلَى مَطَارِ سِيُولَ. · أَذْهَبُ فِي مَطَارِ سِيُولَ. · أَذْهَبُ مِنْ مَطَارِ سِيُولَ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r314.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r314.wav"
+        ]
+      },
+      "itemHash": "c036c3d41029f710978310d0640416034eed2c5a965673aedcde200dd03df6cc",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r315",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r315",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "بِأَيِّ قَلَمٍ تَكْتُبُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَكْتُبُ بِهَذَا الْقَلَمِ. · أَكْتُبُ فِي هَذَا الْقَلَمِ. · أَكْتُبُ مِنْ هَذَا الْقَلَمِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r315.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r315.wav"
+        ]
+      },
+      "itemHash": "c62449c33ed34cfe89770c956d059fa4f44b05a3a35a71b7ca7e5522a01d72cb",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r316",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r316",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ مَاذَا السُّؤَالُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: السُّؤَالُ عَنِ الْمَطْعَمِ. · السُّؤَالُ فِي الْمَطْعَمِ. · السُّؤَالُ مِنَ الْمَطْعَمِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r316.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r316.wav"
+        ]
+      },
+      "itemHash": "c53d09f3531a0cefc37a1b227eaeff2473fc1a14210d8999e021defc24daa671",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r317",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r317",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "لِأَيِّ شَرِكَةٍ هَذَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: هَذَا لِهَذِهِ الشَّرِكَةِ. · هَذَا فِي هَذِهِ الشَّرِكَةِ. · هَذَا مِنْ هَذِهِ الشَّرِكَةِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r317.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r317.wav"
+        ]
+      },
+      "itemHash": "a419f4360602b0564fab025122356371db16908e04ea545e048103edafc0dcac",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r318",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r318",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "فِي أَيِّ مَرْكَزٍ تَعْمَلُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَعْمَلُ فِي مَرْكَزٍ قَرِيبٍ. · أَعْمَلُ إِلَى مَرْكَزٍ قَرِيبٍ. · أَعْمَلُ عَنْ مَرْكَزٍ قَرِيبٍ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r318.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r318.wav"
+        ]
+      },
+      "itemHash": "6a661e0d205ad95497c781e2b03974c363a43b51d169a1f79a976c2d3b3f39fa",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r319",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r319",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ مَاذَا تَسْأَلُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَسْأَلُ عَنِ الْمَطَارِ. · أَسْأَلُ فِي الْمَطَارِ. · أَسْأَلُ إِلَى الْمَطَارِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r319.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r319.wav"
+        ]
+      },
+      "itemHash": "78ed12e0b4be2415613c74bda32276e399852142c52d463ad46775679a7db0f4",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r320",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r320",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "إِلَى أَيْنَ تَذْهَبُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَذْهَبُ إِلَى الْمَطْعَمِ. · أَذْهَبُ عَنِ الْمَطْعَمِ. · أَذْهَبُ بِالْمَطْعَمِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r320.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r320.wav"
+        ]
+      },
+      "itemHash": "e9af81931f153df450e55a48cee522afd9966d098be0a4f0be4466e13ac903f8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r321",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r321",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "لِأَيِّ بَلَدٍ هَذَا الْمَطَارُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: هَذَا الْمَطَارُ لِهَذَا الْبَلَدِ. · هَذَا الْمَطَارُ فِي هَذَا الْبَلَدِ. · هَذَا الْمَطَارُ بِهَذَا الْبَلَدِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r321.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r321.wav"
+        ]
+      },
+      "itemHash": "19a8e72a6ff79b1cedba773281579fd84b85ba66ac2d217ff37f741d3b9a81fe",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r322",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r322",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "فِي أَيِّ فُنْدُقٍ أَنْتَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَنَا فِي فُنْدُقٍ قَرِيبٍ. · أَنَا إِلَى فُنْدُقٍ قَرِيبٍ. · أَنَا عَنِ فُنْدُقٍ قَرِيبٍ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r322.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r322.wav"
+        ]
+      },
+      "itemHash": "a795eefa43e6ba9d94d5dba2b368f07c4fc5dc058edf68219eceb74e0f75dfb6",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r323",
+      "u": "A010",
+      "ptn": "ptn030",
+      "id": "practice_lc_r323",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "عَنْ أَيِّ مَوْضُوعٍ السُّؤَالُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: السُّؤَالُ عَنْ هَذَا الْمَوْضُوعِ. · السُّؤَالُ فِي هَذَا الْمَوْضُوعِ. · السُّؤَالُ بِهَذَا الْمَوْضُوعِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r323.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r323.wav"
+        ]
+      },
+      "itemHash": "e785d092e9d5f90705b86e8e33693268d8376645fc480aa7f0d01194e951fd60",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r324",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r324",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لَكَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، هَذَا لِي. · نَعَم، هَذَا مِنِّي. · نَعَم، هَذَا بِهِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r324.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r324.wav"
+        ]
+      },
+      "itemHash": "017f8e5d3fe3fa78b66624249a48a6c30fca2ba8542d84834bdf6365f450abd3",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r325",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r325",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الْكِتَابُ لِمَنْ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: الْكِتَابُ لَهُ. · الْكِتَابُ بِهِ. · الْكِتَابُ مِنْهُ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r325.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r325.wav"
+        ]
+      },
+      "itemHash": "3c560f47deaa00b02a619e3e62dabaa0beb842e45085df8fecc2b0e4e5d63ac8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r326",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r326",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الرِّسَالَةُ لِمَنْ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: الرِّسَالَةُ لَهَا. · الرِّسَالَةُ بِهَا. · الرِّسَالَةُ مِنْهَا.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r326.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r326.wav"
+        ]
+      },
+      "itemHash": "2edcf86c68c86222a339c32f074a71527124111f9adb046c18c5f60bef91f967",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r327",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r327",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ الْكِتَابُ لَهُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، الْكِتَابُ لَهُ. · نَعَم، الْكِتَابُ بِهِ. · نَعَم، الْكِتَابُ مِنْهُ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r327.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r327.wav"
+        ]
+      },
+      "itemHash": "db773bb2ea745ca0da93a95d159bd02ec6c40100220fb4e4ad3c8756617325c8",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r328",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r328",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ الرِّسَالَةُ لَهَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، الرِّسَالَةُ لَهَا. · نَعَم، الرِّسَالَةُ مِنْهَا. · نَعَم، الرِّسَالَةُ بِهَا.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r328.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r328.wav"
+        ]
+      },
+      "itemHash": "c98cfbce169d104e30e1a3109aaf3692d52d0e19da212ac1e7a004002c0f4800",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r329",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r329",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَلْ الرِّسَالَةُ مِنْهُ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، الرِّسَالَةُ مِنْهُ. · نَعَم، الرِّسَالَةُ لَهُ. · نَعَم، الرِّسَالَةُ بِهِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r329.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r329.wav"
+        ]
+      },
+      "itemHash": "dd34050c48eb367958f15529f161f2ed6a96cd786f77217a2a3020e5a0f9adae",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r330",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r330",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "تَكْتُبُ بِمَاذَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: أَكْتُبُ بِهِ. · أَكْتُبُ لَهُ. · أَكْتُبُ مِنْهُ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r330.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r330.wav"
+        ]
+      },
+      "itemHash": "6893e64baf9b26009b2a8e8cbbbb6d0caf641f650052be136d32f311d44b81c5",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r331",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r331",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "الرِّسَالَةُ مِنْهَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: لَا، الرِّسَالَةُ مِنْهُ. · نَعَم، الرِّسَالَةُ مِنْهُ. · نَعَم، الرِّسَالَةُ لَهُ.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r331.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r331.wav"
+        ]
+      },
+      "itemHash": "a1f157f47e023769fd42e49893977830df457443d807f16f6a130329858ddb89",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r332",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r332",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا لَكَ؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: لَا، هَذَا لَهُ. · لَا، هَذَا مِنْهُ. · لَا، هَذَا بِهِ.",
+      "lahja": "MSA",
+      "voi": "MM",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r332.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r332.wav"
+        ]
+      },
+      "itemHash": "b1f1f8525474a47fbc7077a71dc3bd7a97d13d5ded3ba3fffb9fa8426acbb6b6",
+      "review": {
+        "state": "needs-review",
+        "changedFields": []
+      }
+    },
+    {
+      "key": "A010/practice_lc_r333",
+      "u": "A010",
+      "ptn": "ptn031",
+      "id": "practice_lc_r333",
+      "type": "nass+",
+      "sheetStatus": "draft",
+      "arabic": "هَذَا الْقَلَمُ لَهَا؟",
+      "korean": "",
+      "tss": "",
+      "memo": "연습문제practice · L/C 연습문제 · 선택지: نَعَم، الْقَلَمُ لَهَا. · نَعَم، الْقَلَمُ مِنْهَا. · نَعَم، الْقَلَمُ بِهَا.",
+      "lahja": "MSA",
+      "voi": "FF",
+      "css": "",
+      "url": "",
+      "audio": {
+        "candidates": [
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r333.mp3",
+          "https://storage.googleapis.com/all-that-arabic-145/audio/A010/practice_lc_r333.wav"
+        ]
+      },
+      "itemHash": "68cbd9a1e53cd4e08f7d853675eded4a3d64442489025f0de2fb691c4d99a1ed",
       "review": {
         "state": "needs-review",
         "changedFields": []

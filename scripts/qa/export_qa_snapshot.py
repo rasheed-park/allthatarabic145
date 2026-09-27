@@ -27,6 +27,8 @@ from typing import Any
 
 SHEET_ID = "1cFamlN6FjnIiRLTBl3OsAPbHTPiQYKJUio4caR-7Lm4"
 TAB = "데이터시트sheet"
+PRACTICE_TAB = "연습문제practice"
+PRACTICE_REVIEW_UNITS = {"A009", "A010"}
 ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "qa" / "data" / "review-data.json"
 STATE_PATH = ROOT / "qa" / "data" / "review-state.json"
@@ -78,10 +80,10 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def fetch_sheet() -> list[dict[str, str]]:
+def fetch_sheet(tab: str = TAB) -> list[dict[str, str]]:
     url = (
         f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq"
-        f"?tqx=out:json&sheet={urllib.parse.quote(TAB)}&headers=1"
+        f"?tqx=out:json&sheet={urllib.parse.quote(tab)}&headers=1"
     )
     with urllib.request.urlopen(url, timeout=40) as response:
         raw = response.read().decode("utf-8")
@@ -91,7 +93,7 @@ def fetch_sheet() -> list[dict[str, str]]:
     table = json.loads(match.group(1))["table"]
     headers = [str(column.get("label") or "").strip().lower() for column in table.get("cols", [])]
     rows: list[dict[str, str]] = []
-    for source in table.get("rows", []):
+    for row_number, source in enumerate(table.get("rows", []), start=2):
         cells = source.get("c", [])
         row: dict[str, str] = {}
         for index, header in enumerate(headers):
@@ -108,8 +110,50 @@ def fetch_sheet() -> list[dict[str, str]]:
                 derived = derived_audio_id(row)
                 if derived:
                     row["id"] = derived
+            row["_row_number"] = str(row_number)
             rows.append(row)
     return rows
+
+
+def split_dialogue(text: str) -> str:
+    value = (text or "").strip()
+    if "\n" in value or "؟" not in value:
+        return value
+    head, tail = value.split("؟", 1)
+    return f"{head}؟\n{tail.strip()}" if tail.strip() else value
+
+
+def practice_audio_id(row: dict[str, str]) -> str:
+    if row.get("id", "").strip():
+        return row["id"].strip()
+    typ = row.get("type", "").strip().lower()
+    prefix = "practice_nassplus" if typ == "nass+" else "practice_lc"
+    return f"{prefix}_r{row.get('_row_number', '')}"
+
+
+def practice_review_rows() -> list[dict[str, str]]:
+    result = []
+    for source in fetch_sheet(PRACTICE_TAB):
+        unit = source.get("u", "").strip().upper()
+        typ = source.get("type", "").strip().lower()
+        if unit not in PRACTICE_REVIEW_UNITS or typ not in {"nass+", "l/c"}:
+            continue
+        row = dict(source)
+        row["id"] = practice_audio_id(row)
+        row["status"] = row.get("status", "").strip() or "draft"
+        row["ptn"] = row.get("ref_ptn", "").strip()
+        row["arabic"] = split_dialogue(row.get("arabic", "")) if typ == "nass+" else row.get("arabic", "")
+        row["type"] = "nass+"
+        label = "추가지문" if typ == "nass+" else "L/C 연습문제"
+        choices = " · ".join(
+            value for value in (
+                row.get("jawab", ""), row.get("alif", ""),
+                row.get("baa", ""), row.get("dal", ""),
+            ) if value
+        )
+        row["memo"] = f"연습문제practice · {label}" + (f" · 선택지: {choices}" if choices else "")
+        result.append(row)
+    return result
 
 
 def audio_candidates(row: dict[str, str]) -> list[str]:
@@ -180,6 +224,7 @@ def main() -> None:
     previous_data = load_json(args.output, {"records": []})
     previous_by_key = {record["key"]: record for record in previous_data.get("records", [])}
     rows = fetch_sheet()
+    rows.extend(practice_review_rows())
     units = []
     for row in rows:
         if row.get("type") == "unit" and row.get("u"):
@@ -215,7 +260,7 @@ def main() -> None:
     # 시트가 콘텐츠의 정본 순서다. ID·타입 기준 재정렬을 하면
     # 표현 → 패턴 → 레퍼토리/드릴 → 지문이라는 제작·검수 순서가 깨진다.
     ordered_units = list({unit["id"]: unit for unit in units}.values())
-    result = {"schemaVersion": 1, "generatedAt": datetime.now(timezone.utc).isoformat(), "source": {"sheetId": SHEET_ID, "tab": TAB}, "units": ordered_units, "records": records}
+    result = {"schemaVersion": 1, "generatedAt": datetime.now(timezone.utc).isoformat(), "source": {"sheetId": SHEET_ID, "tabs": [TAB, PRACTICE_TAB]}, "units": ordered_units, "records": records}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as file:
         json.dump(result, file, ensure_ascii=False, indent=2)
